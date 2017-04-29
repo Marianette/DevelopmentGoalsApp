@@ -7,7 +7,16 @@
 
   <!-- Basic bar chart -->
   <div id="basic" class="col s12" data-url="<%= home_basic_path %>">
-    <svg id="basicgraph"></svg>
+    <div class="row">
+      <div class="col s6">
+        <h3> Bar Graph </h3>
+        <svg id="basicgraph"></svg>
+      </div>
+      <div class="col s6">
+        <h3>Scatterplot</h3>
+        <svg id="circles"></svg>
+      </div>
+    </div>
   </div>
 
   <!-- Simple line graph that allows filter by key -->
