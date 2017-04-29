@@ -1,2 +1,22 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="row">
+  <ul class="tabs">
+    <li class="tab col s4"><a class="active" href="#basic">Basic Visualisation</a></li>
+    <li class="tab col s4"><a href="#filters">Simple Filters</a></li>
+    <li class="tab col s4"><a href="#interactive">Interactive</a></li>
+  </ul>
+
+  <!-- Basic bar chart -->
+  <div id="basic" class="col s12" data-url="<%= home_basic_path %>">
+    <svg id="basicgraph"></svg>
+  </div>
+
+  <!-- Simple line graph that allows filter by key -->
+  <div id="filters" class="col s12" data-url="<%= home_filters_path %>">
+    <svg id="filtersgraph"></svg>
+  </div>
+
+  <!-- Interactive features -->
+  <div id="interactive" class="col s12" data-url="<%= home_interactive_path %>">
+    <svg id="interactivegraph"></svg>
+  </div>
+</div>
