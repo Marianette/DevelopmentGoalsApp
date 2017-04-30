@@ -35,6 +35,7 @@ $.ajax({
   dataType: 'json',
   success: function (data) {
     console.log("Not yet implemented");
+    // Work through https://dc-js.github.io/dc.js/docs/stock.html tutorial for this page
   },
   error: function (result) {
     console.log('Error');

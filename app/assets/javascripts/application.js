@@ -8,5 +8,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require d3
+//= require crossfilter
+//= require dc
 //= require materialize-sprockets
 //= require_tree .
