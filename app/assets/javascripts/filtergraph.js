@@ -1,5 +1,7 @@
 scatterplot = function (data) {
   var sales_chart  = dc.lineChart("#linegraph");
+  var yearly_sales = dc.pieChart("#piechart");
+
   var ndx = crossfilter(data);
 
   // Create specifc data parser
@@ -9,13 +11,20 @@ scatterplot = function (data) {
   data.forEach(function (d) {
     d.date = dateFormat.parse(d.date);
     d.total = d.books + d.movies + d.chocolate;
+    d.year = d.date.getFullYear();
   });
 
   var dateDim = ndx.dimension(function (d) {
     return d.date;
   });
 
+  var yearDim = ndx.dimension(function (d) {
+    return d.year;
+  });
+
   var total_sales = dateDim.group().reduceSum(function (d) { return d.total;});
+  var year_total_sales = yearDim.group().reduceSum(function (d) { return d.total;});
+
   var minDate = dateDim.bottom(1)[0].date;
   var maxDate = dateDim.top(1)[0].date;
 
@@ -26,6 +35,12 @@ scatterplot = function (data) {
     .x(d3.time.scale().domain([minDate, maxDate]))
     .yAxisLabel("Sales per day")
     .xAxisLabel("Date");
+
+  yearly_sales
+    .width(150).height(150)
+    .dimension(yearDim)
+    .group(year_total_sales)
+    .innerRadius(20);
 
   dc.renderAll();
 
