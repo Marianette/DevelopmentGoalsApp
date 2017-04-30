@@ -1,6 +1,7 @@
 scatterplot = function (data) {
   var sales_chart  = dc.lineChart("#linegraph");
   var yearly_sales = dc.pieChart("#piechart");
+  var data_table = dc.dataTable("#data-table");
 
   var ndx = crossfilter(data);
 
@@ -51,6 +52,18 @@ scatterplot = function (data) {
     .dimension(yearDim)
     .group(year_total_sales)
     .innerRadius(20);
+
+  data_table
+    .dimension(dateDim)
+    .group(function (d) { return d.year;})   // group table elements by year
+    .columns([
+        function (d) {
+          return d.date.getDate() + "/" + (d.date.getMonth() + 1) + "/" + d.date.getFullYear();
+        },
+        function (d) { return d.books; },
+        function (d) { return d.movies; },
+        function (d) { return d.chocolate; }
+    ]);
 
   dc.renderAll();
 
