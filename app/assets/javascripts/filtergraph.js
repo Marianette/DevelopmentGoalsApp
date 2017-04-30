@@ -25,16 +25,26 @@ scatterplot = function (data) {
   var total_sales = dateDim.group().reduceSum(function (d) { return d.total;});
   var year_total_sales = yearDim.group().reduceSum(function (d) { return d.total;});
 
+  // create groupings for each different type of sale for the linegraph
+  var books = dateDim.group().reduceSum(function (d) {return d.books;});
+  var movies = dateDim.group().reduceSum(function (d) {return d.movies;});
+  var chocolate = dateDim.group().reduceSum(function (d) {return d.chocolate;});
+
   var minDate = dateDim.bottom(1)[0].date;
   var maxDate = dateDim.top(1)[0].date;
 
   sales_chart
     .width(800).height(300)
     .dimension(dateDim)
-    .group(total_sales)
+    // .group(total_sales) - show 1 line with total sales
+    .group(books, "Books")
+    .stack(movies, "Movies")
+    .stack(chocolate, "Chocolates")
+    .renderArea(true)  // shades in the area under the graph
     .x(d3.time.scale().domain([minDate, maxDate]))
     .yAxisLabel("Sales per day")
-    .xAxisLabel("Date");
+    .xAxisLabel("Date")
+    .legend(dc.legend().x(50).y(10).itemHeight(15).gap(5));
 
   yearly_sales
     .width(150).height(150)
