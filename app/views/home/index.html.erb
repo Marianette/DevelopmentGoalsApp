@@ -2,7 +2,7 @@
   <ul class="tabs">
     <li class="tab col s4"><a class="active" href="#basic">Basic Visualisation</a></li>
     <li class="tab col s4"><a href="#filters">Simple Filters</a></li>
-    <li class="tab col s4"><a href="#interactive">Interactive</a></li>
+    <li class="tab col s4"><a href="#motion">Motion Graph</a></li>
   </ul>
 
   <!-- Basic bar chart -->
@@ -38,7 +38,8 @@
   </div>
 
   <!-- Interactive features -->
-  <div id="interactive" class="col s12" data-url="<%= home_interactive_path %>">
-    <svg id="interactivegraph"></svg>
+  <div id="motion" class="col s12" data-url="<%= home_motion_path %>">
+    <p>Created from source code avaliable at: <a href="https://bost.ocks.org/mike/nations/">The Wealth and Health of Nations</a></p>
+    <svg id="motiongraph"></svg>
   </div>
 </div>

@@ -35,8 +35,9 @@ class HomeController < ApplicationController
     end
   end
 
-  def interactive
-    data = []
+  def motion
+    # Nations.json data from https://github.com/lajh87/r2d3MotionChart
+    data = JSON.parse(File.read("db/nations.json"))
     respond_to do |format|
       format.json {
         render :json => data

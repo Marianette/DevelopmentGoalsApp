@@ -1,6 +1,6 @@
 var basicdataurl = $('#basic').data('url');
 var filtersdataurl = $('#filters').data('url');
-var interactivedataurl = $('#interactive').data('url');
+var motioncharturl = $('#motion').data('url');
 
 $.ajax({
   type: 'GET',
@@ -31,11 +31,10 @@ $.ajax({
 $.ajax({
   type: 'GET',
   contentType: 'application/json; charset=utf-8',
-  url: interactivedataurl,
+  url: motioncharturl,
   dataType: 'json',
   success: function (data) {
-    console.log("Not yet implemented");
-    // Work through https://dc-js.github.io/dc.js/docs/stock.html tutorial for this page
+    motiongraph(data);
   },
   error: function (result) {
     console.log('Error');
