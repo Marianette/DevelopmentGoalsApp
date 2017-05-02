@@ -251,3 +251,22 @@ text {
   pointer-events: all;
   cursor: ew-resize;
 }
+
+// Legend css
+.legend {
+    font-size: 12px;
+}
+
+rect {
+  cursor: pointer;
+  stroke-width: 2;
+}
+
+rect.disabled {
+  fill: transparent !important;
+}
+
+.unselected {
+  fill: transparent !important;
+  stroke: transparent !important;
+}

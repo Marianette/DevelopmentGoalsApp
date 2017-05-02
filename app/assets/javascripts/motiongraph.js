@@ -1,4 +1,4 @@
-// Code from : https://bost.ocks.org/mike/nations/
+// Adapted and added to code from : https://bost.ocks.org/mike/nations/
 
 motiongraph = function(nations) {
   // Specify the four dimensions of data to visualise
@@ -8,9 +8,21 @@ motiongraph = function(nations) {
   function color(d) { return d.region; }
   function key(d) { return d.name; }
 
+  // Give each dot an id
+  function dotId(d) {
+    var removedPunctuation = d.name.replace(/[.,'"\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+    var removedSpaces = removedPunctuation.replace(/\s/g,'');
+    return removedSpaces;
+  }
+
+  // Set enabled property to allow filtering of data by a legend
+  nations.forEach(function (d) {
+    d.enabled = true;
+  });
+
   // Chart dimensions.
-  var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5};
-  var width = 960 - margin.right;
+  var margin = {top: 19.5, right: 200, bottom: 19.5, left: 39.5};
+  var width = 1200 - margin.right;
   var height = 500 - margin.top - margin.bottom;
 
   // Scales and axis. (Domains are specified using assumptions from the data)
@@ -78,6 +90,8 @@ motiongraph = function(nations) {
       .data(interpolateData(1800))
     .enter().append("circle")
       .attr("class", "dot")
+      .attr("data-legend",function(d) { return d.name})
+      .attr("id", function (d) {return dotId(d);})
       .style("fill", function(d) { return colorScale(color(d)); })
       .call(position)
       .sort(order);
@@ -85,6 +99,60 @@ motiongraph = function(nations) {
   // Give each dot the name of the country.
   dot.append("title")
     .text(function(d) { return d.name; });
+
+  // Add a legend
+  var legendRectSize = 18;
+  var legendSpacing = 4;
+
+  var legend = svg.selectAll('.legend')
+  .data(colorScale.domain())
+  .enter()
+  .append('g')
+  .attr('class', 'legend')
+  .attr('transform', function(d, i) {
+    var height = legendRectSize + legendSpacing;
+    var horz = width + margin.left;
+    var vert = i * height * 1.5;
+    return 'translate(' + horz + ',' + vert + ')';
+  });
+
+  legend.append('rect')
+    .attr('width', legendRectSize)
+    .attr('height', legendRectSize)
+    .style('fill', colorScale)
+    .style('stroke', colorScale)
+    .on('click', function (label) {
+      // Get the element we clicked on
+      var rect = d3.select(this);
+      var enabled = true;
+
+      // Toggle it
+      if(rect.attr('class') === 'disabled') {
+        rect.attr('class', '');
+      } else {
+        rect.attr('class', 'disabled');
+        enabled = false;
+      }
+
+      // Set the relevent enabled value for each entry in the nations data set
+      nations.forEach (function (d) {
+        if (d.region === label) {
+          d.enabled = enabled;
+        }
+
+        // Update display
+        if(d.enabled) {
+          d3.select("#" + dotId(d)).attr('class', 'dot');
+        } else {
+          d3.select("#" + dotId(d)).attr('class', 'unselected');
+        }
+      });
+    });
+
+  legend.append('text')
+    .attr('x', legendRectSize + legendSpacing)
+    .attr('y', legendRectSize - legendSpacing)
+    .text(function(d) { return d; });
 
   // Add an overlay for the year label. The overlay allows the year to be changed
   // as the user scrolls over the large year label.
@@ -164,7 +232,9 @@ motiongraph = function(nations) {
 
   // Updates the display to show the specified year.
   function displayYear(year) {
-    dot.data(interpolateData(year), key).call(position).sort(order);
+    dot.data(interpolateData(year), key)
+      .call(position)
+      .sort(order);
     label.text(Math.round(year));
   }
 
