@@ -22,7 +22,7 @@ motiongraph = function(nations) {
 
   // Chart dimensions.
   var margin = {top: 19.5, right: 200, bottom: 19.5, left: 39.5};
-  var width = 1200 - margin.right;
+  var width = 1000 - margin.right;
   var height = 500 - margin.top - margin.bottom;
 
   // Scales and axis. (Domains are specified using assumptions from the data)
@@ -161,7 +161,7 @@ motiongraph = function(nations) {
   // Temporary hard coded values. Another option is to append elememt to an element
   // in the dom that will be visible, set the visibility to hidden, get the bounding
   // box, and then remove the element, and append it to the rightful place.
-  var box = {x: 548.5, y: 262, width: 392, height: 217};
+  var box = {x: 420, y: 262, width: 392, height: 217};
 
   var overlay = svg.append("rect")
         .attr("class", "overlay")
@@ -171,12 +171,21 @@ motiongraph = function(nations) {
         .attr("height", box.height)
         .on("mouseover", enableInteraction);  //  call enableInteraction method when mouse goes over label.
 
-  // This starts the animation that makes the graph display data changes as years pass.
-  svg.transition()
-      .duration(30000)
-      .ease("linear")
-      .tween("year", tweenYear)
-      .each("end", enableInteraction);
+  // Add controls for animation
+  var play = d3.select('#play_button');
+  var stop = d3.select('#stop_button');
+
+  play.on('click', function (d) {
+    svg.transition()
+        .duration(30000)
+        .ease("linear")
+        .tween("year", tweenYear)
+        .each("end", enableInteraction);
+  });
+
+  stop.on('click', function (d) {
+    svg.transition().duration(0);
+  });
 
   // Positions the dots based on data.
   function position(dot) {
@@ -226,7 +235,9 @@ motiongraph = function(nations) {
   // Tweens the entire chart by first tweening the year, and then the data.
   // For the interpolated data, the dots and label are redrawn.
   function tweenYear() {
-    var year = d3.interpolateNumber(1800, 2009);
+    var curYear = d3.select('#yearLabel').text();
+    if(curYear == 2009) curYear = 1800;
+    var year = d3.interpolateNumber(curYear, 2009);
     return function(t) { displayYear(year(t)); };
   }
 
