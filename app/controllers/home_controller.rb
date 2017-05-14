@@ -46,9 +46,10 @@ class HomeController < ApplicationController
   end
 
   def force
+    data = JSON.parse(File.read("db/nodes.json"))
     respond_to do |format|
       format.json {
-        render :json => [8, 9, 10]
+        render :json => data
       }
     end
   end
