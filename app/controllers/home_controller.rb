@@ -46,6 +46,7 @@ class HomeController < ApplicationController
   end
 
   def force
+    # Nodes.json data from https://gist.github.com/mbostock/4062045/d89ba00bbdcc7695b63696902f0f7e95cbe3a679
     data = JSON.parse(File.read("db/nodes.json"))
     respond_to do |format|
       format.json {

@@ -1,3 +1,4 @@
+// Source code at https://bl.ocks.org/mbostock/4062045 adapted to v3 D3.
 forcegraph = function (graph) {
   var width = 960;
   var height = 600;
@@ -6,7 +7,7 @@ forcegraph = function (graph) {
 
   var simulation = d3.layout.force()
   .charge(-120)
-  .linkDistance(30)
+  .linkDistance(function(d) {return 4*d.value;})
   .size([width, height]);
 
   var svg = d3.select("#forcelayoutgraph")
