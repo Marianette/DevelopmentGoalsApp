@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'home/basic' => 'home#basic', :defaults => { :format => 'json' }
   get 'home/filters' => 'home#filters', :defaults => { :format => 'json' }
   get 'home/motion' => 'home#motion', :defaults => { :format => 'json' }
+  get 'home/force' => 'home#force', :defaults => { :format => 'json' }
 
   root 'home#index'
 end

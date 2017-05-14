@@ -3,6 +3,7 @@
     <li class="tab col s4"><a class="active" href="#basic">Basic Visualisation</a></li>
     <li class="tab col s4"><a href="#filters">Simple Filters</a></li>
     <li class="tab col s4"><a href="#motion">Motion Graph</a></li>
+    <li class="tab col s4"><a href="#force">Force Directed Layout Graph</a></li>
   </ul>
 
   <!-- Basic bar chart -->
@@ -43,5 +44,10 @@
     <svg id="motiongraph"></svg>
     <i class="material-icons md-48 buttons" id="play_button">play_circle_outline</i>
     <i class="material-icons md-48 buttons" id="stop_button">pause_circle_outline</i>
+  </div>
+
+  <!-- Force directed layout algorithm implementation -->
+  <div id="force" class="col s12" data-url="<%= home_force_path %>">
+    <svg id="forcegraph"></svg>
   </div>
 </div>

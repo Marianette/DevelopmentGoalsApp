@@ -1,6 +1,7 @@
 var basicdataurl = $('#basic').data('url');
 var filtersdataurl = $('#filters').data('url');
 var motioncharturl = $('#motion').data('url');
+var forcecharturl = $('#force').data('url');
 
 $.ajax({
   type: 'GET',
@@ -35,6 +36,19 @@ $.ajax({
   dataType: 'json',
   success: function (data) {
     motiongraph(data);
+  },
+  error: function (result) {
+    console.log('Error');
+  }
+});
+
+$.ajax({
+  type: 'GET',
+  contentType: 'application/json; charset=utf-8',
+  url: forcecharturl,
+  dataType: 'json',
+  success: function (data) {
+    forcegraph(data);
   },
   error: function (result) {
     console.log('Error');

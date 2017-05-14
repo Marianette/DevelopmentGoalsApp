@@ -44,4 +44,12 @@ class HomeController < ApplicationController
       }
     end
   end
+
+  def force
+    respond_to do |format|
+      format.json {
+        render :json => [8, 9, 10]
+      }
+    end
+  end
 end
