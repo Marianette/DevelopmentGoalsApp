@@ -7,7 +7,7 @@ forcegraph = function (graph) {
 
   var simulation = d3.layout.force()
   .charge(-120)
-  .linkDistance(function(d) {return 4*d.value;})
+  .linkDistance(function(d) {return d.value;})
   .size([width, height]);
 
   var svg = d3.select("#forcelayoutgraph")
@@ -17,7 +17,19 @@ forcegraph = function (graph) {
   simulation
   .nodes(graph.nodes)
   .links(graph.links)
-  .start()
+  .start();
+
+  // Filter to adjust link distance
+  var first_change = d3.select('#first');
+  first_change.on('click', function (d) {
+    graph.links.forEach( function (elem) {
+      elem.value = elem.value + 50;
+    });
+    simulation
+    .nodes(graph.nodes)
+    .links(graph.links)
+    .start();
+  });
 
   var link = svg.selectAll(".link")
   .data(graph.links)

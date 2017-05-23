@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    # pass in data as a variable
   end
 
   def basic
