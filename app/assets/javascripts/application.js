@@ -1,4 +1,4 @@
-s//= require jquery
+//= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require d3
@@ -8,5 +8,10 @@ s//= require jquery
 //= require crossfilter
 //= require dc
 //= require materialize-sprockets
-//= require navbar
-//= require map
+//= require schoolVis
+//= require explore
+
+// Clear visualisations before leaving a page
+function clearVis() {
+  $('.visualisation').remove();
+}

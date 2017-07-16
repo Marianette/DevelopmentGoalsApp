@@ -1,14 +1,18 @@
 <nav class="white" role="navigation">
 <div class="nav-wrapper">
       <ul id="slide-out" class="side-nav">
-        <%= link_to("#{image_tag('UN_SDG_Logo.png')}".html_safe, root_path, { id: 'side-nav-image'}) %>
-        <li><a href="#">First Sidebar Link</a></li>
-        <li><a href="#">Second Sidebar Link</a></li>
+        <%= link_to("#{image_tag('UN_SDG_Logo.png')}".html_safe, root_path, { id: 'side-nav-image', onclick: "clearVis();"}) %>
+        <li><%= link_to("Choropleth Map", explore_secondaryEducation_path, {onclick: "clearVis();"}) %></li>
+        <li><a href="#" onclick: "clearVis();">Second Sidebar Link</a></li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-      <%= link_to("#{image_tag('UN_SDG_Logo.png')}".html_safe, root_path, { id: 'top-nav-bar-logo'}) %>
+      <%= link_to("#{image_tag('UN_SDG_Logo.png')}".html_safe, root_path, { id: 'top-nav-bar-logo', onclick: "clearVis();"}) %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="#" id="nav-top-menu-item">About</a></li>
+      <li><a href="#" id="nav-top-menu-item" onclick: "clearVis();">About</a></li>
     </ul>
   </div>
 </nav>
+
+<script>
+  $('.button-collapse').sideNav();
+</script>

@@ -1,40 +1,38 @@
 // Following code from : http://bl.ocks.org/rgdonohue/9280446
 
-var width, height, projection, path, svg, attributeArray = [], currentAttribute = 0, playing = false;
+var width, height, projection, path, centered, svg, attributeArray = [], currentAttribute = 0, playing = false;
 
-function init() {
-  setMap();
-  animateMap();
-  console.log("alerted");
+function initSchoolVisualisation(id) {
+  createMap(id);
+  setAnimataion();
 }
 
-function setMap() {
+function createMap(id) {
+  width = 960;
+  height = 580;
 
-  width = 960, height = 580;  // map width and height, matches
-
-  projection = d3.geo.eckert5()   // define our projection with parameters
+  // define projection with parameters
+  projection = d3.geo.eckert3()
     .scale(170)
     .translate([width / 2, height / 2])
     .precision(.1);
 
-  path = d3.geo.path()  // create path generator function
-      .projection(projection);  // add our define projection to it
+  // create path generator function
+  path = d3.geo.path()
+    .projection(projection);
 
-  svg = d3.select("#map").append("svg")   // append a svg to our html div to hold our map
+  svg = d3.select(id).append("svg")
       .attr("width", width)
       .attr("height", height);
 
-  loadData();  // let's load our data next
-
+  loadSchoolData();
 }
 
-function loadData() {
-
-  queue()   // queue function loads all external data files asynchronously
-    .defer(d3.json, "world-topo.json")  // our geometries
-    .defer(d3.csv, "countriesRandom.csv")  // and associated data in csv file
-    .await(processData);   // once all files are loaded, call the processData function passing
-                           // the loaded objects as arguments
+function loadSchoolData() {
+  queue()
+    .defer(d3.json, "../world-topo.json")
+    .defer(d3.csv, "../countriesRandom.csv")  // TODO: Temp data set. Change to use secondary school data
+    .await(processData);
 }
 
 function processData(error,world,countryData) {
@@ -74,7 +72,34 @@ function drawMap(world) {
     d3.selectAll('.country')  // select all the countries
     .attr('fill-opacity', function(d) {
         return getColor(d.properties[attributeArray[currentAttribute]], dataRange);  // give them an opacity value based on their current value
-    });
+    })
+    .on('click', clicked);
+}
+
+// TODO change zoom calculation. put div in table to prevent map being drawn out.
+function clicked(d){
+  var x, y, k;
+
+  if (d && centered !== d) {
+    var centroid = path.centroid(d);
+    x = centroid[0];
+    y = centroid[1];
+    k = 2;
+    centered = d;
+  } else {
+    x = width / 2;
+    y = height / 2;
+    k = 1;
+    centered = null;
+  }
+
+  svg.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+  svg.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px");
 }
 
 function sequenceMap() {
@@ -115,7 +140,7 @@ function getDataRange() {
   return [min,max];  //boomsauce
 }
 
-function animateMap() {
+function setAnimataion() {
 
   var timer;  // create timer object
   d3.select('#play')
