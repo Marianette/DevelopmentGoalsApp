@@ -20,16 +20,15 @@ class PopulateDatabase
   private
 
   def location(contents)
-    Location.create!(
-      country: content[COUNTRY],
-      population:
-    )
+   #  Location.create!(
+    #  country: content[COUNTRY],
+  #    population:
+  #  )
   end
 
   #location - female population and male population
   #data - type + location + value
-  # labour force female and male % of female/male pop - tree map
+  # labour force female and male % of female/male pop
   # gender equality index - bubble graph
-  # average years of schooling male and female - choropleth map
   # DO SOMETHING ABOUT UNEMPLOYMENT + PAY GAP!
 end
