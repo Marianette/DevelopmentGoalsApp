@@ -1,6 +1,6 @@
 // Following code from : http://bl.ocks.org/rgdonohue/9280446
 
-var width, height, projection, path, centered, svg, attributeArray = [], currentAttribute = 0, playing = false;
+var width, height, projection, path, centered, svg, toolTipDiv, attributeArray = [], currentAttribute = 0, playing = false;
 
 function initSchoolVisualisation(id) {
   createMap(id);
@@ -24,6 +24,10 @@ function createMap(id) {
   svg = d3.select(id).append("svg")
       .attr("width", width)
       .attr("height", height);
+
+  toolTipDiv = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
 
   loadSchoolData();
 }
@@ -73,9 +77,25 @@ function drawMap(world) {
     .attr('fill-opacity', function(d) {
         return getColor(d.properties[attributeArray[currentAttribute]], dataRange);  // give them an opacity value based on their current value
     })
+    .on("mouseover", showTooltip)
+    .on("mouseout", hideTooltip)
     .on('click', clicked);
 }
 
+function showTooltip(d) {
+  toolTipDiv.transition()
+              .duration(200)
+              .style("opacity", .9);
+  toolTipDiv.html(d.properties.id + "<br/>" + d.properties[attributeArray[currentAttribute]])
+      .style("left", (d3.event.pageX) + "px")
+      .style("top", (d3.event.pageY - 28) + "px");
+}
+
+function hideTooltip(d) {
+  toolTipDiv.transition()
+      .duration(500)
+      .style("opacity", 0);
+}
 // TODO change zoom calculation. put div in table to prevent map being drawn out.
 function clicked(d){
   var x, y, k;
