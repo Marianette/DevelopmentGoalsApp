@@ -100,7 +100,7 @@ function hideTooltip(d) {
       .duration(500)
       .style("opacity", 0);
 }
-// TODO change zoom calculation. put div in table to prevent map being drawn out.
+// TODO change zoom calculation. add drag feature.
 function clicked(d){
   var x, y, k;
 

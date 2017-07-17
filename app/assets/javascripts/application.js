@@ -13,5 +13,5 @@
 
 // Clear visualisations before leaving a page
 function clearVis() {
-  $('.visualisation').remove();
+  $('.vis-container').remove();
 }
