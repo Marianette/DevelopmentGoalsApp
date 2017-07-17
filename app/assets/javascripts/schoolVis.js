@@ -12,10 +12,10 @@ function createMap(id) {
   height = 580;
 
   // define projection with parameters
-  projection = d3.geo.eckert3()
-    .scale(170)
-    .translate([width / 2, height / 2])
-    .precision(.1);
+  projection = d3.geo.miller();
+  //  .scale(180)
+  //  .translate([width / 2, 2*height / 3]);
+  //  .precision(.1);
 
   // create path generator function
   path = d3.geo.path()
@@ -59,6 +59,9 @@ function processData(error,world,countryData) {
       }
     }
   }
+// TODO : use two json files, and create diff data here.
+// Read female data as json with hash by country name. So fast look up. Add to properites, female, year.
+// same for male. loop together. add male, female, calculate diff, and add as well. properities is array[f[years],m[years],b[years]]
   d3.select('#clock').html(attributeArray[currentAttribute]);  // populate the clock initially with the current year
   drawMap(world);  // let's mug the map now with our newly populated data object
 }

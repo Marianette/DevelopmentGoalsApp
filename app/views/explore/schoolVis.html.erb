@@ -1,9 +1,16 @@
-<div class="visualisation" id="wrapper">
-  <div id="schoolMapVis"></div>
-  <button id="play">play</button>
-  <span id="clock">year</span>
-
-  <script>
-    window.onload = initSchoolVisualisation("#schoolMapVis");
-  </script>
+<div class="content-container">
+  <div class="row">
+    <div class="col s8 vis-container">
+      <div id="school-map-vis"></div>
+      <!--<button id="play">play</button>
+      <span id="clock">year</span> -->
+    </div>
+    <div class="col s3 filter-container">
+      <h2> Filters will go here </h2>
+    </div>
+  </div>
 </div>
+
+<script>
+  window.onload = initSchoolVisualisation("#school-map-vis");
+</script>
