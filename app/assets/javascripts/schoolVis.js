@@ -9,13 +9,13 @@ function initSchoolVisualisation(id) {
 
 function createMap(id) {
   width = 960;
-  height = 580;
+  height = 450;
 
   // define projection with parameters
-  projection = d3.geo.miller();
-  //  .scale(180)
-  //  .translate([width / 2, 2*height / 3]);
-  //  .precision(.1);
+  projection = d3.geo.eckert3()
+    .scale(195)
+    .translate([width / 2, 2*height / 3])
+    .precision(.1);
 
   // create path generator function
   path = d3.geo.path()
