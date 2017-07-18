@@ -1,17 +1,12 @@
 // Position variables
-var width,
-    height,
-    centerX,
-    centerY;
+var width, height, centerX, centerY;
 
-// Map visualisation view variables
-var projection,
-    path,
-    svg,
-    graph,
-    toolTipDiv;
+// Map view variables
+var projection, path, svg, container;
 
-var centered, colScale, attributeArray = [], currentAttribute = 0, playing = false;
+var centered,
+    colScale,
+    toolTipDiv, attributeArray = [], currentAttribute = 0, playing = false;
 
 function initSchoolVisualisation(id) {
   createMap(id);
@@ -41,11 +36,13 @@ function createMap(id) {
   svg = d3.select(id).append("svg")
       .attr("width", width)
       .attr("height", height);
-  graph = svg.append("graph");
 
-  // Create colour scale for choropleth
-  var colours = ["#BAE4B3", "#74C476", "#31A354", "#006D2C"];
-  colScale = d3.scale.ordinal()
+ container = svg.append("g");
+
+ var colours = ["#BAE4B3", "#74C476", "#31A354", "#006D2C"];
+
+ // setup colours for choropleth
+ colScale = d3.scale.ordinal()
                    .range(colours);
 
   //colScale.domain(d3.extent(data, function (d) { return d.properties[attributeArray[currentAttribute]]; } ));
@@ -96,7 +93,7 @@ function processData(error,world,countryData) {
 }
 
 function drawMap(world) {
-    graph.selectAll(".country")
+    container.selectAll(".country")
            .data(topojson.feature(world, world.objects.countries).features)
            .enter().append("path")
            .attr("d", path)
@@ -108,7 +105,7 @@ function drawMap(world) {
            .style("stroke", "white")
            .style("fill", function (d,i) { return colScale(d.properties[attributeArray[currentAttribute]]); });
 
-        graph.append("path")
+      container.append("path")
            .data(topojson.feature(world, world.objects.countries).features)
            .enter()
            .append("path")
@@ -131,6 +128,7 @@ function hideTooltip(d) {
       .style("opacity", 0);
 }
 
+// TODO add drag feature.
 function clicked(d){
   var x, y, k;
 
@@ -147,10 +145,10 @@ function clicked(d){
     centered = null;
   }
 
-  graph.selectAll("path")
+  container.selectAll("path")
       .classed("active", centered && function(d) { return d === centered; });
 
-  graph.transition()
+  container.transition()
       .duration(750)
       .attr("transform", "translate(" + centerX + "," + centerY + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .style("stroke-width", "1px");
