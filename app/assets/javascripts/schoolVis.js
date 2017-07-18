@@ -34,16 +34,19 @@ function createMap(id) {
     .projection(projection);
 
 // define zoom and drag behaviour
-    zoom = d3.behavior.zoom()
-      .scaleExtent([1, 20])
-      .on("zoom", zoomed);
+ zoom = d3.behavior.zoom()
+  .scaleExtent([1, 8])
+  .on("zoom", zoomed);
 
   svg = d3.select(id).append("svg")
       .attr("width", width)
       .attr("height", height);
 
- container = svg.append("g")
-            .call(zoom);
+ container = svg.append("g");
+
+ svg
+   .call(zoom)
+   .call(zoom.event);
 
  var colours = ["#BAE4B3", "#74C476", "#31A354", "#006D2C"];
 
