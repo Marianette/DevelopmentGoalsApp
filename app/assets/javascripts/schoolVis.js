@@ -1,6 +1,17 @@
-// Following code from : http://bl.ocks.org/rgdonohue/9280446
+// Position variables
+var width,
+    height,
+    centerX,
+    centerY;
 
-var width, height, projection, path, centered, svg, toolTipDiv, attributeArray = [], currentAttribute = 0, playing = false;
+// Map visualisation view variables
+var projection,
+    path,
+    svg,
+    graph,
+    toolTipDiv;
+
+var centered, colScale, attributeArray = [], currentAttribute = 0, playing = false;
 
 function initSchoolVisualisation(id) {
   createMap(id);
@@ -10,12 +21,17 @@ function initSchoolVisualisation(id) {
 function createMap(id) {
   width = 960;
   height = 500;
-  offset = 30;
+
+  var xoffset = 60;
+  var yoffset = 45;
+
+  centerX = width/2 - xoffset;
+  centerY = height/2 + yoffset;
 
   // define projection with parameters
   projection = d3.geo.naturalEarth()
     .scale(180)
-    .translate([width / 2, height / 2 + offset])
+    .translate([centerX, centerY])
     .precision(.1);
 
   // create path generator function
@@ -25,6 +41,18 @@ function createMap(id) {
   svg = d3.select(id).append("svg")
       .attr("width", width)
       .attr("height", height);
+  graph = svg.append("graph");
+
+  // Create colour scale for choropleth
+  var colours = ["#BAE4B3", "#74C476", "#31A354", "#006D2C"];
+  colScale = d3.scale.ordinal()
+                   .range(colours);
+
+  //colScale.domain(d3.extent(data, function (d) { return d.properties[attributeArray[currentAttribute]]; } ));
+
+//  zoom = d3.behavior.zoom()
+//    .scaleExtent([1, 20])
+//    .on("zoom", zoomed);
 
   toolTipDiv = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -68,22 +96,24 @@ function processData(error,world,countryData) {
 }
 
 function drawMap(world) {
+    graph.selectAll(".country")
+           .data(topojson.feature(world, world.objects.countries).features)
+           .enter().append("path")
+           .attr("d", path)
+           .attr("class", "country")
+           .attr("id", function (d) { return "code_" + d.properties.id; })
+           .on("click", clicked)
+           .on("mouseover", showTooltip)
+           .on("mouseout", hideTooltip)
+           .style("stroke", "white")
+           .style("fill", function (d,i) { return colScale(d.properties[attributeArray[currentAttribute]]); });
 
-    svg.selectAll(".country")   // select country objects (which don't exist yet)
-      .data(topojson.feature(world, world.objects.countries).features)  // bind data to these non-existent objects
-      .enter().append("path") // prepare data to be appended to paths
-      .attr("class", "country") // give them a class for styling and access later
-      .attr("id", function(d) { return "code_" + d.properties.id; }, true)  // give each a unique id for access later
-      .attr("d", path); // create them using the svg path generator defined above
-
-    var dataRange = getDataRange(); // get the min/max values from the current year's range of data values
-    d3.selectAll('.country')  // select all the countries
-    .attr('fill-opacity', function(d) {
-        return getColor(d.properties[attributeArray[currentAttribute]], dataRange);  // give them an opacity value based on their current value
-    })
-    .on("mouseover", showTooltip)
-    .on("mouseout", hideTooltip)
-    .on('click', clicked);
+        graph.append("path")
+           .data(topojson.feature(world, world.objects.countries).features)
+           .enter()
+           .append("path")
+           .attr("class", "mesh")
+           .attr("d", path);
 }
 
 function showTooltip(d) {
@@ -100,7 +130,7 @@ function hideTooltip(d) {
       .duration(500)
       .style("opacity", 0);
 }
-// TODO change zoom calculation. add drag feature.
+
 function clicked(d){
   var x, y, k;
 
@@ -108,60 +138,22 @@ function clicked(d){
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 2;
+    k = 3;
     centered = d;
   } else {
-    x = width / 2;
-    y = height / 2;
+    x = centerX;
+    y = centerY;
     k = 1;
     centered = null;
   }
 
-  svg.selectAll("path")
+  graph.selectAll("path")
       .classed("active", centered && function(d) { return d === centered; });
 
-  svg.transition()
+  graph.transition()
       .duration(750)
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-      .style("stroke-width", 1.5 / k + "px");
-}
-
-function sequenceMap() {
-
-    var dataRange = getDataRange(); // get the min/max values from the current year's range of data values
-    d3.selectAll('.country').transition()  //select all the countries and prepare for a transition to new values
-      .duration(750)  // give it a smooth time period for the transition
-      .attr('fill-opacity', function(d) {
-        return getColor(d.properties[attributeArray[currentAttribute]], dataRange);  // the end color value
-      })
-
-}
-
-function getColor(valueIn, valuesIn) {
-
-  var color = d3.scale.linear() // create a linear scale
-    .domain([valuesIn[0],valuesIn[1]])  // input uses min and max values
-    .range([.3,1]);   // output for opacity between .3 and 1 %
-
-  return color(valueIn);  // return that number to the caller
-}
-
-function getDataRange() {
-  // function loops through all the data values from the current data attribute
-  // and returns the min and max values
-
-  var min = Infinity, max = -Infinity;
-  d3.selectAll('.country')
-    .each(function(d,i) {
-      var currentValue = d.properties[attributeArray[currentAttribute]];
-      if(currentValue <= min && currentValue != -99 && currentValue != 'undefined') {
-        min = currentValue;
-      }
-      if(currentValue >= max && currentValue != -99 && currentValue != 'undefined') {
-        max = currentValue;
-      }
-  });
-  return [min,max];  //boomsauce
+      .attr("transform", "translate(" + centerX + "," + centerY + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", "1px");
 }
 
 function setAnimataion() {
@@ -176,7 +168,12 @@ function setAnimataion() {
           } else {
               currentAttribute = 0;  // or reset it to zero
           }
-          sequenceMap();  // update the representation of the map
+
+          // update map view
+          d3.selectAll('.country').transition()
+            .duration(750)
+            .style("fill", function (d,i) { return colScale(d.properties[attributeArray[currentAttribute]]); });
+
           d3.select('#clock').html(attributeArray[currentAttribute]);  // update the clock
         }, 2000);
 
