@@ -2,7 +2,7 @@
 var width, height, centerX, centerY;
 
 // Map view variables
-var projection, path, svg, container, toolTipDiv, zoom, colScale;
+var projection, path, svg, container, toolTipDiv, colScale;
 
 var centered, attributeArray = [], currentAttribute = 0, playing = false;
 
@@ -31,20 +31,11 @@ function createMap(id) {
   path = d3.geo.path()
   .projection(projection);
 
-  // define zoom and drag behaviour
-  zoom = d3.behavior.zoom()
-  .scaleExtent([1, 8])
-  .on("zoom", zoomed);
-
   svg = d3.select(id).append("svg")
   .attr("width", width)
   .attr("height", height);
 
   container = svg.append("g");
-
-  svg
-  .call(zoom)
-  .call(zoom.event);
 
   var colours = ["#BAE4B3", "#74C476", "#31A354", "#006D2C"];
 
@@ -60,6 +51,7 @@ function createMap(id) {
 
   loadSchoolData();
 }
+
 
 function loadSchoolData() {
   queue()
@@ -106,6 +98,8 @@ function drawMap(world) {
   .on("mouseover", showTooltip)
   .on("mouseout", hideTooltip)
   .style("stroke", "white")
+  .style("stroke-width", "0.8px")
+  .style("vector-effect", "non-scaling-stroke") // line height won't scale
   .style("fill", function (d,i) { return colScale(d.properties[attributeArray[currentAttribute]]); });
 
   container.append("path")
@@ -146,16 +140,14 @@ function clicked(d){
     centered = null;
   }
 
+// TODO highlight on hover
+
   // Apply zoom into selected country transformation
   container.selectAll("path")
   .classed("active", centered && function(d) { return d === centered; });
   container.transition()
   .duration(750)
   .attr("transform", "translate(" + centerX + "," + centerY + ")scale(" + scale + ")translate(" + -dx + "," + -dy + ")");
-}
-
-function zoomed() {
-  container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 }
 
 function setAnimataion() {
