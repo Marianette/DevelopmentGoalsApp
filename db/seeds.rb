@@ -1,5 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# This file contains code that will be run when 'rake db:seed' is called.
+# It populates the database.
+
+#%w(location
+#   gender_inequality_index
+#   labour_force_female
+#   labour_force_male
+#   national_income_female
+#   national_income_male
+#   secondary_education_female
+#   secondary_education_male)
 
 %w(location).each do |type|
   file_name = 'db/data/' + type + '.json'
