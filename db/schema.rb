@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20170720091843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dataset", force: :cascade do |t|
-    t.string  "type"
+  create_table "datasets", force: :cascade do |t|
+    t.string  "data_type"
     t.integer "location_id"
     t.float   "values",      array: true
   end

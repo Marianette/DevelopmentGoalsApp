@@ -10,7 +10,7 @@
 #   secondary_education_female
 #   secondary_education_male)
 
-%w(location).each do |type|
+%w(location gender_inequality_index).each do |type|
   file_name = 'db/data/' + type + '.json'
   hashes = JSON.parse(File.read(file_name))
   PopulateDatabase.new(hashes, type).call

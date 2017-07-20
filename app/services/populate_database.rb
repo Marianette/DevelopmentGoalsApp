@@ -28,6 +28,21 @@ class PopulateDatabase
     )
   end
 
+  def gender_inequality_index(contents)
+    add_to_dataset(contents, "Gender Inequality Index")
+  end
+
+  def add_to_dataset(contents, data_type)
+    country = contents[FIELDS[:COUNTRY]]
+    loc = Location.find_by_country(country)
+    values = createValueArray(contents)
+    Dataset.create!(
+      data_type: data_type,
+      location: loc,
+      values: values
+    )
+  end
+
   # HELPERS
   def createPopulationArray(contents)
     population = Array.new
@@ -37,5 +52,15 @@ class PopulateDatabase
       end
     end
     return population
+  end
+
+  def createValueArray(contents)
+    values = Array.new
+    contents.each do |key, value|
+      if key != FIELDS[:COUNTRY]
+        values.push([key.to_i, value.to_f])
+      end
+    end
+    return values
   end
 end
