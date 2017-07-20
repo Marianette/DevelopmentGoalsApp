@@ -98,8 +98,8 @@ function drawMap(world) {
   .on("mouseover", showTooltip)
   .on("mouseout", hideTooltip)
   .style("stroke", "white")
-  .style("stroke-width", "0.8px")
-  .style("vector-effect", "non-scaling-stroke") // line height won't scale
+  .style("stroke-width", "0.6px")
+  .style("vector-effect", "non-scaling-stroke")
   .style("fill", function (d,i) { return colScale(d.properties[attributeArray[currentAttribute]]); });
 
   container.append("path")
@@ -131,7 +131,7 @@ function clicked(d){
     var centroid = path.centroid(d);
     dx = centroid[0];
     dy = centroid[1];
-    scale = 3;
+    scale = 2.5;
     centered = d;
   } else {
     dx = centerX;
