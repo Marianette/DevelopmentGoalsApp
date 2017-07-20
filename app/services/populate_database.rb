@@ -2,8 +2,8 @@ class PopulateDatabase
   attr_reader :hashes, :type
 
   FIELDS = {
-    COUNTRY: 'country',
-    REGION: 'region'
+    COUNTRY: 'Country',
+    REGION: 'Region'
   }.freeze
 
   def initialize(hashes, type)
@@ -20,15 +20,22 @@ class PopulateDatabase
   private
 
   def location(contents)
-   #  Location.create!(
-    #  country: content[COUNTRY],
-  #    population:
-  #  )
+    populationArray = createPopulationArray(contents)
+    Location.create!(
+      country: contents[FIELDS[:COUNTRY]],
+      region: contents[FIELDS[:REGION]],
+      population: populationArray
+    )
   end
 
-  #location - female population and male population
-  #data - type + location + value
-  # labour force female and male % of female/male pop
-  # gender equality index - bubble graph
-  # DO SOMETHING ABOUT UNEMPLOYMENT + PAY GAP!
+  # HELPERS
+  def createPopulationArray(contents)
+    population = Array.new
+    contents.each do |key, value|
+      if key != FIELDS[:COUNTRY] || key != FIELDS[:REGION]
+        population.push([key.to_i, value.to_i])
+      end
+    end
+    return population
+  end
 end
