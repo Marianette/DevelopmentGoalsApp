@@ -32,9 +32,33 @@ class PopulateDatabase
     add_to_dataset(contents, "Gender Inequality Index")
   end
 
+  def labour_force_female(contents)
+    add_to_dataset(contents, "Labour Force Female")
+  end
+
+  def labour_force_male(contents)
+    add_to_dataset(contents, "Labour Force Male")
+  end
+
+  def national_income_female(contents)
+    add_to_dataset(contents, "National Income Female")
+  end
+
+  def national_income_male(contents)
+    add_to_dataset(contents, "National Income Male")
+  end
+
+  def secondary_education_female(contents)
+    add_to_dataset(contents, "Secondary Education Female")
+  end
+
+  def secondary_education_male(contents)
+    add_to_dataset(contents, "Secondary Education Male")
+  end
+
   def add_to_dataset(contents, data_type)
     country = contents[FIELDS[:COUNTRY]]
-    loc = Location.find_by_country(country)
+    loc = Location.find_by_country!(country)
     values = createValueArray(contents)
     Dataset.create!(
       data_type: data_type,
