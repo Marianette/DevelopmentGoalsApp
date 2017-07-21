@@ -2,13 +2,14 @@
 <div class="nav-wrapper">
       <ul id="slide-out" class="side-nav">
         <%= link_to("#{image_tag('UN_SDG_Logo.png')}".html_safe, root_path, { id: 'side-nav-image', onclick: "clearVis();"}) %>
-        <li><%= link_to("Choropleth Map", explore_secondaryEducation_path, {onclick: "clearVis();"}) %></li>
-        <li><a href="#" onclick: "clearVis();">Second Sidebar Link</a></li>
+        <li><%= link_to("Education and Employment", explore_education_and_employment_path, {onclick: "clearVis();"}) %></li>
+        <li><%= link_to("Income", explore_income_path, {onclick: "clearVis();"}) %></li>
+        <li><%= link_to("Gender Inequality Index", explore_gender_inequality_index_path, {onclick: "clearVis();"}) %></li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
       <%= link_to("#{image_tag('UN_SDG_Logo.png')}".html_safe, root_path, { id: 'top-nav-bar-logo', onclick: "clearVis();"}) %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="#" id="nav-top-menu-item" onclick: "clearVis();">About</a></li>
+      <li><%= link_to("About", home_about_path, {id: "nav-top-menu-item" onclick: "clearVis();"}) %></li>
     </ul>
   </div>
 </nav>

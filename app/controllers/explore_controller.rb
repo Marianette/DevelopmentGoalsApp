@@ -1,4 +1,10 @@
 class ExploreController < ApplicationController
-  def secondaryEducation
+  def education_and_employement
+  end
+
+  def income
+  end
+
+  def gender_inequality_index
   end
 end
