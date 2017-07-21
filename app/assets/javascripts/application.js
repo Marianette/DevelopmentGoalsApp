@@ -8,7 +8,7 @@
 //= require crossfilter
 //= require dc
 //= require materialize-sprockets
-//= require schoolVis
+//= require education_and_employment
 //= require explore
 
 // Clear visualisations before leaving a page

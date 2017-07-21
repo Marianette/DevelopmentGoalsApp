@@ -1,4 +1,6 @@
 class PopulateDatabase
+include ApplicationHelper
+
   attr_reader :hashes, :type
 
   FIELDS = {
@@ -29,31 +31,31 @@ class PopulateDatabase
   end
 
   def gender_inequality_index(contents)
-    add_to_dataset(contents, "Gender Inequality Index")
+    add_to_dataset(contents, gender_inequality_index_type)
   end
 
   def labour_force_female(contents)
-    add_to_dataset(contents, "Labour Force Female")
+    add_to_dataset(contents, labour_force_female_type)
   end
 
   def labour_force_male(contents)
-    add_to_dataset(contents, "Labour Force Male")
+    add_to_dataset(contents, labour_force_male_type)
   end
 
   def national_income_female(contents)
-    add_to_dataset(contents, "National Income Female")
+    add_to_dataset(contents, national_income_female_type)
   end
 
   def national_income_male(contents)
-    add_to_dataset(contents, "National Income Male")
+    add_to_dataset(contents, national_income_male_type)
   end
 
   def secondary_education_female(contents)
-    add_to_dataset(contents, "Secondary Education Female")
+    add_to_dataset(contents, secondary_education_female_type)
   end
 
   def secondary_education_male(contents)
-    add_to_dataset(contents, "Secondary Education Male")
+    add_to_dataset(contents, secondary_education_male_type)
   end
 
   def add_to_dataset(contents, data_type)
