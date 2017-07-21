@@ -15,6 +15,8 @@ class FetchEducationAndEmploymentData
   private
 
   def get_data(d)
+    # Create hash objects that store male, female, and difference between the
+    # two, for education and employment data, for all years data exists for.
     male_edu = get_years(Dataset.find_by data_type: @edu_male_type, location: d)
     female_edu = get_years(Dataset.find_by data_type: @edu_female_type, location: d)
     diff_edu = calculate_difference(male_edu, female_edu)
@@ -34,6 +36,10 @@ class FetchEducationAndEmploymentData
         male: male_employ,
         female: female_employ,
         diff: diff_employ
+      },
+      comparison: {
+        male: get_diffs(male_edu, male_employ),
+        female: get_diffs(female_edu, female_employ)
       }
     }
   end
@@ -47,6 +53,12 @@ class FetchEducationAndEmploymentData
   def calculate_difference(male, female)
     if male != nil and female != nil
       Hash[male.collect { |(year, val)| [year.to_i, (male[year] - female[year]).round(2)] } ]
+    end
+  end
+
+  def get_diffs(education, employment)
+    if education != nil and employment != nil
+      Hash[education.collect { |(year, val)| [year.to_i, (education[year] - employment[year]).round(2)] } ]
     end
   end
 end
