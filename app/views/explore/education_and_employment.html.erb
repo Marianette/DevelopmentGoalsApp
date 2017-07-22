@@ -5,11 +5,36 @@
       <%= tag('/div') %>
     </div>
     <div class="col s2 filter-container">
-      <h2> Filters will go here </h2>
+      <h5 id="data-name">Secondary Education</h5>
+      <p id="data-info">Percentage of female population 25 years and older with at least some secondary education</p>
+      <div class="input-field col s12">
+        <select id="select-map-dataset">
+          <option value="education">Secondary Education</option>
+          <option value="employment">Labour Force Rates</option>
+          <option value="comparison">Secondary Education vs. Labour Force Rates</option>
+        </select>
+        <label>Select Dataset</label>
+      </div>
+      <form action="#">
+        <label>View:</label>
+        <p>
+          <input class="map-radio-btns with-gap" name="gender-select" type="radio" id="map-female" value="female" checked/>
+          <label for="map-female">Female</label>
+        </p>
+        <p>
+          <input class="map-radio-btns with-gap" name="gender-select" type="radio" id="map-male" value="male"/>
+          <label for="map-male">Male</label>
+        </p>
+        <p>
+          <input class="map-radio-btns with-gap" name="gender-select" type="radio" id="map-gender-parity" value="diff"/>
+          <label for="map-gender-parity">Gender Parity</label>
+        </p>
+      </form>
+      <p> Slider and year</p>
     </div>
   </div>
 </div>
 
 <script>
-  window.onload = initEducationEmploymentVis("#edu-employ-map-vis");
+initEducationEmploymentVis("#edu-employ-map-vis");
 </script>

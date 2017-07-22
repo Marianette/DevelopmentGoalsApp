@@ -7,6 +7,7 @@
 //= require topojson.v1.min
 //= require lodash
 //= require materialize-sprockets
+//= require material
 //= require education_and_employment
 //= require explore
 

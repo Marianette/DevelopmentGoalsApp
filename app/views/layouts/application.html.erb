@@ -9,5 +9,8 @@
 <body>
 <%= render 'navbar' %>
 <%= yield %>
+
+<!-- Need to include material.js that initialises material design js after page has been loaded -->
+<%= javascript_include_tag 'material' %>
 </body>
 </html>
