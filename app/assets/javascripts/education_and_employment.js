@@ -1,8 +1,11 @@
 // Variables for filters
 var selectedDataset, selectedFilter, yearArrays, currentYearIndex;
 
+// Colour thresholds
+var eduColScale, compColScale, employColScale, diffColScale;
+
 // Interaction Variables
-var container, centered, eduColScale, compColScale, employColScale;
+var container, centered, mapTimer;
 
 function initEducationEmploymentVis(id) {
   // Get education and employment data
@@ -13,9 +16,13 @@ function initEducationEmploymentVis(id) {
   selectedFilter = "female";
   centered = null;
 
+  // Reset any animations that may be running
+  clearInterval(mapTimer);
+  mapTimer = null;
+
   // Create map
-  var width = 960
-  var height = 500
+  var width = $(".map-vis-container").width();
+  var height = 540;
   var xoffset = 45;
   var yoffset = 45;
 
@@ -24,7 +31,7 @@ function initEducationEmploymentVis(id) {
 
   // define projection with parameters
   var projection = d3.geo.naturalEarth()
-  .scale(185)
+  .scale(210)
   .translate([centerX, centerY])
   .precision(.1);
 
@@ -43,17 +50,35 @@ function initEducationEmploymentVis(id) {
   .style("opacity", 0);
 
   // Setup colours for choropleth. Colours selected from http://colorbrewer2.org/
+  percentDomain = [10, 20, 30, 40, 50, 60, 70, 80, 90, 101];
+  diffDomain = [-100, -75, -50, -25, 0, 25, 50, 75, 100];
+
   eduColScale = d3.scale.threshold()
-  .domain([10, 20, 30, 40, 50, 60, 70, 80, 90, 101])
+  .domain(percentDomain)
   .range(['#8e0152','#c51b7d','#de77ae','#f1b6da','#fde0ef','#e6f5d0','#b8e186','#7fbc41','#4d9221','#276419']);
 
   employColScale = d3.scale.threshold()
-  .domain([10, 20, 30, 40, 50, 60, 70, 80, 90, 101])
+  .domain(percentDomain)
   .range(['#7f3b08','#b35806','#e08214','#fdb863','#fee0b6','#d8daeb','#b2abd2','#8073ac','#542788','#2d004b']);
 
+  diffColScale = d3.scale.threshold()
+  .domain(diffDomain)
+  .range(['#b2182b','#d6604d','#f4a582','#fddbc7','#f7f7f7','#d1e5f0','#92c5de','#4393c3','#2166ac']);
+
   compColScale = d3.scale.threshold()
-  .domain([20, 40, 80, 100])
-  .range(['#a6611a','#dfc27d','#80cdc1','#018571']);
+  .domain(diffDomain)
+  .range(['#d73027','#f46d43','#fdae61','#fee090','#ffffbf','#e0f3f8','#abd9e9','#74add1','#4575b4']);
+
+  // Set up animation
+  d3.select('#play-map-btn')
+    .on('click', function (d) {
+      startAnimation(d);
+    });
+
+  d3.select('#stop-map-btn')
+    .on('click', function (d) {
+      stopAnimation(d);
+    });
 
   // Load in world map data
   queue()
@@ -125,6 +150,7 @@ function getColour(d) {
   var colours = eduColScale;
   if(selectedDataset == "employment") colours = employColScale;
   if(selectedDataset == "comparison") colours = compColScale;
+  if(selectedFilter == "diff") colours = diffColScale;
   return colours(_.get(d.properties, [selectedDataset, selectedFilter, getCurrentYear()]));
 }
 
@@ -232,4 +258,36 @@ function applyFilter(){
   d3.selectAll('.country').transition()
   .duration(750)
   .style("fill", getColour);
+}
+
+function startAnimation(d) {
+  var years = yearArrays[selectedDataset];
+  var numYears = years.length - 1;
+
+  // Reset animation if current year is most recent
+  if (currentYearIndex == numYears) currentYearIndex = 0;
+
+  // Use Javascript setInterval() method to establish pauses between transitions
+  timer = setInterval(function(){
+    // Increment year
+    currentYearIndex += 1;
+    // If reached further, stop animation
+    if (currentYearIndex > numYears) {
+      currentYearIndex = numYears;
+      stopAnimation(d);
+      return;
+    }
+
+    d3.selectAll('.country').transition()
+      .duration(750)
+      .style("fill", getColour);
+
+    // Update views
+    $('#years').val(years[currentYearIndex]);
+    $('#map-year-label').text(years[currentYearIndex]);
+  }, 2000);
+}
+
+function stopAnimation(d){
+  clearInterval(timer);
 }

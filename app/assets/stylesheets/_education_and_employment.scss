@@ -1,0 +1,25 @@
+.country {
+  fill: #F5F5F5;   // default colour for country with no data
+  stroke: white;
+}
+
+.map-vis-container {
+  margin-top: 8px !important;
+  overflow: hidden;
+}
+
+#play-map-btn {
+  cursor: pointer;
+}
+
+#stop-map-btn {
+  cursor: pointer;
+}
+
+#map-year-label {
+  font-weight: bold;
+  font: 32px sans-serif;
+  color: #B0B0B0;
+  text-align: center;
+  padding-top: 15px;
+}

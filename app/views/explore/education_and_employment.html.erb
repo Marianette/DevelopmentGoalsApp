@@ -1,6 +1,6 @@
 <div class="content-container">
   <div class="row">
-    <div class="col s9 vis-container">
+    <div class="col s10 map-vis-container">
       <%= tag('div', id: 'edu-employ-map-vis', data: {data_attr: @data} ) %>
       <%= tag('/div') %>
     </div>
@@ -13,11 +13,10 @@
           <option value="employment">Labour Force Rates</option>
           <option value="comparison">Secondary Education vs. Labour Force Rates</option>
         </select>
-        <label>Select Dataset</label>
+        <label>Select Indicator</label>
       </div>
-      <div class="input-field col s12">
-        <form id="map-gender-filter-selection">
-        <label>View:</label>
+      <form id="map-gender-filter-selection">
+        <label>Select Data</label>
         <p>
           <input class="with-gap" name="gender-select" type="radio" id="map-female" value="female" checked/>
           <label for="map-female">Female</label>
@@ -30,13 +29,23 @@
           <input class="with-gap" name="gender-select" type="radio" id="map-gender-parity" value="diff"/>
           <label for="map-gender-parity">Gender Parity</label>
         </p>
-</form>
-    </div>
-      <p> Slider and year</p>
+      </form>
+      <form id="year-slider">
+        <label>Select Year</label>
+        <p class="range-field">
+          <input type="range" id="years" min="1990" max="2015" value="2015" />
+        </p>
+        <label>View Animation</label>
+        <div class="row">
+        <div class="col s6"><p><i class="material-icons md-36 buttons" id="play-map-btn">play_circle_outline</i>
+        <i class="material-icons md-36 buttons" id="stop-map-btn">pause_circle_outline</i></p>
+        </div>
+        <div class="col s6" id="map-year-label">2015</div>
+        </div>
+      </form>
     </div>
   </div>
-</div>
 
-<script>
-initEducationEmploymentVis("#edu-employ-map-vis");
-</script>
+  <script>
+  initEducationEmploymentVis("#edu-employ-map-vis");
+  </script>
