@@ -240,6 +240,12 @@ $(function(){
       }
       // if changing data set, choose most recent year for new data setAnimataion
       currentYearIndex = yearArrays[selectedDataset].length - 1;
+
+      // Need to change slider values
+      var years = yearArrays[selectedDataset];
+      $('#years-selector').attr("min", d3.min(years));
+      $('#years-selector').attr("max", d3.max(years));
+
       applyFilter();
     }
   });
@@ -262,15 +268,11 @@ $(function(){
 });
 
 function applyFilter(){
+  updateYearViews();
   updateMapTitleAndInfo(selectedDataset, selectedFilter);
   d3.selectAll('.country').transition()
   .duration(750)
   .style("fill", getColour);
-
-  // Update views
-  var years = yearArrays[selectedDataset];
-  $('#years-selector').val(years[currentYearIndex]);
-  $('#map-year-label').text(years[currentYearIndex]);
 }
 
 function startAnimation(d) {
@@ -293,6 +295,7 @@ function startAnimation(d) {
     d3.selectAll('.country').transition()
     .duration(750)
     .style("fill", getColour);
+    updateYearViews();
   }, 2000);
 }
 
@@ -312,4 +315,10 @@ function snapToValidYear(newYear){
     return (Math.abs(curr - newYear) < Math.abs(prev - newYear) ? curr : prev);
   });
   return years.indexOf(closestYear);
+}
+
+function updateYearViews(){
+  var years = yearArrays[selectedDataset];
+  $('#years-selector').val(years[currentYearIndex]);
+  $('#map-year-label').text(years[currentYearIndex]);
 }
