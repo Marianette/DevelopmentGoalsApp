@@ -5,8 +5,7 @@
 //= require d3.geo.projection.v0.min
 //= require queue.v1.min
 //= require topojson.v1.min
-//= require crossfilter
-//= require dc
+//= require lodash
 //= require materialize-sprockets
 //= require education_and_employment
 //= require explore

@@ -24,12 +24,8 @@ gem 'materialize-sass'
 gem 'material_icons'
 # Use d3 for visualisations. V3 to allow DC use.
 gem 'd3-rails', '~> 3.5.17'
-# Use javascript charting library
-gem 'dcjs-rails'
-# Use crossfilter
-gem 'crossfilter-rails'
-# Use mustache templates for front end files with visualisations
-gem 'mustache-js-rails'
+# Use lodash to make working with nested arrays/objects easier
+gem 'lodash-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
