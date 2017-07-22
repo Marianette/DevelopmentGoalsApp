@@ -76,11 +76,11 @@ function initEducationEmploymentVis(id) {
 
         // Choose a country to determine year arrays values
         if(countryYearData == null && country.properties.education.male != null
-            && country.properties.employment.male != null) {
-          countryYearData = country.properties;
+          && country.properties.employment.male != null) {
+            countryYearData = country.properties;
+          }
         }
       }
-    }
 
     // Create year array
     yearArrays = {"education" : [], "employment": [], "comparison": []};
@@ -138,11 +138,11 @@ function showTooltip(d, toolTip) {
   .style("top", (d3.event.pageY - 28) + "px");
 
   container.select("#code_" + d.properties.id)
-    .transition()
-    .duration(200)
-    .style("opacity", 1)
-    .style("stroke", "black")
-    .style("stroke-width", "0.9px");
+  .transition()
+  .duration(200)
+  .style("opacity", 1)
+  .style("stroke", "black")
+  .style("stroke-width", "0.9px");
 }
 
 function hideTooltip(d, toolTip) {
@@ -151,11 +151,11 @@ function hideTooltip(d, toolTip) {
   .style("opacity", 0);
 
   container.select("#" + getId(d))
-    .transition()
-    .duration(200)
-    .style("opacity", 0.85)
-    .style("stroke", "white")
-    .style("stroke-width", "0.6px");
+  .transition()
+  .duration(200)
+  .style("opacity", 0.85)
+  .style("stroke", "white")
+  .style("stroke-width", "0.6px");
 }
 
 function clicked(d, centerX, centerY, container, path){
@@ -198,18 +198,38 @@ function getMessage(d){
 
 // React to change events on filters
 $(function(){
-   $("#select-map-dataset").on("change", function(){
-     if(this.value != selectedDataset) {
-        selectedDataset = this.value;
-        applyFilter();
-  }
-});
+  $("#select-map-dataset").on("change", function(){
+    if(this.value != selectedDataset) {
+      selectedDataset = this.value;
+      // disable irrelevant filter options
+      if (selectedDataset == "comparison") {
+        $("#map-gender-parity").attr("disabled", true);
+        // ensure that unavailable filter is not being applied to dataset
+        if(selectedFilter == "diff") {
+          selectedFilter = "female";
+          $("#map-female").prop("checked", true);
+        }
+      } else {
+        $("#map-gender-parity").attr("disabled", false);
+      }
+      // if changing data set, choose most recent year for new data setAnimataion
+      currentYearIndex = yearArrays[selectedDataset].length - 1;
+      applyFilter();
+    }
+  });
+
+  $("#map-gender-filter-selection input").on("change", function(){
+    var value = $('input[name=gender-select]:checked', '#map-gender-filter-selection').val();
+    if(value != selectedFilter){
+      selectedFilter = value;
+      applyFilter();
+    }
+  });
 });
 
 function applyFilter(){
-  currentYearIndex = yearArrays[selectedDataset].length - 1;
   updateMapTitleAndInfo(selectedDataset, selectedFilter);
   d3.selectAll('.country').transition()
-    .duration(750)
-    .style("fill", getColour);
+  .duration(750)
+  .style("fill", getColour);
 }
