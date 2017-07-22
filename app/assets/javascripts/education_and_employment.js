@@ -71,14 +71,14 @@ function initEducationEmploymentVis(id) {
 
   // Set up animation
   d3.select('#play-map-btn')
-    .on('click', function (d) {
-      startAnimation(d);
-    });
+  .on('click', function (d) {
+    startAnimation(d);
+  });
 
   d3.select('#stop-map-btn')
-    .on('click', function (d) {
-      stopAnimation(d);
-    });
+  .on('click', function (d) {
+    stopAnimation(d);
+  });
 
   // Load in world map data
   queue()
@@ -100,12 +100,11 @@ function initEducationEmploymentVis(id) {
         country.properties.comparison = currentCountry.comparison;
 
         // Choose a country to determine year arrays values
-        if(countryYearData == null && country.properties.education.male != null
-          && country.properties.employment.male != null) {
-            countryYearData = country.properties;
-          }
+        if(countryYearData == null && country.properties.education.male != null && country.properties.employment.male != null) {
+          countryYearData = country.properties;
         }
       }
+    }
 
     // Create year array
     yearArrays = {"education" : [], "employment": [], "comparison": []};
@@ -224,6 +223,7 @@ function getMessage(d){
 
 // React to change events on filters
 $(function(){
+  // React to indicator selection change
   $("#select-map-dataset").on("change", function(){
     if(this.value != selectedDataset) {
       selectedDataset = this.value;
@@ -244,12 +244,20 @@ $(function(){
     }
   });
 
+  // React to data selection change
   $("#map-gender-filter-selection input").on("change", function(){
     var value = $('input[name=gender-select]:checked', '#map-gender-filter-selection').val();
     if(value != selectedFilter){
       selectedFilter = value;
       applyFilter();
     }
+  });
+
+  // React to year slider change
+  $("#year-slider").on("change", function(){
+    var newYear = $("#years-selector").val();
+    currentYearIndex = snapToValidYear(newYear);
+    applyFilter();
   });
 });
 
@@ -258,11 +266,15 @@ function applyFilter(){
   d3.selectAll('.country').transition()
   .duration(750)
   .style("fill", getColour);
+
+  // Update views
+  var years = yearArrays[selectedDataset];
+  $('#years-selector').val(years[currentYearIndex]);
+  $('#map-year-label').text(years[currentYearIndex]);
 }
 
 function startAnimation(d) {
-  var years = yearArrays[selectedDataset];
-  var numYears = years.length - 1;
+  var numYears = yearArrays[selectedDataset].length - 1;
 
   // Reset animation if current year is most recent
   if (currentYearIndex == numYears) currentYearIndex = 0;
@@ -279,15 +291,25 @@ function startAnimation(d) {
     }
 
     d3.selectAll('.country').transition()
-      .duration(750)
-      .style("fill", getColour);
-
-    // Update views
-    $('#years').val(years[currentYearIndex]);
-    $('#map-year-label').text(years[currentYearIndex]);
+    .duration(750)
+    .style("fill", getColour);
   }, 2000);
 }
 
 function stopAnimation(d){
   clearInterval(timer);
+}
+
+function snapToValidYear(newYear){
+  var years = yearArrays[selectedDataset];
+  var newIndex = years.indexOf(newYear)
+  if (newIndex != -1) {
+    return newIndex;
+  }
+
+  // Selected year is not in data set, snap to closest year values
+  var closestYear = years.reduce(function (prev, curr) {
+    return (Math.abs(curr - newYear) < Math.abs(prev - newYear) ? curr : prev);
+  });
+  return years.indexOf(closestYear);
 }
