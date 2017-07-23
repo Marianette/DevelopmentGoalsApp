@@ -1,0 +1,60 @@
+div.dot-plot-male {
+  color: #6699FF;
+  display: inline;
+}
+
+div.dot-plot-female {
+  color: #dd1c77;
+  display: inline;
+}
+
+circle.dot-plot-male {
+  fill: #6699FF;
+}
+
+circle.dot-plot-female {
+  fill: #dd1c77;
+}
+
+circle.dot-plot-male:hover {
+  stroke-width: 3;
+  stroke: #deebf7;
+}
+
+circle.dot-plot-female:hover {
+  stroke-width: 3;
+  stroke: #49006a;
+}
+
+line.grid {
+  stroke: #eee;
+}
+
+line.between {
+  stroke: black;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+.xlabel {
+  font-family: sans-serif;
+  font-size: 11px;
+  color: gray;
+}
+
+#dot-plot-title {
+  font-weight: bold;
+  font: 24px sans-serif;
+  text-align: center;
+  padding-top: 20px;
+}

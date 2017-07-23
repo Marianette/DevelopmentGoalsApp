@@ -7,7 +7,7 @@ class FetchIncomeData
 
   def call
     countries = Location.all
-    Hash[countries.collect { |c| [c.country, get_data(c)] }]
+    countries.collect { |c| get_data(c) }.reject { |d| d[:male] == nil or d[:female] == nil }
   end
 
   private
@@ -17,6 +17,7 @@ class FetchIncomeData
     male_data = get_years(Dataset.find_by data_type: @male_type, location: d)
     female_data = get_years(Dataset.find_by data_type: @female_type, location: d)
     return {
+      country: d.country,
       region: d.region,
       male: male_data,
       female: female_data
