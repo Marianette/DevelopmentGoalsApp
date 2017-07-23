@@ -5,7 +5,7 @@ var selectedDataset, selectedFilter, yearArrays, currentYearIndex;
 var eduColScale, compColScale, employColScale, diffColScale;
 
 // Interaction Variables
-var mapContainer, centered, mapTimer;
+var mapContainer, mapLegend, centered, mapTimer;
 
 function initEducationEmploymentVis(id) {
   // Get education and employment data
@@ -49,25 +49,29 @@ function initEducationEmploymentVis(id) {
   .attr("class", "tooltip")
   .style("opacity", 0);
 
-  // Setup colours for choropleth. Colours selected from http://colorbrewer2.org/
-  percentDomain = [10, 20, 30, 40, 50, 60, 70, 80, 90, 101];
-  diffDomain = [-100, -75, -50, -25, 0, 25, 50, 75, 100];
+  // Set up colour thresholds
+  var percentDomain = [10, 20, 30, 40, 50, 60, 70, 80, 90, 101];
+  var ext_color_domain = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 101];
+  var legend_labels = ["0", "10+", "20+", "30+", "40+", "50+", "60+", "70+", "80+", "90+", "100"];
+
+  var diffDomain = [-75, -50, -25, -5, 5, 25, 50, 75];
+  var compDomain = [-75, -50, -25, -5, 5, 25, 50, 75];
 
   eduColScale = d3.scale.threshold()
   .domain(percentDomain)
-  .range(['#8e0152','#c51b7d','#de77ae','#f1b6da','#fde0ef','#e6f5d0','#b8e186','#7fbc41','#4d9221','#276419']);
+  .range(colorbrewer.PiYG[10]);
 
   employColScale = d3.scale.threshold()
   .domain(percentDomain)
-  .range(['#7f3b08','#b35806','#e08214','#fdb863','#fee0b6','#d8daeb','#b2abd2','#8073ac','#542788','#2d004b']);
+  .range(colorbrewer.PuOr[10]);
+
+  compColScale = d3.scale.threshold()
+  .domain(compDomain)
+  .range(colorbrewer.RdYlBu[8]);
 
   diffColScale = d3.scale.threshold()
   .domain(diffDomain)
-  .range(['#b2182b','#d6604d','#f4a582','#fddbc7','#f7f7f7','#d1e5f0','#92c5de','#4393c3','#2166ac']);
-
-  compColScale = d3.scale.threshold()
-  .domain(diffDomain)
-  .range(['#d73027','#f46d43','#fdae61','#fee090','#ffffbf','#e0f3f8','#abd9e9','#74add1','#4575b4']);
+  .range(colorbrewer.RdBu[8]);
 
   // Set up animation
   d3.select('#play-map-btn')
@@ -143,19 +147,27 @@ function initEducationEmploymentVis(id) {
     .attr("class", "mesh")
     .attr("d", path);
   }
-}
 
-function getColour(d) {
-  // Check if data exists for current country
-  var countryData = _.get(d.properties, [selectedDataset, selectedFilter, getCurrentYear()], null);
-  if (countryData == null) return "#F5F5F5";
+  // Add legend
+  mapLegend = svg.selectAll("g.legend")
+  .data(ext_color_domain)
+  .enter().append("g")
+  .attr("class", "map-legend");
 
-  // Use relevant colour scale
-  var colours = eduColScale;
-  if(selectedDataset == "employment") colours = employColScale;
-  if(selectedDataset == "comparison") colours = compColScale;
-  if(selectedFilter == "diff") colours = diffColScale;
-  return colours(countryData);
+  var lgWt = 20, lgHt = 20;
+
+  mapLegend.append("rect")
+  .attr("x", 20)
+  .attr("y", function(d, i){ return height - (i*lgHt) - lgHt;})
+  .attr("width", lgWt)
+  .attr("height", lgHt)
+  .style("fill", function(d, i) { return eduColScale(d); })
+  .style("opacity", 0.85);
+
+  mapLegend.append("text")
+  .attr("x", 50)
+  .attr("y", function(d, i){ return height - (i*lgHt) - 4;})
+  .text(function(d, i){ return legend_labels[i]; });
 }
 
 function showTooltip(d, toolTip) {
@@ -171,8 +183,8 @@ function showTooltip(d, toolTip) {
   .transition()
   .duration(200)
   .style("opacity", 1)
-  .style("stroke", "black")
-  .style("stroke-width", "0.9px");
+  .style("stroke", "white")
+  .style("stroke-width", "1.5px");
 }
 
 function hideTooltip(d, toolTip) {
@@ -211,21 +223,6 @@ function clicked(d, centerX, centerY, path){
   .attr("transform", "translate(" + centerX + "," + centerY + ")scale(" + scale + ")translate(" + -dx + "," + -dy + ")");
 }
 
-function getCurrentYear(){
-  return yearArrays[selectedDataset][currentYearIndex];
-}
-
-function getId(d){
-  return "code_" + d.properties.id;
-}
-
-function getMessage(d){
-  var value = _.get(d.properties, [selectedDataset, selectedFilter, getCurrentYear()], "No Data");
-  if (value != "No Data") value = value + "%";
-  var name = d.properties.admin;
-  return name + "</br>" + value;
-}
-
 function applyFilter(){
   updateYearViews();
   updateMapTitleAndInfo(selectedDataset, selectedFilter);
@@ -260,24 +257,4 @@ function startAnimation(d) {
 
 function stopAnimation(d){
   clearInterval(mapTimer);
-}
-
-function snapToValidYear(newYear){
-  var years = yearArrays[selectedDataset];
-  var newIndex = years.indexOf(newYear)
-  if (newIndex != -1) {
-    return newIndex;
-  }
-
-  // Selected year is not in data set, snap to closest year values
-  var closestYear = years.reduce(function (prev, curr) {
-    return (Math.abs(curr - newYear) < Math.abs(prev - newYear) ? curr : prev);
-  });
-  return years.indexOf(closestYear);
-}
-
-function updateYearViews(){
-  var years = yearArrays[selectedDataset];
-  $('#years-selector').val(years[currentYearIndex]);
-  $('#map-year-label').text(years[currentYearIndex]);
 }

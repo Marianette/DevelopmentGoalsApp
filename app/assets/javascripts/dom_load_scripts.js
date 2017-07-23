@@ -46,7 +46,7 @@ $(function(){
   // React to year slider change
   $("#year-slider").on("change", function(){
     var newYear = $("#years-selector").val();
-    currentYearIndex = snapToValidYear(newYear);
+    currentYearIndex = getValidYear(newYear);
     applyFilter();
   });
 });
