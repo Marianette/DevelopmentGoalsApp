@@ -5,7 +5,7 @@ var selectedDataset, selectedFilter, yearArrays, currentYearIndex;
 var eduColScale, compColScale, employColScale, diffColScale;
 
 // Interaction Variables
-var container, centered, mapTimer;
+var mapContainer, centered, mapTimer;
 
 function initEducationEmploymentVis(id) {
   // Get education and employment data
@@ -43,7 +43,7 @@ function initEducationEmploymentVis(id) {
   .attr("width", width)
   .attr("height", height);
 
-  container = svg.append("g");
+  mapContainer = svg.append("g");
 
   var toolTip = d3.select("body").append("div")
   .attr("class", "tooltip")
@@ -114,7 +114,7 @@ function initEducationEmploymentVis(id) {
     currentYearIndex = yearArrays[selectedDataset].length - 1;
 
     // Draw choropleth map
-    container.selectAll(".country")
+    mapContainer.selectAll(".country")
     .data(topojson.feature(world, world.objects.countries).features)
     .enter().append("path")
     .attr("d", path)
@@ -133,10 +133,10 @@ function initEducationEmploymentVis(id) {
       hideTooltip(d, toolTip);
     })
     .on("click", function(d){
-      clicked(d, centerX, centerY, container, path);
+      clicked(d, centerX, centerY, path);
     });
 
-    container.append("path")
+    mapContainer.append("path")
     .data(topojson.feature(world, world.objects.countries).features)
     .enter()
     .append("path")
@@ -146,11 +146,16 @@ function initEducationEmploymentVis(id) {
 }
 
 function getColour(d) {
+  // Check if data exists for current country
+  var countryData = _.get(d.properties, [selectedDataset, selectedFilter, getCurrentYear()], null);
+  if (countryData == null) return "#F5F5F5";
+
+  // Use relevant colour scale
   var colours = eduColScale;
   if(selectedDataset == "employment") colours = employColScale;
   if(selectedDataset == "comparison") colours = compColScale;
   if(selectedFilter == "diff") colours = diffColScale;
-  return colours(_.get(d.properties, [selectedDataset, selectedFilter, getCurrentYear()]));
+  return colours(countryData);
 }
 
 function showTooltip(d, toolTip) {
@@ -162,7 +167,7 @@ function showTooltip(d, toolTip) {
   .style("left", (d3.event.pageX) + "px")
   .style("top", (d3.event.pageY - 28) + "px");
 
-  container.select("#code_" + d.properties.id)
+  mapContainer.select("#code_" + d.properties.id)
   .transition()
   .duration(200)
   .style("opacity", 1)
@@ -175,7 +180,7 @@ function hideTooltip(d, toolTip) {
   .duration(500)
   .style("opacity", 0);
 
-  container.select("#" + getId(d))
+  mapContainer.select("#" + getId(d))
   .transition()
   .duration(200)
   .style("opacity", 0.85)
@@ -183,7 +188,7 @@ function hideTooltip(d, toolTip) {
   .style("stroke-width", "0.6px");
 }
 
-function clicked(d, centerX, centerY, container, path){
+function clicked(d, centerX, centerY, path){
   var dx, dy, scale;
   if (d && centered !== d) {
     var centroid = path.centroid(d);
@@ -199,9 +204,9 @@ function clicked(d, centerX, centerY, container, path){
   }
 
   // Apply zoom into selected country transformation
-  container.selectAll("path")
+  mapContainer.selectAll("path")
   .classed("active", centered && function(d) { return d === centered; });
-  container.transition()
+  mapContainer.transition()
   .duration(750)
   .attr("transform", "translate(" + centerX + "," + centerY + ")scale(" + scale + ")translate(" + -dx + "," + -dy + ")");
 }
@@ -236,7 +241,7 @@ function startAnimation(d) {
   if (currentYearIndex == numYears) currentYearIndex = 0;
 
   // Use Javascript setInterval() method to establish pauses between transitions
-  timer = setInterval(function(){
+  mapTimer = setInterval(function(){
     // Increment year
     currentYearIndex += 1;
     // If reached further, stop animation
@@ -254,7 +259,7 @@ function startAnimation(d) {
 }
 
 function stopAnimation(d){
-  clearInterval(timer);
+  clearInterval(mapTimer);
 }
 
 function snapToValidYear(newYear){
