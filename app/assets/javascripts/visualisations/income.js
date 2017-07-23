@@ -1,11 +1,13 @@
 function initIncomeVis(id) {
-  // TODO plot percentage gap. Don't plot actual values, but do give them on hover. 
+  // TODO plot percentage gap. Don
   var data = $(id).data("data-attr");
+  data = data.slice(0, 14);
 
-  var fullPlotWidth = 1100, fullPlotHeight = 500;
+  var fullPlotWidth = $('.income-vis-container').width();
+  var fullPlotHeight = 400;
 
   // These are the margins around the graph. Axes labels go in margins.
-  var margin = {top: 20, right: 25, bottom: 20, left: 200};
+  var margin = {top: 20, right: 20, bottom: 20, left: 40};
 
   var plotWidth = fullPlotWidth - margin.left - margin.right,
   plotHeight = fullPlotHeight - margin.top - margin.bottom;
@@ -29,13 +31,12 @@ function initIncomeVis(id) {
   .attr("width", fullPlotWidth)
   .attr("height", fullPlotHeight);
 
-  d3.csv("../temp.csv", function(error, data) {
-    data.sort(function(a, b) {
-      return d3.descending(+a.year2015, +b.year2015);
+  data.sort(function(a, b) {
+      return d3.descending(a.male["2015"], b.male["2015"]);
     });
 
-    widthScale.domain([, 150000]);
-    heightScale.domain(data.map(function(d) { return d.name; } ));
+    widthScale.domain([0, 150000]);
+    heightScale.domain(data.map(function(d) { return d.country; } ));
 
     // Make the faint lines from y labels to highest dot
     var linesGrid = dotPlotSvg.selectAll("lines.grid")
@@ -46,14 +47,14 @@ function initIncomeVis(id) {
     linesGrid.attr("class", "grid")
     .attr("x1", margin.left)
     .attr("y1", function(d) {
-      return heightScale(d.name) + heightScale.rangeBand()/2;
+      return heightScale(d.country) + heightScale.rangeBand()/2;
     })
     .attr("x2", function(d) {
-      return margin.left + widthScale(+d.year2015);
+      return margin.left + widthScale(d.male["2015"]);
 
     })
     .attr("y2", function(d) {
-      return heightScale(d.name) + heightScale.rangeBand()/2;
+      return heightScale(d.country) + heightScale.rangeBand()/2;
     });
 
     // Make the dotted lines between the dots
@@ -64,16 +65,16 @@ function initIncomeVis(id) {
 
     linesBetween.attr("class", "between")
     .attr("x1", function(d) {
-      return margin.left + widthScale(+d.year1990);
+      return margin.left + widthScale(d.female["2015"]);
     })
     .attr("y1", function(d) {
-      return heightScale(d.name) + heightScale.rangeBand()/2;
+      return heightScale(d.country) + heightScale.rangeBand()/2;
     })
     .attr("x2", function(d) {
-      return margin.left + widthScale(d.year2015);
+      return margin.left + widthScale(d.male["2015"]);
     })
     .attr("y2", function(d) {
-      return heightScale(d.name) + heightScale.rangeBand()/2;
+      return heightScale(d.country) + heightScale.rangeBand()/2;
     })
     .attr("stroke-dasharray", "5,5")
     .attr("stroke-width", function(d, i) {
@@ -94,15 +95,15 @@ function initIncomeVis(id) {
     dotsFemale
     .attr("class", "dot-plot-female")
     .attr("cx", function(d) {
-      return margin.left + widthScale(+d.year1990);
+      return margin.left + widthScale(d.female["2015"]);
     })
     .attr("r", heightScale.rangeBand()/2)
     .attr("cy", function(d) {
-      return heightScale(d.name) + heightScale.rangeBand()/2;
+      return heightScale(d.country) + heightScale.rangeBand()/2;
     })
     .append("title")
     .text(function(d) {
-      return d.name + " in 1990: " + d.year1990 + "%";
+      return d.country + " in 1990: " + d.female["2015"] + "%";
     });
 
     // Make the dots for 2015
@@ -114,15 +115,15 @@ function initIncomeVis(id) {
     dotsMale
     .attr("class", "dot-plot-male")
     .attr("cx", function(d) {
-      return margin.left + widthScale(+d.year2015);
+      return margin.left + widthScale(d.male["2015"]);
     })
     .attr("r", heightScale.rangeBand()/2)
     .attr("cy", function(d) {
-      return heightScale(d.name) + heightScale.rangeBand()/2;
+      return heightScale(d.country) + heightScale.rangeBand()/2;
     })
     .append("title")
     .text(function(d) {
-      return d.name + " in 2015: " + d.year2015 + "%";
+      return d.country + " in 2015: " + d.male["2015"] + "%";
     });
 
     // add the axes
@@ -143,5 +144,4 @@ function initIncomeVis(id) {
     .style("text-anchor", "middle")
     .attr("dy", "12")
     .text("Percent");
-  });
 }
