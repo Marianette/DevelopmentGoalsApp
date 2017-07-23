@@ -7,6 +7,7 @@ class ExploreController < ApplicationController
   end
 
   def income
+    @data = FetchIncomeData.new(national_income_female_type, national_income_male_type).call
   end
 
   def gender_inequality_index

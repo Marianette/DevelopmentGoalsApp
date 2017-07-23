@@ -1,1 +1,15 @@
-<h1>National Income Data Dot Plot Coming Soon</h1>
+<div class="content-container">
+  <div class="row">
+    <div class="col s10 income-vis-container">
+      <%= tag('div', id: 'income-vis', data: {data_attr: @data} ) %>
+      <%= tag('/div') %>
+    </div>
+    <div class="col s2 filter-container">
+      <h5 id="data-name">National Income</h5>
+      <p id="data-info">More info coming soon</p>
+    </div>
+  </div>
+
+  <script>
+  initIncomeVis("#income-vis");
+  </script>
