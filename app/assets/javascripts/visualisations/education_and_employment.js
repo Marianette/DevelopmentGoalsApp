@@ -1,11 +1,11 @@
 // Variables for filters
 var selectedDataset, selectedFilter, yearArrays, currentYearIndex;
-
 // Colour thresholds
-var eduColScale, compColScale, employColScale, diffColScale;
-
+var eduColScale, compColScale, employColScale, eduDiffColScale, employDiffColScale;
+// Domains for colours
+var percentDomain, eduDiffDomain, employDiffDomain, compDomain;
 // Interaction Variables
-var mapContainer, mapLegend, centered, mapTimer;
+var mapSvg, mapContainer, mapLegend, mapHeight, centered, mapTimer;
 
 function initEducationEmploymentVis(id) {
   // Get education and employment data
@@ -22,12 +22,12 @@ function initEducationEmploymentVis(id) {
 
   // Create map
   var width = $(".map-vis-container").width();
-  var height = 540;
+  mapHeight = 540;
   var xoffset = 45;
   var yoffset = 45;
 
   var centerX = width/2 - xoffset;
-  var centerY = height/2 + yoffset;
+  var centerY = mapHeight/2 + yoffset;
 
   // define projection with parameters
   var projection = d3.geo.naturalEarth()
@@ -39,39 +39,18 @@ function initEducationEmploymentVis(id) {
   var path = d3.geo.path()
   .projection(projection);
 
-  var svg = d3.select(id).append("svg")
+  mapSvg = d3.select(id).append("svg")
   .attr("width", width)
-  .attr("height", height);
+  .attr("height", mapHeight);
 
-  mapContainer = svg.append("g");
+  mapContainer = mapSvg.append("g");
 
   var toolTip = d3.select("body").append("div")
   .attr("class", "tooltip")
   .style("opacity", 0);
 
   // Set up colour thresholds
-  var percentDomain = [10, 20, 30, 40, 50, 60, 70, 80, 90, 101];
-  var ext_color_domain = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 101];
-  var legend_labels = ["0", "10+", "20+", "30+", "40+", "50+", "60+", "70+", "80+", "90+", "100"];
-
-  var diffDomain = [-75, -50, -25, -5, 5, 25, 50, 75];
-  var compDomain = [-75, -50, -25, -5, 5, 25, 50, 75];
-
-  eduColScale = d3.scale.threshold()
-  .domain(percentDomain)
-  .range(colorbrewer.PiYG[10]);
-
-  employColScale = d3.scale.threshold()
-  .domain(percentDomain)
-  .range(colorbrewer.PuOr[10]);
-
-  compColScale = d3.scale.threshold()
-  .domain(compDomain)
-  .range(colorbrewer.RdYlBu[8]);
-
-  diffColScale = d3.scale.threshold()
-  .domain(diffDomain)
-  .range(colorbrewer.RdBu[8]);
+  setUpColours();
 
   // Set up animation
   d3.select('#play-map-btn')
@@ -146,28 +125,10 @@ function initEducationEmploymentVis(id) {
     .append("path")
     .attr("class", "mesh")
     .attr("d", path);
+
+    // Add legend
+    updateLegend();
   }
-
-  // Add legend
-  mapLegend = svg.selectAll("g.legend")
-  .data(ext_color_domain)
-  .enter().append("g")
-  .attr("class", "map-legend");
-
-  var lgWt = 20, lgHt = 20;
-
-  mapLegend.append("rect")
-  .attr("x", 20)
-  .attr("y", function(d, i){ return height - (i*lgHt) - lgHt;})
-  .attr("width", lgWt)
-  .attr("height", lgHt)
-  .style("fill", function(d, i) { return eduColScale(d); })
-  .style("opacity", 0.85);
-
-  mapLegend.append("text")
-  .attr("x", 50)
-  .attr("y", function(d, i){ return height - (i*lgHt) - 4;})
-  .text(function(d, i){ return legend_labels[i]; });
 }
 
 function showTooltip(d, toolTip) {
@@ -233,16 +194,12 @@ function applyFilter(){
 
 function startAnimation(d) {
   var numYears = yearArrays[selectedDataset].length - 1;
-
   // Reset animation if current year is most recent
   if (currentYearIndex == numYears) currentYearIndex = 0;
-
   // Use Javascript setInterval() method to establish pauses between transitions
   mapTimer = setInterval(function(){
-    // Increment year
     currentYearIndex += 1;
-    // If reached further, stop animation
-    if (currentYearIndex > numYears) {
+    if (currentYearIndex > numYears) {   // If reached further than max year, stop animation
       currentYearIndex = numYears;
       stopAnimation(d);
       return;

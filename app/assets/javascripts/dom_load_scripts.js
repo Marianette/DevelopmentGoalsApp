@@ -29,7 +29,7 @@ $(function(){
       var years = yearArrays[selectedDataset];
       $('#years-selector').attr("min", d3.min(years));
       $('#years-selector').attr("max", d3.max(years));
-
+      updateLegend();
       applyFilter();
     }
   });
@@ -39,6 +39,7 @@ $(function(){
     var value = $('input[name=gender-select]:checked', '#map-gender-filter-selection').val();
     if(value != selectedFilter){
       selectedFilter = value;
+      updateLegend();
       applyFilter();
     }
   });
