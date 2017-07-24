@@ -1,7 +1,5 @@
 function initIncomeVis(id) {
-  // TODO plot percentage gap. Don
   var data = $(id).data("data-attr");
-  data = data.slice(0, 14);
 
   var fullPlotWidth = $('.income-vis-container').width();
   var fullPlotHeight = 400;
@@ -12,20 +10,20 @@ function initIncomeVis(id) {
   var plotWidth = fullPlotWidth - margin.left - margin.right,
   plotHeight = fullPlotHeight - margin.top - margin.bottom;
 
-  var widthScale = d3.scale.linear()
-  .range([0, plotWidth]);
+  var widthScale = d3.scale.ordinal()
+  .rangeRoundBands([margin.left, plotWidth], 0.2);
 
-  var heightScale = d3.scale.ordinal()
-  .rangeRoundBands([margin.top, plotHeight], 0.2);
+  var heightScale = d3.scale.linear()
+  .range([0, plotHeight]);
 
   var xAxis = d3.svg.axis()
   .scale(widthScale)
-  .orient("bottom");
+  .orient("bottom")
+  .innerTickSize([0]);
 
   var yAxis = d3.svg.axis()
   .scale(heightScale)
-  .orient("left")
-  .innerTickSize([0]);
+  .orient("left");
 
   var dotPlotSvg = d3.select(id).append("svg")
   .attr("width", fullPlotWidth)
@@ -35,8 +33,8 @@ function initIncomeVis(id) {
       return d3.descending(a.male["2015"], b.male["2015"]);
     });
 
-    widthScale.domain([0, 150000]);
-    heightScale.domain(data.map(function(d) { return d.country; } ));
+    heightScale.domain([0, 165000]);
+    widthScale.domain(data.map(function(d) { return d.country; } ));
 
     // Make the faint lines from y labels to highest dot
     var linesGrid = dotPlotSvg.selectAll("lines.grid")
@@ -45,46 +43,16 @@ function initIncomeVis(id) {
     .append("line");
 
     linesGrid.attr("class", "grid")
-    .attr("x1", margin.left)
-    .attr("y1", function(d) {
-      return heightScale(d.country) + heightScale.rangeBand()/2;
-    })
-    .attr("x2", function(d) {
-      return margin.left + widthScale(d.male["2015"]);
-
-    })
-    .attr("y2", function(d) {
-      return heightScale(d.country) + heightScale.rangeBand()/2;
-    });
-
-    // Make the dotted lines between the dots
-    var linesBetween = dotPlotSvg.selectAll("lines.between")
-    .data(data)
-    .enter()
-    .append("line");
-
-    linesBetween.attr("class", "between")
     .attr("x1", function(d) {
-      return margin.left + widthScale(d.female["2015"]);
+      return widthScale(d.country) + widthScale.rangeBand()/2;
     })
-    .attr("y1", function(d) {
-      return heightScale(d.country) + heightScale.rangeBand()/2;
-    })
+    .attr("y1", plotHeight)
     .attr("x2", function(d) {
-      return margin.left + widthScale(d.male["2015"]);
+      return widthScale(d.country) + widthScale.rangeBand()/2;
     })
     .attr("y2", function(d) {
-      return heightScale(d.country) + heightScale.rangeBand()/2;
-    })
-    .attr("stroke-dasharray", "5,5")
-    .attr("stroke-width", function(d, i) {
-      if (i == 7) {
-        return "1";
-      } else {
-        return "0.5";
-      }
+      return plotHeight - heightScale(d.male["2015"]);
     });
-
 
     // Make the dots for 1990
     var dotsFemale = dotPlotSvg.selectAll("circle.female")
@@ -95,11 +63,11 @@ function initIncomeVis(id) {
     dotsFemale
     .attr("class", "dot-plot-female")
     .attr("cx", function(d) {
-      return margin.left + widthScale(d.female["2015"]);
+      return widthScale(d.country) + widthScale.rangeBand()/2;
     })
-    .attr("r", heightScale.rangeBand()/2)
+    .attr("r", widthScale.rangeBand()/2)
     .attr("cy", function(d) {
-      return heightScale(d.country) + heightScale.rangeBand()/2;
+      return plotHeight - heightScale(d.female["2015"]);
     })
     .append("title")
     .text(function(d) {
@@ -115,11 +83,11 @@ function initIncomeVis(id) {
     dotsMale
     .attr("class", "dot-plot-male")
     .attr("cx", function(d) {
-      return margin.left + widthScale(d.male["2015"]);
+      return widthScale(d.country) + widthScale.rangeBand()/2;
     })
-    .attr("r", heightScale.rangeBand()/2)
+    .attr("r", widthScale.rangeBand()/2)
     .attr("cy", function(d) {
-      return heightScale(d.country) + heightScale.rangeBand()/2;
+      return plotHeight - heightScale(d.male["2015"]);
     })
     .append("title")
     .text(function(d) {
@@ -129,7 +97,7 @@ function initIncomeVis(id) {
     // add the axes
     dotPlotSvg.append("g")
     .attr("class", "x axis")
-    .attr("transform", "translate(" + margin.left + "," + plotHeight + ")")
+    .attr("transform", "translate(" + (margin.left - 40) + "," + plotHeight + ")")
     .call(xAxis);
 
     dotPlotSvg.append("g")
@@ -143,5 +111,5 @@ function initIncomeVis(id) {
     (plotHeight + margin.bottom) + ")")
     .style("text-anchor", "middle")
     .attr("dy", "12")
-    .text("Percent");
+    .text("Country");
 }
