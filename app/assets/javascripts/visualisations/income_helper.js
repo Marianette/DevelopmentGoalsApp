@@ -3,24 +3,6 @@ function getHighestPoint(d) {
   return (d.male[incomeCurrentYear] > d.female[incomeCurrentYear])? "male" : "female";
 }
 
-function createDots(id){
-  var dots = dotPlotSvg.selectAll("circle." + id)
-  .data(incomeData)
-  .enter().append("circle")
-  .attr("class", "dot-plot-" + id)
-  .attr("cx", function(d) {
-    return dotPlotWidthScale(d.country) + dotPlotWidthScale.rangeBand()/2;
-  })
-  .attr("r", 0)
-  .attr("cy", function(d) {
-    return plotHeight - dotPlotHeightScale(d[id][incomeCurrentYear]);
-  });
-
-  dots.transition()
-    .duration(750)
-    .attr("r", dotPlotWidthScale.rangeBand()/2);
-}
-
 function removeDotElements(){
   var circles = ["male", "female", "diff"];
   for (var i in circles){
@@ -41,5 +23,35 @@ function checkValidIncomeYear(newYear){
   var closestYear = years.reduce(function (prev, curr) {
     return (Math.abs(curr - newYear) < Math.abs(prev - newYear) ? curr : prev);
   });
-  return closestYear;  
+  return closestYear;
+}
+
+function showDataInformation(d){
+  // update three data circles = country, year, data
+  // display country name under x axis
+  // highlight line
+}
+
+function hideDataInformation(d){
+  // unhighlight line
+}
+
+function getIncomeId(d){
+  var name = d.country;
+  name.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "");
+  return "code_" + name;
+}
+
+function getIncomeDotHoverMessage(d, dataset){
+  if(dataset == "male"){
+    return "Male GNI for " + d.country + ": $" + d[dataset][incomeCurrentYear];
+  } else if (dataset == "female"){
+    return "Female GNI for " + d.country + ": $" + d[dataset][incomeCurrentYear];
+  }
+  return "Female GNI  for " + d.country + " is </br> " + d[dataset][incomeCurrentYear] + "% less than the male GNI"
+}
+
+function getIncomePlotTitle(){
+  if(incomeDataDisplayed == "male") return "Estimated Gross National Income (GNI) Male vs. Female";
+  return "Percentage Difference Between Male GNI and Female GNI";
 }

@@ -2,7 +2,7 @@
 var incomeCurrentYear, incomeData, incomeDataDisplayed;
 // Income dot plot svg variables
 var plotWidth, plotHeight, dotPlotSvg, dotPlotWidthScale, dotPlotHeightScale,
-dotPlotMargins;
+dotPlotMargins, dotToolTip;
 
 function createIncomeVis(id) {
   // TODO Add loading icon & stop after load
@@ -51,6 +51,13 @@ function initIncomeVis(data, id) {
   .attr("dy", "12")
   .text(label);
 
+  // TODO Create data circles
+
+  // Create tooltip for on hover of dots
+  dotToolTip = d3.select("body").append("div")
+  .attr("class", "tooltip")
+  .style("opacity", 0);
+
   drawIncomeVisualisation();
 }
 
@@ -72,6 +79,7 @@ function drawIncomeVisualisation() {
   .data(incomeData)
   .enter().append("line")
   .attr("class", "grid")
+  .attr("id", getIncomeId)
   .attr("x1", function(d) {
     return dotPlotWidthScale(d.country) + dotPlotWidthScale.rangeBand()/2;
   })
@@ -79,7 +87,13 @@ function drawIncomeVisualisation() {
   .attr("x2", function(d) {
     return dotPlotWidthScale(d.country) + dotPlotWidthScale.rangeBand()/2;
   })
-  .attr("y2", plotHeight);
+  .attr("y2", plotHeight)
+  .on("mouseover", function(d) {
+    showDataInformation(d);
+  })
+  .on("mouseout", function(d) {
+    hideDataInformation(d);
+  });
 
   gridLines.transition()
   .duration(750)
@@ -103,6 +117,43 @@ function drawIncomeVisualisation() {
   .attr("class", "x axis")
   .attr("transform", "translate(0," + plotHeight + ")")
   .call(xAxis);
+}
+
+function createDots(id){
+  var dots = dotPlotSvg.selectAll("circle." + id)
+  .data(incomeData)
+  .enter().append("circle")
+  .attr("class", "dot-plot-" + id)
+  .attr("cx", function(d) {
+    return dotPlotWidthScale(d.country) + dotPlotWidthScale.rangeBand()/2;
+  })
+  .attr("r", 0)
+  .attr("cy", function(d) {
+    return plotHeight - dotPlotHeightScale(d[id][incomeCurrentYear]);
+  })
+  .on("mouseover", function(d) {
+    dotToolTip.transition()
+    .duration(200)
+    .style("opacity", 0.9);
+
+    dotToolTip.html(getIncomeDotHoverMessage(d, id))
+    .style("left", (d3.event.pageX) + "px")
+    .style("top", (d3.event.pageY - 28) + "px");
+
+    showDataInformation(d);
+  })
+  .on("mouseout", function(d) {
+    dotToolTip.transition()
+    .duration(200)
+    .style("opacity", 0);
+
+    hideDataInformation();
+  })
+
+  // Apply ease in effect
+  dots.transition()
+    .duration(750)
+    .attr("r", dotPlotWidthScale.rangeBand()/2);
 }
 
 function updateDotPlot(){

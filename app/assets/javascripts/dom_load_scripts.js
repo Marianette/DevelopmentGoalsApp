@@ -69,7 +69,7 @@ $(function(){
   $("#select-income-dataset").on("change", function(){
     if(this.value != incomeDataDisplayed) {
       incomeDataDisplayed = this.value;
-      $('.dot-plot-title').text("Percentage Difference Between Male GNI and Female GNI");
+      $('#dot-plot-title').text(getIncomePlotTitle);
       updateDotPlot();
     }
   });

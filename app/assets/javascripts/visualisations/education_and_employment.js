@@ -134,7 +134,7 @@ function initEducationEmploymentVis(id) {
 function showTooltip(d, toolTip) {
   toolTip.transition()
   .duration(200)
-  .style("opacity", .9);
+  .style("opacity", 0.9);
 
   toolTip.html(getMessage(d))
   .style("left", (d3.event.pageX) + "px")
@@ -150,7 +150,7 @@ function showTooltip(d, toolTip) {
 
 function hideTooltip(d, toolTip) {
   toolTip.transition()
-  .duration(500)
+  .duration(300)
   .style("opacity", 0);
 
   mapContainer.select("#" + getId(d))
