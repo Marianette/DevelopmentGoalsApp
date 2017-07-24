@@ -19,11 +19,8 @@ function initIncomeVis(id) {
   var xAxis = d3.svg.axis()
   .scale(widthScale)
   .orient("bottom")
-  .innerTickSize([0]);
-
-  var yAxis = d3.svg.axis()
-  .scale(heightScale)
-  .orient("left");
+  .innerTickSize([0])
+  .outerTickSize([0]);
 
   var dotPlotSvg = d3.select(id).append("svg")
   .attr("width", fullPlotWidth)
@@ -97,13 +94,8 @@ function initIncomeVis(id) {
     // add the axes
     dotPlotSvg.append("g")
     .attr("class", "x axis")
-    .attr("transform", "translate(" + (margin.left - 40) + "," + plotHeight + ")")
+    .attr("transform", "translate(0," + plotHeight + ")")
     .call(xAxis);
-
-    dotPlotSvg.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(" + margin.left + ",0)")
-    .call(yAxis);
 
     dotPlotSvg.append("text")
     .attr("class", "xlabel")

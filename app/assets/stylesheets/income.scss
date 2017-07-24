@@ -17,17 +17,17 @@ circle.dot-plot-female {
 }
 
 circle.dot-plot-male:hover {
-  stroke-width: 3;
+  stroke-width: 2;
   stroke: #deebf7;
 }
 
 circle.dot-plot-female:hover {
-  stroke-width: 3;
-  stroke: #49006a;
+  stroke-width: 2;
+  stroke: #fde0dd;
 }
 
 line.grid {
-  stroke: #eee;
+  stroke: #ddd;
 }
 
 .axis path,
