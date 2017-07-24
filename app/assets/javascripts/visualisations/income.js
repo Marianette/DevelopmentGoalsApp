@@ -4,26 +4,9 @@ var incomeCurrentYear, incomeData, incomeDataDisplayed;
 var plotWidth, plotHeight, dotPlotSvg, dotPlotWidthScale, dotPlotHeightScale,
 dotPlotMargins, dotToolTip;
 
-function createIncomeVis(id) {
-  // TODO Add loading icon & stop after load
-  var dataUrl = $(id).data('url');
-  $.ajax({
-    type: 'GET',
-    contentType: 'application/json; charset=utf-8',
-    url: dataUrl,
-    dataType: 'json',
-    success: function (data) {
-      initIncomeVis(data, id);
-    },
-    error: function (result) {
-      console.log('Error');
-    }
-  });
-}
-
-function initIncomeVis(data, id) {
+function initIncomeVis(id) {
+  incomeData = $(id).data("attr");
   incomeCurrentYear = 2015;
-  incomeData = data;
   incomeDataDisplayed = "male";
 
   var fullPlotWidth = $('.income-vis-container').width();

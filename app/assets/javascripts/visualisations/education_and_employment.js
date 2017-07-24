@@ -9,7 +9,7 @@ var mapSvg, mapContainer, mapLegend, mapHeight, centered, mapTimer;
 
 function initEducationEmploymentVis(id) {
   // Get education and employment data
-  var data = $(id).data("data-attr");
+  var data = $(id).data("attr");
 
   // Reset data values
   selectedDataset = "education";

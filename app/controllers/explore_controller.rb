@@ -7,24 +7,14 @@ class ExploreController < ApplicationController
   end
 
   def income
+    @data = FetchIncomeData.new(national_income_female_type, national_income_male_type).call
+
     # Get years for data
-    first_record = Dataset.where(data_type: national_income_male_type).first
-    years = first_record.values.collect { |d| d[0].to_i }
+    years = @data[0][:male].collect { |(year, val)| year.to_i }
     @min_year = years.min
     @max_year = years.max
-    @data_url = explore_income_data_path
   end
 
   def gender_inequality_index
-  end
-
-  # JSON responses
-  def income_data
-    data = FetchIncomeData.new(national_income_female_type, national_income_male_type).call
-    respond_to do |format|
-      format.json {
-        render :json => data
-      }
-    end
   end
 end

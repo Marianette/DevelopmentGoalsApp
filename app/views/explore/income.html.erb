@@ -1,15 +1,15 @@
 <div class="content-container">
   <div class="row">
     <div class="col s12 income-vis-container">
-      <div id="dot-plot-title">Estimated Gross National Income Per Capita</div>
-      <%= tag('div', id: 'income-vis', data: {url: @data_url} ) %>
+      <div id="dot-plot-title">Estimated Gross National Income Per Capita (Male vs. Female)</div>
+      <%= tag('div', id: 'income-vis', data: {attr: @data} ) %>
       <%= tag('/div') %>
     </div>
     <div class="col s12 income-filter-container">
       <div class="row">
         <div class="input-field col s3">
           <select id="select-income-dataset">
-            <option value="male">Estimated Gross National Income (GNI) Male vs. Female</option>
+            <option value="male">Estimated Gross National Income (GNI)</option>
             <option value="diff">% Difference between Male GNI and Female GNI</option>
           </select>
           <label>Select Indicator</label>
@@ -27,5 +27,5 @@
   </div>
 
   <script>
-  createIncomeVis("#income-vis");
+  initIncomeVis("#income-vis");
   </script>
