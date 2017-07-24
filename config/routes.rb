@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   get 'explore/income' => 'explore#income'
   get 'explore/gender_inequality_index' => 'explore#gender_inequality_index'
 
+  # Data endpoints for the different visualisations
+  get 'explore/income_data' => 'explore#income_data', :defaults => { :format => 'json' }
+
   root 'home#index'
 end

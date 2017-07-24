@@ -1,9 +1,27 @@
-function initIncomeVis(id) {
-  var data = $(id).data("data-attr");
+var incomeCurrentYear;
 
+function initIncomeVis(id) {
+  // Add loading icon & stop after load
+  var url = $(id).data('url');
+  $.ajax({
+    type: 'GET',
+    contentType: 'application/json; charset=utf-8',
+    url: url,
+    dataType: 'json',
+    success: function (data) {
+      createIncomeVis(data, id);
+    },
+    error: function (result) {
+      console.log('Error');
+    }
+  });
+}
+
+function createIncomeVis(data, id) {
   var fullPlotWidth = $('.income-vis-container').width();
   var fullPlotHeight = 400;
 
+  incomeCurrentYear = "2015";
   // These are the margins around the graph. Axes labels go in margins.
   var margin = {top: 20, right: 20, bottom: 20, left: 40};
 
@@ -27,10 +45,12 @@ function initIncomeVis(id) {
   .attr("height", fullPlotHeight);
 
   data.sort(function(a, b) {
-      return d3.descending(a.male["2015"], b.male["2015"]);
+      return d3.descending(a.male[incomeCurrentYear], b.male[incomeCurrentYear]);
     });
 
-    heightScale.domain([0, 165000]);
+  var dataMax = data[0].male[incomeCurrentYear] + 5000;
+
+    heightScale.domain([0, dataMax]);
     widthScale.domain(data.map(function(d) { return d.country; } ));
 
     // Make the faint lines from y labels to highest dot
@@ -48,7 +68,7 @@ function initIncomeVis(id) {
       return widthScale(d.country) + widthScale.rangeBand()/2;
     })
     .attr("y2", function(d) {
-      return plotHeight - heightScale(d.male["2015"]);
+      return plotHeight - heightScale(d.male[incomeCurrentYear]);
     });
 
     // Make the dots for 1990
@@ -64,11 +84,7 @@ function initIncomeVis(id) {
     })
     .attr("r", widthScale.rangeBand()/2)
     .attr("cy", function(d) {
-      return plotHeight - heightScale(d.female["2015"]);
-    })
-    .append("title")
-    .text(function(d) {
-      return d.country + " in 1990: " + d.female["2015"] + "%";
+      return plotHeight - heightScale(d.female[incomeCurrentYear]);
     });
 
     // Make the dots for 2015
@@ -84,24 +100,18 @@ function initIncomeVis(id) {
     })
     .attr("r", widthScale.rangeBand()/2)
     .attr("cy", function(d) {
-      return plotHeight - heightScale(d.male["2015"]);
-    })
-    .append("title")
-    .text(function(d) {
-      return d.country + " in 2015: " + d.male["2015"] + "%";
+      return plotHeight - heightScale(d.male[incomeCurrentYear]);
     });
 
-    // add the axes
     dotPlotSvg.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + plotHeight + ")")
     .call(xAxis);
 
     dotPlotSvg.append("text")
-    .attr("class", "xlabel")
-    .attr("transform", "translate(" + (margin.left + plotWidth / 2) + " ," +
-    (plotHeight + margin.bottom) + ")")
+    .attr("class", "ylabel")
+    .attr("transform", "translate(" + (margin.left/2) + "," + (plotHeight - margin.bottom/2) + ")")
     .style("text-anchor", "middle")
     .attr("dy", "12")
-    .text("Country");
+    .text("$0");
 }

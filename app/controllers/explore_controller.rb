@@ -7,9 +7,19 @@ class ExploreController < ApplicationController
   end
 
   def income
-    @data = FetchIncomeData.new(national_income_female_type, national_income_male_type).call
+    @data_url = explore_income_data_path
   end
 
   def gender_inequality_index
+  end
+
+  # JSON responses
+  def income_data
+    data = FetchIncomeData.new(national_income_female_type, national_income_male_type).call
+    respond_to do |format|
+      format.json {
+        render :json => data
+      }
+    end
   end
 end
