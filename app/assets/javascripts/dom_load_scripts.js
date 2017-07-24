@@ -52,6 +52,17 @@ $(function(){
   });
 });
 
+// React to change events on income dot plot filters
+$(function(){
+  // React to year change
+  $("#select-income-year").on("change", function(){
+    if(this.value != incomeCurrentYear) {
+      incomeCurrentYear = this.value;
+      updateDotPlot();
+    }
+  });
+});
+
 // Clear visualisations before leaving a page
 function clearVis() {
   $('.content-container').remove();

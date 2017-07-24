@@ -1,19 +1,13 @@
-div.dot-plot-male {
-  color: #6699FF;
-  display: inline;
-}
-
-div.dot-plot-female {
-  color: #dd1c77;
-  display: inline;
-}
-
 circle.dot-plot-male {
   fill: #6699FF;
 }
 
 circle.dot-plot-female {
   fill: #dd1c77;
+}
+
+circle.dot-plot-diff {
+  fill: #cb181d;
 }
 
 circle.dot-plot-male:hover {
@@ -26,8 +20,13 @@ circle.dot-plot-female:hover {
   stroke: #fde0dd;
 }
 
+circle.dot-plot-diff:hover {
+  stroke-width: 2;
+  stroke: #fee0d2;
+}
+
 line.grid {
-  stroke: #ddd;
+  stroke: #ccc;
 }
 
 .axis path,

@@ -5,8 +5,16 @@
       <%= tag('div', id: 'income-vis', data: {url: @data_url} ) %>
       <%= tag('/div') %>
     </div>
+    <div class="col s12 income-filter-container">
+      <div class="row">
+        <div class="input-field col s1">
+          <%= select_tag "select-income-year", options_for_select(@years.collect{ |y| [y, y]}, 2015) %>
+          <label>Select Year</label>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
-  initIncomeVis("#income-vis");
+  createIncomeVis("#income-vis");
   </script>

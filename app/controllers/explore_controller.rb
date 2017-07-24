@@ -7,6 +7,9 @@ class ExploreController < ApplicationController
   end
 
   def income
+    # Get years for data
+    first_record = Dataset.where(data_type: national_income_male_type).first
+    @years = first_record.values.collect { |d| d[0].to_i }
     @data_url = explore_income_data_path
   end
 
