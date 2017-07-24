@@ -59,7 +59,9 @@ function drawIncomeVisualisation() {
   incomeData.sort(function(a, b) {
     return d3.descending(a[incomeDataDisplayed][incomeCurrentYear], b[incomeDataDisplayed][incomeCurrentYear]);
   });
-  var dataMax = incomeData[0][incomeDataDisplayed][incomeCurrentYear] + 5000;
+
+  var offset = (incomeDataDisplayed == "male")? 5000 : 10;
+  var dataMax = incomeData[0][incomeDataDisplayed][incomeCurrentYear] + offset;
 
   // Redefine x and y scale for plot according to sorted data
   dotPlotHeightScale.domain([0, dataMax]);

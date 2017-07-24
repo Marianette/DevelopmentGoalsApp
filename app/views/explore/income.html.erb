@@ -7,9 +7,20 @@
     </div>
     <div class="col s12 income-filter-container">
       <div class="row">
-        <div class="input-field col s1">
-          <%= select_tag "select-income-year", options_for_select(@years.collect{ |y| [y, y]}, 2015) %>
-          <label>Select Year</label>
+        <div class="input-field col s3">
+          <select id="select-income-dataset">
+            <option value="male">Estimated Gross National Income (GNI)</option>
+            <option value="diff">% Difference between Male GNI and Female GNI</option>
+          </select>
+          <label>Select Indicator</label>
+        </div>
+        <div class="input-field col s2">
+          <form id="income-year-slider">
+            <label>Select Year</label>
+            <p class="range-field">
+              <input type="range" id="income-years-selector" min="<%= @min_year %>" max="<%= @max_year %>" value="<%= @max_year %>" />
+            </p>
+          </form>
         </div>
       </div>
     </div>
