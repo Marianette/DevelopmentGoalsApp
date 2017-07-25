@@ -4,13 +4,10 @@
   <title>DevelopmentGoalsApp</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
 </head>
 <body>
 <%= render 'navbar' %>
 <%= yield %>
-
-<!-- Need to include material.js that initialises material design js after page has been loaded -->
-<%= javascript_include_tag 'dom_load_scripts' %>
 </body>
 </html>

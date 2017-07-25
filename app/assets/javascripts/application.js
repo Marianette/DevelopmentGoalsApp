@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require lodash
 //= require materialize-sprockets
 //= require d3

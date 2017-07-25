@@ -5,7 +5,8 @@ include ApplicationHelper
 
   FIELDS = {
     COUNTRY: 'Country',
-    REGION: 'Region'
+    REGION: 'Region',
+    CODE: 'Code'
   }.freeze
 
   def initialize(hashes, type)
@@ -26,6 +27,7 @@ include ApplicationHelper
     Location.create!(
       country: contents[FIELDS[:COUNTRY]],
       region: contents[FIELDS[:REGION]],
+      code: contents[FIELDS[:CODE]],
       population: populationArray
     )
   end

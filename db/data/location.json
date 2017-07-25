@@ -82,7 +82,8 @@
     "2014": 31627506,
     "2015": 32526562,
     "Region": "South Asia",
-    "Country": "Afghanistan"
+    "Country": "Afghanistan",
+    "Code": "AFG"
   },
   {
     "1800": 410445,
@@ -167,7 +168,8 @@
     "2014": 2889676,
     "2015": 2896679,
     "Region": "Europe & Central Asia",
-    "Country": "Albania"
+    "Country": "Albania",
+    "Code": "ALB"
   },
   {
     "1800": 2503218,
@@ -252,7 +254,8 @@
     "2014": 38934334,
     "2015": 39666519,
     "Region": "Middle East & North Africa",
-    "Country": "Algeria"
+    "Country": "Algeria",
+    "Code": "DZA"
   },
   {
     "1800": 2654,
@@ -337,7 +340,8 @@
     "2014": 72786,
     "2015": 70473,
     "Region": "Europe & Central Asia",
-    "Country": "Andorra"
+    "Country": "Andorra",
+    "Code": "AND"
   },
   {
     "1800": 1567028,
@@ -422,7 +426,8 @@
     "2014": 24227524,
     "2015": 25021974,
     "Region": "Sub-Saharan Africa",
-    "Country": "Angola"
+    "Country": "Angola",
+    "Code": "AGO"
   },
   {
     "1800": 37000,
@@ -507,7 +512,8 @@
     "2014": 90900,
     "2015": 91818,
     "Region": "America",
-    "Country": "Antigua and Barbuda"
+    "Country": "Antigua and Barbuda",
+    "Code": "ATG"
   },
   {
     "1800": 534000,
@@ -592,7 +598,8 @@
     "2014": 42980026,
     "2015": 43416755,
     "Region": "America",
-    "Country": "Argentina"
+    "Country": "Argentina",
+    "Code": "ARG"
   },
   {
     "1800": 413326,
@@ -677,7 +684,8 @@
     "2014": 3006154,
     "2015": 3017712,
     "Region": "Europe & Central Asia",
-    "Country": "Armenia"
+    "Country": "Armenia",
+    "Code": "ARM"
   },
   {
     "1800": 351014,
@@ -762,7 +770,8 @@
     "2014": 23622353,
     "2015": 23968973,
     "Region": "East Asia & Pacific",
-    "Country": "Australia"
+    "Country": "Australia",
+    "Code": "AUS"
   },
   {
     "1800": 3205587,
@@ -847,7 +856,8 @@
     "2014": 8516916,
     "2015": 8544586,
     "Region": "Europe & Central Asia",
-    "Country": "Austria"
+    "Country": "Austria",
+    "Code": "AUT"
   },
   {
     "1800": 879960,
@@ -932,7 +942,8 @@
     "2014": 9629779,
     "2015": 9753968,
     "Region": "Europe & Central Asia",
-    "Country": "Azerbaijan"
+    "Country": "Azerbaijan",
+    "Code": "AZE"
   },
   {
     "1800": 27350,
@@ -1017,7 +1028,8 @@
     "2014": 383054,
     "2015": 388019,
     "Region": "America",
-    "Country": "The Bahamas"
+    "Country": "Bahamas",
+    "Code": "BHS"
   },
   {
     "1800": 64474,
@@ -1102,7 +1114,8 @@
     "2014": 1361930,
     "2015": 1377237,
     "Region": "Middle East & North Africa",
-    "Country": "Bahrain"
+    "Country": "Bahrain",
+    "Code": "BHR"
   },
   {
     "1800": 19227358,
@@ -1187,7 +1200,8 @@
     "2014": 159077513,
     "2015": 160995642,
     "Region": "South Asia",
-    "Country": "Bangladesh"
+    "Country": "Bangladesh",
+    "Code": "BGD"
   },
   {
     "1800": 81729,
@@ -1272,7 +1286,8 @@
     "2014": 283380,
     "2015": 284215,
     "Region": "America",
-    "Country": "Barbados"
+    "Country": "Barbados",
+    "Code": "BRB"
   },
   {
     "1800": 2355081,
@@ -1357,7 +1372,8 @@
     "2014": 9500422,
     "2015": 9495826,
     "Region": "Europe & Central Asia",
-    "Country": "Belarus"
+    "Country": "Belarus",
+    "Code": "BLR"
   },
   {
     "1800": 3138137,
@@ -1442,7 +1458,8 @@
     "2014": 11226322,
     "2015": 11299192,
     "Region": "Europe & Central Asia",
-    "Country": "Belgium"
+    "Country": "Belgium",
+    "Code": "BEL"
   },
   {
     "1800": 25526,
@@ -1527,7 +1544,8 @@
     "2014": 351706,
     "2015": 359287,
     "Region": "America",
-    "Country": "Belize"
+    "Country": "Belize",
+    "Code": "BLZ"
   },
   {
     "1800": 636559,
@@ -1612,7 +1630,8 @@
     "2014": 10598482,
     "2015": 10879829,
     "Region": "Sub-Saharan Africa",
-    "Country": "Benin"
+    "Country": "Benin",
+    "Code": "BEN"
   },
   {
     "1800": 89989,
@@ -1697,7 +1716,8 @@
     "2014": 765008,
     "2015": 774830,
     "Region": "South Asia",
-    "Country": "Bhutan"
+    "Country": "Bhutan",
+    "Code": "BTN"
   },
   {
     "1800": 1100000,
@@ -1782,7 +1802,8 @@
     "2014": 10561887,
     "2015": 10724705,
     "Region": "America",
-    "Country": "Bolivia"
+    "Country": "Bolivia",
+    "Code": "BOL"
   },
   {
     "1800": 851806,
@@ -1867,7 +1888,8 @@
     "2014": 3817554,
     "2015": 3810416,
     "Region": "Europe & Central Asia",
-    "Country": "Bosnia and Herzegovina"
+    "Country": "Bosnia and Herzegovina",
+    "Code": "BIH"
   },
   {
     "1800": 121000,
@@ -1952,7 +1974,8 @@
     "2014": 2219937,
     "2015": 2262485,
     "Region": "Sub-Saharan Africa",
-    "Country": "Botswana"
+    "Country": "Botswana",
+    "Code": "BWA"
   },
   {
     "1800": 3639636,
@@ -2037,7 +2060,8 @@
     "2014": 206077898,
     "2015": 207847528,
     "Region": "America",
-    "Country": "Brazil"
+    "Country": "Brazil",
+    "Code": "BRA"
   },
   {
     "1800": 2128,
@@ -2122,7 +2146,8 @@
     "2014": 417394,
     "2015": 423188,
     "Region": "East Asia & Pacific",
-    "Country": "Brunei"
+    "Country": "Brunei",
+    "Code": "BRN"
   },
   {
     "1800": 1992320,
@@ -2207,7 +2232,8 @@
     "2014": 7201308,
     "2015": 7149787,
     "Region": "Europe & Central Asia",
-    "Country": "Bulgaria"
+    "Country": "Bulgaria",
+    "Code": "BGR"
   },
   {
     "1800": 1665421,
@@ -2292,7 +2318,8 @@
     "2014": 17589198,
     "2015": 18105570,
     "Region": "Sub-Saharan Africa",
-    "Country": "Burkina Faso"
+    "Country": "Burkina Faso",
+    "Code": "BFA"
   },
   {
     "1800": 899097,
@@ -2377,7 +2404,8 @@
     "2014": 10816860,
     "2015": 11178921,
     "Region": "Sub-Saharan Africa",
-    "Country": "Burundi"
+    "Country": "Burundi",
+    "Code": "BDI"
   },
   {
     "1800": 2090000,
@@ -2462,7 +2490,8 @@
     "2014": 15328136,
     "2015": 15577899,
     "Region": "East Asia & Pacific",
-    "Country": "Cambodia"
+    "Country": "Cambodia",
+    "Code": "KHM"
   },
   {
     "1800": 1860054,
@@ -2547,7 +2576,8 @@
     "2014": 22773014,
     "2015": 23344179,
     "Region": "Sub-Saharan Africa",
-    "Country": "Cameroon"
+    "Country": "Cameroon",
+    "Code": "CMR"
   },
   {
     "1800": 645526,
@@ -2632,7 +2662,8 @@
     "2014": 35587793,
     "2015": 35939927,
     "Region": "America",
-    "Country": "Canada"
+    "Country": "Canada",
+    "Code": "CAN"
   },
   {
     "1800": 479444,
@@ -2717,7 +2748,8 @@
     "2014": 4804316,
     "2015": 4900274,
     "Region": "Sub-Saharan Africa",
-    "Country": "Central African Republic"
+    "Country": "Central African Republic",
+    "Code": "CAF"
   },
   {
     "1800": 1432000,
@@ -2802,7 +2834,8 @@
     "2014": 13587053,
     "2015": 14037472,
     "Region": "Sub-Saharan Africa",
-    "Country": "Chad"
+    "Country": "Chad",
+    "Code": "TCD"
   },
   {
     "1800": 771447,
@@ -2887,7 +2920,8 @@
     "2014": 17762647,
     "2015": 17948141,
     "Region": "America",
-    "Country": "Chile"
+    "Country": "Chile",
+    "Code": "CHL"
   },
   {
     "1800": 321675013,
@@ -2972,7 +3006,8 @@
     "2014": 1369435670,
     "2015": 1376048943,
     "Region": "East Asia & Pacific",
-    "Country": "China"
+    "Country": "China",
+    "Code": "CHN"
   },
   {
     "1800": 1206000,
@@ -3057,7 +3092,8 @@
     "2014": 47791393,
     "2015": 48228704,
     "Region": "America",
-    "Country": "Colombia"
+    "Country": "Colombia",
+    "Code": "COL"
   },
   {
     "1800": 56346,
@@ -3142,7 +3178,8 @@
     "2014": 769991,
     "2015": 788474,
     "Region": "Sub-Saharan Africa",
-    "Country": "Comoros"
+    "Country": "Comoros",
+    "Code": "COM"
   },
   {
     "1800": 5163819,
@@ -3227,7 +3264,8 @@
     "2014": 74877030,
     "2015": 77266814,
     "Region": "Sub-Saharan Africa",
-    "Country": "Democratic Republic of the Congo"
+    "Country": "Democratic Republic of the Congo",
+    "Code": "COD"
   },
   {
     "1800": 314465,
@@ -3312,7 +3350,8 @@
     "2014": 4504962,
     "2015": 4620330,
     "Region": "Sub-Saharan Africa",
-    "Country": "Republic of Congo"
+    "Country": "Republic of Congo",
+    "Code": "COG"
   },
   {
     "1800": 51987,
@@ -3397,7 +3436,8 @@
     "2014": 4757606,
     "2015": 4807850,
     "Region": "America",
-    "Country": "Costa Rica"
+    "Country": "Costa Rica",
+    "Code": "CRI"
   },
   {
     "1800": 1088530,
@@ -3482,7 +3522,8 @@
     "2014": 22157107,
     "2015": 22701556,
     "Region": "Sub-Saharan Africa",
-    "Country": "Cote d'Ivoire"
+    "Country": "Cote d'Ivoire",
+    "Code": "CIV"
   },
   {
     "1800": 1227886,
@@ -3567,7 +3608,8 @@
     "2014": 4255853,
     "2015": 4240317,
     "Region": "Europe & Central Asia",
-    "Country": "Croatia"
+    "Country": "Croatia",
+    "Code": "HRV"
   },
   {
     "1800": 345043,
@@ -3652,7 +3694,8 @@
     "2014": 11379111,
     "2015": 11389562,
     "Region": "America",
-    "Country": "Cuba"
+    "Country": "Cuba",
+    "Code": "CUB"
   },
   {
     "1800": 184392,
@@ -3737,7 +3780,8 @@
     "2014": 1153658,
     "2015": 1165300,
     "Region": "Europe & Central Asia",
-    "Country": "Cyprus"
+    "Country": "Cyprus",
+    "Code": "CYP"
   },
   {
     "1800": 5516349,
@@ -3822,7 +3866,8 @@
     "2014": 10542666,
     "2015": 10543186,
     "Region": "Europe & Central Asia",
-    "Country": "Czech Republic"
+    "Country": "Czech Republic",
+    "Code": "CZE"
   },
   {
     "1800": 1062514,
@@ -3907,7 +3952,8 @@
     "2014": 5646899,
     "2015": 5669081,
     "Region": "Europe & Central Asia",
-    "Country": "Denmark"
+    "Country": "Denmark",
+    "Code": "DNK"
   },
   {
     "1800": 22848,
@@ -3992,7 +4038,8 @@
     "2014": 876174,
     "2015": 887861,
     "Region": "Middle East & North Africa",
-    "Country": "Djibouti"
+    "Country": "Djibouti",
+    "Code": "DJI"
   },
   {
     "1800": 19950,
@@ -4077,7 +4124,8 @@
     "2014": 72341,
     "2015": 72680,
     "Region": "America",
-    "Country": "Dominica"
+    "Country": "Dominica",
+    "Code": "DMA"
   },
   {
     "1800": 89000,
@@ -4162,7 +4210,8 @@
     "2014": 10405943,
     "2015": 10528391,
     "Region": "America",
-    "Country": "Dominican Republic"
+    "Country": "Dominican Republic",
+    "Code": "DOM"
   },
   {
     "1800": 500000,
@@ -4247,7 +4296,8 @@
     "2014": 15902916,
     "2015": 16144363,
     "Region": "America",
-    "Country": "Ecuador"
+    "Country": "Ecuador",
+    "Code": "ECU"
   },
   {
     "1800": 4243515,
@@ -4332,7 +4382,8 @@
     "2014": 89579670,
     "2015": 91508084,
     "Region": "Middle East & North Africa",
-    "Country": "Egypt"
+    "Country": "Egypt",
+    "Code": "EGY"
   },
   {
     "1800": 248000,
@@ -4417,7 +4468,8 @@
     "2014": 6107706,
     "2015": 6126583,
     "Region": "America",
-    "Country": "El Salvador"
+    "Country": "El Salvador",
+    "Code": "SLV"
   },
   {
     "1800": 80377,
@@ -4502,7 +4554,8 @@
     "2014": 820885,
     "2015": 845060,
     "Region": "Sub-Saharan Africa",
-    "Country": "Equatorial Guinea"
+    "Country": "Equatorial Guinea",
+    "Code": "GNQ"
   },
   {
     "1800": 205010,
@@ -4587,7 +4640,8 @@
     "2014": 5110444,
     "2015": 5227791,
     "Region": "Sub-Saharan Africa",
-    "Country": "Eritrea"
+    "Country": "Eritrea",
+    "Code": "ERI"
   },
   {
     "1800": 334136,
@@ -4672,7 +4726,8 @@
     "2014": 1316203,
     "2015": 1312558,
     "Region": "Europe & Central Asia",
-    "Country": "Estonia"
+    "Country": "Estonia",
+    "Code": "EST"
   },
   {
     "1800": 2948990,
@@ -4757,7 +4812,8 @@
     "2014": 96958732,
     "2015": 99390750,
     "Region": "Sub-Saharan Africa",
-    "Country": "Ethiopia"
+    "Country": "Ethiopia",
+    "Code": "ETH"
   },
   {
     "1800": 130533,
@@ -4842,7 +4898,8 @@
     "2014": 886450,
     "2015": 892145,
     "Region": "East Asia & Pacific",
-    "Country": "Fiji"
+    "Country": "Fiji",
+    "Code": "FJI"
   },
   {
     "1800": 977662,
@@ -4927,7 +4984,8 @@
     "2014": 5479660,
     "2015": 5503457,
     "Region": "Europe & Central Asia",
-    "Country": "Finland"
+    "Country": "Finland",
+    "Code": "FIN"
   },
   {
     "1800": 29355111,
@@ -5012,7 +5070,8 @@
     "2014": 64121249,
     "2015": 64395345,
     "Region": "Europe & Central Asia",
-    "Country": "France"
+    "Country": "France",
+    "Code": "FRA"
   },
   {
     "1800": 158227,
@@ -5097,7 +5156,8 @@
     "2014": 1687673,
     "2015": 1725292,
     "Region": "Sub-Saharan Africa",
-    "Country": "Gabon"
+    "Country": "Gabon",
+    "Code": "GAB"
   },
   {
     "1800": 103274,
@@ -5182,7 +5242,8 @@
     "2014": 1928201,
     "2015": 1990924,
     "Region": "Sub-Saharan Africa",
-    "Country": "Gambia"
+    "Country": "Gambia",
+    "Code": "GMB"
   },
   {
     "1800": 1072178,
@@ -5267,7 +5328,8 @@
     "2014": 4034774,
     "2015": 3999812,
     "Region": "Europe & Central Asia",
-    "Country": "Georgia"
+    "Country": "Georgia",
+    "Code": "GEO"
   },
   {
     "1800": 22886919,
@@ -5352,7 +5414,8 @@
     "2014": 80646262,
     "2015": 80688545,
     "Region": "Europe & Central Asia",
-    "Country": "Germany"
+    "Country": "Germany",
+    "Code": "DEU"
   },
   {
     "1800": 2016034,
@@ -5437,7 +5500,8 @@
     "2014": 26786598,
     "2015": 27409893,
     "Region": "Sub-Saharan Africa",
-    "Country": "Ghana"
+    "Country": "Ghana",
+    "Code": "GHA"
   },
   {
     "1800": 2151155,
@@ -5522,7 +5586,8 @@
     "2014": 11000777,
     "2015": 10954617,
     "Region": "Europe & Central Asia",
-    "Country": "Greece"
+    "Country": "Greece",
+    "Code": "GRC"
   },
   {
     "1800": 29409,
@@ -5607,7 +5672,8 @@
     "2014": 106349,
     "2015": 106825,
     "Region": "America",
-    "Country": "Grenada"
+    "Country": "Grenada",
+    "Code": "GRD"
   },
   {
     "1800": 458965,
@@ -5692,7 +5758,8 @@
     "2014": 16015494,
     "2015": 16342897,
     "Region": "America",
-    "Country": "Guatemala"
+    "Country": "Guatemala",
+    "Code": "GTM"
   },
   {
     "1800": 983959,
@@ -5777,7 +5844,8 @@
     "2014": 12275527,
     "2015": 12608590,
     "Region": "Sub-Saharan Africa",
-    "Country": "Guinea"
+    "Country": "Guinea",
+    "Code": "GIN"
   },
   {
     "1800": 218167,
@@ -5862,7 +5930,8 @@
     "2014": 1800513,
     "2015": 1844325,
     "Region": "Sub-Saharan Africa",
-    "Country": "Guinea Bissau"
+    "Country": "Guinea Bissau",
+    "Code": "GNB"
   },
   {
     "1800": 166034,
@@ -5947,7 +6016,8 @@
     "2014": 763893,
     "2015": 767085,
     "Region": "America",
-    "Country": "Guyana"
+    "Country": "Guyana",
+    "Code": "GUY"
   },
   {
     "1800": 723000,
@@ -6032,7 +6102,8 @@
     "2014": 10572029,
     "2015": 10711067,
     "Region": "America",
-    "Country": "Haiti"
+    "Country": "Haiti",
+    "Code": "HTI"
   },
   {
     "1800": 126118,
@@ -6117,7 +6188,8 @@
     "2014": 7961680,
     "2015": 8075060,
     "Region": "America",
-    "Country": "Honduras"
+    "Country": "Honduras",
+    "Code": "HND"
   },
   {
     "1800": 3499771,
@@ -6202,7 +6274,8 @@
     "2014": 9889540,
     "2015": 9855023,
     "Region": "Europe & Central Asia",
-    "Country": "Hungary"
+    "Country": "Hungary",
+    "Code": "HUN"
   },
   {
     "1800": 61428,
@@ -6287,7 +6360,8 @@
     "2014": 327318,
     "2015": 329425,
     "Region": "Europe & Central Asia",
-    "Country": "Iceland"
+    "Country": "Iceland",
+    "Code": "ISL"
   },
   {
     "1800": 168574895,
@@ -6372,7 +6446,8 @@
     "2014": 1295291543,
     "2015": 1311050527,
     "Region": "South Asia",
-    "Country": "India"
+    "Country": "India",
+    "Code": "IND"
   },
   {
     "1800": 16108545,
@@ -6457,7 +6532,8 @@
     "2014": 254454778,
     "2015": 257563815,
     "Region": "East Asia & Pacific",
-    "Country": "Indonesia"
+    "Country": "Indonesia",
+    "Code": "IDN"
   },
   {
     "1800": 6269721,
@@ -6542,7 +6618,8 @@
     "2014": 78143644,
     "2015": 79109272,
     "Region": "Middle East & North Africa",
-    "Country": "Iran"
+    "Country": "Iran",
+    "Code": "IRN"
   },
   {
     "1800": 1076920,
@@ -6627,7 +6704,8 @@
     "2014": 35273293,
     "2015": 36423395,
     "Region": "Middle East & North Africa",
-    "Country": "Iraq"
+    "Country": "Iraq",
+    "Code": "IRQ"
   },
   {
     "1800": 4064749,
@@ -6712,7 +6790,8 @@
     "2014": 4675164,
     "2015": 4688465,
     "Region": "Europe & Central Asia",
-    "Country": "Ireland"
+    "Country": "Ireland",
+    "Code": "IRL"
   },
   {
     "1800": 209954,
@@ -6797,7 +6876,8 @@
     "2014": 7939483,
     "2015": 8064036,
     "Region": "Middle East & North Africa",
-    "Country": "Israel"
+    "Country": "Israel",
+    "Code": "ISR"
   },
   {
     "1800": 18822234,
@@ -6882,7 +6962,8 @@
     "2014": 59788667,
     "2015": 59797685,
     "Region": "Europe & Central Asia",
-    "Country": "Italy"
+    "Country": "Italy",
+    "Code": "ITA"
   },
   {
     "1800": 401000,
@@ -6967,7 +7048,8 @@
     "2014": 2783301,
     "2015": 2793335,
     "Region": "America",
-    "Country": "Jamaica"
+    "Country": "Jamaica",
+    "Code": "JAM"
   },
   {
     "1800": 30294378,
@@ -7052,7 +7134,8 @@
     "2014": 126794564,
     "2015": 126573481,
     "Region": "East Asia & Pacific",
-    "Country": "Japan"
+    "Country": "Japan",
+    "Code": "JPN"
   },
   {
     "1800": 217000,
@@ -7137,7 +7220,8 @@
     "2014": 7416083,
     "2015": 7594547,
     "Region": "Middle East & North Africa",
-    "Country": "Jordan"
+    "Country": "Jordan",
+    "Code": "JOR"
   },
   {
     "1800": 2041282,
@@ -7222,7 +7306,8 @@
     "2014": 17371621,
     "2015": 17625226,
     "Region": "Europe & Central Asia",
-    "Country": "Kazakhstan"
+    "Country": "Kazakhstan",
+    "Code": "KAZ"
   },
   {
     "1800": 2574000,
@@ -7307,7 +7392,8 @@
     "2014": 44863583,
     "2015": 46050302,
     "Region": "Sub-Saharan Africa",
-    "Country": "Kenya"
+    "Country": "Kenya",
+    "Code": "KEN"
   },
   {
     "1800": 17876,
@@ -7392,7 +7478,8 @@
     "2014": 110470,
     "2015": 112423,
     "Region": "East Asia & Pacific",
-    "Country": "Kiribati"
+    "Country": "Kiribati",
+    "Code": "KIR"
   },
   {
     "1800": 4345000,
@@ -7477,7 +7564,8 @@
     "2014": 25026772,
     "2015": 25155317,
     "Region": "East Asia & Pacific",
-    "Country": "Democratic People's Republic of Korea"
+    "Country": "Democratic People's Republic of Korea",
+    "Code": "PRK"
   },
   {
     "1800": 9395000,
@@ -7562,7 +7650,8 @@
     "2014": 50074401,
     "2015": 50293439,
     "Region": "East Asia & Pacific",
-    "Country": "Republic of Korea"
+    "Country": "Republic of Korea",
+    "Code": "KOR"
   },
   {
     "1800": 81280,
@@ -7647,7 +7736,8 @@
     "2014": 3753121,
     "2015": 3892115,
     "Region": "Middle East & North Africa",
-    "Country": "Kuwait"
+    "Country": "Kuwait",
+    "Code": "KWT"
   },
   {
     "1800": 530343,
@@ -7732,7 +7822,8 @@
     "2014": 5843617,
     "2015": 5939962,
     "Region": "Europe & Central Asia",
-    "Country": "Kyrgyzstan"
+    "Country": "Kyrgyzstan",
+    "Code": "KGZ"
   },
   {
     "1800": 470000,
@@ -7817,7 +7908,8 @@
     "2014": 6689300,
     "2015": 6802023,
     "Region": "East Asia & Pacific",
-    "Country": "Laos"
+    "Country": "Laos",
+    "Code": "LAO"
   },
   {
     "1800": 590588,
@@ -7902,7 +7994,8 @@
     "2014": 1989354,
     "2015": 1970503,
     "Region": "Europe & Central Asia",
-    "Country": "Latvia"
+    "Country": "Latvia",
+    "Code": "LVA"
   },
   {
     "1800": 332000,
@@ -7987,7 +8080,8 @@
     "2014": 5612096,
     "2015": 5850743,
     "Region": "Middle East & North Africa",
-    "Country": "Lebanon"
+    "Country": "Lebanon",
+    "Code": "LBN"
   },
   {
     "1800": 276361,
@@ -8072,7 +8166,8 @@
     "2014": 2109197,
     "2015": 2135022,
     "Region": "Sub-Saharan Africa",
-    "Country": "Lesotho"
+    "Country": "Lesotho",
+    "Code": "LSO"
   },
   {
     "1800": 313543,
@@ -8157,7 +8252,8 @@
     "2014": 4396554,
     "2015": 4503438,
     "Region": "Sub-Saharan Africa",
-    "Country": "Liberia"
+    "Country": "Liberia",
+    "Code": "LBR"
   },
   {
     "1800": 531472,
@@ -8242,7 +8338,8 @@
     "2014": 6258984,
     "2015": 6278438,
     "Region": "Middle East & North Africa",
-    "Country": "Libya"
+    "Country": "Libya",
+    "Code": "LBY"
   },
   {
     "1800": 5802,
@@ -8327,7 +8424,8 @@
     "2014": 37286,
     "2015": 37531,
     "Region": "Europe & Central Asia",
-    "Country": "Liechtenstein"
+    "Country": "Liechtenstein",
+    "Code": "LIE"
   },
   {
     "1800": 778655,
@@ -8412,7 +8510,8 @@
     "2014": 2916798,
     "2015": 2878405,
     "Region": "Europe & Central Asia",
-    "Country": "Lithuania"
+    "Country": "Lithuania",
+    "Code": "LTU"
   },
   {
     "1800": 127030,
@@ -8497,7 +8596,8 @@
     "2014": 556573,
     "2015": 567110,
     "Region": "Europe & Central Asia",
-    "Country": "Luxembourg"
+    "Country": "Luxembourg",
+    "Code": "LUX"
   },
   {
     "1800": 391865,
@@ -8582,7 +8682,8 @@
     "2014": 2075625,
     "2015": 2078453,
     "Region": "Europe & Central Asia",
-    "Country": "Macedonia"
+    "Country": "Macedonia",
+    "Code": "MKD"
   },
   {
     "1800": 1543133,
@@ -8667,7 +8768,8 @@
     "2014": 23571713,
     "2015": 24235390,
     "Region": "Sub-Saharan Africa",
-    "Country": "Madagascar"
+    "Country": "Madagascar",
+    "Code": "MDG"
   },
   {
     "1800": 737000,
@@ -8752,7 +8854,8 @@
     "2014": 16695253,
     "2015": 17215232,
     "Region": "Sub-Saharan Africa",
-    "Country": "Malawi"
+    "Country": "Malawi",
+    "Code": "MWI"
   },
   {
     "1800": 287000,
@@ -8837,7 +8940,8 @@
     "2014": 29901997,
     "2015": 30331007,
     "Region": "East Asia & Pacific",
-    "Country": "Malaysia"
+    "Country": "Malaysia",
+    "Code": "MYS"
   },
   {
     "1800": 42378,
@@ -8922,7 +9026,8 @@
     "2014": 357415,
     "2015": 363657,
     "Region": "South Asia",
-    "Country": "Maldives"
+    "Country": "Maldives",
+    "Code": "MDV"
   },
   {
     "1800": 1403398,
@@ -9007,7 +9112,8 @@
     "2014": 17086022,
     "2015": 17599694,
     "Region": "Sub-Saharan Africa",
-    "Country": "Mali"
+    "Country": "Mali",
+    "Code": "MLI"
   },
   {
     "1800": 134072,
@@ -9092,7 +9198,8 @@
     "2014": 417723,
     "2015": 418670,
     "Region": "Europe & Central Asia",
-    "Country": "Malta"
+    "Country": "Malta",
+    "Code": "MLT"
   },
   {
     "1800": 5828,
@@ -9177,7 +9284,8 @@
     "2014": 52898,
     "2015": 52993,
     "Region": "East Asia & Pacific",
-    "Country": "Marshall Islands"
+    "Country": "Marshall Islands",
+    "Code": "MHL"
   },
   {
     "1800": 382696,
@@ -9262,7 +9370,8 @@
     "2014": 3969625,
     "2015": 4067564,
     "Region": "Sub-Saharan Africa",
-    "Country": "Mauritania"
+    "Country": "Mauritania",
+    "Code": "MRT"
   },
   {
     "1800": 62865,
@@ -9347,7 +9456,8 @@
     "2014": 1268567,
     "2015": 1273212,
     "Region": "Sub-Saharan Africa",
-    "Country": "Mauritius"
+    "Country": "Mauritius",
+    "Code": "MUS"
   },
   {
     "1800": 6181708,
@@ -9432,7 +9542,8 @@
     "2014": 125385833,
     "2015": 127017224,
     "Region": "America",
-    "Country": "Mexico"
+    "Country": "Mexico",
+    "Code": "MEX"
   },
   {
     "1800": 16416,
@@ -9517,7 +9628,8 @@
     "2014": 104044,
     "2015": 104460,
     "Region": "East Asia & Pacific",
-    "Country": "Micronesia (Federated States of)"
+    "Country": "Micronesia (Federated States of)",
+    "Code": "FSM"
   },
   {
     "1800": 712558,
@@ -9602,7 +9714,8 @@
     "2014": 4072340,
     "2015": 4068897,
     "Region": "Europe & Central Asia",
-    "Country": "Moldova"
+    "Country": "Moldova",
+    "Code": "MDA"
   },
   {
     "1800": 7789,
@@ -9687,7 +9800,8 @@
     "2014": 37623,
     "2015": 37731,
     "Region": "Europe & Central Asia",
-    "Country": "Monaco"
+    "Country": "Monaco",
+    "Code": "MCO"
   },
   {
     "1800": 619000,
@@ -9772,7 +9886,8 @@
     "2014": 2909871,
     "2015": 2959134,
     "Region": "East Asia & Pacific",
-    "Country": "Mongolia"
+    "Country": "Mongolia",
+    "Code": "MNG"
   },
   {
     "1800": 126582,
@@ -9857,7 +9972,8 @@
     "2014": 625292,
     "2015": 625781,
     "Region": "Europe & Central Asia",
-    "Country": "Montenegro"
+    "Country": "Montenegro",
+    "Code": "MNE"
   },
   {
     "1800": 2503218,
@@ -9942,7 +10058,8 @@
     "2014": 33921203,
     "2015": 34377511,
     "Region": "Middle East & North Africa",
-    "Country": "Morocco"
+    "Country": "Morocco",
+    "Code": "MAR"
   },
   {
     "1800": 1982324,
@@ -10027,7 +10144,8 @@
     "2014": 27216276,
     "2015": 27977863,
     "Region": "Sub-Saharan Africa",
-    "Country": "Mozambique"
+    "Country": "Mozambique",
+    "Code": "MOZ"
   },
   {
     "1800": 3506000,
@@ -10112,7 +10230,8 @@
     "2014": 53437159,
     "2015": 53897154,
     "Region": "East Asia & Pacific",
-    "Country": "Myanmar"
+    "Country": "Myanmar",
+    "Code": "MMR"
   },
   {
     "1800": 229000,
@@ -10197,7 +10316,8 @@
     "2014": 2402858,
     "2015": 2458830,
     "Region": "Sub-Saharan Africa",
-    "Country": "Namibia"
+    "Country": "Namibia",
+    "Code": "NAM"
   },
   {
     "1800": 1834,
@@ -10282,7 +10402,8 @@
     "2014": 10176,
     "2015": 10222,
     "Region": "East Asia & Pacific",
-    "Country": "Nauru"
+    "Country": "Nauru",
+    "Code": "NRU"
   },
   {
     "1800": 3881000,
@@ -10367,7 +10488,8 @@
     "2014": 28174724,
     "2015": 28513700,
     "Region": "South Asia",
-    "Country": "Nepal"
+    "Country": "Nepal",
+    "Code": "NPL"
   },
   {
     "1800": 2254522,
@@ -10452,7 +10574,8 @@
     "2014": 16868020,
     "2015": 16924929,
     "Region": "Europe & Central Asia",
-    "Country": "Netherlands"
+    "Country": "Netherlands",
+    "Code": "NLD"
   },
   {
     "1800": 100000,
@@ -10537,7 +10660,8 @@
     "2014": 4495482,
     "2015": 4528526,
     "Region": "East Asia & Pacific",
-    "Country": "New Zealand"
+    "Country": "New Zealand",
+    "Code": "NZL"
   },
   {
     "1800": 219387,
@@ -10622,7 +10746,8 @@
     "2014": 6013913,
     "2015": 6082032,
     "Region": "America",
-    "Country": "Nicaragua"
+    "Country": "Nicaragua",
+    "Code": "NIC"
   },
   {
     "1800": 1244861,
@@ -10707,7 +10832,8 @@
     "2014": 19113728,
     "2015": 19899120,
     "Region": "Sub-Saharan Africa",
-    "Country": "Niger"
+    "Country": "Niger",
+    "Code": "NER"
   },
   {
     "1800": 12100855,
@@ -10792,7 +10918,8 @@
     "2014": 177475986,
     "2015": 182201962,
     "Region": "Sub-Saharan Africa",
-    "Country": "Nigeria"
+    "Country": "Nigeria",
+    "Code": "NGA"
   },
   {
     "1800": 868570,
@@ -10877,7 +11004,8 @@
     "2014": 5147970,
     "2015": 5210967,
     "Region": "Europe & Central Asia",
-    "Country": "Norway"
+    "Country": "Norway",
+    "Code": "NOR"
   },
   {
     "1800": 318000,
@@ -10962,7 +11090,8 @@
     "2014": 4236057,
     "2015": 4490541,
     "Region": "Middle East & North Africa",
-    "Country": "Oman"
+    "Country": "Oman",
+    "Code": "OMN"
   },
   {
     "1800": 13123633,
@@ -11047,7 +11176,8 @@
     "2014": 185044286,
     "2015": 188924874,
     "Region": "South Asia",
-    "Country": "Pakistan"
+    "Country": "Pakistan",
+    "Code": "PAK"
   },
   {
     "1800": 3875,
@@ -11132,7 +11262,8 @@
     "2014": 21097,
     "2015": 21291,
     "Region": "East Asia & Pacific",
-    "Country": "Palau"
+    "Country": "Palau",
+    "Code": "PLW"
   },
   {
     "1800": 78842,
@@ -11217,7 +11348,8 @@
     "2014": 3867535,
     "2015": 3929141,
     "Region": "America",
-    "Country": "Panama"
+    "Country": "Panama",
+    "Code": "PAN"
   },
   {
     "1800": 754894,
@@ -11302,7 +11434,8 @@
     "2014": 7463577,
     "2015": 7619321,
     "Region": "East Asia & Pacific",
-    "Country": "Papua New Guinea"
+    "Country": "Papua New Guinea",
+    "Code": "PNG"
   },
   {
     "1800": 143000,
@@ -11387,7 +11520,8 @@
     "2014": 6552518,
     "2015": 6639123,
     "Region": "America",
-    "Country": "Paraguay"
+    "Country": "Paraguay",
+    "Code": "PRY"
   },
   {
     "1800": 1314151,
@@ -11472,7 +11606,8 @@
     "2014": 30973148,
     "2015": 31376670,
     "Region": "America",
-    "Country": "Peru"
+    "Country": "Peru",
+    "Code": "PER"
   },
   {
     "1800": 1894389,
@@ -11557,7 +11692,8 @@
     "2014": 99138690,
     "2015": 100699395,
     "Region": "East Asia & Pacific",
-    "Country": "Philippines"
+    "Country": "Philippines",
+    "Code": "PHL"
   },
   {
     "1800": 9508747,
@@ -11642,7 +11778,8 @@
     "2014": 38619974,
     "2015": 38611794,
     "Region": "Europe & Central Asia",
-    "Country": "Poland"
+    "Country": "Poland",
+    "Code": "POL"
   },
   {
     "1800": 3033454,
@@ -11727,7 +11864,8 @@
     "2014": 10402343,
     "2015": 10349803,
     "Region": "Europe & Central Asia",
-    "Country": "Portugal"
+    "Country": "Portugal",
+    "Code": "PRT"
   },
   {
     "1800": 14092,
@@ -11812,7 +11950,8 @@
     "2014": 2172065,
     "2015": 2235355,
     "Region": "Middle East & North Africa",
-    "Country": "Qatar"
+    "Country": "Qatar",
+    "Code": "QAT"
   },
   {
     "1800": 5464085,
@@ -11897,7 +12036,8 @@
     "2014": 19651554,
     "2015": 19511324,
     "Region": "Europe & Central Asia",
-    "Country": "Romania"
+    "Country": "Romania",
+    "Code": "ROU"
   },
   {
     "1800": 31088398,
@@ -11982,7 +12122,8 @@
     "2014": 143429435,
     "2015": 143456918,
     "Region": "Europe & Central Asia",
-    "Country": "Russia"
+    "Country": "Russia",
+    "Code": "RUS"
   },
   {
     "1800": 928368,
@@ -12067,7 +12208,8 @@
     "2014": 11341544,
     "2015": 11609666,
     "Region": "Sub-Saharan Africa",
-    "Country": "Rwanda"
+    "Country": "Rwanda",
+    "Code": "RWA"
   },
   {
     "1800": 17202,
@@ -12152,7 +12294,8 @@
     "2014": 54944,
     "2015": 55572,
     "Region": "America",
-    "Country": "Saint Kitts and Nevis"
+    "Country": "Saint Kitts and Nevis",
+    "Code": "KNA"
   },
   {
     "1800": 24000,
@@ -12237,7 +12380,8 @@
     "2014": 183645,
     "2015": 184999,
     "Region": "America",
-    "Country": "Saint Lucia"
+    "Country": "Saint Lucia",
+    "Code": "LCA"
   },
   {
     "1800": 25781,
@@ -12322,7 +12466,8 @@
     "2014": 109360,
     "2015": 109462,
     "Region": "America",
-    "Country": "Saint Vincent and the Grenadines"
+    "Country": "Saint Vincent and the Grenadines",
+    "Code": "VCT"
   },
   {
     "1800": 47300,
@@ -12407,7 +12552,8 @@
     "2014": 191845,
     "2015": 193228,
     "Region": "East Asia & Pacific",
-    "Country": "Samoa"
+    "Country": "Samoa",
+    "Code": "WSM"
   },
   {
     "1800": 5492,
@@ -12492,7 +12638,8 @@
     "2014": 31595,
     "2015": 31781,
     "Region": "Europe & Central Asia",
-    "Country": "San Marino"
+    "Country": "San Marino",
+    "Code": "SMR"
   },
   {
     "1800": 22731,
@@ -12577,7 +12724,8 @@
     "2014": 186342,
     "2015": 190344,
     "Region": "Sub-Saharan Africa",
-    "Country": "Sao Tome and Principe"
+    "Country": "Sao Tome and Principe",
+    "Code": "STP"
   },
   {
     "1800": 2091000,
@@ -12662,7 +12810,8 @@
     "2014": 30886545,
     "2015": 31540372,
     "Region": "Middle East & North Africa",
-    "Country": "Saudi Arabia"
+    "Country": "Saudi Arabia",
+    "Code": "SAU"
   },
   {
     "1800": 1009886,
@@ -12747,7 +12896,8 @@
     "2014": 14672557,
     "2015": 15129273,
     "Region": "Sub-Saharan Africa",
-    "Country": "Senegal"
+    "Country": "Senegal",
+    "Code": "SEN"
   },
   {
     "1800": 2147197,
@@ -12832,7 +12982,8 @@
     "2014": 8892815,
     "2015": 8850975,
     "Region": "Europe & Central Asia",
-    "Country": "Republic of Serbia"
+    "Country": "Republic of Serbia",
+    "Code": "SRB"
   },
   {
     "1800": 12522,
@@ -12917,7 +13068,8 @@
     "2014": 95868,
     "2015": 96471,
     "Region": "Sub-Saharan Africa",
-    "Country": "Seychelles"
+    "Country": "Seychelles",
+    "Code": "SYC"
   },
   {
     "1800": 794264,
@@ -13002,7 +13154,8 @@
     "2014": 6315627,
     "2015": 6453184,
     "Region": "Sub-Saharan Africa",
-    "Country": "Sierra Leone"
+    "Country": "Sierra Leone",
+    "Code": "SLE"
   },
   {
     "1800": 30000,
@@ -13087,7 +13240,8 @@
     "2014": 5506586,
     "2015": 5603740,
     "Region": "East Asia & Pacific",
-    "Country": "Singapore"
+    "Country": "Singapore",
+    "Code": "SGP"
   },
   {
     "1800": 2140651,
@@ -13172,7 +13326,8 @@
     "2014": 5422861,
     "2015": 5426258,
     "Region": "Europe & Central Asia",
-    "Country": "Slovakia"
+    "Country": "Slovakia",
+    "Code": "SVK"
   },
   {
     "1800": 469664,
@@ -13257,7 +13412,8 @@
     "2014": 2066068,
     "2015": 2067526,
     "Region": "Europe & Central Asia",
-    "Country": "Slovenia"
+    "Country": "Slovenia",
+    "Code": "SVN"
   },
   {
     "1800": 56998,
@@ -13342,7 +13498,8 @@
     "2014": 572171,
     "2015": 583591,
     "Region": "East Asia & Pacific",
-    "Country": "Solomon Islands"
+    "Country": "Solomon Islands",
+    "Code": "SLB"
   },
   {
     "1800": 991488,
@@ -13427,7 +13584,8 @@
     "2014": 10517569,
     "2015": 10787104,
     "Region": "Sub-Saharan Africa",
-    "Country": "Somalia"
+    "Country": "Somalia",
+    "Code": "SOM"
   },
   {
     "1800": 1440820,
@@ -13512,7 +13670,8 @@
     "2014": 53969054,
     "2015": 54490406,
     "Region": "Sub-Saharan Africa",
-    "Country": "South Africa"
+    "Country": "South Africa",
+    "Code": "ZAF"
   },
   {
     "1800": 11549294,
@@ -13597,7 +13756,8 @@
     "2014": 46259716,
     "2015": 46121699,
     "Region": "Europe & Central Asia",
-    "Country": "Spain"
+    "Country": "Spain",
+    "Code": "ESP"
   },
   {
     "1800": 1213000,
@@ -13682,7 +13842,8 @@
     "2014": 20618991,
     "2015": 20715010,
     "Region": "South Asia",
-    "Country": "Sri Lanka"
+    "Country": "Sri Lanka",
+    "Code": "LKA"
   },
   {
     "1800": 3994154,
@@ -13767,7 +13928,8 @@
     "2014": 39350274,
     "2015": 40234882,
     "Region": "Sub-Saharan Africa",
-    "Country": "Sudan"
+    "Country": "Sudan",
+    "Code": "SDN"
   },
   {
     "1800": 80721,
@@ -13852,7 +14014,8 @@
     "2014": 538248,
     "2015": 542975,
     "Region": "America",
-    "Country": "Suriname"
+    "Country": "Suriname",
+    "Code": "SUR"
   },
   {
     "1800": 86000,
@@ -13937,7 +14100,8 @@
     "2014": 1269112,
     "2015": 1286970,
     "Region": "Sub-Saharan Africa",
-    "Country": "Swaziland"
+    "Country": "Swaziland",
+    "Code": "SWZ"
   },
   {
     "1800": 2354189,
@@ -14022,7 +14186,8 @@
     "2014": 9703247,
     "2015": 9779426,
     "Region": "Europe & Central Asia",
-    "Country": "Sweden"
+    "Country": "Sweden",
+    "Code": "SWE"
   },
   {
     "1800": 1826051,
@@ -14107,7 +14272,8 @@
     "2014": 8211383,
     "2015": 8298663,
     "Region": "Europe & Central Asia",
-    "Country": "Switzerland"
+    "Country": "Switzerland",
+    "Code": "CHE"
   },
   {
     "1800": 1337000,
@@ -14192,7 +14358,8 @@
     "2014": 18772481,
     "2015": 18502413,
     "Region": "Middle East & North Africa",
-    "Country": "Syria"
+    "Country": "Syria",
+    "Code": "SYR"
   },
   {
     "1800": "",
@@ -14277,7 +14444,8 @@
     "2014": "",
     "2015": "",
     "Region": "East Asia & Pacific",
-    "Country": "Taiwan"
+    "Country": "Taiwan",
+    "Code": "TWN"
   },
   {
     "1800": 466629,
@@ -14362,7 +14530,8 @@
     "2014": 8295840,
     "2015": 8481855,
     "Region": "Europe & Central Asia",
-    "Country": "Tajikistan"
+    "Country": "Tajikistan",
+    "Code": "TJK"
   },
   {
     "1800": 4665000,
@@ -14447,7 +14616,8 @@
     "2014": 67725979,
     "2015": 67959359,
     "Region": "East Asia & Pacific",
-    "Country": "Thailand"
+    "Country": "Thailand",
+    "Code": "THA"
   },
   {
     "1800": 137262,
@@ -14532,7 +14702,8 @@
     "2014": 1157360,
     "2015": 1184765,
     "Region": "East Asia & Pacific",
-    "Country": "East Timor"
+    "Country": "East Timor",
+    "Code": "TLS"
   },
   {
     "1800": 445985,
@@ -14617,7 +14788,8 @@
     "2014": 7115163,
     "2015": 7304578,
     "Region": "Sub-Saharan Africa",
-    "Country": "Togo"
+    "Country": "Togo",
+    "Code": "TGO"
   },
   {
     "1800": 18658,
@@ -14702,7 +14874,8 @@
     "2014": 105586,
     "2015": 106170,
     "Region": "East Asia & Pacific",
-    "Country": "Tonga"
+    "Country": "Tonga",
+    "Code": "TON"
   },
   {
     "1800": 60000,
@@ -14787,7 +14960,8 @@
     "2014": 1354483,
     "2015": 1360088,
     "Region": "America",
-    "Country": "Trinidad and Tobago"
+    "Country": "Trinidad and Tobago",
+    "Code": "TTO"
   },
   {
     "1800": 862029,
@@ -14872,7 +15046,8 @@
     "2014": 11130154,
     "2015": 11253554,
     "Region": "Middle East & North Africa",
-    "Country": "Tunisia"
+    "Country": "Tunisia",
+    "Code": "TUN"
   },
   {
     "1800": 9773456,
@@ -14957,7 +15132,8 @@
     "2014": 77523788,
     "2015": 78665830,
     "Region": "Europe & Central Asia",
-    "Country": "Turkey"
+    "Country": "Turkey",
+    "Code": "TUR"
   },
   {
     "1800": 367215,
@@ -15042,7 +15218,8 @@
     "2014": 5307188,
     "2015": 5373502,
     "Region": "Europe & Central Asia",
-    "Country": "Turkmenistan"
+    "Country": "Turkmenistan",
+    "Code": "TKM"
   },
   {
     "1800": 2499,
@@ -15127,7 +15304,8 @@
     "2014": 9893,
     "2015": 9916,
     "Region": "East Asia & Pacific",
-    "Country": "Tuvalu"
+    "Country": "Tuvalu",
+    "Code": "TUV"
   },
   {
     "1800": 2101397,
@@ -15212,7 +15390,8 @@
     "2014": 37782971,
     "2015": 39032383,
     "Region": "Sub-Saharan Africa",
-    "Country": "Uganda"
+    "Country": "Uganda",
+    "Code": "UGA"
   },
   {
     "1800": 11215490,
@@ -15297,7 +15476,8 @@
     "2014": 45002497,
     "2015": 44823765,
     "Region": "Europe & Central Asia",
-    "Country": "Ukraine"
+    "Country": "Ukraine",
+    "Code": "UKR"
   },
   {
     "1800": 40153,
@@ -15382,7 +15562,8 @@
     "2014": 9086139,
     "2015": 9156963,
     "Region": "Middle East & North Africa",
-    "Country": "United Arab Emirates"
+    "Country": "United Arab Emirates",
+    "Code": "ARE"
   },
   {
     "1800": 12327466,
@@ -15467,7 +15648,8 @@
     "2014": 64331348,
     "2015": 64715810,
     "Region": "Europe & Central Asia",
-    "Country": "United Kingdom"
+    "Country": "United Kingdom",
+    "Code": "GBR"
   },
   {
     "1800": 6801854,
@@ -15552,7 +15734,8 @@
     "2014": 319448634,
     "2015": 321773631,
     "Region": "America",
-    "Country": "United States of America"
+    "Country": "United States of America",
+    "Code": "USA"
   },
   {
     "1800": 55000,
@@ -15637,7 +15820,8 @@
     "2014": 3419516,
     "2015": 3431555,
     "Region": "America",
-    "Country": "Uruguay"
+    "Country": "Uruguay",
+    "Code": "URY"
   },
   {
     "1800": 1919159,
@@ -15722,7 +15906,8 @@
     "2014": 29469913,
     "2015": 29893488,
     "Region": "Europe & Central Asia",
-    "Country": "Uzbekistan"
+    "Country": "Uzbekistan",
+    "Code": "UZB"
   },
   {
     "1800": 27791,
@@ -15807,7 +15992,8 @@
     "2014": 258883,
     "2015": 264652,
     "Region": "East Asia & Pacific",
-    "Country": "Vanuatu"
+    "Country": "Vanuatu",
+    "Code": "VUT"
   },
   {
     "1800": 718000,
@@ -15892,7 +16078,8 @@
     "2014": 30693827,
     "2015": 31108083,
     "Region": "America",
-    "Country": "Venezuela"
+    "Country": "Venezuela",
+    "Code": "VEN"
   },
   {
     "1800": 6551000,
@@ -15977,7 +16164,8 @@
     "2014": 92423338,
     "2015": 93447601,
     "Region": "East Asia & Pacific",
-    "Country": "Vietnam"
+    "Country": "Vietnam",
+    "Code": "VNM"
   },
   {
     "1800": 2593000,
@@ -16062,92 +16250,8 @@
     "2014": 26183676,
     "2015": 26832215,
     "Region": "Middle East & North Africa",
-    "Country": "Yemen"
-  },
-  {
-    "1800": "",
-    "1810": "",
-    "1820": "",
-    "1830": "",
-    "1840": "",
-    "1850": "",
-    "1860": "",
-    "1870": "",
-    "1880": "",
-    "1890": "",
-    "1900": "",
-    "1910": "",
-    "1920": "",
-    "1930": "",
-    "1940": "",
-    "1950": 16285527,
-    "1951": 16508307,
-    "1952": 16721448,
-    "1953": 16932116,
-    "1954": 17150576,
-    "1955": 17340801,
-    "1956": 17510157,
-    "1957": 17654088,
-    "1958": 17807603,
-    "1959": 17965403,
-    "1960": 18139623,
-    "1961": 18316990,
-    "1962": 18501105,
-    "1963": 18679169,
-    "1964": 18858421,
-    "1965": 19037222,
-    "1966": 19216550,
-    "1967": 19387937,
-    "1968": 19549164,
-    "1969": 19698958,
-    "1970": 19853091,
-    "1971": 20017270,
-    "1972": 20193164,
-    "1973": 20371551,
-    "1974": 20549722,
-    "1975": 20737095,
-    "1976": 20929122,
-    "1977": 21121527,
-    "1978": 21308445,
-    "1979": 21471502,
-    "1980": 21604186,
-    "1981": 21735672,
-    "1982": 21870039,
-    "1983": 21996567,
-    "1984": 22107018,
-    "1985": 22214111,
-    "1986": 22330236,
-    "1987": 22436996,
-    "1988": 22535350,
-    "1989": 22630149,
-    "1990": 22807408,
-    "1991": 22958130,
-    "1992": 23025402,
-    "1993": 22974921,
-    "1994": 22954514,
-    "1995": 22996206,
-    "1996": 23049738,
-    "1997": 23123738,
-    "1998": 23199235,
-    "1999": 23280653,
-    "2000": 23346140,
-    "2001": 23428536,
-    "2002": 23525010,
-    "2003": 23617032,
-    "2004": 23719918,
-    "2005": 23811905,
-    "2006": 23887171,
-    "2007": 23946096,
-    "2008": 23988543,
-    "2009": "",
-    "2010": "",
-    "2011": "",
-    "2012": "",
-    "2013": "",
-    "2014": "",
-    "2015": "",
-    "Region": "Europe & Central Asia",
-    "Country": "Yugoslavia"
+    "Country": "Yemen",
+    "Code": "YEM"
   },
   {
     "1800": 747000,
@@ -16232,7 +16336,8 @@
     "2014": 15721343,
     "2015": 16211767,
     "Region": "Sub-Saharan Africa",
-    "Country": "Zambia"
+    "Country": "Zambia",
+    "Code": "ZMB"
   },
   {
     "1800": 1085814,
@@ -16317,7 +16422,8 @@
     "2014": 15245855,
     "2015": 15602751,
     "Region": "Sub-Saharan Africa",
-    "Country": "Zimbabwe"
+    "Country": "Zimbabwe",
+    "Code": "ZWE"
   },
   {
     "1800": 1027378,
@@ -16402,7 +16508,8 @@
     "2014": 11911184,
     "2015": 12339812,
     "Region": "Sub-Saharan Africa",
-    "Country": "South Sudan"
+    "Country": "South Sudan",
+    "Code": "SSD"
   },
   {
     "1800": 3019768,
@@ -16487,7 +16594,8 @@
     "2014": 51822621,
     "2015": 53470420,
     "Region": "Sub-Saharan Africa",
-    "Country": "United Republic of Tanzania"
+    "Country": "United Republic of Tanzania",
+    "Code": "TZA"
   },
   {
     "1800": 55716,
@@ -16572,7 +16680,8 @@
     "2014": 513906,
     "2015": 520502,
     "Region": "Sub-Saharan Africa",
-    "Country": "Cape Verde"
+    "Country": "Cape Verde",
+    "Code": "CPV"
   },
   {
     "1800": 9584,
@@ -16657,7 +16766,8 @@
     "2014": 56211,
     "2015": 56186,
     "Region": "Europe & Central Asia",
-    "Country": "Greenland"
+    "Country": "Greenland",
+    "Code": "GRL"
   },
   {
     "1800": 29432,
@@ -16742,7 +16852,8 @@
     "2014": 259800,
     "2015": 263118,
     "Region": "East Asia & Pacific",
-    "Country": "New Caledonia"
+    "Country": "New Caledonia",
+    "Code": "NCL"
   },
   {
     "1800": 155000,
@@ -16827,7 +16938,8 @@
     "2014": 3686517,
     "2015": 3683238,
     "Region": "America",
-    "Country": "Puerto Rico"
+    "Country": "Puerto Rico",
+    "Code": "PRI"
   },
   {
     "1800": 165944,
@@ -16912,6 +17024,7 @@
     "2014": 4542059,
     "2015": 4668466,
     "Region": "Middle East & North Africa",
-    "Country": "Palestine"
+    "Country": "Palestine",
+    "Code": "PSE"
   }
 ]
