@@ -20,6 +20,7 @@ class FetchIncomeData
     return {
       country: d.country,
       region: d.region,
+      code: d.code,
       male: male_data,
       female: female_data,
       diff: percentage_gap

@@ -29,6 +29,68 @@ line.grid {
   stroke: #ccc;
 }
 
+.grid:hover, .grid.hover {
+  stroke: #2E72B1;
+  stroke-width: 1.5px;
+}
+
+.grid .selected {
+
+}
+
+.info-text {
+  padding: 2px;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  word-break: break-word;
+  font-size: 16px;
+}
+
+#data-text {
+  color: #002564;
+  margin: 5px;
+  font-size: 14px;
+}
+
+#country-text {
+  color: #fff;
+}
+
+#year-text {
+  color: #003F7E;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.info-circle {
+  fill: #fff;
+}
+
+#country-circle {
+  fill: #00407E;
+}
+
+#year-circle {
+  stroke-width: 5px;
+  stroke: #165997;
+}
+
+#data-circle {
+  stroke-width: 5px;
+  stroke: #3073B1;
+}
+
+div.country-label {
+  position: absolute;
+  color: #498CCA;
+  text-align: center;
+  padding: 3px;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: 'Oswald', sans-serif;
+  pointer-events: none;
+}
+
 .axis path,
 .axis line {
   fill: none;

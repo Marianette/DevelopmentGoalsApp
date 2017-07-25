@@ -27,31 +27,59 @@ function checkValidIncomeYear(newYear){
 }
 
 function showDataInformation(d){
-  // update three data circles = country, year, data
-  // display country name under x axis
-  // highlight line
+  // Show country name
+  var textBox = d3.select("#country-text").html("<b>Country</b><br/>" + d.country);
+  var margin = (d.country.length > 25)? "0px": null; // reduce margin size for long names
+  textBox.style("margin", margin);
+  // Show current year
+  d3.select("#year-text")
+  .html("<b>Year</b> <br/>" + incomeCurrentYear);
+  // Give detailed data
+  d3.select("#data-text")
+  .html(getDataInfo(d));
+
+  var left = dotPlotWidthScale(d.country) + dotPlotWidthScale.rangeBand()/2;
+  var label = d3.select(".country-label")
+  .html(d.country)
+  .style("left", left + "px")
+  .style("top", "460px");
+  label.transition()
+  .duration(100)
+  .style("opacity", 1);
+
+  // Highlight grid line
+  d3.select("#" + getIncomeId(d)).classed("hover", true);
 }
 
 function hideDataInformation(d){
-  // unhighlight line
+  d3.select(".country-label").transition()
+  .duration(400)
+  .style("opacity", 0);
+
+  // Un-highlight grid line
+  d3.select("#" + getIncomeId(d)).classed("hover", false);
 }
 
 function getIncomeId(d){
-  var name = d.country;
-  name.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "");
-  return "code_" + name;
+  return "code_" + d.code;
 }
 
 function getIncomeDotHoverMessage(d, dataset){
   if(dataset == "male"){
-    return "Male GNI for " + d.country + ": $" + d[dataset][incomeCurrentYear];
+    return "Male GNI: $" + d[dataset][incomeCurrentYear];
   } else if (dataset == "female"){
-    return "Female GNI for " + d.country + ": $" + d[dataset][incomeCurrentYear];
+    return "Female GNI: $" + d[dataset][incomeCurrentYear];
   }
-  return "Female GNI  for " + d.country + " is </br> " + d[dataset][incomeCurrentYear] + "% less than the male GNI"
+  return "Difference: " + d[dataset][incomeCurrentYear] + "%";
 }
 
 function getIncomePlotTitle(){
   if(incomeDataDisplayed == "male") return "Estimated Gross National Income (GNI) Male vs. Female";
   return "Percentage Difference Between Male GNI and Female GNI";
+}
+
+function getDataInfo(d){
+  if(incomeDataDisplayed == "diff")
+    return "Female GNI is " + d[incomeDataDisplayed][incomeCurrentYear] + "% less than male GNI";
+  return "<b>Estimated GNI</b></br>Male: $" + d.male[incomeCurrentYear] + "</br>Female: $" + d.female[incomeCurrentYear];
 }

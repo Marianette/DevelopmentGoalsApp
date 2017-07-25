@@ -4,9 +4,9 @@ $(function(){
   $("#income-year-slider").on("change", function(){
     var newYear = $("#income-years-selector").val();
     newYear = checkValidIncomeYear(newYear);
+    $('#income-years-selector').val(newYear);
     if(incomeCurrentYear != newYear){
       incomeCurrentYear = newYear;
-      $('#income-years-selector').val(incomeCurrentYear);
       updateDotPlot();
     }
   });

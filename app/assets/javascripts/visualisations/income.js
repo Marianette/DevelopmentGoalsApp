@@ -34,11 +34,16 @@ function initIncomeVis(id) {
   .attr("dy", "12")
   .text(label);
 
-  // TODO Create data circles
+  // Create information circles
+  createInformationCircles();
 
   // Create tooltip for on hover of dots
   dotToolTip = d3.select("body").append("div")
   .attr("class", "tooltip")
+  .style("opacity", 0);
+
+  d3.select("body").append("div")
+  .attr("class", "country-label")
   .style("opacity", 0);
 
   drawIncomeVisualisation();
@@ -98,7 +103,7 @@ function drawIncomeVisualisation() {
 
   dotPlotSvg.append("g")
   .attr("class", "x axis")
-  .attr("transform", "translate(0," + plotHeight + ")")
+  .attr("transform", "translate(0," + (plotHeight  + 1)+ ")")
   .call(xAxis);
 }
 
@@ -130,13 +135,53 @@ function createDots(id){
     .duration(200)
     .style("opacity", 0);
 
-    hideDataInformation();
+    hideDataInformation(d);
   })
 
   // Apply ease in effect
   dots.transition()
     .duration(750)
     .attr("r", dotPlotWidthScale.rangeBand()/2);
+}
+
+function createInformationCircles(){
+  var radius = 65,
+  x      = plotWidth - radius,
+  y      = plotHeight/4.0,
+  side   = 2 * radius * Math.cos(Math.PI / 4),
+  dx     = radius - side / 2,
+  padding = 25;
+
+  var ids = ["data", "year", "country"];
+  for(var i in ids) {
+    var infoCircle = dotPlotSvg.append('g')
+    .attr('transform', 'translate(' + [ dx, dx ] + ')');
+
+    infoCircle.append('circle')
+    .attr("class", "info-circle")
+    .attr("id", ids[i] + "-circle")
+    .attr('cx', x)
+    .attr('cy', y)
+    .attr('r', radius);
+
+    infoCircle.append('foreignObject')
+    .attr('x', x - (side/2))
+    .attr('y', y - (side/2))
+    .attr('width', side)
+    .attr('height', side)
+    .append('xhtml:p')
+    .text('')
+    .attr("class", "info-text")
+    .attr("id", ids[i] + "-text");
+
+    // Update x for next circle
+    x = x - 2*radius - padding;
+  }
+
+  // Add temp text
+  d3.select("#country-text").html("Hover over data to view details");
+  d3.select("#data-text").html("Data");
+  d3.select("#year-text").html("Year");
 }
 
 function updateDotPlot(){
