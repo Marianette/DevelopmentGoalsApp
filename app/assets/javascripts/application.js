@@ -5,4 +5,4 @@
 //= require d3
 //= require_tree ./d3_assets
 //= require_tree ./visualisations
-//= require dom_load_scripts
+//= require material_design_init
