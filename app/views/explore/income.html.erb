@@ -21,6 +21,9 @@
             </p>
           </form>
         </div>
+        <div class="input-field col s2">
+        <%= select_tag "select-country", options_for_select(@countries.collect{ |c| [c, c]}, "") %>
+        </div>
       </div>
     </div>
   </div>

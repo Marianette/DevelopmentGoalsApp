@@ -52,10 +52,6 @@ function showDataInformation(d){
 }
 
 function hideDataInformation(d){
-  d3.select(".country-label").transition()
-  .duration(400)
-  .style("opacity", 0);
-
   // Un-highlight grid line
   d3.select("#" + getIncomeId(d)).classed("hover", false);
 }

@@ -147,7 +147,7 @@ function createDots(id){
 function createInformationCircles(){
   var radius = 65,
   x      = plotWidth - radius,
-  y      = plotHeight/4.0,
+  y      = plotHeight/4.5,
   side   = 2 * radius * Math.cos(Math.PI / 4),
   dx     = radius - side / 2,
   padding = 25;
@@ -186,6 +186,9 @@ function createInformationCircles(){
 
 function updateDotPlot(){
   removeDotElements();
+  d3.select(".country-label").transition()
+  .duration(400)
+  .style("opacity", 0);
 
   // Wait for line transition to finish before calling draw again
   dotPlotSvg.selectAll(".grid")
