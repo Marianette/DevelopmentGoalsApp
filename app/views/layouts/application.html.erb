@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DevelopmentGoalsApp</title>
+  <title>
+    <%=  "#{@title.present? ? "#{@title} -" : ""} Gender Equality Visualisations" %>
+  </title>
+
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application' %>
 </head>
 <body>

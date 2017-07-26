@@ -1,4 +1,4 @@
-// React to country selector
+// Adjust country selector
 $(function() {
   $('#select-country').select2();
 });
@@ -33,5 +33,11 @@ $(function(){
       $('#dot-plot-title').text(getIncomePlotTitle);
       updateDotPlot();
     }
+  });
+
+  // React to data change
+  $("#select-regions").on("change", function(){
+      changeDataSet(this.value);
+      updateDotPlot();
   });
 });

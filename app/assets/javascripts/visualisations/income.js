@@ -1,11 +1,12 @@
 // Income dot plot variables
-var incomeCurrentYear, incomeData, incomeDataDisplayed;
+var incomeCurrentYear, incomeData, incomeDataDisplayed, fullDataSet;
 // Income dot plot svg variables
 var plotWidth, plotHeight, dotPlotSvg, dotPlotWidthScale, dotPlotHeightScale,
 dotPlotMargins, dotToolTip;
 
 function initIncomeVis(id) {
-  incomeData = $(id).data("attr");
+  fullDataSet = $(id).data("attr");
+  incomeData = fullDataSet;
   incomeCurrentYear = 2015;
   incomeDataDisplayed = "male";
 
@@ -141,7 +142,7 @@ function createDots(id){
   // Apply ease in effect
   dots.transition()
     .duration(750)
-    .attr("r", dotPlotWidthScale.rangeBand()/2);
+    .attr("r", Math.min(15, dotPlotWidthScale.rangeBand()/2));
 }
 
 function createInformationCircles(){

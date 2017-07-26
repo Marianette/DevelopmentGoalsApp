@@ -20,7 +20,7 @@
           <form id="income-year-slider">
             <label>Select Year</label>
             <p class="range-field">
-              <input type="range" id="income-years-selector" min="<%= @min_year %>" max="<%= @max_year %>" value="<%= @max_year %>" />
+              <input type="range" id="income-years-selector" min="<%= @years.min %>" max="<%= @years.max %>" value="<%= @years.max %>" />
             </p>
           </form>
         </div>
@@ -32,6 +32,10 @@
             <a class="btn-floating" id="add-country" title="Select Country" onClick="highlightData(true);"><i class="material-icons">add</i></a>
             <a class="btn-floating" id="minus-country" title="Remove Country" onClick="highlightData(false);"><i class="material-icons">remove</i></a>
             <a class="btn-floating" id="clear-country" title="Clear All" onClick="highlightData(null);"><i class="material-icons">clear</i></a>
+        </div>
+        <div class="input-field col s2">
+        <label>Filter by Region</label>
+        <p><%= select_tag "select-regions", options_for_select(@regions, "World") %></p>
         </div>
       </div>
     </div>

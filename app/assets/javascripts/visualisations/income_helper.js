@@ -60,6 +60,13 @@ function selectCountry(code, selected){
   d3.select("#" + getIncomeId(code)).classed("selected", selected);
 }
 
+function changeDataSet(change){
+  incomeData = fullDataSet;
+  if(change != "World") {
+    incomeData = _.filter(fullDataSet, {region: change});
+  }
+}
+
 function clearSelections(){
   d3.selectAll('.selected').classed("selected", false);
 }
