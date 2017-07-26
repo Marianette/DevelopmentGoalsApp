@@ -30,10 +30,19 @@ function initIncomeVis(id) {
   var label = (incomeDataDisplayed == "male")? "$0" : "0%";
   dotPlotSvg.append("text")
   .attr("class", "ylabel")
+  .attr("id", 'bottom-y-label')
   .attr("transform", "translate(" + (dotPlotMargins.left/2) + "," + (plotHeight - dotPlotMargins.bottom/2) + ")")
   .style("text-anchor", "middle")
   .attr("dy", "12")
   .text(label);
+
+  // Create label for top value of y axis
+  dotPlotSvg.append("text")
+  .attr("class", "ylabel")
+  .attr("id", 'top-y-label')
+  .attr("transform", "translate(" + (dotPlotMargins.left/1.6) + ", -2)")
+  .style("text-anchor", "middle")
+  .attr("dy", "12");
 
   // Create information circles
   createInformationCircles();
@@ -56,11 +65,20 @@ function drawIncomeVisualisation() {
     return d3.descending(a[incomeDataDisplayed][incomeCurrentYear], b[incomeDataDisplayed][incomeCurrentYear]);
   });
 
-  var offset = (incomeDataDisplayed == "male")? 5000 : 10;
-  var dataMax = incomeData[0][incomeDataDisplayed][incomeCurrentYear] + offset;
+  // Calculate max data value and adjust y label and height scale
+  var dataMax = incomeData[0][incomeDataDisplayed][incomeCurrentYear];
+  var offset = 0.05 * dataMax;
+
+  // TODO delete these two lines for adjustable diff scale
+  dataMax = (incomeDataDisplayed == "diff")? 100: dataMax;
+  offset = (incomeDataDisplayed == "diff")? 0: offset;
+
+  // Add top y label text
+  var label = (incomeDataDisplayed == "male")? "$" + dataMax : dataMax + "%";
+  $('#top-y-label').text(label);
 
   // Redefine x and y scale for plot according to sorted data
-  dotPlotHeightScale.domain([0, dataMax]);
+  dotPlotHeightScale.domain([0, dataMax + offset]);
   dotPlotWidthScale.domain(incomeData.map(function(d) { return d.country; } ));
 
   // Draw lines from y labels to highest dot
@@ -142,7 +160,7 @@ function createDots(id){
   // Apply ease in effect
   dots.transition()
     .duration(750)
-    .attr("r", Math.min(15, dotPlotWidthScale.rangeBand()/2));
+    .attr("r", Math.min(12, dotPlotWidthScale.rangeBand()/2));
 }
 
 function createInformationCircles(){
@@ -202,5 +220,5 @@ function updateDotPlot(){
 
   // Change y label text
   var label = (incomeDataDisplayed == "male")? "$0" : "0%";
-  $('.ylabel').text(label);
+  $('#bottom-y-label').text(label);
 }
