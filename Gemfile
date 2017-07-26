@@ -26,6 +26,8 @@ gem 'material_icons'
 gem 'd3-rails', '~> 3.5.17'
 # Use lodash to make working with nested arrays/objects easier
 gem 'lodash-rails'
+# Use select 2 for autocomplete search box
+gem "select2-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

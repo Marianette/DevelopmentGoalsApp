@@ -3,7 +3,7 @@
 //= require lodash
 //= require materialize
 //= require d3
+//= require select2
 //= require_tree ./d3_assets
 //= require_tree ./visualisations
-//= require_tree ./select
 //= require material_design_init
