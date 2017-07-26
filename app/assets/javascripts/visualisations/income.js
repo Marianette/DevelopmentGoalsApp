@@ -67,7 +67,7 @@ function drawIncomeVisualisation() {
   .data(incomeData)
   .enter().append("line")
   .attr("class", "grid")
-  .attr("id", getIncomeId)
+  .attr("id", function(d) { return getIncomeId(d.code); })
   .attr("x1", function(d) {
     return dotPlotWidthScale(d.country) + dotPlotWidthScale.rangeBand()/2;
   })

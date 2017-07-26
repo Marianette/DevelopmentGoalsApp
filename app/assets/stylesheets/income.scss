@@ -34,8 +34,9 @@ line.grid {
   stroke-width: 1.5px;
 }
 
-.grid .selected {
-
+.grid.selected {
+  stroke: #49C95A;
+  stroke-width: 1.5px;
 }
 
 .info-text {
@@ -111,7 +112,17 @@ div.country-label {
 
 #dot-plot-title {
   font-weight: bold;
-  font: 24px sans-serif;
+  font-size: 24px;
+  font-family: 'Oswald', sans-serif;
   text-align: center;
   padding-top: 20px;
+}
+
+#action-buttons {
+  margin-left: 20px;
+}
+
+#country-label {
+  position: absolute;
+  top: -10px;
 }

@@ -7,7 +7,7 @@ class FetchIncomeData
 
   def call
     countries = Location.all
-    countries.collect { |c| get_data(c) }.reject { |d| d[:male] == nil or d[:female] == nil }
+    countries.collect { |c| get_data(c) }.reject { |d| d[:male] == nil or d[:female] == nil}
   end
 
   private

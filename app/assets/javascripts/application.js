@@ -5,4 +5,5 @@
 //= require d3
 //= require_tree ./d3_assets
 //= require_tree ./visualisations
+//= require_tree ./select
 //= require material_design_init

@@ -1,7 +1,9 @@
 <div class="content-container">
   <div class="row">
     <div class="col s12 income-vis-container">
-      <div id="dot-plot-title">Estimated Gross National Income Per Capita (Male vs. Female)</div>
+      <div id="dot-plot-title" title="GNI derived from the ratio of female to male wage,
+      female and male shares of economically active population and GNI
+      (in 2011 purchasing power pairty terms)">Estimated Gross National Income Per Capita (Male vs. Female)</div>
       <%= tag('div', id: 'income-vis', data: {attr: @data} ) %>
       <%= tag('/div') %>
     </div>
@@ -16,13 +18,20 @@
         </div>
         <div class="input-field col s2">
           <form id="income-year-slider">
+            <label>Select Year</label>
             <p class="range-field">
               <input type="range" id="income-years-selector" min="<%= @min_year %>" max="<%= @max_year %>" value="<%= @max_year %>" />
             </p>
           </form>
         </div>
         <div class="input-field col s2">
-        <%= select_tag "select-country", options_for_select(@countries.collect{ |c| [c, c]}, "") %>
+        <label id="country-label">Select Country</label>
+        <p><%= select_tag "select-country", options_for_select(@countries, "") %></p>
+        </div>
+        <div class="input-field col s2" id="action-buttons">
+            <a class="btn-floating" id="add-country" title="Select Country" onClick="highlightData(true);"><i class="material-icons">add</i></a>
+            <a class="btn-floating" id="minus-country" title="Remove Country" onClick="highlightData(false);"><i class="material-icons">remove</i></a>
+            <a class="btn-floating" id="clear-country" title="Clear All" onClick="highlightData(null);"><i class="material-icons">clear</i></a>
         </div>
       </div>
     </div>

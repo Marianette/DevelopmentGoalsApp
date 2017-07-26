@@ -1,3 +1,18 @@
+// React to country selector
+$(function() {
+  $('#select-country').select2();
+});
+
+function highlightData(action){
+  // Get value in select country search box
+  var value = $("#select-country").val();
+  if(action == null){
+    clearSelections();
+  } else {
+    selectCountry(value, action);
+  }
+}
+
 // React to change events on income dot plot filters
 $(function(){
   // React to year slider change

@@ -42,22 +42,30 @@ function showDataInformation(d){
   var label = d3.select(".country-label")
   .html(d.country)
   .style("left", left + "px")
-  .style("top", "460px");
+  .style("top", ($(".income-vis-container").height() + 10) + "px");
   label.transition()
   .duration(100)
   .style("opacity", 1);
 
   // Highlight grid line
-  d3.select("#" + getIncomeId(d)).classed("hover", true);
+  d3.select("#" + getIncomeId(d.code)).classed("hover", true);
 }
 
 function hideDataInformation(d){
   // Un-highlight grid line
-  d3.select("#" + getIncomeId(d)).classed("hover", false);
+  d3.select("#" + getIncomeId(d.code)).classed("hover", false);
 }
 
-function getIncomeId(d){
-  return "code_" + d.code;
+function selectCountry(code, selected){
+  d3.select("#" + getIncomeId(code)).classed("selected", selected);
+}
+
+function clearSelections(){
+  d3.selectAll('.selected').classed("selected", false);
+}
+
+function getIncomeId(code){
+  return "code_" + code;
 }
 
 function getIncomeDotHoverMessage(d, dataset){

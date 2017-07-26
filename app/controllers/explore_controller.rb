@@ -8,7 +8,7 @@ class ExploreController < ApplicationController
 
   def income
     @data = FetchIncomeData.new(national_income_female_type, national_income_male_type).call
-    @countries = @data.collect{ |d| d[:country] }
+    @countries = @data.collect{ |d| [d[:country], d[:code]] }
     # Get years for data
     years = @data[0][:male].collect { |(year, val)| year.to_i }
     @min_year = years.min
