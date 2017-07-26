@@ -24,10 +24,6 @@
             </p>
           </form>
         </div>
-        <div class="input-field col s2">
-        <label id="country-label">Select Country</label>
-        <p><%= select_tag "select-country", options_for_select(@countries, "") %></p>
-        </div>
         <div class="input-field col s2" id="action-buttons">
             <a class="btn-floating" id="add-country" title="Select Country" onClick="highlightData(true);"><i class="material-icons">add</i></a>
             <a class="btn-floating" id="minus-country" title="Remove Country" onClick="highlightData(false);"><i class="material-icons">remove</i></a>
@@ -37,6 +33,10 @@
         <label>Filter by Region</label>
         <p><%= select_tag "select-regions", options_for_select(@regions, "World") %></p>
         </div>
+      </div>
+      <div class="input-field col s10">
+      <label id="country-label">Select Country</label>
+      <p><%= select_tag "select-country", options_for_select(@countries, "") %></p>
       </div>
     </div>
   </div>
