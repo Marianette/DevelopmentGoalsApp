@@ -193,7 +193,7 @@ function createDots(id){
 function createInformationCircles(){
   var radius = 65,
   x      = plotWidth - radius,
-  y      = plotHeight/4.5,
+  y      = plotHeight/5.0,
   side   = 2 * radius * Math.cos(Math.PI / 4),
   dx     = radius - side / 2,
   padding = 25;
