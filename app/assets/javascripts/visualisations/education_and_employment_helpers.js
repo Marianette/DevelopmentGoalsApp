@@ -84,18 +84,20 @@ function updateLegend(){
   var mapDomain = getMapDomain();
   var mapLegendLabels = getMapLegendLabels();
 
+  var mapLegend = d3.selectAll(".map-legend");
+
   // Remove current legend if one exists
   if (mapLegend) mapLegend.transition().duration(350).style("opacity", 0).remove();
 
   // Create new legend
-  mapLegend = mapSvg.selectAll("g.legend")
+  mapLegend = d3.select("#mapSvg").selectAll("g.legend")
   .data(mapDomain)
   .enter().append("g")
   .attr("class", "map-legend");
 
   mapLegend.append("rect")
   .attr("x", 20)
-  .attr("y", function(d, i){ return mapHeight - (i*lgHt) - lgHt;})
+  .attr("y", function(d, i){ return ($("#mapSvg").height()) - (i*lgHt) - lgHt;})
   .attr("width", lgWt)
   .attr("height", lgHt)
   .style("fill", function(d, i) {
@@ -106,7 +108,7 @@ function updateLegend(){
 
   mapLegend.append("text")
   .attr("x", 50)
-  .attr("y", function(d, i){ return mapHeight - (i*lgHt) - 4;})
+  .attr("y", function(d, i){ return ($("#mapSvg").height()) - (i*lgHt) - 4;})
   .text(function(d, i){ return mapLegendLabels[i]; });
 }
 

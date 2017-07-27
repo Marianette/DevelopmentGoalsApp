@@ -1,19 +1,23 @@
+<!-- Page Content -->
 <div class="content-container">
-  <div class="row">
+  <div class="row vis">
     <div class="col s12 income-vis-container">
       <div id="dot-plot-title" title="GNI derived from the ratio of female to male wage,
-      female and male shares of economically active population and GNI
-      (in 2011 purchasing power pairty terms)">Estimated Gross National Income Per Capita (Male vs. Female)</div>
-      <%= tag('div', id: 'income-vis', data: {attr: @data} ) %>
+      female and male shares of economically active population and
+      GNI (in 2011 purchasing power pairty terms)">Estimated Gross National Income Per Capita (Male vs. Female)</div>
+
+      <!-- Loading spinner to show when data for visualisation is being loaded -->
+      <div class="loading-income"></div>
+      <!-- The Visualisation -->
+      <%= tag('div', id: 'income-vis', data: {url: explore_income_data_path} ) %>
       <%= tag('/div') %>
     </div>
+
+    <!-- Filters! -->
     <div class="col s12 income-filter-container">
       <div class="row">
         <div class="input-field col s3">
-          <select id="select-income-dataset">
-            <option value="male">Estimated Gross National Income (GNI)</option>
-            <option value="diff">% Difference between Male GNI and Female GNI</option>
-          </select>
+          <%= select_tag "select-income-dataset", options_for_select(@datasets, @datasets[0][0]) %>
           <label>Select Indicator</label>
         </div>
         <div class="input-field col s2">
@@ -25,8 +29,8 @@
           </form>
         </div>
         <div class="input-field col s2">
-        <label id="country-label">Select Country</label>
-        <p><%= select_tag "select-country", options_for_select(@countries, ""), style:"width:100%" %></p>
+          <label id="country-label">Select Country</label>
+          <%= select_tag "select-country", options_for_select(@countries, ""), style:"width:100%" %>
         </div>
         <div class="input-field col s2" id="action-buttons">
             <a class="btn-floating" id="add-country" title="Select Country" onClick="highlightData(true);"><i class="material-icons">add</i></a>
@@ -34,13 +38,14 @@
             <a class="btn-floating" id="clear-country" title="Clear All" onClick="highlightData(null);"><i class="material-icons">clear</i></a>
         </div>
         <div class="input-field col s2">
-        <label>Filter by Region</label>
-        <p><%= select_tag "select-regions", options_for_select(@regions, "World") %></p>
+          <%= select_tag "select-regions", options_for_select(@regions, "World") %>
+          <label>Filter by Region</label>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <script>
-  initIncomeVis("#income-vis");
+  createIncomeVis("#income-vis");
   </script>

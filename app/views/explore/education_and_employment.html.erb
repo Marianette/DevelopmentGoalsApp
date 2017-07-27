@@ -1,18 +1,20 @@
+<!-- Contents of page -->
 <div class="content-container">
-  <div class="row">
+  <div class="row vis">
     <div class="col s10 map-vis-container">
-      <%= tag('div', id: 'edu-employ-map-vis', data: {attr: @data} ) %>
+      <!-- Loading spinner to show when data for visualisation is being loaded -->
+      <div class="loading-edu"></div>
+      <!-- The Visualisation -->
+      <%= tag('div', id: 'edu-employ-map-vis', data: {url: explore_education_and_employment_data_path } ) %>
       <%= tag('/div') %>
     </div>
+
+    <!-- Visualisation filters -->
     <div class="col s2 filter-container">
       <h5 id="data-name">Secondary Education</h5>
       <p id="data-info">Percentage of female population (ages 25+) with at least some secondary education.</p>
       <div class="input-field col s12">
-        <select id="select-map-dataset">
-          <option value="education">Secondary Education</option>
-          <option value="employment">Labour Force Rates</option>
-          <option value="comparison">Secondary Education vs. Labour Force Rates</option>
-        </select>
+        <%= select_tag 'select-map-dataset', options_for_select(@datasets, @datasets[0][0]) %>
         <label>Select Indicator</label>
       </div>
       <form id="map-gender-filter-selection">
@@ -47,5 +49,5 @@
   </div>
 
   <script>
-  initEducationEmploymentVis("#edu-employ-map-vis");
+  createEducationEmploymentVis("#edu-employ-map-vis");
   </script>

@@ -6,7 +6,7 @@ function getHighestPoint(d) {
 function removeDotElements(){
   var circles = ["male", "female", "diff"];
   for (var i in circles){
-    dotPlotSvg.selectAll(".dot-plot-" + circles[i])
+    d3.select("#dotPlotSvg").selectAll(".dot-plot-" + circles[i])
     .transition()
     .duration(750)
     .attr("r", 0)

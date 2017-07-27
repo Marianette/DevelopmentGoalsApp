@@ -1,11 +1,27 @@
 // Income dot plot variables
 var incomeCurrentYear, incomeData, incomeDataDisplayed, fullDataSet;
 // Income dot plot svg variables
-var plotWidth, plotHeight, dotPlotSvg, dotPlotWidthScale, dotPlotHeightScale,
-dotPlotMargins, dotToolTip;
+var plotWidth, plotHeight, dotPlotWidthScale, dotPlotHeightScale, dotPlotMargins;
 
-function initIncomeVis(id) {
-  fullDataSet = $(id).data("attr");
+function createIncomeVis(id) {
+  var dataurl = $(id).data('url');
+  $.ajax({
+    type: 'GET',
+    contentType: 'application/json; charset=utf-8',
+    url: dataurl,
+    dataType: 'json',
+    success: function (data) {
+      initIncomeVis(id, data);
+      $(".loading-income").fadeOut("slow");
+    },
+    error: function (result) {
+      console.log('Error');
+    }
+  });
+}
+
+function initIncomeVis(id, data) {
+  fullDataSet = data;
   incomeData = fullDataSet;
   incomeCurrentYear = 2015;
   incomeDataDisplayed = "male";
@@ -22,7 +38,8 @@ function initIncomeVis(id) {
   dotPlotHeightScale = d3.scale.linear()
   .range([0, plotHeight]);
 
-  dotPlotSvg = d3.select(id).append("svg")
+  var dotPlotSvg = d3.select(id).append("svg")
+  .attr("id", "dotPlotSvg")
   .attr("width", fullPlotWidth)
   .attr("height", fullPlotHeight);
 
@@ -48,7 +65,8 @@ function initIncomeVis(id) {
   createInformationCircles();
 
   // Create tooltip for on hover of dots
-  dotToolTip = d3.select("body").append("div")
+  d3.select("body").append("div")
+  .attr("id", "dotToolTip")
   .attr("class", "tooltip")
   .style("opacity", 0);
 
@@ -81,6 +99,9 @@ function drawIncomeVisualisation() {
   dotPlotHeightScale.domain([0, dataMax + offset]);
   dotPlotWidthScale.domain(incomeData.map(function(d) { return d.country; } ));
 
+  // Get dot plot svg
+  var dotPlotSvg = d3.select("#dotPlotSvg");
+
   // Draw lines from y labels to highest dot
   var gridLines = dotPlotSvg.selectAll("lines.grid")
   .data(incomeData)
@@ -100,6 +121,10 @@ function drawIncomeVisualisation() {
   })
   .on("mouseout", function(d) {
     hideDataInformation(d);
+  })
+  .on("click", function(d){
+    var selected = d3.select(this).classed("selected");
+    selectCountry(d.code, !selected);
   });
 
   gridLines.transition()
@@ -127,7 +152,10 @@ function drawIncomeVisualisation() {
 }
 
 function createDots(id){
-  var dots = dotPlotSvg.selectAll("circle." + id)
+  // Get tool tip for mouseover action on dots
+  var dotToolTip = d3.select("#dotToolTip");
+
+  var dots = d3.select("#dotPlotSvg").selectAll("circle." + id)
   .data(incomeData)
   .enter().append("circle")
   .attr("class", "dot-plot-" + id)
@@ -142,7 +170,6 @@ function createDots(id){
     dotToolTip.transition()
     .duration(200)
     .style("opacity", 0.9);
-
     dotToolTip.html(getIncomeDotHoverMessage(d, id))
     .style("left", (d3.event.pageX) + "px")
     .style("top", (d3.event.pageY - 28) + "px");
@@ -173,7 +200,7 @@ function createInformationCircles(){
 
   var ids = ["data", "year", "country"];
   for(var i in ids) {
-    var infoCircle = dotPlotSvg.append('g')
+    var infoCircle = d3.select("#dotPlotSvg").append('g')
     .attr('transform', 'translate(' + [ dx, dx ] + ')');
 
     infoCircle.append('circle')
@@ -210,7 +237,7 @@ function updateDotPlot(){
   .style("opacity", 0);
 
   // Wait for line transition to finish before calling draw again
-  dotPlotSvg.selectAll(".grid")
+  d3.select("#dotPlotSvg").selectAll(".grid")
   .transition()
   .duration(750)
   .attr("y2", plotHeight)
