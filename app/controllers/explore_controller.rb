@@ -14,9 +14,9 @@ class ExploreController < ApplicationController
                   .joins(:location)
                   .select(:country, :code, :region).uniq
 
-    # Create arrays for selectors
-    @countries = country_data.collect{ |d| [d.country, d.code] } # sort alphabeticallly
-    @regions = country_data.collect { |d| [d.region, d.region] }.uniq
+    # Create arrays for selectors and sort alphabetically
+    @countries = country_data.collect{ |d| [d.country, d.code] }.sort_by { |e| e[0] }
+    @regions = country_data.collect { |d| [d.region, d.region] }.uniq.sort_by { |e| e[0] }
     @regions.push(["World", "World"])
 
     # Get years for data
