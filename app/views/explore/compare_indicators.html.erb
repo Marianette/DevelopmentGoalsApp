@@ -1,0 +1,44 @@
+<!-- Contents of page -->
+<div class="content-container">
+  <div class="row">
+    <div class="col s10 compare-vis-container">
+      <!-- Loading spinner to show when data for visualisation is being loaded -->
+      <div class="loading-left"></div>
+      <!-- The Visualisation -->
+      <%= tag('div', id: 'compare-vis', data: {url: explore_compare_indicators_data_path } ) %>
+      <%= tag('/div') %>
+    </div>
+
+    <!-- Visualisation filters -->
+    <div class="col s2 filter-container">
+      <h5 id="data-name">Compare Indicators</h5>
+      <p id="data-info">Select X, Y, and size of bubbles to compare different datasets</p>
+      <div class="input-field col s12">
+        <%= select_tag 'select-compareX-dataset', options_for_select(@datasets, @datasets[0][0]) %>
+        <label>Select X</label>
+      </div>
+      <div class="input-field col s12">
+        <%= select_tag 'select-compareY-dataset', options_for_select(@datasets, @datasets[0][0]) %>
+        <label>Select Y</label>
+      </div>
+      <div class="input-field col s12">
+        <%= select_tag 'select-compareSize-dataset', options_for_select(@population, @population[0][0]) %>
+        <label>Select Size</label>
+      </div>
+
+      <div class="input-field col s12">
+        <label>View Animation</label>
+        <div class="row">
+          <p>
+            <i class="material-icons md-36 buttons" id="play-bubble-btn">play_circle_outline</i>
+            <i class="material-icons md-36 buttons" id="stop-bubble-btn">pause_circle_outline</i>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+createComparisonVis("#compare-vis");
+</script>

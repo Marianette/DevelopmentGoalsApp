@@ -16,7 +16,7 @@ function createEducationEmploymentVis(id) {
     dataType: 'json',
     success: function (data) {
       initEducationEmploymentVis(id, data.data, data.world);
-      $(".loading-edu").fadeOut("slow");
+      $(".loading-left").fadeOut("slow");
     },
     error: function (result) {
       console.log('Error');

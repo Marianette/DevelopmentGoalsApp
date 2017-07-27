@@ -3,7 +3,7 @@
   <div class="row vis">
     <div class="col s10 map-vis-container">
       <!-- Loading spinner to show when data for visualisation is being loaded -->
-      <div class="loading-edu"></div>
+      <div class="loading-left"></div>
       <!-- The Visualisation -->
       <%= tag('div', id: 'edu-employ-map-vis', data: {url: explore_education_and_employment_data_path } ) %>
       <%= tag('/div') %>
@@ -47,7 +47,8 @@
       </form>
     </div>
   </div>
+</div>
 
-  <script>
-  createEducationEmploymentVis("#edu-employ-map-vis");
-  </script>
+<script>
+createEducationEmploymentVis("#edu-employ-map-vis");
+</script>

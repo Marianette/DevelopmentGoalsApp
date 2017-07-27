@@ -17,7 +17,7 @@ class ExploreController < ApplicationController
     # Create arrays for selectors and sort alphabetically
     @countries = country_data.collect{ |d| [d.country, d.code] }.sort_by { |e| e[0] }
     @regions = country_data.collect { |d| [d.region, d.region] }.uniq.sort_by { |e| e[0] }
-    @regions.push(["World", "World"])
+    @regions.push(['World', 'World'])
 
     # Get years for data
     first_record = Dataset.where(data_type: national_income_male_type).first
@@ -35,6 +35,19 @@ class ExploreController < ApplicationController
   end
 
   def compare_indicators
+    @datasets = [[national_income_male_type, 'NIM'],
+                  [national_income_male_type, 'NIF'],
+                  [gender_inequality_index_type, 'GII'],
+                  [labour_force_male_type, 'LFM'],
+                  [labour_force_female_type, 'LFF'],
+                  [secondary_education_male_type, 'SEM'],
+                  [secondary_education_female_type, 'SEF']].sort_by{ |e| e[0] }
+
+    @population = [['Total Population', 'TP'],
+                   ['Male Population', 'MP'],
+                   ['Female Population', 'FP']]
+
+
     @title = 'Compare Indicators'
   end
 
@@ -58,6 +71,13 @@ class ExploreController < ApplicationController
 
   def income_data
     data = FetchIncomeData.new(national_income_female_type, national_income_male_type).call
+    respond_to do |format|
+      format.json { render :json => data }
+    end
+  end
+
+  def compare_indicators_data
+    data = JSON.parse(File.read('db/nations.json'))
     respond_to do |format|
       format.json { render :json => data }
     end
