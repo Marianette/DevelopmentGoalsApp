@@ -3,14 +3,13 @@ var graphWidth, graphHeight, margin;
 function createEmptyGraph(id){
   // Dimensions of the bubble graph
   margin = {top: 20, right: 180, bottom: 40, left: 40};
-  graphWidth = $("#compare-vis").width() - margin.right - margin.left;
+  graphWidth = $("#compare-vis").width() - margin.right;
   graphHeight = 560 - margin.top - margin.bottom;
 
   var bubbleSvg = d3.select(id).append("svg")
-      .attr("id", "bubbleSvg")
       .attr("width", graphWidth + margin.left + margin.right)
       .attr("height", graphHeight + margin.top + margin.bottom)
-    .append("g")
+    .append("g").attr("id", "bubbleSvg")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // Add temporary empty axis
@@ -27,14 +26,14 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   var radiusScale = d3.scale.sqrt().domain([0, 5e8]).range([0, 40]);
   var colorScale = d3.scale.category10();
   var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(12, d3.format(",d"));
-  var yAxis = d3.svg.axis().scale(yScale).orient("left");
+  var yAxis = d3.svg.axis().orient("left").scale(yScale);
 
   var bubbleSvg = d3.select("#bubbleSvg");
 
   // Update axis and add labels
   bubbleSvg.selectAll("g.x.axis")
       .call(xAxis);
-  bubbleSvg.append("g.y.axis")
+  bubbleSvg.selectAll("g.y.axis")
       .call(yAxis);
   d3.select("#x-axis-label").text(xLabel);
   d3.select("#y-axis-label").text(yLabel);
@@ -74,13 +73,12 @@ function updateBubbleGraph(data, xLabel, yLabel) {
 
   var legend = bubbleSvg.selectAll('.legend')
   .data(colorScale.domain())
-  .enter()
-  .append('g')
+  .enter().append('g')
   .attr('class', 'legend')
   .attr('transform', function(d, i) {
     var height = legendRectSize + legendSpacing;
-    var horz = graphWidth + 39.5;
-    var vert = i * graphHeight * 1.5;
+    var horz = graphWidth + margin.left;
+    var vert = i * height * 1.5 + margin.top;
     return 'translate(' + horz + ',' + vert + ')';
   });
 
@@ -111,7 +109,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   // TODO Temporary hard coded values. Another option is to append elememt to an element
   // in the dom that will be visible, set the visibility to hidden, get the bounding
   // box, and then remove the element, and append it to the rightful place.
-  var box = {x: 420, y: 262, width: 392, height: 217};
+  var box = {x: 550, y: 262, width: 392, height: 217};
 
   var overlay = bubbleSvg.append("rect")
         .attr("class", "overlay")
@@ -137,7 +135,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
 
   // Positions the dots based on data.
   function position(dot) {
-    dot.attr("cx", function(d) { return xScale(x(d)); })
+    dot .attr("cx", function(d) { return xScale(x(d)); })
         .attr("cy", function(d) { return yScale(y(d)); })
         .attr("r", function(d) { return radiusScale(radius(d)); });
   }
@@ -192,15 +190,15 @@ function updateBubbleGraph(data, xLabel, yLabel) {
     label.text(Math.round(year));
   }
 
-  // Interpolates the dataset for the given (fractional) year.
+  // Interpolates the dataset for the given year.
   function interpolateData(year) {
     return data.map(function(d) {
       return {
         country: d.country,
         region: d.region,
-        x: interpolateValues(d.x, year),
+        xVal: interpolateValues(d.x, year),
         population: interpolateValues(d.population, year),
-        y: interpolateValues(d.y, year)
+        yVal: interpolateValues(d.y, year)
       };
     });
   }

@@ -1,6 +1,6 @@
 // Helpers to extract data point information
-function x(d) { return d.x; }
-function y(d) { return d.y; }
+function x(d) { return d.xVal; }
+function y(d) { return d.yVal; }
 function radius(d) { return d.population; }
 function color(d) { return d.region; }
 function key(d) { return d.country; }
