@@ -30,7 +30,7 @@ module ApplicationHelper
 
   def get_all_data_types
     return [[national_income_male_type, 'NIM'],
-                  [national_income_male_type, 'NIF'],
+                  [national_income_female_type, 'NIF'],
                   [gender_inequality_index_type, 'GII'],
                   [labour_force_male_type, 'LFM'],
                   [labour_force_female_type, 'LFF'],
