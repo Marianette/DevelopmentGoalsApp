@@ -35,8 +35,7 @@ class ExploreController < ApplicationController
   end
 
   def compare_indicators
-    @x_data = get_all_data_types
-    @y_data = get_all_data_types
+    @datasets = get_all_data_types
     @population = get_population_types
     @title = 'Compare Indicators'
   end
