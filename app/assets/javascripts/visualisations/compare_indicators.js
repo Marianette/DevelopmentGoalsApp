@@ -27,7 +27,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   var popMax = findMax(data, "population", 1);
 
   // Redefine dimension scales and axis values
-  var xScale = d3.scale.log().domain([xmin, xmax]).range([0, graphWidth]);
+  var xScale = d3.scale.linear().domain([xmin, xmax]).range([0, graphWidth]);
   var yScale = d3.scale.linear().domain([ymin, ymax]).range([graphHeight, 0]);
   var radiusScale = d3.scale.sqrt().domain([0, popMax]).range([0, 50]);
   var colorScale = d3.scale.category10();
@@ -55,7 +55,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   .call(endall, createDots);
 
   // Update year label on graph and overlay actions
-  var label = d3.select("#year-label").text(startYear);
+  var label = d3.select("#year-label").text(endYear);
   var overlayBox = label.node().getBBox();
   var overlay = d3.select("#overlay")
   .attr("x", overlayBox.x)
@@ -83,7 +83,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
     var dot = bubbleSvg.append("g")
     .attr("class", "dots")
     .selectAll(".dot")
-    .data(interpolateData(startYear))
+    .data(interpolateData(endYear))
     .enter().append("circle")
     .attr("class", "dot")
     .attr("data-legend",function(d) { return d.country})

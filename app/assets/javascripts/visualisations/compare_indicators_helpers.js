@@ -128,7 +128,7 @@ function createLegend(bubbleSvg, colorScale, data){
     d3.select(this).classed("disabled", !selected);
     data.forEach (function (d) {
       if (d.region == label) {
-        d3.select("#" + dotId(d)).classed("selected", !selected);
+        d3.select("#" + dotId(d)).classed("dots-selected", !selected);
       }
     });
   });
