@@ -142,3 +142,15 @@ function createLegend(bubbleSvg, colorScale, data){
 function highlightYearLabel(state) {
   d3.select("#year-label").classed("active", state);
 }
+
+function findMin(data, value){
+  return d3.min(data, function(country) {
+    return d3.min(country[value], function (d) {return d[1]; });
+  });
+}
+
+function findMax(data, value){
+  return d3.max(data, function(country) {
+    return d3.max(country[value], function (d) {return d[1]; });
+  });
+}

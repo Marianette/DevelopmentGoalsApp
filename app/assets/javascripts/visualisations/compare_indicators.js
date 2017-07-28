@@ -19,20 +19,22 @@ function createEmptyGraph(id){
 }
 
 function updateBubbleGraph(data, xLabel, yLabel) {
+  // Calculate max and min values
+  var startYear = d3.min(data[0].x, function(d) {return d[0]});
+  var endYear = d3.max(data[0].x, function(d) {return d[0]});
+  var xmin = findMin(data, "x"), xmax = findMax(data, "x");
+  var ymin = findMin(data, "y"), ymax = findMax(data, "y");
+  var popMax = findMax(data, "population");
+
   // Redefine dimension scales and axis values
-  var xScale = d3.scale.log().domain([300, 1e5]).range([0, graphWidth]);
-  var yScale = d3.scale.linear().domain([10, 85]).range([graphHeight, 0]);
-  var radiusScale = d3.scale.sqrt().domain([0, 5e8]).range([0, 40]);
+  var xScale = d3.scale.log().domain([xmin, xmax]).range([0, graphWidth]);
+  var yScale = d3.scale.linear().domain([ymin, ymax]).range([graphHeight, 0]);
+  var radiusScale = d3.scale.sqrt().domain([0, popMax]).range([0, 50]);
   var colorScale = d3.scale.category10();
   var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(12, d3.format(",d"));
   var yAxis = d3.svg.axis().orient("left").scale(yScale);
 
-  // Calculate start and end years
-  var startYear = 1800; 
-  var endYear = 2009;
-
   var bubbleSvg = d3.select("#bubbleSvg");
-
   // Update axis and add labels
   bubbleSvg.selectAll("g.x.axis")
   .call(xAxis);
