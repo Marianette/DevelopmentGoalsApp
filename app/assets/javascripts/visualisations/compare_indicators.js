@@ -7,15 +7,14 @@ function createEmptyGraph(id){
   graphHeight = 560 - margin.top - margin.bottom;
 
   var bubbleSvg = d3.select(id).append("svg")
-      .attr("width", graphWidth + margin.left + margin.right)
-      .attr("height", graphHeight + margin.top + margin.bottom)
-    .append("g").attr("id", "bubbleSvg")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  .attr("width", graphWidth + margin.left + margin.right)
+  .attr("height", graphHeight + margin.top + margin.bottom)
+  .append("g").attr("id", "bubbleSvg")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  // Add temporary empty axis
+  // Add temporary empty axis, year labels, and starter message
   createAxis(bubbleSvg);
-
-  // Add message
+  createYearLabel(bubbleSvg);
   createStarterMessage(bubbleSvg);
 }
 
@@ -28,147 +27,107 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(12, d3.format(",d"));
   var yAxis = d3.svg.axis().orient("left").scale(yScale);
 
+  // Calculate start and end years
+  var startYear = 1800; 
+  var endYear = 2009;
+
   var bubbleSvg = d3.select("#bubbleSvg");
 
   // Update axis and add labels
   bubbleSvg.selectAll("g.x.axis")
-      .call(xAxis);
+  .call(xAxis);
   bubbleSvg.selectAll("g.y.axis")
-      .call(yAxis);
+  .call(yAxis);
   d3.select("#x-axis-label").text(xLabel);
   d3.select("#y-axis-label").text(yLabel);
 
   // A bisector since data could be sparsely-defined.
   var bisect = d3.bisector(function(d) { return d[0]; });
 
-  // Add large faded year label on graph.
-  var startYear = 1800; // TODO calculate this.
-  var label = bubbleSvg.append("text")
-      .attr("class", "year label")
-      .attr("text-anchor", "end")
-      .attr("y", graphHeight + margin.top)
-      .attr("x", graphWidth + margin.left)
-      .attr("id", "yearLabel")
-      .text(startYear);
+  // Remove old dots and create new ones.
+  d3.selectAll(".dots").transition()
+  .duration(750)
+  .attr("r", 0)
+  .style("fill", "#fff")
+  .remove()
+  .call(endall, createDots);
 
-  // Add a dot per nation. Initialize the data at 1800, and set the colors.
-  var dot = bubbleSvg.append("g")
-      .attr("class", "dots")
-    .selectAll(".dot")
-      .data(interpolateData(startYear))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("data-legend",function(d) { return d.country})
-      .attr("id", function (d) {return dotId(d);})
-      .style("fill", function(d) { return colorScale(color(d)); })
-      .call(position)
-      .sort(order);
-
-  // Give each dot the name of the country.
-  dot.append("title").text(function(d) { return d.country; });
-
-  // Add a legend
-  var legendRectSize = 18;
-  var legendSpacing = 4;
-
-  var legend = bubbleSvg.selectAll('.legend')
-  .data(colorScale.domain())
-  .enter().append('g')
-  .attr('class', 'legend')
-  .attr('transform', function(d, i) {
-    var height = legendRectSize + legendSpacing;
-    var horz = graphWidth + margin.left;
-    var vert = i * height * 1.5 + margin.top;
-    return 'translate(' + horz + ',' + vert + ')';
-  });
-
-  legend.append('rect')
-    .attr('width', legendRectSize)
-    .attr('height', legendRectSize)
-    .style('fill', colorScale)
-    .style('stroke', colorScale)
-    .on('click', function (label) {
-      // Get the element we clicked on and toggle it
-      var rect = d3.select(this);
-      if(rect.attr('class') == 'disabled') {
-        rect.attr('class', '');
-      } else {
-        rect.attr('class', 'disabled');
-      }
-
-      // TODO Deselect data
-    });
-
-  legend.append('text')
-    .attr('x', legendRectSize + legendSpacing)
-    .attr('y', legendRectSize - legendSpacing)
-    .text(function(d) { return d; });
-
-  // Add an overlay for the year label. The overlay allows the year to be changed
-  // as the user scrolls over the large year label.
-  // TODO Temporary hard coded values. Another option is to append elememt to an element
-  // in the dom that will be visible, set the visibility to hidden, get the bounding
-  // box, and then remove the element, and append it to the rightful place.
-  var box = {x: 550, y: 262, width: 392, height: 217};
-
-  var overlay = bubbleSvg.append("rect")
-        .attr("class", "overlay")
-        .attr("x", box.x)
-        .attr("y", box.y)
-        .attr("width", box.width)
-        .attr("height", box.height)
-        .on("mouseover", enableInteraction);  //  call enableInteraction method when mouse goes over label.
+  // Update year label on graph and overlay actions
+  var label = d3.select("#year-label").text(startYear);
+  var overlayBox = label.node().getBBox();
+  var overlay = d3.select("#overlay")
+  .attr("x", overlayBox.x)
+  .attr("y", overlayBox.y)
+  .attr("width", overlayBox.width)
+  .attr("height", overlayBox.height)
+  .on("mouseover", enableInteraction);
 
   // Add controls for animation
   d3.select('#play-bubble-btn')
   .on('click', function (d) {
     bubbleSvg.transition()
-        .duration(30000)
-        .ease("linear")
-        .tween("year", tweenYear)
-        .each("end", enableInteraction);
+    .duration(30000)
+    .ease("linear")
+    .tween("year", tweenYear)
+    .each("end", enableInteraction);
   });
+
   d3.select('#stop-bubble-btn')
   .on('click', function (d) {
     bubbleSvg.transition().duration(0);
   });
 
+  function createDots() {
+    var dot = bubbleSvg.append("g")
+    .attr("class", "dots")
+    .selectAll(".dot")
+    .data(interpolateData(startYear))
+    .enter().append("circle")
+    .attr("class", "dot")
+    .attr("data-legend",function(d) { return d.country})
+    .attr("id", function (d) {return dotId(d);})
+    .style("fill", function(d) { return colorScale(color(d)); })
+    .call(position)
+    .sort(order);
+
+    // Give each dot the name of the country.
+    dot.append("title").text(function(d) { return d.country; });
+
+    // Remove old legend and create new one
+    d3.selectAll(".legend").transition()
+    .duration(200)
+    .style("opacity", 0)
+    .remove()
+    .call(endall, newLegend);
+
+    function newLegend() {
+      createLegend(bubbleSvg, colorScale, data);
+    }
+  }
+
   // Positions the dots based on data.
   function position(dot) {
-    dot .attr("cx", function(d) { return xScale(x(d)); })
-        .attr("cy", function(d) { return yScale(y(d)); })
-        .attr("r", function(d) { return radiusScale(radius(d)); });
+    dot.attr("cx", function(d) { return xScale(x(d)); })
+    .attr("cy", function(d) { return yScale(y(d)); })
+    .attr("r", function(d) { return radiusScale(radius(d)); });
   }
 
   // Change year by interacting with year label.
   function enableInteraction() {
     var yearScale = d3.scale.linear()
-        .domain([1800, 2009])  // data range
-        .range([box.x + 10, box.x + box.width - 10])  // range of box
-        .clamp(true); // Force values to be within specified range (eg. if something greater than
-                      // 2009 was given, would give input as 2009).
-
+    .domain([startYear, endYear])
+    .range([overlayBox.x + 5, overlayBox.x + overlayBox.width - 5])
+    .clamp(true);
     // Stop whatever transition is currently happening
     bubbleSvg.transition().duration(0);
 
-    // React to different mouse movements on the year label.
-    overlay
-        .on("mouseover", mouseover)
-        .on("mouseout", mouseout)
-        .on("mousemove", mousemove)
-        .on("touchmove", mousemove);
+    overlay.on("mouseover", highlightYearLabel(true))
+    .on("mouseout", highlightYearLabel(false))
+    .on("mousemove", changeVisYear)
+    .on("touchmove", changeVisYear);
 
-    // Change class of label to allow css styling of mouse when over the label.
-    function mouseover() {
-      label.classed("active", true);
-    }
-
-    function mouseout() {
-      label.classed("active", false);
-    }
-
-    // Change data vis to display specific year as mouse moves over it.
-    function mousemove() {
+    // Change graph to display selected year as mouse moves over it.
+    function changeVisYear() {
       displayYear(yearScale.invert(d3.mouse(this)[0]));
     }
   }
@@ -176,17 +135,17 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   // Tweens the entire chart by first tweening the year, and then the data.
   // For the interpolated data, the dots and label are redrawn.
   function tweenYear() {
-    var curYear = d3.select('#yearLabel').text();
-    if(curYear == 2009) curYear = 1800;
-    var year = d3.interpolateNumber(curYear, 2009);
+    var curYear = label.text();
+    if(curYear == endYear) curYear = startYear;
+    var year = d3.interpolateNumber(curYear, endYear);
     return function(t) { displayYear(year(t)); };
   }
 
   // Updates the display to show the specified year.
   function displayYear(year) {
-    dot.data(interpolateData(year), key)
-      .call(position)
-      .sort(order);
+    d3.selectAll(".dot").data(interpolateData(year), key)
+    .call(position)
+    .sort(order);
     label.text(Math.round(year));
   }
 
@@ -206,10 +165,10 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   // Finds value for the specified year.
   function interpolateValues(values, year) {
     var i = bisect.left(values, year, 0, values.length - 1),
-        a = values[i];
+    a = values[i];
     if (i > 0) {
       var b = values[i - 1],
-          t = (year - a[0]) / (b[0] - a[0]);
+      t = (year - a[0]) / (b[0] - a[0]);
       return a[1] * (1 - t) + b[1] * t;
     }
     return a[1];

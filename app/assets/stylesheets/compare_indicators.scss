@@ -20,16 +20,26 @@ svg {
   fill: #777;
 }
 
-.year.label {
-  font: 500 196px "Helvetica Neue";
+#year-label {
+  font-size: 80px;
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
   fill: #ddd;
 }
 
-.year.label.active {
+.helper-text {
+  margin: 0px;
+  text-align: center;
+}
+
+.selected {
+  display: none;
+}
+.active #year-label {
   fill: #aaa;
 }
 
-.overlay {
+#overlay {
   fill: none;
   pointer-events: all;
   cursor: ew-resize;

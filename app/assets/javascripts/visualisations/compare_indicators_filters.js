@@ -18,6 +18,7 @@ function sendUpdateRequest(){
     dataType: 'json',
     success: function (data) {
       updateBubbleGraph(data.data, data.xLabel, data.yLabel);
+      d3.select(".helper-text").style("opacity", 1);
       $(".loading-compare").fadeOut("slow");
     },
     error: function (result) {
