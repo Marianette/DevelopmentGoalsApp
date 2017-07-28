@@ -20,18 +20,18 @@ function createEmptyGraph(id){
 
 function updateBubbleGraph(data, xLabel, yLabel) {
   // Calculate max and min values
-  var startYear = d3.min(data[0].x, function(d) {return d[0]});
-  var endYear = d3.max(data[0].x, function(d) {return d[0]});
-  var xmin = findMin(data, "x"), xmax = findMax(data, "x");
-  var ymin = findMin(data, "y"), ymax = findMax(data, "y");
-  var popMax = findMax(data, "population");
+  var startYear = findMin(data, "x", 0);
+  var endYear = findMax(data, "x", 0);
+  var xmin = findMin(data, "x", 1), xmax = findMax(data, "x", 1);
+  var ymin = findMin(data, "y", 1), ymax = findMax(data, "y", 1);
+  var popMax = findMax(data, "population", 1);
 
   // Redefine dimension scales and axis values
   var xScale = d3.scale.log().domain([xmin, xmax]).range([0, graphWidth]);
   var yScale = d3.scale.linear().domain([ymin, ymax]).range([graphHeight, 0]);
   var radiusScale = d3.scale.sqrt().domain([0, popMax]).range([0, 50]);
   var colorScale = d3.scale.category10();
-  var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(12, d3.format(",d"));
+  var xAxis = d3.svg.axis().orient("bottom").scale(xScale);
   var yAxis = d3.svg.axis().orient("left").scale(yScale);
 
   var bubbleSvg = d3.select("#bubbleSvg");
@@ -68,7 +68,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   d3.select('#play-bubble-btn')
   .on('click', function (d) {
     bubbleSvg.transition()
-    .duration(30000)
+    .duration(20000)
     .ease("linear")
     .tween("year", tweenYear)
     .each("end", enableInteraction);

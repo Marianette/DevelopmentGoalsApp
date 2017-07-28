@@ -75,7 +75,7 @@ include ApplicationHelper
   def createPopulationArray(contents)
     population = Array.new
     contents.each do |key, value|
-      if key != FIELDS[:COUNTRY] || key != FIELDS[:REGION]
+      if (key != FIELDS[:COUNTRY] or key != FIELDS[:REGION]) and not value.blank?
         population.push([key.to_i, value.to_i])
       end
     end
@@ -85,7 +85,7 @@ include ApplicationHelper
   def createValueArray(contents)
     values = Array.new
     contents.each do |key, value|
-      if key != FIELDS[:COUNTRY]
+      if key != FIELDS[:COUNTRY] and not value.blank?
         values.push([key.to_i, value.to_f])
       end
     end

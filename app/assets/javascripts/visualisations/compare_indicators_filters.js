@@ -2,7 +2,7 @@
 function sendUpdateRequest(){
   var x = $("#select-compareX-dataset").val();
   var y = $("#select-compareY-dataset").val();
-  var size = $("select-compareSize-dataset").val();
+  var size = $("#select-compareSize-dataset").val();
   var dataurl = $("#compare-vis").data("url");
   dataurl = dataurl + "?x=" + x + "&y=" + y + "&size=" + size;
 

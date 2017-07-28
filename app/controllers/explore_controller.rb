@@ -35,19 +35,9 @@ class ExploreController < ApplicationController
   end
 
   def compare_indicators
-    @datasets = [[national_income_male_type, 'NIM'],
-                  [national_income_male_type, 'NIF'],
-                  [gender_inequality_index_type, 'GII'],
-                  [labour_force_male_type, 'LFM'],
-                  [labour_force_female_type, 'LFF'],
-                  [secondary_education_male_type, 'SEM'],
-                  [secondary_education_female_type, 'SEF']].sort_by{ |e| e[0] }
-
-    @population = [['Total Population', 'TP'],
-                   ['Male Population', 'MP'],
-                   ['Female Population', 'FP']]
-
-
+    @x_data = get_all_data_types
+    @y_data = get_all_data_types
+    @population = get_population_types
     @title = 'Compare Indicators'
   end
 
@@ -76,12 +66,17 @@ class ExploreController < ApplicationController
   end
 
   def compare_indicators_data
-    data = JSON.parse(File.read('db/nations.json'))
+    data_type = create_reverse_hash(get_all_data_types)
+    x = data_type[params[:x]]
+    y = data_type[params[:y]]
+    population = create_reverse_hash(get_population_types)
+    size = population[params[:size]]
+    data = FetchComparisonData.new(x, y, size).call
     respond_to do |format|
       format.json { render :json => {
         :data => data,
-        :xLabel => "Hello this is an x label",
-        :yLabel => "Hello this is a y label" }
+        :xLabel => get_label(x),
+        :yLabel => get_label(y)}
       }
     end
   end

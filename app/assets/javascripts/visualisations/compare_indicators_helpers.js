@@ -143,14 +143,14 @@ function highlightYearLabel(state) {
   d3.select("#year-label").classed("active", state);
 }
 
-function findMin(data, value){
+function findMin(data, value, i){
   return d3.min(data, function(country) {
-    return d3.min(country[value], function (d) {return d[1]; });
+    return d3.min(country[value], function (d) {return d[i]; });
   });
 }
 
-function findMax(data, value){
+function findMax(data, value, i){
   return d3.max(data, function(country) {
-    return d3.max(country[value], function (d) {return d[1]; });
+    return d3.max(country[value], function (d) {return d[i]; });
   });
 }

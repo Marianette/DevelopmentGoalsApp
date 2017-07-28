@@ -7,7 +7,7 @@
       <!-- Loading spinner to show when data for visualisation is being loaded -->
       <div class="loading-compare"></div>
       <!-- The Visualisation -->
-      <%= tag('div', id: 'compare-vis', data: {url: explore_compare_indicators_data_path(x: 1, y: 2) } ) %>
+      <%= tag('div', id: 'compare-vis', data: {url: explore_compare_indicators_data_path } ) %>
       <%= tag('/div') %>
     </div>
 
@@ -16,11 +16,17 @@
       <h5 id="data-name">Compare Indicators</h5>
       <p id="data-info">Select X, Y, and size of bubbles to compare different datasets</p>
       <div class="input-field col s12">
-        <%= select_tag 'select-compareX-dataset', options_for_select(@datasets, @datasets[0][0]) %>
+        <select id='select-compareX-dataset'>
+          <option value="GII">Gender Inequality Index</option>
+          <option value="NIM">Gross National Income - Male</option>
+          <option value="NIF">Gross National Income - Female</option>
+          <option value="SEM">Secondary Education - Male</option>
+          <option value="SEF">Secondary Education - Female</option>
+        </select>
         <label>Select X</label>
       </div>
       <div class="input-field col s12">
-        <%= select_tag 'select-compareY-dataset', options_for_select(@datasets, @datasets[0][0]) %>
+        <%= select_tag 'select-compareY-dataset', options_for_select(@y_data, @y_data[0][0]) %>
         <label>Select Y</label>
       </div>
       <div class="input-field col s12">
