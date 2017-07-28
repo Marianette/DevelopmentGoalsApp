@@ -63,8 +63,7 @@ class ExploreController < ApplicationController
     respond_to do |format|
       format.json { render :json => {
           :data => data,
-          :world => world
-        }
+          :world => world }
       }
     end
   end
@@ -79,7 +78,11 @@ class ExploreController < ApplicationController
   def compare_indicators_data
     data = JSON.parse(File.read('db/nations.json'))
     respond_to do |format|
-      format.json { render :json => data }
+      format.json { render :json => {
+        :data => data,
+        :xLabel => "Hello this is an x label",
+        :yLabel => "Hello this is a y label" }
+      }
     end
   end
 end

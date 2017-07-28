@@ -37,7 +37,7 @@ $(function(){
 
   // React to data change
   $("#select-regions").on("change", function(){
-      changeDataSet(this.value);
-      updateDotPlot();
+    changeDataSet(this.value);
+    updateDotPlot();
   });
 });

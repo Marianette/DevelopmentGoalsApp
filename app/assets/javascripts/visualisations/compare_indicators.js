@@ -1,133 +1,86 @@
-function createComparisonVis(id) {
-  var dataurl = $(id).data("url");
-  $.ajax({
-    type: 'GET',
-    contentType: 'application/json; charset=utf-8',
-    url: dataurl,
-    dataType: 'json',
-    success: function (data) {
-      initBubbleGraph(id, data);
-      $(".loading-left").fadeOut("slow");
-    },
-    error: function (result) {
-      console.log('Error');
-    }
-  });
+var graphWidth, graphHeight, margin;
+
+function createEmptyGraph(id){
+  // Dimensions of the bubble graph
+  margin = {top: 20, right: 180, bottom: 40, left: 40};
+  graphWidth = $("#compare-vis").width() - margin.right - margin.left;
+  graphHeight = 560 - margin.top - margin.bottom;
+
+  var bubbleSvg = d3.select(id).append("svg")
+      .attr("id", "bubbleSvg")
+      .attr("width", graphWidth + margin.left + margin.right)
+      .attr("height", graphHeight + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // Add temporary empty axis
+  createAxis(bubbleSvg);
+
+  // Add message
+  createStarterMessage(bubbleSvg);
 }
 
-function initBubbleGraph(id, data) {
-  // Specify the four dimensions of data to visualise
-  function x(d) { return d.income; }
-  function y(d) { return d.lifeExpectancy; }
-  function radius(d) { return d.population; }
-  function color(d) { return d.region; }
-  function key(d) { return d.name; }
-
-  // Give each dot an id
-  function dotId(d) {
-    var removedPunctuation = d.name.replace(/[.,'"\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-    var removedSpaces = removedPunctuation.replace(/\s/g,'');
-    return removedSpaces;
-  }
-
-  // Set enabled property to allow filtering of data by a legend
-  data.forEach(function (d) {
-    d.enabled = true;
-  });
-
-  // Chart dimensions.
-  var margin = {top: 19.5, right: 200, bottom: 19.5, left: 39.5};
-  var width = 1000 - margin.right;
-  var height = 500 - margin.top - margin.bottom;
-
-  // Scales and axis. (Domains are specified using assumptions from the data)
-  var xScale = d3.scale.log().domain([300, 1e5]).range([0, width]);
-  var yScale = d3.scale.linear().domain([10, 85]).range([height, 0]);
-
+function updateBubbleGraph(data, xLabel, yLabel) {
+  // Redefine dimension scales and axis values
+  var xScale = d3.scale.log().domain([300, 1e5]).range([0, graphWidth]);
+  var yScale = d3.scale.linear().domain([10, 85]).range([graphHeight, 0]);
   var radiusScale = d3.scale.sqrt().domain([0, 5e8]).range([0, 40]);
   var colorScale = d3.scale.category10();
-
   var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(12, d3.format(",d"));
   var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
-  // Set attributes of svg
-  var svg = d3.select(id).append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      // move svg to to the left, and down from the top (using fixed margin values)
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  var bubbleSvg = d3.select("#bubbleSvg");
 
-  // Add x axis.
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
+  // Update axis and add labels
+  bubbleSvg.selectAll("g.x.axis")
       .call(xAxis);
-
-  // Add y axis.
-  svg.append("g")
-      .attr("class", "y axis")
+  bubbleSvg.append("g.y.axis")
       .call(yAxis);
+  d3.select("#x-axis-label").text(xLabel);
+  d3.select("#y-axis-label").text(yLabel);
 
-  // Add label for the x axis.
-  svg.append("text")
-      .attr("class", "x label")
-      .attr("text-anchor", "end")
-      .attr("x", width)
-      .attr("y", height - 6)
-      .text("income per capita, inflation-adjusted (dollars)");
-
-  // Add label for the y axis.
-  svg.append("text")
-      .attr("class", "y label")
-      .attr("text-anchor", "end")
-      .attr("y", 6)
-      .attr("dy", ".75em")
-      .attr("transform", "rotate(-90)")
-      .text("life expectancy (years)");
-
-  // Add large faded (css styling will do this) year label on graph.
-  var label = svg.append("text")
-      .attr("class", "year label")
-      .attr("text-anchor", "end")
-      .attr("y", height - 24)
-      .attr("x", width)
-      .attr("id", "yearLabel")
-      .text(1800);
-
-  // A bisector since many nation's data is sparsely-defined.
+  // A bisector since data could be sparsely-defined.
   var bisect = d3.bisector(function(d) { return d[0]; });
 
+  // Add large faded year label on graph.
+  var startYear = 1800; // TODO calculate this.
+  var label = bubbleSvg.append("text")
+      .attr("class", "year label")
+      .attr("text-anchor", "end")
+      .attr("y", graphHeight + margin.top)
+      .attr("x", graphWidth + margin.left)
+      .attr("id", "yearLabel")
+      .text(startYear);
+
   // Add a dot per nation. Initialize the data at 1800, and set the colors.
-  var dot = svg.append("g")
+  var dot = bubbleSvg.append("g")
       .attr("class", "dots")
     .selectAll(".dot")
-      .data(interpolateData(1800))
+      .data(interpolateData(startYear))
     .enter().append("circle")
       .attr("class", "dot")
-      .attr("data-legend",function(d) { return d.name})
+      .attr("data-legend",function(d) { return d.country})
       .attr("id", function (d) {return dotId(d);})
       .style("fill", function(d) { return colorScale(color(d)); })
       .call(position)
       .sort(order);
 
   // Give each dot the name of the country.
-  dot.append("title")
-    .text(function(d) { return d.name; });
+  dot.append("title").text(function(d) { return d.country; });
 
   // Add a legend
   var legendRectSize = 18;
   var legendSpacing = 4;
 
-  var legend = svg.selectAll('.legend')
+  var legend = bubbleSvg.selectAll('.legend')
   .data(colorScale.domain())
   .enter()
   .append('g')
   .attr('class', 'legend')
   .attr('transform', function(d, i) {
     var height = legendRectSize + legendSpacing;
-    var horz = width + margin.left;
-    var vert = i * height * 1.5;
+    var horz = graphWidth + 39.5;
+    var vert = i * graphHeight * 1.5;
     return 'translate(' + horz + ',' + vert + ')';
   });
 
@@ -137,31 +90,15 @@ function initBubbleGraph(id, data) {
     .style('fill', colorScale)
     .style('stroke', colorScale)
     .on('click', function (label) {
-      // Get the element we clicked on
+      // Get the element we clicked on and toggle it
       var rect = d3.select(this);
-      var enabled = true;
-
-      // Toggle it
-      if(rect.attr('class') === 'disabled') {
+      if(rect.attr('class') == 'disabled') {
         rect.attr('class', '');
       } else {
         rect.attr('class', 'disabled');
-        enabled = false;
       }
 
-      // Set the relevent enabled value for each entry in the data data set
-      data.forEach (function (d) {
-        if (d.region === label) {
-          d.enabled = enabled;
-        }
-
-        // Update display
-        if(d.enabled) {
-          d3.select("#" + dotId(d)).attr('class', 'dot');
-        } else {
-          d3.select("#" + dotId(d)).attr('class', 'unselected');
-        }
-      });
+      // TODO Deselect data
     });
 
   legend.append('text')
@@ -171,14 +108,12 @@ function initBubbleGraph(id, data) {
 
   // Add an overlay for the year label. The overlay allows the year to be changed
   // as the user scrolls over the large year label.
-  // var box = label.node().getBBox(); - with tabs, this line of code does not work,
-  // as label has yet to be rendered. Returns{0, 0, 0, 0}.
-  // Temporary hard coded values. Another option is to append elememt to an element
+  // TODO Temporary hard coded values. Another option is to append elememt to an element
   // in the dom that will be visible, set the visibility to hidden, get the bounding
   // box, and then remove the element, and append it to the rightful place.
   var box = {x: 420, y: 262, width: 392, height: 217};
 
-  var overlay = svg.append("rect")
+  var overlay = bubbleSvg.append("rect")
         .attr("class", "overlay")
         .attr("x", box.x)
         .attr("y", box.y)
@@ -187,31 +122,24 @@ function initBubbleGraph(id, data) {
         .on("mouseover", enableInteraction);  //  call enableInteraction method when mouse goes over label.
 
   // Add controls for animation
-  var play = d3.select('#play-bubble-btn');
-  var stop = d3.select('#stop-bubble-btn');
-
-  play.on('click', function (d) {
-    svg.transition()
+  d3.select('#play-bubble-btn')
+  .on('click', function (d) {
+    bubbleSvg.transition()
         .duration(30000)
         .ease("linear")
         .tween("year", tweenYear)
         .each("end", enableInteraction);
   });
-
-  stop.on('click', function (d) {
-    svg.transition().duration(0);
+  d3.select('#stop-bubble-btn')
+  .on('click', function (d) {
+    bubbleSvg.transition().duration(0);
   });
 
   // Positions the dots based on data.
   function position(dot) {
-    dot .attr("cx", function(d) { return xScale(x(d)); })
+    dot.attr("cx", function(d) { return xScale(x(d)); })
         .attr("cy", function(d) { return yScale(y(d)); })
         .attr("r", function(d) { return radiusScale(radius(d)); });
-  }
-
-  // Make sure that smaller dots are on top so they can be seen.
-  function order(a, b) {
-    return radius(b) - radius(a);
   }
 
   // Change year by interacting with year label.
@@ -223,7 +151,7 @@ function initBubbleGraph(id, data) {
                       // 2009 was given, would give input as 2009).
 
     // Stop whatever transition is currently happening
-    svg.transition().duration(0);
+    bubbleSvg.transition().duration(0);
 
     // React to different mouse movements on the year label.
     overlay
@@ -268,11 +196,11 @@ function initBubbleGraph(id, data) {
   function interpolateData(year) {
     return data.map(function(d) {
       return {
-        name: d.name,
+        country: d.country,
         region: d.region,
-        income: interpolateValues(d.income, year),
+        x: interpolateValues(d.x, year),
         population: interpolateValues(d.population, year),
-        lifeExpectancy: interpolateValues(d.lifeExpectancy, year)
+        y: interpolateValues(d.y, year)
       };
     });
   }

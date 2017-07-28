@@ -1,19 +1,9 @@
-// Following CSS from https://bost.ocks.org/mike/nations/
 .axis text {
     font-family: sans-serif;
     font-size: 11px;
 }
 
 svg {
-  font: 10px sans-serif;
-}
-
-#chart {
-  margin-left: -40px;
-  height: 506px;
-}
-
-text {
   font: 10px sans-serif;
 }
 
@@ -24,7 +14,6 @@ text {
 .axis path, .axis line {
   fill: none;
   stroke: #000;
-  //shape-rendering: crispEdges;
 }
 
 .label {
@@ -67,4 +56,15 @@ rect.disabled {
 
 .buttons {
   cursor: pointer;
+}
+
+.start-circle {
+  fill: #ddd;
+  opacity: 0.75;
+}
+
+.start-text {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
 }

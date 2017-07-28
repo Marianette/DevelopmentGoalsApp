@@ -5,9 +5,9 @@
   <div class="row">
     <div class="col s10 compare-vis-container">
       <!-- Loading spinner to show when data for visualisation is being loaded -->
-      <div class="loading-left"></div>
+      <div class="loading-compare"></div>
       <!-- The Visualisation -->
-      <%= tag('div', id: 'compare-vis', data: {url: explore_compare_indicators_data_path } ) %>
+      <%= tag('div', id: 'compare-vis', data: {url: explore_compare_indicators_data_path(x: 1, y: 2) } ) %>
       <%= tag('/div') %>
     </div>
 
@@ -27,15 +27,15 @@
         <%= select_tag 'select-compareSize-dataset', options_for_select(@population, @population[0][0]) %>
         <label>Select Size</label>
       </div>
-
       <div class="input-field col s12">
-        <label>View Animation</label>
-        <div class="row">
+      <a class="waves-effect waves-light btn" onClick="sendUpdateRequest();">Update Graph</a>
+      </div>
+      <div class="input-field col s12">
+        <p>View Animation</p>
           <p>
             <i class="material-icons md-36 buttons" id="play-bubble-btn">play_circle_outline</i>
             <i class="material-icons md-36 buttons" id="stop-bubble-btn">pause_circle_outline</i>
           </p>
-        </div>
       </div>
     </div>
   </div>
