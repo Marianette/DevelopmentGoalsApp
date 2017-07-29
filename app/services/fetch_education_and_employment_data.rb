@@ -52,8 +52,16 @@ class FetchEducationAndEmploymentData
 
   def calculate_difference(male, female)
     if male != nil and female != nil
-      Hash[male.collect { |(year, val)| [year.to_i, (male[year] - female[year]).round(2)] } ]
+      diffs = Hash[male.collect { |(year, val)| get_diff_data(male, female, year) } ]
+      diffs = diffs.reject{ |x| x == nil }
     end
+  end
+
+  def get_diff_data(male, female, year)
+    if(male[year] == nil or female[year] == nil)
+      return [nil , nil]
+    end
+    return [year.to_i, (male[year] - female[year]).round(2)]
   end
 
   def get_diffs(education, employment)
