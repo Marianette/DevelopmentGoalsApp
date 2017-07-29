@@ -1,7 +1,7 @@
-#top-nav-bar-logo {
-    img {
-      height: 50px;
-    }
+#nav-logo {
+  color: #2569a8;
+  font-family: 'Oswald', sans-serif;
+  margin-left: 10px;
 }
 
 .button-collapse {
@@ -10,12 +10,10 @@
 
 #nav-top-menu-item {
   color: #2569a8;
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
 }
 
-#side-nav-image {
-  height: 60px;
-  padding-top: 10px;
-  img {
-    width: 250px;
-  }
+.dropdown-content li > a, .dropdown-content li > span {
+  font-family: 'Oswald', sans-serif;
 }
