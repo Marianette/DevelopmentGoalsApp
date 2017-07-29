@@ -107,7 +107,7 @@ function createLegend(bubbleSvg, colorScale, data){
   .attr('class', 'legend')
   .attr('transform', function(d, i) {
     var height = legendRectSize + legendSpacing;
-    var horz = graphWidth - 10;
+    var horz = graphWidth + 10;
     var vert = i * height * 1.5 + margin.top;
     return 'translate(' + horz + ',' + vert + ')';
   });

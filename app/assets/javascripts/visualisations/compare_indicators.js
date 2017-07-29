@@ -2,12 +2,12 @@ var graphWidth, graphHeight, margin;
 
 function createEmptyGraph(id){
   // Dimensions of the bubble graph
-  margin = {top: 20, right: 180, bottom: 40, left: 40};
-  graphWidth = $("#compare-vis").width() - margin.right;
+  margin = {top: 20, right: 180, bottom: 40, left: 60};
+  graphWidth = $("#compare-vis").width() - margin.right - margin.left;
   graphHeight = 560 - margin.top - margin.bottom;
 
   var bubbleSvg = d3.select(id).append("svg")
-  .attr("width", graphWidth + margin.left + margin.right)
+  .attr("width", graphWidth + margin.right + margin.left)
   .attr("height", graphHeight + margin.top + margin.bottom)
   .append("g").attr("id", "bubbleSvg")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -29,6 +29,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   // Redefine dimension scales and axis values
   var xScale = d3.scale.linear().domain([xmin, xmax]).range([0, graphWidth]);
   var yScale = d3.scale.linear().domain([ymin, ymax]).range([graphHeight, 0]);
+
   var radiusScale = d3.scale.sqrt().domain([0, popMax]).range([0, 50]);
   var colorScale = d3.scale.category10();
   var xAxis = d3.svg.axis().orient("bottom").scale(xScale);
