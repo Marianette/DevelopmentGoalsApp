@@ -3,7 +3,6 @@
       <ul id="dropdown" class="dropdown-content">
         <li><%= link_to("Education and Employment", explore_education_and_employment_path, {onclick: "clearVis();"}) %></li>
         <li><%= link_to("Gross National Income", explore_income_path, {onclick: "clearVis();"}) %></li>
-        <li><%= link_to("Gender Inequality Index", explore_gender_inequality_index_path, {onclick: "clearVis();"}) %></li>
       </ul>
       <%= link_to("#{image_tag('UN_SDG_Logo.png')}".html_safe, root_path, { id: 'top-nav-bar-logo', onclick: "clearVis();"}) %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
