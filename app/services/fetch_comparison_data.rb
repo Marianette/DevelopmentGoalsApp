@@ -1,4 +1,5 @@
 class FetchComparisonData
+include ApplicationHelper
 
   def initialize(type_x, type_y, type_pop)
     @x = type_x
@@ -8,7 +9,7 @@ class FetchComparisonData
 
   def call
     countries = Location.all
-    countries.collect { |c| get_data(c) }.reject { |d| d[:x] == nil or d[:y] == nil}
+    countries.collect { |c| get_data(c) }.reject { |d| d[:x] == nil or d[:y] == nil or d[:population] == nil}
   end
 
   private
@@ -17,12 +18,12 @@ class FetchComparisonData
     # Get values for x and y data sets, and ensure that years are the same.
     x = get_values(@x, d)
     y = get_values(@y, d)
-    population = d.population
+    population = get_population(@pop, d)
 
     # Reject years that aren't in both data sets
     x_years = get_years(x)
     y_years = get_years(y)
-    if(x_years != nil and y_years != nil)
+    if(x_years != nil and y_years != nil and population != nil)
       common_years = x_years & y_years
       x = x.reject{|d| (not common_years.include? d[0]) }
       y = y.reject{|d| not common_years.include? d[0] }
@@ -30,6 +31,7 @@ class FetchComparisonData
     else
       x = nil
       y = nil
+      population = nil
     end
 
     return {
@@ -54,5 +56,14 @@ class FetchComparisonData
       return entry.values
     end
     return nil
+  end
+
+  def get_population(type, loc)
+    if type == male_population_type
+      return loc.male_population
+    elsif type == female_population_type
+      return loc.female_population
+    end
+    return loc.population
   end
 end

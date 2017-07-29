@@ -38,10 +38,22 @@ module ApplicationHelper
                   [secondary_education_female_type, 'SEF']].sort_by{ |e| e[0] }
   end
 
+  def female_population_type
+    return 'Female Population'
+  end
+
+  def male_population_type
+    return 'Male Population'
+  end
+
+  def total_population_type
+    return 'Total Population'
+  end
+
   def get_population_types
-    return [['Total Population', 'TP'],
-                   ['Male Population', 'MP'],
-                   ['Female Population', 'FP']]
+    return [[total_population_type, 'TP'],
+                   [male_population_type, 'MP'],
+                   [female_population_type, 'FP']]
   end
 
   def create_reverse_hash(data)

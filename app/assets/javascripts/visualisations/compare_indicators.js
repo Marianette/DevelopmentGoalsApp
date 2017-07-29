@@ -68,7 +68,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   d3.select('#play-bubble-btn')
   .on('click', function (d) {
     bubbleSvg.transition()
-    .duration(20000)
+    .duration((endYear - label.text()) * 1000)  // 1 second to move 1 year
     .ease("linear")
     .tween("year", tweenYear)
     .each("end", enableInteraction);
@@ -157,6 +157,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
       return {
         country: d.country,
         region: d.region,
+        code: d.code,
         xVal: interpolateValues(d.x, year),
         population: interpolateValues(d.population, year),
         yVal: interpolateValues(d.y, year)

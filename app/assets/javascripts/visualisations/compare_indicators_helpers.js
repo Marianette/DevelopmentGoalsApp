@@ -4,12 +4,7 @@ function y(d) { return d.yVal; }
 function radius(d) { return d.population; }
 function color(d) { return d.region; }
 function key(d) { return d.country; }
-// function dotId(d) { return "code_" + d.country; } // TODO Give each dot an id
-function dotId(d) {
-  var removedPunctuation = d.country.replace(/[.,'"\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-  var removedSpaces = removedPunctuation.replace(/\s/g,'');
-  return removedSpaces;
-}
+function dotId(d) { return "code_" + d.code; } // Give each dot an id
 
 // Make sure that smaller dots are on top so they can be seen.
 function order(a, b) {

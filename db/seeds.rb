@@ -2,6 +2,8 @@
 # It populates the database.
 
 %w(location
+   female_population
+   male_population
    gender_inequality_index
    labour_force_female
    labour_force_male

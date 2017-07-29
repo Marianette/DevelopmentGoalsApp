@@ -60,6 +60,14 @@ include ApplicationHelper
     add_to_dataset(contents, secondary_education_male_type)
   end
 
+  def female_population(contents)
+    add_population_to_location(contents, female_population_type)
+  end
+
+  def male_population(contents)
+    add_population_to_location(contents, male_population_type)
+  end
+
   def add_to_dataset(contents, data_type)
     country = contents[FIELDS[:COUNTRY]]
     loc = Location.find_by_country!(country)
@@ -69,6 +77,23 @@ include ApplicationHelper
       location: loc,
       values: values
     )
+  end
+
+  def add_population_to_location(contents, type)
+    country = contents[FIELDS[:COUNTRY]]
+    loc = Location.find_by_country!(country)
+    values = createPopulationArray(contents)
+    if values != nil
+      add_population(type, loc, values)
+    end
+  end
+
+  def add_population(type, loc, values)
+    if type == male_population_type
+      loc.update!(male_population: values)
+    else
+      loc.update(female_population: values)
+    end
   end
 
   # HELPERS
