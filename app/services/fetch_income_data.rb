@@ -35,15 +35,15 @@ class FetchIncomeData
 
   def get_diff(male, female)
     if male != nil and female != nil
-      diffs = Hash[male.collect { |(year,val)| get_diff_data(male, female, year) } ]
+      diffs = Hash[male.collect { |(year,val)| get_diff_data(val, female[year], year) } ]
       diffs = diffs.reject{ |x| x == nil }
     end
   end
 
-  def get_diff_data(male, female, year)
-    if(male[year] == nil or female[year] == nil)
+  def get_diff_data(male_val, female_val, year)
+    if(male_val == nil or female_val == nil)
       return [nil , nil]
     end
-    return [year.to_i, ((female[year]/val.to_f) * 100).round(1)]
+    return [year.to_i, (((male_val - female_val)/male_val.to_f) * 100).round(1)]
   end
 end
