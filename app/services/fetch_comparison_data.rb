@@ -9,7 +9,7 @@ include ApplicationHelper
 
   def call
     countries = Location.all
-    countries.collect { |c| get_data(c) }.reject { |d| d[:x] == nil or d[:y] == nil or d[:population] == nil}
+    countries.collect { |c| get_data(c) }.reject { |d| d[:x].blank? or d[:y].blank? or d[:population].blank?}
   end
 
   private
@@ -19,19 +19,14 @@ include ApplicationHelper
     x = get_values(@x, d)
     y = get_values(@y, d)
     population = get_population(@pop, d)
-
     # Reject years that aren't in both data sets
     x_years = get_years(x)
     y_years = get_years(y)
     if(x_years != nil and y_years != nil and population != nil)
       common_years = x_years & y_years
-      x = x.reject{|d| (not common_years.include? d[0]) }
+      x = x.reject{|d| not common_years.include? d[0] }
       y = y.reject{|d| not common_years.include? d[0] }
       population = population.reject{|d| not common_years.include? d[0] }
-    else
-      x = nil
-      y = nil
-      population = nil
     end
 
     return {
