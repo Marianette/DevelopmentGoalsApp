@@ -1,10 +1,11 @@
-body, html {
-    height: 100%;
-}
-
 .home-background {
+    position: absolute;
+    left: 0px;
+    top: 50px;
+    bottom: 0px;
+    right: 0px;
+
     background-image: url(<%= asset_path 'background.png' %>);
-    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,7 +16,7 @@ body, html {
   position: absolute;
   text-align: center;
   font-family: 'Oswald', sans-serif;
-  color: #fff;
+  color: black;
   z-index: 10;
 }
 
@@ -41,7 +42,7 @@ body, html {
     bottom: 0px;
     right: 0px;
     opacity: 0.65;
-    background-color: #000;
+    background-color: white;
 }
 
 .index-icons {
@@ -59,7 +60,7 @@ body, html {
 }
 
 .no-highlight {
-  color: #fff;
+  color: black;
 }
 
 .button-container {
