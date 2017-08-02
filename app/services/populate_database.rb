@@ -68,6 +68,10 @@ include ApplicationHelper
     add_population_to_location(contents, male_population_type)
   end
 
+  def parliament(contents)
+    add_population_to_location(contents, parliament_type)
+  end
+
   def add_to_dataset(contents, data_type)
     country = contents[FIELDS[:COUNTRY]]
     loc = Location.find_by_country!(country)

@@ -28,6 +28,10 @@ module ApplicationHelper
     return "Secondary Education Male"
   end
 
+  def parliament_type
+    return 'Share of Seats in Parliament (Women)'
+  end
+
   def get_all_data_types
     return [[national_income_male_type, 'NIM'],
                   [national_income_female_type, 'NIF'],

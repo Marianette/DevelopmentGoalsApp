@@ -10,7 +10,8 @@
    national_income_female
    national_income_male
    secondary_education_female
-   secondary_education_male).each do |type|
+   secondary_education_male
+   parliament).each do |type|
   file_name = 'db/data/' + type + '.json'
   hashes = JSON.parse(File.read(file_name))
   PopulateDatabase.new(hashes, type).call
