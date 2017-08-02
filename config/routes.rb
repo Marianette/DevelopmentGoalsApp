@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'explore/education_and_employment_data' => 'explore#education_and_employment_data', :defaults => { :format => 'json' }
   get 'explore/income_data' => 'explore#income_data', :defaults => { :format => 'json' }
   get 'explore/compare_indicators_data' => 'explore#compare_indicators_data', :defaults => { :format => 'json' }
+  get 'explore/gii_data' => 'explore#gii_data', :defaults => { :format => 'json' }
 
   root 'home#index'
 end
