@@ -79,4 +79,11 @@ class ExploreController < ApplicationController
       }
     end
   end
+
+  def gii_data
+    data = FetchGiiData.new.call
+    respond_to do |format|
+      format.json { render :json => data }
+    end
+  end
 end

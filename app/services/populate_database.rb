@@ -60,16 +60,16 @@ include ApplicationHelper
     add_to_dataset(contents, secondary_education_male_type)
   end
 
+  def parliament(contents)
+    add_to_dataset(contents, parliament_type)
+  end
+
   def female_population(contents)
     add_population_to_location(contents, female_population_type)
   end
 
   def male_population(contents)
     add_population_to_location(contents, male_population_type)
-  end
-
-  def parliament(contents)
-    add_population_to_location(contents, parliament_type)
   end
 
   def add_to_dataset(contents, data_type)

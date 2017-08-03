@@ -1,1 +1,21 @@
-<h1>Gender Inequality Index Parallel Composition Set Coming Soon</h1>
+<%= stylesheet_link_tag 'gender_inequality', media: 'all', 'data-turbolinks-track' => true %>
+
+<!-- Contents of page -->
+<div class="content-container">
+  <div class="row vis">
+    <div class="col s10 map-vis-container">
+      <!-- Loading spinner to show when data for visualisation is being loaded -->
+      <div class="loading-left"></div>
+      <!-- The Visualisation -->
+      <%= tag('div', id: 'gii-vis', data: {url: explore_gii_data_path } ) %>
+      <%= tag('/div') %>
+    </div>
+    <div class="col s2 gii-filter-container">
+      <h4>Filters go here</h4>
+    </div>
+  </div>
+</div>
+
+<script>
+  createGiiVis("#gii-vis");
+</script>

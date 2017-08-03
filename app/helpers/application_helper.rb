@@ -29,7 +29,7 @@ module ApplicationHelper
   end
 
   def parliament_type
-    return 'Share of Seats in Parliament (Women)'
+    return 'Share of Seats in Parliament Female'
   end
 
   def get_all_data_types
@@ -39,7 +39,8 @@ module ApplicationHelper
                   [labour_force_male_type, 'LFM'],
                   [labour_force_female_type, 'LFF'],
                   [secondary_education_male_type, 'SEM'],
-                  [secondary_education_female_type, 'SEF']].sort_by{ |e| e[0] }
+                  [secondary_education_female_type, 'SEF'],
+                  [parliament_type, 'PT']].sort_by{ |e| e[0] }
   end
 
   def female_population_type
@@ -78,6 +79,8 @@ module ApplicationHelper
       return '% of Male Population (15+) in the Labour Force'
     when labour_force_female_type
       return '% of Female Population (15+) in the Labour Force'
+    when parliament_type
+      return 'Share of seats in parliament held by women (%)'
     else
       return 'Gender Inequality Index'
     end
