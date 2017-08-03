@@ -1,4 +1,5 @@
-svg {
+.gii-vis-container {
+  margin-top: 8px !important;
   font: 10px sans-serif;
 }
 
@@ -7,6 +8,10 @@ svg {
   stroke: #ccc;
   stroke-opacity: .4;
   shape-rendering: crispEdges;
+}
+
+.foreground path {
+  fill: none;
 }
 
 .brush .extent {
@@ -25,4 +30,13 @@ svg {
 .axis text {
   text-shadow: 0 1px 0 #fff;
   cursor: move;
+}
+
+.region-legend {
+  cursor: pointer;
+  stroke-width: 2;
+}
+
+rect.disabled {
+  fill: transparent !important;
 }

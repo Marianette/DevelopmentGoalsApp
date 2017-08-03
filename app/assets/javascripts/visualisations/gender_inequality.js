@@ -1,3 +1,5 @@
+var paraCoordsYear;
+
 function createGiiVis(id){
   var dataurl = $(id).data('url');
   $.ajax({
@@ -17,9 +19,9 @@ function createGiiVis(id){
 
 function initGiiVis(id, data) {
   // Define height, width and margins of visualisation
-  var margin = { top: 30, right: 10, bottom: 10, left: 10};
-  var width = 960 - margin.right - margin.left;
-  var height = 500 - margin.top - margin.bottom;
+  var margin = { top: 30, right: 10, bottom: 20, left: 0};
+  var width = $(".gii-vis-container").width() - margin.right - margin.left;
+  var height = 530 - margin.top - margin.bottom;
 
   // Define scale
   var xScale = d3.scale.ordinal().rangePoints([0, width], 1),
@@ -30,6 +32,11 @@ function initGiiVis(id, data) {
   var line = d3.svg.line();
   var axis = d3.svg.axis().orient("left");
   var background, foreground;
+
+  // Set most recent year
+  paraCoordsYear = d3.max(data, function(d) {
+    return d.year;
+  });
 
   // Svg for the parallel coordinates graph
   var paraSvg = d3.select(id).append("svg")
@@ -75,15 +82,6 @@ function initGiiVis(id, data) {
     .range([height, 0]));
   }));
 
-  // Gray background lines to show when lines are not selected
-  background = paraSvg.append("g")
-  .attr("class", "background")
-  .selectAll("path")
-  .data(data)
-  .enter().append("path")
-  .attr("d", path)
-  .attr("class", getElemClass);  // TODO add display none
-
   // Coloured by region. Lines displayed in the foreground
   foreground = paraSvg.append("g")
   .attr("class", "foreground")
@@ -94,20 +92,22 @@ function initGiiVis(id, data) {
   .attr("class", getElemClass)
   .style("stroke", function(d) { return colorScale(d.region); })
   .style("stroke-opacity", 0.7)
+  .style("display", "none")
   .on("mouseover", function(d){
-    // Make line darker
-    d3.select(this).transition()
-    .duration(100)
-    .style("stroke-opacity", 1);
+    // Make line darker and thicker
+    d3.select(this)
+    .style("stroke-opacity", 1)
+    .style("stroke-width", "3px");
+
     showParaCoordsTooltip(d, toolTip);
   })
   .on("mousemove", function(d){
     moveParaCoordsTooltip(toolTip);
   })
   .on("mouseout", function(d){
-    d3.select(this).transition()
-    .duration(100)
-    .style("stroke-opacity", 0.7);
+    d3.select(this)
+    .style("stroke-opacity", 0.7)
+    .style("stroke-width", "1px");
     hideParaCoordsTooltip(toolTip);
   });
 
@@ -131,36 +131,39 @@ function initGiiVis(id, data) {
   .text(String);
 
   // Create brush elements to allow dynamic filtering of each dimension
+  // Code below adapted from: http://bl.ocks.org/ABSegler/9791707
   g.append("g")
   .attr("class", "brush")
   .each(function(d) {
-    d3.select(this).call(
-      yScale[d].brush = d3.svg.brush().y(yScale[d])
-      .on("brushstart", brushstart)
-      .on("brush", brush));
-    })
-    .selectAll("rect")
-    .attr("x", -8)
-    .attr("width", 16);
+    d3.select(this).call(yScale[d].brush = d3.svg.brush().y(yScale[d])
+    .on("brushstart", brushstart)
+    .on("brush", brush));
+  })
+  .selectAll("rect")
+  .attr("x", -8)
+  .attr("width", 16);
 
-    function position(d) {
-      var v = dragging[d];
-      return v == null ? xScale(d) : v;
-    }
-
-    // Returns the path for given data
-    function path(d) {
-      return line(dimensions.map(function(p) { return [position(p), yScale[p](d[p])]; }));
-    }
-
-    // Brush event - toggle foreground lines
-    function brush() {
-      var actives = dimensions.filter(function(p) { return !yScale[p].brush.empty(); }),
-      extents = actives.map(function(p) { return yScale[p].brush.extent(); });
-      foreground.style("display", function(d) {
-        return actives.every(function(p, i) {
-          return extents[i][0] <= d[p] && d[p] <= extents[i][1];
-        }) ? null : "none";
-      });
-    }
+  function position(d) {
+    var v = dragging[d];
+    return v == null ? xScale(d) : v;
   }
+
+  // Returns the path for given data
+  function path(d) {
+    return line(dimensions.map(function(p) { return [position(p), yScale[p](d[p])]; }));
+  }
+
+  // Brush event - toggle foreground lines
+  function brush() {
+    var actives = dimensions.filter(function(p) { return !yScale[p].brush.empty(); }),
+    extents = actives.map(function(p) { return yScale[p].brush.extent(); });
+    foreground.style("display", function(d) {
+      return actives.every(function(p, i) {
+        return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+      }) ? null : "none";
+    });
+  }
+
+  updateParaCoordsYear(paraCoordsYear);
+  createLegend(colorScale, data);
+}

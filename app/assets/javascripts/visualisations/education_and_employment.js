@@ -36,7 +36,7 @@ function initEducationEmploymentVis(id, data, world) {
 
   // Create map
   var width = $(".map-vis-container").width();
-  var mapHeight = 540;
+  var mapHeight = 560;
   var xoffset = 45;
   var yoffset = 45;
 
