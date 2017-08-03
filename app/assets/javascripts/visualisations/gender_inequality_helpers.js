@@ -37,7 +37,7 @@ function updateParaCoordsYear(){
   });
 }
 
-function createLegend(colorScale, data){
+function createGIILegend(colorScale, data){
   var width = $(".gii-filter-container").width();
   var height = 200;
   var legendRectSize = 18;

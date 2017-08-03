@@ -166,5 +166,5 @@ function initGiiVis(id, data) {
   }
 
   updateParaCoordsYear();
-  createLegend(colorScale, data);
+  createGIILegend(colorScale, data);
 }
