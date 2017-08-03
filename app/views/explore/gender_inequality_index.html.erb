@@ -12,6 +12,20 @@
     </div>
     <div class="col s2 gii-filter-container">
       <h5>Gender Inequality Index</h4>
+        <div id="gii-year-slider">
+          <label>Select Year</label>
+          <p class="range-field">
+            <input type="range" id="gii-years-selector" min="<%= @years.min %>" max="<%= @years.max %>" value="<%= @years.max %>" />
+          </p>
+        </div>
+        <div id="paraCoords-country-select">
+          <%= select_tag "paracoords-country", options_for_select(@countries, ""), style:"width:100%" %>
+        </div>
+        <div id="action-buttons">
+          <a class="btn-floating" id="add-country" title="Select Country" onClick="highlightCountry(true);"><i class="material-icons">add</i></a>
+          <a class="btn-floating" id="minus-country" title="Remove Country" onClick="highlightCountry(false);"><i class="material-icons">remove</i></a>
+          <a class="btn-floating" id="clear-country" title="Clear All" onClick="highlightCountry(null);"><i class="material-icons">clear</i></a>
+        </div>
       <div id="region-filters"></div>
     </div>
   </div>

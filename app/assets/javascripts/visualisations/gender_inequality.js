@@ -1,4 +1,4 @@
-var paraCoordsYear;
+var paraCoordsYear, paraYears;
 
 function createGiiVis(id){
   var dataurl = $(id).data('url');
@@ -19,9 +19,9 @@ function createGiiVis(id){
 
 function initGiiVis(id, data) {
   // Define height, width and margins of visualisation
-  var margin = { top: 30, right: 10, bottom: 20, left: 0};
+  var margin = { top: 30, right: 10, bottom: 10, left: 0};
   var width = $(".gii-vis-container").width() - margin.right - margin.left;
-  var height = 530 - margin.top - margin.bottom;
+  var height = 550 - margin.top - margin.bottom;
 
   // Define scale
   var xScale = d3.scale.ordinal().rangePoints([0, width], 1),
@@ -37,6 +37,7 @@ function initGiiVis(id, data) {
   paraCoordsYear = d3.max(data, function(d) {
     return d.year;
   });
+  paraYears = getGIIYears(data);
 
   // Svg for the parallel coordinates graph
   var paraSvg = d3.select(id).append("svg")
@@ -164,6 +165,6 @@ function initGiiVis(id, data) {
     });
   }
 
-  updateParaCoordsYear(paraCoordsYear);
+  updateParaCoordsYear();
   createLegend(colorScale, data);
 }

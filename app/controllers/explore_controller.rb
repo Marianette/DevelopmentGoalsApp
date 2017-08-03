@@ -31,6 +31,14 @@ class ExploreController < ApplicationController
   end
 
   def gender_inequality_index
+    # Find all countries that there is gender inequality index data for
+    country_data = Dataset.where(:data_type => gender_inequality_index_type)
+                  .joins(:location)
+                  .select(:country, :code).uniq
+
+    # Create arrays for selectors and sort alphabetically
+    @countries = country_data.collect{ |d| [d.country, d.code] }.sort_by { |e| e[0] }
+    @years = [2000, 2015]  # specify min and max year
     @title = 'Gender Inequality Index'
   end
 

@@ -40,3 +40,8 @@
 rect.disabled {
   fill: transparent !important;
 }
+
+.coord-selected {
+  stroke-width: 3px !important;
+  stroke: black !important;
+}

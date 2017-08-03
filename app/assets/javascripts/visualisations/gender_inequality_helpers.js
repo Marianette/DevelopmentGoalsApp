@@ -25,14 +25,16 @@ function transition(g) {
   return g.transition().duration(500);
 }
 
-function updateParaCoordsYear(year){
+function updateParaCoordsYear(){
   d3.selectAll(".dataLines").transition()
   .duration(300)
-  .style("display", "none");
+  .style("display", "none")
+  .call(endall, function(){
 
-  d3.selectAll(".year_" + year).transition()
-  .duration(300)
-  .style("display", "");
+    d3.selectAll(".year_" + paraCoordsYear).transition()
+    .duration(300)
+    .style("display", "");
+  });
 }
 
 function createLegend(colorScale, data){
@@ -77,4 +79,30 @@ function createLegend(colorScale, data){
   .attr('x', legendRectSize + legendSpacing)
   .attr('y', legendRectSize - legendSpacing)
   .text(function(d) { return d; });
+}
+
+function clearParaCoordsSelections(){
+  d3.selectAll('.coord-selected').classed("coord-selected", false);
+}
+
+function selectParaCoordsCountry(code, selected){
+  d3.selectAll(".code_" + code).classed("coord-selected", selected);
+}
+
+function getGIIYears(data){
+  return unique(data.map(function(d){return d.year}))
+}
+
+function unique(x) {
+  return x.reverse().filter(function (e, i, x) {return x.indexOf(e, i+1) === -1;}).reverse();
+}
+
+function checkValidGIIYear(newYear){
+  if (paraYears.indexOf(newYear) != -1) return newYear;
+
+  // Selected year is not in data set, snap to closest year values
+  var closestYear = paraYears.reduce(function (prev, curr) {
+    return (Math.abs(curr - newYear) < Math.abs(prev - newYear) ? curr : prev);
+  });
+  return closestYear;
 }
