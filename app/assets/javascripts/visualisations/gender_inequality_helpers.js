@@ -27,13 +27,29 @@ function transition(g) {
 
 function updateParaCoordsYear(){
   d3.selectAll(".dataLines").transition()
-  .duration(300)
-  .style("display", "none")
+  .duration(350)
+  .style("opacity", 0)
   .call(endall, function(){
+    // Reset all lines
+    d3.selectAll(".dataLines")
+    .style("display", "none");
 
+    // Display year lines
+    d3.selectAll(".year_" + paraCoordsYear).style("display", "");
+
+    // Turn off display for lines where region is disabled
+    d3.selectAll(".legend").data().forEach(function (d) {
+      var display = d3.select("#legend_" + reduceString(d)).classed("disabled")? "none": null;
+      d3.selectAll(".region_" + reduceString(d)).style("display", display);
+    });
+
+    // Make sure brush selection still matches
+    brush();
+
+    // Do a nice transition to display lines
     d3.selectAll(".year_" + paraCoordsYear).transition()
-    .duration(300)
-    .style("display", "");
+    .duration(350)
+    .style("opacity", 1);
   });
 }
 
@@ -63,6 +79,9 @@ function createGIILegend(colorScale, data){
   .style('fill', colorScale)
   .style('stroke', colorScale)
   .attr("class", "region-legend")
+  .attr("id", function(d) {
+    return "legend_" + reduceString(d);
+  })
   .on('click', function (label) {
     // Get the element we clicked on and toggle it and react to data selection
     var selected = d3.select(this).classed("disabled");

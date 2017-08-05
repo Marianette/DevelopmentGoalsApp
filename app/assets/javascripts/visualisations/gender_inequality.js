@@ -1,4 +1,4 @@
-var paraCoordsYear, paraYears;
+var paraCoordsYear, paraYears, yScale, dimensions;
 
 function createGiiVis(id){
   var dataurl = $(id).data('url');
@@ -25,9 +25,9 @@ function initGiiVis(id, data) {
 
   // Define scale
   var xScale = d3.scale.ordinal().rangePoints([0, width], 1),
-  colorScale = d3.scale.category10();
-  yScale = {},
+  colorScale = d3.scale.category10(),
   dragging = {};
+  yScale = {};
 
   var line = d3.svg.line();
   var axis = d3.svg.axis().orient("left");
@@ -154,17 +154,24 @@ function initGiiVis(id, data) {
     return line(dimensions.map(function(p) { return [position(p), yScale[p](d[p])]; }));
   }
 
-  // Brush event - toggle foreground lines
-  function brush() {
-    var actives = dimensions.filter(function(p) { return !yScale[p].brush.empty(); }),
-    extents = actives.map(function(p) { return yScale[p].brush.extent(); });
-    foreground.style("display", function(d) {
-      return actives.every(function(p, i) {
-        return extents[i][0] <= d[p] && d[p] <= extents[i][1];
-      }) ? null : "none";
-    });
-  }
-
   updateParaCoordsYear();
   createGIILegend(colorScale, data);
+}
+
+// Brush event - toggle foreground lines
+function brush() {
+  var actives = dimensions.filter(function(p) { return !yScale[p].brush.empty(); }),
+  extents = actives.map(function(p) { return yScale[p].brush.extent(); });
+  d3.selectAll(".foreground path").style("display", function(d) {
+    var inRange = actives.every(function(p, i) {
+     return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+    }) ? true : false;
+    if (inRange){
+      // Check year and region selection
+      var selectedRegion = d3.select("#legend_" + reduceString(d.region)).classed("disabled");
+      return (paraCoordsYear == d.year && !selectedRegion)? null : "none";
+    } else {
+      return "none";
+    }
+  });
 }
