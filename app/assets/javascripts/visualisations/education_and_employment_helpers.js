@@ -55,7 +55,7 @@ function updateYearViews(){
 function setUpColours(){
   percentDomain = [10, 20, 30, 40, 50, 60, 70, 80, 90, 101];
   eduDiffDomain = [-15, -2, 2, 15, 100];
-  employDiffDomain = [-10, -2, 10, 50, 100];
+  employDiffDomain = [-10, -2, 5, 50, 100];
   compDomain = [-50, -10, 10, 25, 100];
 
   eduColScale = d3.scale.threshold()
@@ -142,37 +142,37 @@ function updateMapTitleAndInfo(dataset, filter){
   var info = '';
 
   switch(dataset) {
-    case "education": title = "Secondary Education";
+    case "education": title = "Education";
     switch(filter) {
       case "female":
-      info = "Percentage of female population (ages 25+) with at least some secondary education.";
+      info = "Percentage of female population (aged 25+) with at least some secondary education.";
       break;
       case "male":
-      info = "Percentage of male population (ages 25+) with at least some secondary education.";
+      info = "Percentage of male population (aged 25+) with at least some secondary education.";
       break;
       default:
-      info = "The difference between males (% population) and females (% population) with at least some secondary education.";
+      info = "The % difference between the male population and the female population with at least some secondary education.";
     }
     break;
-    case "employment": title = "Labour Force Participation";
+    case "employment": title = "Labour Force Rates";
     switch(filter) {
       case "female":
-      info = "Labor force participation rate of females (% of female population ages 15+).";
+      info = "Percentage of female population (aged 15+) in the labor force.";
       break;
       case "male":
-      info = "Labor force participation rate of males (% of male population ages 15+).";
+      info = "Percentage of male population (aged 15+) in the labor force.";
       break;
       default:
-      info = "The difference between the labour force participation rates of males and females.";
+      info = "The % difference between the labour force participation rates of males and females.";
     }
     break;
     default: title = "Education vs. Employment";
     switch(filter) {
       case "female":
-      info = "Difference between female population in labour force and % of females with at least some secondary education.";
+      info = "The % difference between the female population in the labour force and females with at least some secondary education.";
       break;
       default:
-      info = "Difference between male population in labour force and % of males with at least some secondary education.";
+      info = "The % difference between the male population in the labour force and males with at least some secondary education.";
     }
   }
   // Add text updates

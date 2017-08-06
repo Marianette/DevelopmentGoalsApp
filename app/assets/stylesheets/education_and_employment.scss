@@ -18,13 +18,36 @@
 
 #map-year-label {
   font-weight: bold;
-  font: 32px sans-serif;
-  color: #478bca;
+  font-family: 'Oswald', sans-serif;
+  font-size: 40px;;
+  color: #00396d;
   text-align: center;
-  padding-top: 15px;
 }
 
 .map-legend {
   font: 10px sans-serif;
   font-weight: bold;
+}
+
+.map-filter-container {
+  color: #2569a8;
+  border: 1px solid #2569a8;
+  border-radius: 5px;
+}
+
+#indicator-select {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#filter-label {
+  left: 0rem;
+}
+
+#map-gender-filter-selection {
+  padding-bottom: 10px;
+}
+
+#data-name {
+  font-family: 'Oswald', sans-serif;
 }

@@ -12,26 +12,26 @@
     </div>
 
     <!-- Visualisation filters -->
-    <div class="col s2 filter-container">
-      <h5 id="data-name">Secondary Education</h5>
-      <p id="data-info">Percentage of female population (ages 25+) with at least some secondary education.</p>
-      <div class="input-field col s12">
+    <div class="col s2 map-filter-container">
+      <h5 id="data-name">Education</h5>
+      <p id="data-info">Percentage of female population (aged 25+) with at least some secondary education.</p>
+      <div class="input-field col s12" id="indicator-select">
         <%= select_tag 'select-map-dataset', options_for_select(@datasets, @datasets[0][0]) %>
-        <label>Select Indicator</label>
+        <label id="filter-label">Select Indicator</label>
       </div>
       <form id="map-gender-filter-selection">
         <label>Select Data</label>
         <p>
           <input class="with-gap" name="gender-select" type="radio" id="map-female" value="female" checked/>
-          <label for="map-female">Female</label>
+          <label class="gender-label" for="map-female">Female</label>
         </p>
         <p>
           <input class="with-gap" name="gender-select" type="radio" id="map-male" value="male"/>
-          <label for="map-male">Male</label>
+          <label class="gender-label" for="map-male">Male</label>
         </p>
         <p>
           <input class="with-gap" name="gender-select" type="radio" id="map-gender-parity" value="diff"/>
-          <label for="map-gender-parity">Gender Parity</label>
+          <label class="gender-label" for="map-gender-parity">Gender Parity</label>
         </p>
       </form>
       <form id="year-slider">
