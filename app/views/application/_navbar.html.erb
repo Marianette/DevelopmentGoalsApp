@@ -5,11 +5,33 @@
         <li><%= link_to("Gross National Income", explore_income_path, {onclick: "clearVis();"}) %></li>
         <li><%= link_to("Gender Inequality Index", explore_gender_inequality_index_path, {onclick: "clearVis();"}) %></li>
       </ul>
-      <%= link_to("Gender Equality Visualisation Tool", root_path, {class: "brand-logo", id: "nav-logo", onclick: "clearVis();"}) %>
+      <%= link_to("Gender Equality Visualisations", root_path, {class: "brand-logo", id: "nav-logo", onclick: "clearVis();"}) %>
+      <a href="#" data-activates="side-nav-menu" class="button-collapse"><i class="material-icons" id="menu-btn">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a class="dropdown-button" id="nav-top-menu-item" href="#" data-activates="dropdown">Visualisations<i class="material-icons right">arrow_drop_down</i></a></li>
-      <li><%= link_to("Compare Indicators", explore_compare_indicators_path, {id: "nav-top-menu-item", onclick: "clearVis();"}) %></li>
-      <li><%= link_to("About", home_about_path, {id: "nav-top-menu-item", onclick: "clearVis();"}) %></li>
-    </ul>
+        <li><a class="dropdown-button nav-top-menu-item" href="#" data-activates="dropdown">Visualisations<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><%= link_to("Compare Indicators", explore_compare_indicators_path, {class: "nav-top-menu-item", onclick: "clearVis();"}) %></li>
+        <li><%= link_to("About", home_about_path, {class: "nav-top-menu-item", onclick: "clearVis();"}) %></li>
+      </ul>
+
+      <!-- Create side bar for smaller screens that has a collapsible dropdown content  -->
+      <ul class="side-nav" id="side-nav-menu">
+        <div class="nav-title"><h5>Gender Equality Visualisations</h5></div>
+        <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header nav-top-menu-item">Visualisations<i class="material-icons right">arrow_drop_down</i></a>
+            <div class="collapsible-body nav-top-menu-item">
+              <ul>
+                <li><%= link_to("Education and Employment", explore_education_and_employment_path, {onclick: "clearVis();"}) %></li>
+                <li><%= link_to("Gross National Income", explore_income_path, {onclick: "clearVis();"}) %></li>
+                <li><%= link_to("Gender Inequality Index", explore_gender_inequality_index_path, {onclick: "clearVis();"}) %></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+        <li><%= link_to("Compare Indicators", explore_compare_indicators_path, {class: "collapsible-header nav-top-menu-item", onclick: "clearVis();"}) %></li>
+        <li><%= link_to("About", home_about_path, {class: "collapsible-header nav-top-menu-item", onclick: "clearVis();"}) %></li>
+      </ul>
   </div>
 </nav>

@@ -52,7 +52,7 @@ function initGiiVis(id, data) {
   .attr("class", "tooltip")
   .style("opacity", 0);
 
-  // Define drag behaviour for dimensions
+  // Define drag behaviour for dimensions (adopted from: http://bl.ocks.org/ABSegler/9791707)
   var onDrag = d3.behavior.drag()
   .on("dragstart", function(d) {
     dragging[d] = this.__origin__ = xScale(d);
@@ -132,7 +132,6 @@ function initGiiVis(id, data) {
   .text(String);
 
   // Create brush elements to allow dynamic filtering of each dimension
-  // Code below adapted from: http://bl.ocks.org/ABSegler/9791707
   g.append("g")
   .attr("class", "brush")
   .each(function(d) {
