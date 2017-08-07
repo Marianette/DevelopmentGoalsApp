@@ -16,12 +16,9 @@ function highlightCountry(action){
 // React to change events on parallel coordinates filters
 $(function(){
   // React to year slider change
-  $("#gii-year-slider").on("change", function(){
-    var newYear = $("#gii-years-selector").val();
-    newYear = checkValidGIIYear(newYear);
-    $('#gii-years-selector').val(newYear);
-    if(paraCoordsYear != newYear){
-      paraCoordsYear = newYear;
+  $("#select-year").on("change", function(){
+    if(paraCoordsYear != this.value){
+      paraCoordsYear = this.value;
       updateParaCoordsYear();
     }
   });

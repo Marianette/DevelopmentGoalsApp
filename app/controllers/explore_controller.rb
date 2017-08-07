@@ -38,7 +38,7 @@ class ExploreController < ApplicationController
 
     # Create arrays for selectors and sort alphabetically
     @countries = country_data.collect{ |d| [d.country, d.code] }.sort_by { |e| e[0] }
-    @years = [2000, 2015]  # specify min and max year
+    @years = [2000, 2005, 2010, 2011, 2012, 2013, 2014, 2015]  # specify min and max year
     @title = 'Gender Inequality Index'
   end
 

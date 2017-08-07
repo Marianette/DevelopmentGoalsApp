@@ -11,20 +11,19 @@
       <%= tag('/div') %>
     </div>
     <div class="col s2 gii-filter-container">
-      <h5>Gender Inequality Index</h4>
-        <div id="gii-year-slider">
-          <label>Select Year</label>
-          <p class="range-field">
-            <input type="range" id="gii-years-selector" min="<%= @years.min %>" max="<%= @years.max %>" value="<%= @years.max %>" />
-          </p>
+      <h5 id="data-name">Gender Inequality Index (GII)</h5>
+      <p id="data-info">Comparison of the GII with education, labour force, and political, participation rates of males and females</p>
+        <div class="input-field col s12" id="gii-year-selector">
+          <%= select_tag 'select-year', options_for_select(@years.collect { |y| [y, y]}, @years.max) %>
+          <label id="year-select-label">Select Year</label>
         </div>
         <div id="paraCoords-country-select">
           <%= select_tag "paracoords-country", options_for_select(@countries, ""), style:"width:100%" %>
         </div>
         <div id="action-buttons">
-          <a class="btn-floating" id="add-country" title="Select Country" onClick="highlightCountry(true);"><i class="material-icons">add</i></a>
-          <a class="btn-floating" id="minus-country" title="Remove Country" onClick="highlightCountry(false);"><i class="material-icons">remove</i></a>
-          <a class="btn-floating" id="clear-country" title="Clear All" onClick="highlightCountry(null);"><i class="material-icons">clear</i></a>
+          <a id="add-country" onClick="highlightCountry(true);"><span class="new badge">Highlight</span></a>
+          <a id="minus-country" onClick="highlightCountry(false);"><span class="new badge">Unhighlight</span></a>
+          <a id="clear-country" onClick="highlightCountry(null);"><span class="new badge">Clear All</span></a>
         </div>
       <div id="region-filters"></div>
     </div>

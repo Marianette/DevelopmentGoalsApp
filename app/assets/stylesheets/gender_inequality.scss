@@ -45,3 +45,28 @@ rect.disabled {
   stroke-width: 3px !important;
   stroke: black !important;
 }
+
+.gii-filter-container {
+  color: #2569a8;
+  border: 1px solid #2569a8;
+  border-radius: 5px;
+  height: 100%;
+}
+
+#year-select-label {
+  left: 0rem;
+}
+
+#gii-year-selector {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+// Set up height setting
+.content-container {
+  height:92%;
+}
+
+.row.vis {
+  height: 100%;
+}

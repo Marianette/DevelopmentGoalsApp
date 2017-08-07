@@ -32,3 +32,8 @@ nav .brand-logo {
 label {
   color: #525252 !important;
 }
+
+// Override "new" label in badges
+span.badge.new:after  {
+  content: "" !important;
+}

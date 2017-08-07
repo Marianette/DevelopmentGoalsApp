@@ -159,6 +159,10 @@ function createDots(id){
   .data(incomeData)
   .enter().append("circle")
   .attr("class", "dot-plot-" + id)
+  .attr("id", function(d){
+    country = getIncomeId(d.code);
+    return "dot_" + country;
+  })
   .attr("cx", function(d) {
     return dotPlotWidthScale(d.country) + dotPlotWidthScale.rangeBand()/2;
   })
@@ -182,6 +186,11 @@ function createDots(id){
     .style("opacity", 0);
 
     hideDataInformation(d);
+  })
+  .on("click", function(d) {
+    var line = this.id.split("dot_")[1];
+    var selected = d3.select("#" + line).classed("selected");
+    selectCountry(d.code, !selected);
   })
 
   // Apply ease in effect
