@@ -15,23 +15,24 @@
     <div class="col s2 filter-container" id="comparison-vis-filters">
       <h5 id="data-name">Compare Indicators</h5>
       <p id="data-info">Select X, Y, and size of bubbles to compare different datasets</p>
-      <div class="input-field col s12">
+      <div class="input-field col s12 indicator-select">
         <%= select_tag 'select-compareX-dataset', options_for_select(@datasets, @datasets[0][0]) %>
-        <label>Select X</label>
+        <label id="data-select-label">Select X</label>
       </div>
-      <div class="input-field col s12">
+      <div class="input-field col s12 indicator-select">
         <%= select_tag 'select-compareY-dataset', options_for_select(@datasets, @datasets[0][0]) %>
-        <label>Select Y</label>
+        <label id="data-select-label">Select Y</label>
       </div>
-      <div class="input-field col s12">
+      <div class="input-field col s12 indicator-select">
         <%= select_tag 'select-compareSize-dataset', options_for_select(@population, @population[0][0]) %>
-        <label>Select Size</label>
+        <label id="data-select-label">Select Size</label>
       </div>
-      <div class="input-field col s12">
-      <a class="waves-effect waves-light btn" onClick="sendUpdateRequest();">Update Graph</a>
+      <div class="input-field col s12 indicator-select">
+      <a class="waves-effect waves-light btn" id="update-btn" onClick="sendUpdateRequest();">Update Graph</a>
       </div>
-      <div class="input-field col s12">
-        <p>View Animation</p>
+      <div class="input-field col s12 indicator-select" id="animation-box">
+        <div class="line-separator"></div>
+        <label id="animation-label">View Animation</label>
           <p>
             <i class="material-icons md-36 buttons" id="play-bubble-btn">play_circle_outline</i>
             <i class="material-icons md-36 buttons" id="stop-bubble-btn">pause_circle_outline</i>

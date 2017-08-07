@@ -82,5 +82,40 @@ rect.disabled {
 
 #comparison-vis-filters {
   padding-left: 25px;
-  padding-right: 5px;
+  color: #2569a8;
+  border: 1px solid #2569a8;
+  border-radius: 5px;
+}
+
+#data-name {
+  font-family: 'Oswald', sans-serif;
+}
+
+.input-field.col.s12.indicator-select {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#update-btn {
+  width: inherit;
+}
+
+#data-select-label {
+  left: 0rem !important;
+}
+
+#animation-label {
+  left: 0rem !important;
+  font-size: 0.8rem;
+  position: relative;
+}
+
+#animation-box {
+  margin-top: 20px;
+}
+
+.line-separator{
+  height:1px;
+  background:#2569a8;
+  border-bottom:2px solid #2569a8;
 }
