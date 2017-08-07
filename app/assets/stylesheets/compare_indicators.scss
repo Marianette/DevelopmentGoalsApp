@@ -85,6 +85,7 @@ rect.disabled {
   color: #2569a8;
   border: 1px solid #2569a8;
   border-radius: 5px;
+  height: 100%;
 }
 
 .input-field.col.s12.indicator-select {
@@ -114,4 +115,13 @@ rect.disabled {
   height:1px;
   background:#2569a8;
   border-bottom:2px solid #2569a8;
+}
+
+// Set up height setting
+.content-container {
+  height:92%;
+}
+
+.row.vis {
+  height: 100%;
 }

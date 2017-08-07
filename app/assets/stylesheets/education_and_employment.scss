@@ -33,6 +33,7 @@
   color: #2569a8;
   border: 1px solid #2569a8;
   border-radius: 5px;
+  height: 100%;
 }
 
 #indicator-select {
@@ -46,4 +47,13 @@
 
 #map-gender-filter-selection {
   padding-bottom: 10px;
+}
+
+// Set up height setting
+.content-container {
+  height:92%;
+}
+
+.row.vis {
+  height: 100%;
 }
