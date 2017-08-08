@@ -5,3 +5,51 @@ html, body {
 #data-name {
   font-family: 'Oswald', sans-serif;
 }
+
+// Select2 - change selector styling to match material design theme more
+.select2-container {
+  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  outline: none;
+  height: 2.5rem;
+  line-height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  margin: 0 0 20px 0;
+  padding: 0;
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  color: #2569a8;
+}
+
+.select2-container .select2-selection--single, .select2-container--default .select2-selection--single .select2-selection__rendered {
+  height: 38px;
+  padding-left: 0px;
+  color: #2569a8;
+  border-bottom: 1px solid #9e9e9e;
+}
+
+.select2-container--default .select2-selection--single {
+  background-color: transparent;
+  border: none;
+}
+
+.select2-container--open .select2-dropdown--above {
+  border-bottom: inherit;
+}
+
+.select2-results__option {
+  padding: 2px;
+}
+
+.select2-search--dropdown {
+  height: 58px;
+}
+
+span.select2-container.select2-container--default.select2-container--open {
+  width: 200px;
+}

@@ -37,3 +37,8 @@ label {
 span.badge.new:after  {
   content: "" !important;
 }
+
+.select-wrapper input.select-dropdown {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+}

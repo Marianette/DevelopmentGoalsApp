@@ -11,19 +11,22 @@
       <%= tag('/div') %>
     </div>
     <div class="col s2 gii-filter-container">
+      <div>
       <h5 id="data-name">Gender Inequality Index (GII)</h5>
       <p id="data-info">Comparison of the GII with education, labour force, and political, participation rates of males and females</p>
+      </div>
         <div class="input-field col s12" id="gii-year-selector">
           <%= select_tag 'select-year', options_for_select(@years.collect { |y| [y, y]}, @years.max) %>
           <label id="year-select-label">Select Year</label>
         </div>
         <div id="paraCoords-country-select">
+          <label>Find Country</label>
           <%= select_tag "paracoords-country", options_for_select(@countries, ""), style:"width:100%" %>
         </div>
         <div id="action-buttons">
-          <a id="add-country" onClick="highlightCountry(true);"><span class="new badge">Highlight</span></a>
-          <a id="minus-country" onClick="highlightCountry(false);"><span class="new badge">Unhighlight</span></a>
-          <a id="clear-country" onClick="highlightCountry(null);"><span class="new badge">Clear All</span></a>
+          <p><a id="add-country" onClick="highlightCountry(true);"><span class="new badge">Find</span></a>
+          <a id="minus-country" onClick="highlightCountry(false);"><span class="new badge">Deselect</span></a>
+          <a id="clear-country" onClick="highlightCountry(null);"><span class="new badge">Clear All</span></a></p>
         </div>
       <div id="region-filters"></div>
     </div>
