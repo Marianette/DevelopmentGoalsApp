@@ -45,7 +45,7 @@ function initEducationEmploymentVis(id, data, world) {
 
   // define projection with parameters
   var projection = d3.geo.naturalEarth()
-  .scale(210)
+  .scale(220)
   .translate([centerX, centerY])
   .precision(.1);
 
@@ -92,7 +92,6 @@ function initEducationEmploymentVis(id, data, world) {
     .style("stroke-width", "0.6px")
     .style("vector-effect", "non-scaling-stroke")
     .style("fill", getColour)
-    .style("opacity", 0.85)
     // Add interations with mouse click/hover events
     .on("mouseover", function(d) {
       showTooltip(d, toolTip);
@@ -127,7 +126,8 @@ function showTooltip(d, toolTip) {
   d3.select("#mapContainer").select("#code_" + d.properties.id)
   .transition()
   .duration(200)
-  .style("opacity", 1)
+  .style("fill", "#000")
+  .style("opacity", 0.5)
   .style("stroke", "white")
   .style("stroke-width", "1.5px");
 }
@@ -140,7 +140,8 @@ function hideTooltip(d, toolTip) {
   d3.select("#mapContainer").select("#" + getId(d))
   .transition()
   .duration(200)
-  .style("opacity", 0.85)
+  .style("fill", getColour)
+  .style("opacity", 1)
   .style("stroke", "white")
   .style("stroke-width", "0.6px");
 }
@@ -151,7 +152,7 @@ function clicked(d, centerX, centerY, path){
     var centroid = path.centroid(d);
     dx = centroid[0];
     dy = centroid[1];
-    scale = 2.5;
+    scale = 2.8;
     centered = d;
   } else {
     dx = centerX;

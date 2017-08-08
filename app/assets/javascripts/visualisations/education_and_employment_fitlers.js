@@ -7,6 +7,7 @@ $(function(){
       // disable irrelevant filter options
       if (selectedDataset == "comparison") {
         $("#map-gender-parity").attr("disabled", true);
+        $("#gender-parity").attr("id", "disabled-label");
         // ensure that unavailable filter is not being applied to dataset
         if(selectedFilter == "diff") {
           selectedFilter = "female";
@@ -14,6 +15,7 @@ $(function(){
         }
       } else {
         $("#map-gender-parity").attr("disabled", false);
+        $("#disabled-label").attr("id", "gender-parity");
       }
       // if changing data set, choose most recent year for new data setAnimataion
       currentYearIndex = yearArrays[selectedDataset].length - 1;
