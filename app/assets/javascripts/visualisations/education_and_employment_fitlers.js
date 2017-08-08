@@ -22,8 +22,12 @@ $(function(){
 
       // Need to change slider values
       var years = yearArrays[selectedDataset];
-      $('#years-selector').attr("min", d3.min(years));
-      $('#years-selector').attr("max", d3.max(years));
+      var minyear = d3.min(years);
+      var maxyear = d3.max(years);
+      $('#years-selector').attr("min", minyear);
+      $('#years-selector').attr("max", maxyear);
+      $('#min-year').text(minyear);
+      $('#max-year').text(maxyear);
       updateLegend();
       applyFilter();
     }

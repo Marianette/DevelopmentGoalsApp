@@ -4,7 +4,6 @@ class ExploreController < ApplicationController
     @datasets = [['Secondary Education','education'],
                   ['Labour Force Rates', 'employment'],
                   ['Education vs. Employment', 'comparison']]
-
     @title = 'Education and Employment'
   end
 

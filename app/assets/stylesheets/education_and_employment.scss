@@ -53,6 +53,28 @@
   color: #d4d4d4 !important;
 }
 
+.range-field {
+  margin-top: 0px;
+}
+
+.year-labels {
+  position: relative;
+  top: 10px;
+}
+
+.year-slider-label {
+  margin: 0px;
+  display: inline;
+  font-size: 10px;
+}
+
+#min-year {
+  float: left;
+}
+
+#max-year {
+  float: right;
+}
 // Set up height setting
 .content-container {
   height:92%;
