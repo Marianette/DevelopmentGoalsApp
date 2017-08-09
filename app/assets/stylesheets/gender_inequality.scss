@@ -37,6 +37,19 @@
   stroke-width: 2;
 }
 
+#legend-area {
+  padding: 0px;
+  font-size: 12px;
+}
+
+#region-filters {
+  margin-top: 10px;
+}
+
+#gii-line-sep {
+  margin-bottom: 10px;
+}
+
 rect.disabled {
   fill: transparent !important;
 }
@@ -60,6 +73,17 @@ rect.disabled {
 #gii-year-selector {
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.gii-spans {
+  cursor: pointer;
+  display: inline-block;
+}
+
+#action-buttons {
+  padding:0px;
+  position: relative;
+  top: -15px;
 }
 
 // Set up height setting

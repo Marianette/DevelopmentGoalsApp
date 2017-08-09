@@ -20,15 +20,19 @@
           <label id="year-select-label">Select Year</label>
         </div>
         <div id="paraCoords-country-select">
-          <label>Find Country</label>
+          <label>Select Country</label>
           <%= select_tag "paracoords-country", options_for_select(@countries, ""), style:"width:100%" %>
         </div>
-        <div id="action-buttons">
-          <p><a id="add-country" onClick="highlightCountry(true);"><span class="new badge">Find</span></a>
-          <a id="minus-country" onClick="highlightCountry(false);"><span class="new badge">Deselect</span></a>
-          <a id="clear-country" onClick="highlightCountry(null);"><span class="new badge">Clear All</span></a></p>
+        <div class="col s12" id="action-buttons">
+          <span class="gii-spans new badge" id="select-badge" onClick="highlightCountry(true);">Select</span>
+          <span class="gii-spans new badge" id="deselect-badge" onClick="highlightCountry(false);">Deselect</span>
+          <span class="gii-spans new badge" id="clear-all-badge" onClick="highlightCountry(null);">Clear All</span>
         </div>
+      <div class="col s12" id="legend-area">
+      <div class="line-separator" id="gii-line-sep"></div>
+      <label>Filter by Region</label>
       <div id="region-filters"></div>
+      </div>
     </div>
   </div>
 </div>

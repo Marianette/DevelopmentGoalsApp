@@ -55,9 +55,9 @@ function updateParaCoordsYear(){
 
 function createGIILegend(colorScale, data){
   var width = $(".gii-filter-container").width();
-  var height = 200;
-  var legendRectSize = 18;
-  var legendSpacing = 4;
+  var height = 170;
+  var legendRectSize = 16;
+  var legendSpacing = 3;
 
   var svg = d3.select("#region-filters").append("svg")
   .attr("width", width)

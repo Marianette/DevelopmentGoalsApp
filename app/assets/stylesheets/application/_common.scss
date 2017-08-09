@@ -6,6 +6,27 @@ html, body {
   font-family: 'Oswald', sans-serif;
 }
 
+.line-separator{
+  height:1px;
+  background:#2569a8;
+  border-bottom:2px solid #2569a8;
+}
+
+#select-badge {
+  margin-left: 0px;
+  float: left;
+  background-color: #339030;
+}
+
+#deselect-badge {
+  float: left;
+  background-color: #a90000;
+}
+
+#clear-all-badge {
+  float: right;
+}
+
 // Select2 - change selector styling to match material design theme more
 .select2-container {
   position: relative;
