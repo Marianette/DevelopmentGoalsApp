@@ -26,7 +26,7 @@ function initIncomeVis(id, data) {
   incomeCurrentYear = 2015;
   incomeDataDisplayed = "male";
 
-  var fullPlotWidth = $('.income-vis-container').width();
+  var fullPlotWidth = $('.income-vis-container').width() - 8;
   var fullPlotHeight = 400;
   dotPlotMargins = {top: 20, right: 20, bottom: 20, left: 40};
   plotWidth = fullPlotWidth - dotPlotMargins.left - dotPlotMargins.right,

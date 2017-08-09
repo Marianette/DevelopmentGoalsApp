@@ -26,9 +26,9 @@ $(function(){
     }
   });
 
-  // React to data change
-  $("#select-income-dataset").on("change", function(){
-    if(this.value != incomeDataDisplayed) {
+  $("#income-filter-view input").on("change", function(){
+    var value = $('input[name=view-select]:checked', '#income-filter-view').val();
+    if(value != incomeDataDisplayed){
       incomeDataDisplayed = this.value;
       $('#dot-plot-title').text(getIncomePlotTitle);
       updateDotPlot();

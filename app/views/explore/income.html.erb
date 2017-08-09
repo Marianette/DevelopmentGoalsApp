@@ -16,31 +16,44 @@
     </div>
 
     <!-- Filters! -->
-    <div class="col s12 income-filter-container">
-      <div class="row">
-        <div class="input-field col s3">
-          <%= select_tag "select-income-dataset", options_for_select(@datasets, @datasets[0][0]) %>
-          <label>Select Indicator</label>
+    <div class="col s12">
+      <div class="row flexbox">
+        <div class="input-field col s4 income-filter-container">
+          <form id="income-filter-view">
+            <label class="income-labels">Select View</label>
+            <p id="income-radio">
+              <input class="with-gap" name="view-select" type="radio" id="income-gni" value='<%= @datasets[0][1] %>' checked/>
+              <label class="income-view-label" for="income-gni"><%= @datasets[0][0] %></label>
+              <input class="with-gap" name="view-select" type="radio" id="income-percent" value='<%= @datasets[1][1] %>' />
+              <label class="income-view-label" for="income-percent"><%= @datasets[1][0] %></label>
+            </p>
+          </form>
         </div>
-        <div class="input-field col s2">
+        <div class="input-field col s2 income-filter-container">
           <form id="income-year-slider">
-            <label>Select Year</label>
+            <label class="income-labels">Select Year</label>
+            <div class="year-labels">
+              <p class="year-slider-label" id="min-year"><%= @years.min %></p>
+              <p class="year-slider-label" id="max-year"><%= @years.max %></p>
+            </div>
+            <div style="clear: both;"></div>
             <p class="range-field">
               <input type="range" id="income-years-selector" min="<%= @years.min %>" max="<%= @years.max %>" value="<%= @years.max %>" />
             </p>
           </form>
         </div>
-        <div class="input-field col s2">
-          <%= select_tag "select-country", options_for_select(@countries, ""), style:"width:100%" %>
-        </div>
-        <div class="input-field col s2" id="action-buttons">
-          <a class="btn-floating" id="add-country" title="Select Country" onClick="highlightData(true);"><i class="material-icons">add</i></a>
-          <a class="btn-floating" id="minus-country" title="Remove Country" onClick="highlightData(false);"><i class="material-icons">remove</i></a>
-          <a class="btn-floating" id="clear-country" title="Clear All" onClick="highlightData(null);"><i class="material-icons">clear</i></a>
-        </div>
-        <div class="input-field col s2">
+        <div class="input-field col s2 income-filter-container">
           <%= select_tag "select-regions", options_for_select(@regions, "World") %>
-          <label>Filter by Region</label>
+          <label class="income-labels" id="region-filter-label">Filter by Region</label>
+        </div>
+        <div class="input-field col s3 income-filter-container">
+          <label class="income-labels">Select Country</label>
+          <%= select_tag "select-country", options_for_select(@countries, ""), style:"width:100%" %>
+          <div class="col s12" id="action-buttons">
+            <span class="gii-spans new badge" id="select-badge" onClick="highlightCountry(true);">Select</span>
+            <span class="gii-spans new badge" id="deselect-badge" onClick="highlightCountry(false);">Deselect</span>
+            <span class="gii-spans new badge" id="clear-all-badge" onClick="highlightCountry(null);">Clear All</span>
+          </div>
         </div>
       </div>
     </div>

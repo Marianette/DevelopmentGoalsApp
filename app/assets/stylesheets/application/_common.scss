@@ -2,6 +2,15 @@ html, body {
   height: 100%;
 }
 
+// Set up height setting
+.content-container {
+  height:92%;
+}
+
+.row.vis {
+  height: 100%;
+}
+
 #data-name {
   font-family: 'Oswald', sans-serif;
 }
@@ -10,6 +19,13 @@ html, body {
   height:1px;
   background:#2569a8;
   border-bottom:2px solid #2569a8;
+}
+
+// Select2 country selection button designs
+#action-buttons {
+  padding:0px;
+  position: relative;
+  top: -15px;
 }
 
 #select-badge {
