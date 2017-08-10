@@ -50,9 +50,9 @@
           <label class="income-labels">Select Country</label>
           <%= select_tag "select-country", options_for_select(@countries, ""), style:"width:100%" %>
           <div class="col s12" id="action-buttons">
-            <span class="gii-spans new badge" id="select-badge" onClick="highlightCountry(true);">Select</span>
-            <span class="gii-spans new badge" id="deselect-badge" onClick="highlightCountry(false);">Deselect</span>
-            <span class="gii-spans new badge" id="clear-all-badge" onClick="highlightCountry(null);">Clear All</span>
+            <span class="income-spans new badge" id="select-badge" onClick="highlightData(true);">Select</span>
+            <span class="income-spans new badge" id="deselect-badge" onClick="highlightData(false);">Deselect</span>
+            <span class="income-spans new badge" id="clear-all-badge" onClick="highlightData(null);">Clear All</span>
           </div>
         </div>
       </div>

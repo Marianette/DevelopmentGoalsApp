@@ -207,7 +207,7 @@ function createInformationCircles(){
   dx     = radius - side / 2,
   padding = 25;
 
-  var ids = ["data", "year", "country"];
+  var ids = ["year", "country", "data"];   // Draw bubbles order: 3, 2, 1
   for(var i in ids) {
     var infoCircle = d3.select("#dotPlotSvg").append('g')
     .attr('transform', 'translate(' + [ dx, dx ] + ')');

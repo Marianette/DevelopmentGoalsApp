@@ -30,6 +30,14 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   var xScale = d3.scale.linear().domain([xmin, xmax]).range([0, graphWidth]);
   var yScale = d3.scale.linear().domain([ymin, ymax]).range([graphHeight, 0]);
 
+  // if any scale is not between 0 and 1000, use log
+  if (xmax - xmin > 1000) {
+    xScale = d3.scale.log().domain([xmin, xmax]).range([0, graphWidth]);
+  }
+  if (ymax - ymin > 1000) {
+    yScale = d3.scale.log().domain([ymin, ymax]).range([graphHeight, 0]);
+  }
+
   var radiusScale = d3.scale.sqrt().domain([0, popMax]).range([0, 50]);
   var colorScale = d3.scale.category10();
   var xAxis = d3.svg.axis().orient("bottom").scale(xScale);
@@ -68,8 +76,9 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   // Add controls for animation
   d3.select('#play-bubble-btn')
   .on('click', function (d) {
+    var start = label.text() == endYear? startYear : label.text();
     bubbleSvg.transition()
-    .duration((endYear - label.text()) * 1000)  // 1 second to move 1 year
+    .duration((endYear - start) * 1000)  // 1 second to move 1 year
     .ease("linear")
     .tween("year", tweenYear)
     .each("end", enableInteraction);

@@ -92,5 +92,5 @@ function getIncomePlotTitle(){
 function getDataInfo(d){
   if(incomeDataDisplayed == "diff")
     return "Female GNI is " + d[incomeDataDisplayed][incomeCurrentYear] + "% less than male GNI";
-  return "<b>Estimated GNI</b></br>Male: $" + d.male[incomeCurrentYear] + "</br>Female: $" + d.female[incomeCurrentYear];
+  return "<b>Male GNI</b></br>$" + d.male[incomeCurrentYear] + "</br><b>Female GNI</b></br>$" + d.female[incomeCurrentYear];
 }
