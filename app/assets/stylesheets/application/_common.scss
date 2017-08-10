@@ -1,14 +1,22 @@
+// Set up height setting
 html, body {
   height: 100%;
 }
 
-// Set up height setting
 .content-container {
   height:92%;
 }
 
 .row.vis {
   height: 100%;
+}
+
+// Flexbox for column displays
+.row.flexbox {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0px
 }
 
 #data-name {
