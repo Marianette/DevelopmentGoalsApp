@@ -19,23 +19,13 @@
     <div class="col s12">
       <div class="row flexbox">
         <div class="input-field col s4 income-filter-container">
-            <!-- <p id="income-radio">
-              <input class="with-gap" name="view-select" type="radio" id="income-gni" value='<%= @datasets[0][1] %>' checked/>
-              <label class="income-view-label" for="income-gni"><%= @datasets[0][0] %></label>
-            </p>
-            <p class="income-radio">
-              <input class="with-gap" name="view-select" type="radio" id="income-percent" value='<%= @datasets[1][1] %>' />
-              <label class="income-view-label" for="income-percent"><%= @datasets[1][0] %></label>
-            </p> -->
-            <form id="map-gender-filter-selection">
-              <label>Select Data</label>
-              <p class="gender-selector">
-                <input class="with-gap" name="gender-select" type="radio" id="map-female" value="female" checked/>
-                <label class="gender-label" for="map-female">Female</label>
-              </p>
-              <p class="gender-selector">
-                <input class="with-gap" name="gender-select" type="radio" id="map-male" value="male"/>
-                <label class="gender-label" for="map-male">Male</label>
+            <form id="income-filter-view">
+              <label>Select View</label>
+              <p id="income-radio">
+                <input class="with-gap" name="view-select" type="radio" id="income-gni" value='<%= @datasets[0][1] %>' checked/>
+                <label class="income-view-label" for="income-gni"><%= @datasets[0][0] %></label>
+                <input class="with-gap" name="view-select" type="radio" id="income-percent" value='<%= @datasets[1][1] %>' />
+                <label class="income-view-label" for="income-percent"><%= @datasets[1][0] %></label>
               </p>
           </form>
         </div>
