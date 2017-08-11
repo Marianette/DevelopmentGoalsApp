@@ -26,13 +26,22 @@ $(function(){
     }
   });
 
-  $("#income-filter-view input").on("change", function(){
-    var value = $('input[name=view-select]:checked', '#income-filter-view').val();
+  // $("#income-filter-view input").on("change", function(){
+  //   var value = $('input[name=view-select]:checked', '#income-filter-view').val();
+  //   if(value != incomeDataDisplayed){
+  //     incomeDataDisplayed = this.value;
+  //     $('#dot-plot-title').text(getIncomePlotTitle);
+  //     updateDotPlot();
+  //   }
+  // });
+
+  $("#map-gender-filter-selection input").on("change", function(){
+    var value = $('input[name=gender-select]:checked', '#map-gender-filter-selection').val();
     if(value != incomeDataDisplayed){
-      incomeDataDisplayed = this.value;
-      $('#dot-plot-title').text(getIncomePlotTitle);
-      updateDotPlot();
-    }
+        incomeDataDisplayed = this.value;
+        $('#dot-plot-title').text(getIncomePlotTitle);
+        updateDotPlot();
+      }
   });
 
   // React to data change
