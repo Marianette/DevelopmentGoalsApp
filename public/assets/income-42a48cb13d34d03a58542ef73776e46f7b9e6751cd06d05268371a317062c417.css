@@ -1,0 +1,220 @@
+/* line 1, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+circle.dot-plot-male {
+  fill: #6699FF;
+}
+
+/* line 5, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+circle.dot-plot-female {
+  fill: #dd1c77;
+}
+
+/* line 9, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+circle.dot-plot-diff {
+  fill: #cb181d;
+}
+
+/* line 13, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+circle.dot-plot-male:hover {
+  stroke-width: 2;
+  stroke: #deebf7;
+}
+
+/* line 18, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+circle.dot-plot-female:hover {
+  stroke-width: 2;
+  stroke: #fde0dd;
+}
+
+/* line 23, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+circle.dot-plot-diff:hover {
+  stroke-width: 2;
+  stroke: #fee0d2;
+}
+
+/* line 28, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+line.grid {
+  stroke: #ccc;
+}
+
+/* line 32, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.grid:hover, .grid.hover {
+  stroke: #2E72B1;
+  stroke-width: 1.5px;
+}
+
+/* line 37, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.grid.selected {
+  stroke: #49C95A;
+  stroke-width: 1.5px;
+}
+
+/* line 42, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.info-text {
+  padding: 2px;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  word-break: break-word;
+  font-size: 16px;
+}
+
+/* line 50, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#data-text {
+  color: #002564;
+  margin: 5px;
+  font-size: 14px;
+}
+
+/* line 56, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#country-text {
+  color: #fff;
+}
+
+/* line 60, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#year-text {
+  color: #003F7E;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* line 66, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.info-circle {
+  fill: #fff;
+}
+
+/* line 70, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#country-circle {
+  fill: #00407E;
+}
+
+/* line 74, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#year-circle {
+  stroke-width: 5px;
+  stroke: #165997;
+}
+
+/* line 79, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#data-circle {
+  stroke-width: 5px;
+  stroke: #3073B1;
+}
+
+/* line 84, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+div.country-label {
+  position: absolute;
+  color: #498CCA;
+  text-align: center;
+  padding: 3px;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: 'Oswald', sans-serif;
+  pointer-events: none;
+}
+
+/* line 95, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+/* line 102, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.axis text {
+  display: none;
+}
+
+/* line 106, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.ylabel {
+  font-family: sans-serif;
+  font-size: 11px;
+  color: gray;
+  font-weight: bold;
+}
+
+/* line 113, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#dot-plot-title {
+  font-weight: bold;
+  font-size: 24px;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  padding-top: 20px;
+}
+
+/* line 121, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#country-label {
+  position: absolute;
+  top: -10px;
+}
+
+/* line 126, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.income-labels {
+  font-size: 0.8rem !important;
+}
+
+/* line 130, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+label.income-view-label {
+  margin-top: 10px;
+}
+
+/* line 134, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.income-filter-container {
+  margin-top: 0px;
+  margin-right: 10px;
+  color: #2569a8;
+  border: 1px solid #2569a8;
+  border-radius: 5px;
+}
+
+/* line 142, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#income-radio {
+  margin-bottom: 20px;
+}
+
+/* line 147, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.range-field {
+  margin-top: 40px;
+}
+
+/* line 151, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.year-labels {
+  position: relative;
+  top: 50px;
+}
+
+/* line 156, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.year-slider-label {
+  margin: 0px;
+  display: inline;
+  font-size: 10px;
+}
+
+/* line 162, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#min-year {
+  float: left;
+}
+
+/* line 166, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#max-year {
+  float: right;
+}
+
+/* line 171, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+#region-filter-label {
+  top: 10px;
+}
+
+/* line 175, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.select-wrapper {
+  margin-top: 30px;
+}
+
+/* line 180, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.select2-selection__rendered {
+  margin-top: 36px;
+}
+
+/* line 184, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/income.scss */
+.income-spans {
+  cursor: pointer;
+  display: inline-block;
+}

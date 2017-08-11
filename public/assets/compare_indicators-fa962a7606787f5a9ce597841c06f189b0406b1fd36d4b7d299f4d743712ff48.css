@@ -1,0 +1,134 @@
+/* line 1, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+/* line 6, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+svg {
+  font: 10px sans-serif;
+}
+
+/* line 10, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.dot {
+  stroke: #000;
+}
+
+/* line 14, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+}
+
+/* line 19, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.label {
+  fill: #777;
+}
+
+/* line 23, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+#year-label {
+  font-size: 75px;
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
+  fill: #ddd;
+}
+
+/* line 30, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.helper-text {
+  margin: 0px;
+  text-align: center;
+}
+
+/* line 35, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.dots-selected {
+  display: none;
+}
+
+/* line 39, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.active #year-label {
+  fill: #aaa;
+}
+
+/* line 43, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+#overlay {
+  fill: none;
+  pointer-events: all;
+  cursor: ew-resize;
+}
+
+/* line 50, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.legend {
+  font-size: 12px;
+}
+
+/* line 54, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+rect {
+  cursor: pointer;
+  stroke-width: 2;
+}
+
+/* line 59, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+rect.disabled {
+  fill: transparent !important;
+}
+
+/* line 63, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.unselected {
+  fill: transparent !important;
+  stroke: transparent !important;
+}
+
+/* line 68, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.buttons {
+  cursor: pointer;
+}
+
+/* line 72, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.start-circle {
+  fill: #ddd;
+  opacity: 0.75;
+}
+
+/* line 77, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.start-text {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* line 83, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+#comparison-vis-filters {
+  padding-left: 25px;
+  color: #2569a8;
+  border: 1px solid #2569a8;
+  border-radius: 5px;
+  height: 100%;
+}
+
+/* line 91, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+.input-field.col.s12.indicator-select {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* line 96, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+#update-btn {
+  width: inherit;
+}
+
+/* line 100, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+#data-select-label {
+  left: 0rem !important;
+}
+
+/* line 104, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+#animation-label {
+  left: 0rem !important;
+  font-size: 0.8rem;
+  position: relative;
+}
+
+/* line 110, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/compare_indicators.scss */
+#animation-box {
+  margin-top: 20px;
+}
