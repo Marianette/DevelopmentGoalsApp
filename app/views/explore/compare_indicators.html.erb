@@ -2,6 +2,36 @@
 
 <!-- Contents of page -->
 <div class="content-container">
+
+  <!-- Help popup box with explanation of how to use visualisation -->
+  <div class="main-help bottom-right-help">
+    <div class="main-help-textbox" id="compare-indicators-helper">
+      <p class="main-help-text">
+        <b class="help-title">How To Use This Visualisation</b>
+        </br>
+        This visualisation allows you to explore and make comparisons across the datasets that are stored in this tool.
+        You can select the values to show along the x and y axis of the graph. The z-value determines the size of the
+        bubbles, hence you will be able to compare up to three datasets at a time.
+        </br></br>
+        <b>Interactions</b></br>
+        Hover over the bubbles to view the country, and exact data values of the chosen datasets. You can customise the visualisation
+        by filtering out regions using the legend on the right. You can also view an animation that shows how the data has changed over
+        time by pressing the play button (found under the 'View Animation' filter area). Otherwise, you can control changing the year by
+        moving your mouse over the year label (found next to the graph near the x-axis).
+        </br></br>
+        <b>About the Datasets</b></br>
+        Secondary education, labour force participation rates, and share of (female) seats in parliament are all percentage values between 0% and 100%.
+        The national income data is the estimated gross national income for males and females. The gender inequality index
+        is a ratio between 0 and 1 conveying the level of inequality in a country. It is calculated using the secondary education,
+        labour force participation rates, share of seats in parliament held by women, maternal mortality ratio, and adolescent birth rate data.
+        </br></br>
+        <b>Data Sources</b></br>
+        Find information about this <%= link_to("here", home_about_path) %>
+      </p>
+    </div>
+    <a href="#" class="main-help-label">Help</a>
+  </div>
+
   <div class="row vis">
     <div class="col s10 compare-vis-container">
       <!-- Loading spinner to show when data for visualisation is being loaded -->
@@ -32,7 +62,11 @@
       </div>
       <div class="input-field col s12 indicator-select" id="animation-box">
         <div class="line-separator"></div>
-        <label id="animation-label">View Animation</label>
+        <label id="animation-label">View Animation
+          <i class="material-icons helper-tooltip" id="view-animation-help">
+            help_outline<span class="helpertext helper-bottom" id="side-bar-helper">Press 'Play' to view an animation that shows the data changing over time. Click 'Pause' to pause/stop the animation.</span>
+          </i>
+        </label>
           <p>
             <i class="material-icons md-36 buttons" id="play-bubble-btn">play_circle_outline</i>
             <i class="material-icons md-36 buttons" id="stop-bubble-btn">pause_circle_outline</i>

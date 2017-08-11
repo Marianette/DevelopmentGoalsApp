@@ -57,11 +57,12 @@ function createYearLabel(bubbleSvg) {
   bubbleSvg.append("rect")
   .attr("id", "overlay");
 
+  var helperwidth = 150;
   bubbleSvg.append("foreignObject")
   .attr("text-anchor", "start")
   .attr("x", graphWidth)
   .attr("y", graphHeight)
-  .attr("width", margin.right)
+  .attr("width", helperwidth)
   .attr("height", margin.bottom)
   .append("xhtml:p")
   .html("Move mouse over year </br> to move through time")

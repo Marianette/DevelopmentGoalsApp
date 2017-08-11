@@ -2,8 +2,16 @@
   font-size: 14px;
 }
 
+#view-animation-help {
+  font-size: 14px;
+}
+
 #gni-title-help {
   font-size: 25px;
+}
+
+#side-bar-helper {
+  width: 200px;
 }
 
 .helper-tooltip {
@@ -24,7 +32,7 @@
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 5px;
     position: absolute;
     z-index: 1;
     width: 240px;
@@ -48,6 +56,7 @@
 // Main helper box for each visualisations
 .main-help {
   position: absolute;
+  right: 10px;
 }
 
 .main-help-label {
@@ -60,12 +69,16 @@
 .main-help-textbox {
   visibility: hidden;
   position: relative;
+  z-index: 1000;
   right: 270px;
 }
 
 .top-right-help {
-  right: 10px;
   top: 55px;
+}
+
+.bottom-right-help {
+  bottom: 5px;
 }
 
 .main-help-text {
@@ -80,4 +93,8 @@
   z-index: 1;
   width: 300px;
   margin-top: 5px
+}
+
+#compare-indicators-helper {
+  bottom: 480px;
 }
