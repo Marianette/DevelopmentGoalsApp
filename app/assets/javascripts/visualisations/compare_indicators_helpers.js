@@ -1,7 +1,7 @@
 // Helpers to extract data point information
 function x(d) { return d.xVal; }
 function y(d) { return d.yVal; }
-function radius(d) { return d.population; }
+function radius(d) { return d.zVal; }
 function color(d) { return d.region; }
 function key(d) { return d.country; }
 function dotId(d) { return "code_" + d.code; } // Give each dot an id

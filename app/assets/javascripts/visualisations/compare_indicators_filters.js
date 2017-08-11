@@ -2,9 +2,9 @@
 function sendUpdateRequest(){
   var x = $("#select-compareX-dataset").val();
   var y = $("#select-compareY-dataset").val();
-  var size = $("#select-compareSize-dataset").val();
+  var z = $("#select-compareZ-dataset").val();
   var dataurl = $("#compare-vis").data("url");
-  dataurl = dataurl + "?x=" + x + "&y=" + y + "&size=" + size;
+  dataurl = dataurl + "?x=" + x + "&y=" + y + "&z=" + z;
 
   // Show loading screen and make sure starter message is no longer displayed
   d3.select(".start-message").style("display", "none").remove();

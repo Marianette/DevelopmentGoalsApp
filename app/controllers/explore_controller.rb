@@ -43,7 +43,8 @@ class ExploreController < ApplicationController
 
   def compare_indicators
     @datasets = get_all_data_types
-    @population = get_population_types
+    @zdata = get_population_types + get_all_data_types
+    #@population = get_population_types
     @title = 'Compare Indicators'
   end
 
@@ -72,12 +73,11 @@ class ExploreController < ApplicationController
   end
 
   def compare_indicators_data
-    data_type = create_reverse_hash(get_all_data_types)
+    data_type = create_reverse_hash(get_population_types + get_all_data_types)
     x = data_type[params[:x]]
     y = data_type[params[:y]]
-    population = create_reverse_hash(get_population_types)
-    size = population[params[:size]]
-    data = FetchComparisonData.new(x, y, size).call
+    z = data_type[params[:z]]
+    data = FetchComparisonData.new(x, y, z).call
     respond_to do |format|
       format.json { render :json => {
         :data => data,

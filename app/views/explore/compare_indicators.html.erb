@@ -14,7 +14,7 @@
     <!-- Visualisation filters -->
     <div class="col s2 filter-container" id="comparison-vis-filters">
       <h5 id="data-name">Compare Indicators</h5>
-      <p id="data-info">Select X, Y, and size of bubbles to compare different datasets</p>
+      <p id="data-info">Select X, Y, and Z to compare different datasets</p>
       <div class="input-field col s12 indicator-select">
         <%= select_tag 'select-compareX-dataset', options_for_select(@datasets, @datasets[0][0]) %>
         <label id="data-select-label">Select X</label>
@@ -24,8 +24,8 @@
         <label id="data-select-label">Select Y</label>
       </div>
       <div class="input-field col s12 indicator-select">
-        <%= select_tag 'select-compareSize-dataset', options_for_select(@population, @population[0][0]) %>
-        <label id="data-select-label">Select Size</label>
+        <%= select_tag 'select-compareZ-dataset', options_for_select(@zdata, @zdata[0][0]) %>
+        <label id="data-select-label">Select Z (Radius of Bubbles)</label>
       </div>
       <div class="input-field col s12 indicator-select">
       <a class="waves-effect waves-light btn" id="update-btn" onClick="sendUpdateRequest();">Update Graph</a>

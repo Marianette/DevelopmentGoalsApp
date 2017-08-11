@@ -24,11 +24,14 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   var endYear = findMax(data, "x", 0);
   var xmin = findMin(data, "x", 1), xmax = findMax(data, "x", 1);
   var ymin = findMin(data, "y", 1), ymax = findMax(data, "y", 1);
-  var popMax = findMax(data, "population", 1);
+  var zmin = findMin(data, "z", 1), zmax = findMax(data, "z", 1);
+
+  var maxRadius = (zmax - zmin <= 100)? 25 : 40;
 
   // Redefine dimension scales and axis values
   var xScale = d3.scale.linear().domain([xmin, xmax]).range([0, graphWidth]);
   var yScale = d3.scale.linear().domain([ymin, ymax]).range([graphHeight, 0]);
+  var radiusScale = d3.scale.sqrt().domain([zmin, zmax]).range([1, maxRadius]);
 
   // if any scale is not between 0 and 1000, use log
   if (xmax - xmin > 1000) {
@@ -38,7 +41,6 @@ function updateBubbleGraph(data, xLabel, yLabel) {
     yScale = d3.scale.log().domain([ymin, ymax]).range([graphHeight, 0]);
   }
 
-  var radiusScale = d3.scale.sqrt().domain([0, popMax]).range([0, 50]);
   var colorScale = d3.scale.category10();
   var xAxis = d3.svg.axis().orient("bottom").scale(xScale);
   var yAxis = d3.svg.axis().orient("left").scale(yScale);
@@ -103,7 +105,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
     .sort(order);
 
     // Give each dot the name of the country.
-    dot.append("title").text(function(d) { return d.country; });
+    dot.append("title").html(function(d) { return d.country + "</br>X = " + x(d) + "</br>Y = " + y(d) + "</br>Z = " + radius(d); });
 
     // Remove old legend and create new one
     d3.selectAll(".legend").transition()
@@ -169,8 +171,8 @@ function updateBubbleGraph(data, xLabel, yLabel) {
         region: d.region,
         code: d.code,
         xVal: interpolateValues(d.x, year),
-        population: interpolateValues(d.population, year),
-        yVal: interpolateValues(d.y, year)
+        yVal: interpolateValues(d.y, year),
+        zVal: interpolateValues(d.z, year)
       };
     });
   }
