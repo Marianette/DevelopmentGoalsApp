@@ -57,7 +57,7 @@ function hideDataInformation(d){
 }
 
 function selectCountry(code, selected){
-  d3.select("#" + getIncomeId(code)).classed("selected", selected);
+  d3.select("#" + getIncomeId(code)).classed("highlighted-country", selected);
 }
 
 function changeDataSet(change){
@@ -68,7 +68,7 @@ function changeDataSet(change){
 }
 
 function clearSelections(){
-  d3.selectAll('.selected').classed("selected", false);
+  d3.selectAll('.highlighted-country').classed("highlighted-country", false);
 }
 
 function getIncomeId(code){
