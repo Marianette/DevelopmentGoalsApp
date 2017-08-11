@@ -7,4 +7,5 @@
 //= require_tree ./d3_assets
 //= require_tree ./visualisations
 //= require index
+//= require helper
 //= require material_design_init

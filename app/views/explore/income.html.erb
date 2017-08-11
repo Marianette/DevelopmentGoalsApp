@@ -2,11 +2,43 @@
 
 <!-- Page Content -->
 <div class="content-container">
+
+  <!-- Help popup box with explanation of how to use visualisation -->
+  <div class="main-help top-right-help">
+    <a href="#" class="main-help-label">Help</a>
+    <div class="main-help-textbox tr-text">
+      <p class="main-help-text">
+        <b class="help-title">How To Use This Visualisation</b>
+        </br>
+        This visualisation allows you to view an estimate of the average gross national income
+        (GNI) of males and females across different countries in the world. You can hover over the data lines and dots
+        to view exact data values for each country.
+        </br></br>
+        <b>What is GNI?</b></br>
+        The GNI is a measurement of a country's income. The GNI values shown in this visualisation aim to give an indication of the average GNI
+        attributed to a male and female in the country. The estimated values plotted here are derived from the female to male wage ratio, the female share
+        and male share of the economically active population, and the country's GNI (in terms of 2011 purchasing power pairty).
+        </br></br>
+        <b>Available Filters</b></br>
+        Select View - Adjust the visualisation to view the percentage difference between the male and female GNI's instead of the actual values.</br>
+        Select Year - Explore this data across different years.</br>
+        Select Region - Customise the visualisation by selecting a specific region in the world to view. </br>
+        Select Country - Use the search box to find a country. Selecting a country will highlight it green.
+        </br></br>
+        <b>Data Sources</b></br>
+        Find information about this <%= link_to("here", home_about_path) %>
+      </p>
+    </div>
+  </div>
+
+  <!-- actual content of visualisation -->
   <div class="row vis">
     <div class="col s12 income-vis-container">
-      <div id="dot-plot-title" title="GNI derived from the ratio of female to male wage,
-      female and male shares of economically active population and
-      GNI (in 2011 purchasing power pairty terms)">Estimated Gross National Income Per Capita (Male vs. Female)</div>
+      <div id="dot-plot-title">Estimated Gross National Income Per Capita (Male vs. Female)
+        <i class="material-icons helper-tooltip" id="gni-title-help">
+          help_outline<span class="helpertext helper-right">GNI derived from the ratio of female to male wage, the female and male ratio of economically active population, and the country's GNI (in terms of 2011 purchasing power pairty)</span>
+        </i>
+      </div>
 
       <!-- Loading spinner to show when data for visualisation is being loaded -->
       <div class="loading-income"></div>
@@ -19,14 +51,14 @@
     <div class="col s12">
       <div class="row flexbox">
         <div class="input-field col s4 income-filter-container">
-            <label class="income-labels">Select View</label>
-            <form id="income-filter-view">
-              <p id="income-radio">
-                <input class="with-gap" name="view-select" type="radio" id="income-gni" value='<%= @datasets[0][1] %>' checked/>
-                <label class="income-view-label" for="income-gni"><%= @datasets[0][0] %></label>
-                <input class="with-gap" name="view-select" type="radio" id="income-percent" value='<%= @datasets[1][1] %>' />
-                <label class="income-view-label" for="income-percent"><%= @datasets[1][0] %></label>
-              </p>
+          <label class="income-labels">Select View</label>
+          <form id="income-filter-view">
+            <p id="income-radio">
+              <input class="with-gap" name="view-select" type="radio" id="income-gni" value='<%= @datasets[0][1] %>' checked/>
+              <label class="income-view-label" for="income-gni"><%= @datasets[0][0] %></label>
+              <input class="with-gap" name="view-select" type="radio" id="income-percent" value='<%= @datasets[1][1] %>' />
+              <label class="income-view-label" for="income-percent"><%= @datasets[1][0] %></label>
+            </p>
           </form>
         </div>
         <div class="input-field col s2 income-filter-container">
@@ -47,7 +79,11 @@
           <label class="income-labels" id="region-filter-label">Filter by Region</label>
         </div>
         <div class="input-field col s3 income-filter-container">
-          <label class="income-labels">Select Country</label>
+          <label class="income-labels">Select Country
+            <i class="material-icons helper-tooltip" id="select-country-help">
+              help_outline<span class="helpertext helper-bottom">Use the search box to find a country. Selecting a country will highlight it green.</span>
+            </i>
+          </label>
           <%= select_tag "select-country", options_for_select(@countries, ""), style:"width:100%" %>
           <div class="col s12" id="action-buttons">
             <span class="income-spans new badge" id="select-badge" onClick="highlightData(true);">Select</span>
