@@ -2,6 +2,38 @@
 
 <!-- Contents of page -->
 <div class="content-container">
+
+  <!-- Help popup box with explanation of how to use visualisation -->
+  <div class="main-help bottom-right-help">
+    <div class="main-help-textbox" id="bottom-right-helper">
+      <p class="main-help-text">
+        <b class="help-title">How To Use This Visualisation</b>
+        </br>
+        This visualisation allows you to explore and make comparisons across education and employment data for both males
+        and females. </br></br>
+        Use the map to view values for specific countries, click on a country to zoom in, and use the filters along the side
+        to change the data shown on the maps.
+        </br></br>
+        <b>Datsets</b></br>
+        Secondary education - the percentage of the male/female population, over the age of 25, that has at least some secondary education.</br>
+        Labour force - the percentage of the male/female population over the age of 15, that is in the labour force</br>
+        Education vs. Employment - a comparison between the education and labour force rates for males and females.
+        </br></br>
+        <b>What is the 'equality' category?</b></br>
+        For the view that shows data comparisons instead of percentage values (i.e. the view obtained via
+        the 'Gender Parity' filter, or the 'Education vs. Labour Force' filter), the following
+        percentage ranges have been classed in the equality category:</br>
+        - Male vs. Female Education Equality = -2% to 2%</br>
+        - Male vs. Female Labour Force Equality = -5% to 5%</br>
+        - Education vs. Labour Force Equality= -10% to 10%
+        </br></br>
+        <b>Data Sources</b></br>
+        Find information about this <%= link_to("here", home_about_path) %>
+      </p>
+    </div>
+    <a href="#" class="main-help-label">Help</a>
+  </div>
+
   <div class="row vis">
     <div class="col s10 map-vis-container">
       <!-- Loading spinner to show when data for visualisation is being loaded -->
@@ -31,7 +63,10 @@
         </p>
         <p class="gender-selector">
           <input class="with-gap" name="gender-select" type="radio" id="map-gender-parity" value="diff"/>
-          <label class="gender-label" for="map-gender-parity" id="gender-parity">Gender Parity</label>
+          <label class="gender-label" for="map-gender-parity" id="gender-parity">Gender Parity
+            <i class="material-icons helper-tooltip" id="parity-help">
+              help_outline<span class="helpertext helper-bottom" id="side-bar-helper">View the data as the difference between males and females, calculated by (male percentage - female percentage).</span>
+            </i></label>
         </p>
       </form>
       <form id="year-slider">
@@ -44,7 +79,11 @@
         <p class="range-field">
           <input type="range" id="years-selector" min="1990" max="2015" value="2015" />
         </p>
-        <label>View Animation</label>
+        <label>View Animation
+          <i class="material-icons helper-tooltip" id="view-animation-help">
+            help_outline<span class="helpertext helper-bottom" id="side-bar-helper">Press 'Play' to view an animation that shows the data changing over time. Click 'Pause' to pause/stop the animation.</span>
+          </i>
+        </label>
         <div class="row">
           <div class="col s6"><p><i class="material-icons md-36 buttons" id="play-map-btn">play_circle_outline</i>
             <i class="material-icons md-36 buttons" id="stop-map-btn">pause_circle_outline</i></p>
