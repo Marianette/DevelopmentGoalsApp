@@ -1,0 +1,130 @@
+/* line 1, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.gii-vis-container {
+  margin-top: 8px !important;
+  font: 10px sans-serif;
+}
+
+/* line 6, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.background path {
+  fill: none;
+  stroke: #ccc;
+  stroke-opacity: .4;
+  shape-rendering: crispEdges;
+}
+
+/* line 13, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.foreground path {
+  fill: none;
+}
+
+/* line 17, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+/* line 23, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+/* line 30, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.axis text {
+  font-family: sans-serif;
+  cursor: move;
+}
+
+/* line 35, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.axis .tick text {
+  font-size: 11.5px;
+}
+
+/* line 39, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.gii-axis-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+}
+
+/* line 45, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.region-legend {
+  cursor: pointer;
+  stroke-width: 2;
+}
+
+/* line 50, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+#legend-area {
+  padding: 0px;
+  font-size: 12px;
+}
+
+/* line 55, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+#region-filters {
+  margin-top: 10px;
+}
+
+/* line 59, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+#gii-line-sep {
+  margin-bottom: 10px;
+}
+
+/* line 63, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+rect.disabled {
+  fill: transparent !important;
+}
+
+/* line 67, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.coord-selected {
+  stroke-width: 3px !important;
+  stroke: black !important;
+}
+
+/* line 72, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.gii-filter-container {
+  color: #2569a8;
+  border: 1px solid #2569a8;
+  border-radius: 5px;
+  height: 100%;
+}
+
+/* line 79, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+#year-select-label {
+  left: 0rem;
+}
+
+/* line 83, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+#gii-year-selector {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* line 88, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.gii-spans {
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* line 93, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+#action-buttons {
+  padding: 0px;
+  position: relative;
+  top: -15px;
+}
+
+/* line 99, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/gender_inequality.scss */
+.vis-material-icons #gii-axis-helper {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}

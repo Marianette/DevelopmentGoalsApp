@@ -1,0 +1,99 @@
+/* line 1, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+.country {
+  fill: #D8D8D8;
+  stroke: white;
+}
+
+/* line 6, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+.map-vis-container {
+  margin-top: 8px !important;
+  overflow: hidden;
+}
+
+/* line 11, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+#play-map-btn {
+  cursor: pointer;
+}
+
+/* line 15, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+#stop-map-btn {
+  cursor: pointer;
+}
+
+/* line 19, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+#map-year-label {
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
+  font-size: 40px;
+  color: #00396d;
+  text-align: center;
+}
+
+/* line 27, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+.map-legend {
+  font: 10px sans-serif;
+  font-weight: bold;
+}
+
+/* line 32, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+.map-filter-container {
+  color: #2569a8;
+  border: 1px solid #2569a8;
+  border-radius: 5px;
+  height: 100%;
+}
+
+/* line 39, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+#indicator-select {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* line 44, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+#filter-label {
+  left: 0rem;
+}
+
+/* line 48, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+#map-gender-filter-selection {
+  padding-bottom: 10px;
+}
+
+/* line 52, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+#disabled-label {
+  color: #d4d4d4 !important;
+}
+
+/* line 56, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+.range-field {
+  margin: 0px;
+}
+
+/* line 60, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+.year-labels {
+  position: relative;
+  top: 10px;
+}
+
+/* line 65, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+.year-slider-label {
+  margin: 0px;
+  display: inline;
+  font-size: 10px;
+}
+
+/* line 71, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+#min-year {
+  float: left;
+}
+
+/* line 75, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+#max-year {
+  float: right;
+}
+
+/* line 79, C:/Users/Divya/Documents/Uni Work/2017/ENGR489/DevelopmentGoalsApp/development_goals_app/app/assets/stylesheets/education_and_employment.scss */
+.gender-selector {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
