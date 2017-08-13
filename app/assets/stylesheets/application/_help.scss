@@ -2,6 +2,10 @@
   font-size: 14px;
 }
 
+#gii-help {
+  font-size: 14px;
+}
+
 #view-animation-help {
   font-size: 14px;
 }
@@ -67,10 +71,12 @@
 }
 
 .main-help-textbox {
+  display: flex;
   visibility: hidden;
   position: relative;
   z-index: 1000;
   right: 270px;
+  margin-bottom: 10px;
 }
 
 .top-right-help {
@@ -92,9 +98,9 @@
   position: absolute;
   z-index: 1;
   width: 300px;
-  margin-top: 5px
+  margin-top: 5px;
 }
 
-#compare-indicators-helper {
-  bottom: 480px;
+#bottom-right-helper {
+  align-items: flex-end;
 }

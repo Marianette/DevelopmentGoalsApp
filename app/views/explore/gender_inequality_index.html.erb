@@ -2,6 +2,34 @@
 
 <!-- Contents of page -->
 <div class="content-container">
+
+  <!-- Help popup box with explanation of how to use visualisation -->
+  <div class="main-help bottom-right-help">
+    <div class="main-help-textbox" id="bottom-right-helper">
+      <p class="main-help-text">
+        <b class="help-title">How To Use This Visualisation</b>
+        </br>
+        This visualisation allows you to explore and make comparisons across the datasets that are used to calculate
+        the gender inequality index (GII). Hover over the lines to view which country the data refers to.
+        Use the 'Select Country' filter to find and highlight specific countries.
+        </br></br>
+        <b>What is GII?</b></br>
+        The GII shows the loss in potential human development due to inequalities between female and male achievements in political and economic areas.
+        It is a ratio between 0 and 1 and it is <a target="_blank" href="http://hdr.undp.org/en/content/gender-inequality-index-gii">calculated</a> using the secondary education,
+        labour force participation rates, share of seats in parliament held by women, maternal mortality ratio, and adolescent birth rate data.
+        </br></br>
+        <b>Customise the Visualisation</b></br>
+        Axis - Click and drag the axis headings to reorder the axis </br>
+        Data filter - Click and drag on the vertical axis to apply a brush filter, and filter out values outside a selected range. </br>
+        Filter by region - Toggle region data using the legend.
+        </br></br>
+        <b>Data Sources</b></br>
+        Find information about this <%= link_to("here", home_about_path) %>
+      </p>
+    </div>
+    <a href="#" class="main-help-label">Help</a>
+  </div>
+
   <div class="row vis">
     <div class="col s10 gii-vis-container">
       <!-- Loading spinner to show when data for visualisation is being loaded -->
@@ -13,14 +41,24 @@
     <div class="col s2 gii-filter-container">
       <div>
       <h5 id="data-name">Gender Inequality Index (GII)</h5>
-      <p id="data-info">Comparison of the GII with education, labour force, and political, participation rates of males and females</p>
+      <p id="data-info">Comparison of the GII with some of the indicators used to
+        <a target="_blank" href="http://hdr.undp.org/en/content/gender-inequality-index-gii">calculate</a> it
+        <i class="material-icons helper-tooltip" id="gii-help">
+          help_outline<span class="helpertext helper-bottom">The GII shows the loss in potential human development
+due to inequalities between female and male achievements in political and economic areas.</span>
+        </i>
+      </p>
       </div>
         <div class="input-field col s12" id="gii-year-selector">
           <%= select_tag 'select-year', options_for_select(@years.collect { |y| [y, y]}, @years.max) %>
           <label id="year-select-label">Select Year</label>
         </div>
         <div id="paraCoords-country-select">
-          <label>Select Country</label>
+          <label>Select Country
+            <i class="material-icons helper-tooltip" id="select-country-help">
+              help_outline<span class="helpertext helper-bottom">Use the search box to find a country. Selecting a country will mark it in black.</span>
+            </i>
+          </label>
           <%= select_tag "paracoords-country", options_for_select(@countries, ""), style:"width:100%" %>
         </div>
         <div class="col s12" id="action-buttons">

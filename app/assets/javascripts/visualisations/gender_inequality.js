@@ -77,9 +77,10 @@ function initGiiVis(id, data) {
 
   // Extract dimensions and create a scale for each
   xScale.domain(dimensions = d3.keys(data[0]).filter(function(d) {
+    scale = (d == "Gender Inequality Index")? [1, 0]: [0, 100];
     return d != "year" && d != "region" && d != "code" && d != "country" &&
     (yScale[d] = d3.scale.linear()
-    .domain(d3.extent(data, function(elem) { return +elem[d]; }))
+    .domain(scale)
     .range([height, 0]));
   }));
 
