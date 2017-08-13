@@ -125,3 +125,20 @@ function checkValidGIIYear(newYear){
   });
   return closestYear;
 }
+
+function getImgAndHelpText(label){
+  switch (label) {
+  case "Gender Inequality Index":
+    return ["<%= asset_path( 'help.svg' ) %>", "Indicator of loss in potential human development due to inequalities between female and male achievements in political and economic areas."];
+  case "Secondary Education Male":
+    return ["<%= asset_path( 'help.svg' ) %>", "% of male population (aged 25+) with at least some secondary education"];
+  case "Secondary Education Female":
+    return ["<%= asset_path( 'help.svg' ) %>", "% of female population (aged 25+) with at least some secondary education"];
+  case "Labour Force Male":
+    return ["<%= asset_path( 'help.svg' ) %>", "% of male population (aged 15+) in the labour force"];
+  case "Labour Force Female":
+    return ["<%= asset_path( 'help.svg' ) %>", "% of female population (aged 15+) in the labour force"];;
+  default:
+    return ["<%= asset_path( 'help.svg' ) %>", "Share of seats in national parliament held by women"];
+  }
+}

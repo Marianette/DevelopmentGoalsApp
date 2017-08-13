@@ -39,8 +39,8 @@ include ApplicationHelper
         "Gender Inequality Index": get_value(gii, y),
         "Secondary Education Male": get_value(sem, y),
         "Secondary Education Female": get_value(sef, y),
-        "Labour Force Participation Male": get_value(lfm, y),
-        "Labour Force Participation Female": get_value(lff, y),
+        "Labour Force Male": get_value(lfm, y),
+        "Labour Force Female": get_value(lff, y),
         "% of Seats in Parliament Female": get_value(sop, y),
       }
 

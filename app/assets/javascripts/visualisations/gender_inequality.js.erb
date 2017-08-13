@@ -19,7 +19,7 @@ function createGiiVis(id){
 
 function initGiiVis(id, data) {
   // Define height, width and margins of visualisation
-  var margin = { top: 30, right: 10, bottom: 10, left: 0};
+  var margin = { top: 60, right: 10, bottom: 10, left: 0};
   var width = $(".gii-vis-container").width() - margin.right - margin.left;
   var height = 550 - margin.top - margin.bottom;
 
@@ -56,7 +56,6 @@ function initGiiVis(id, data) {
   var onDrag = d3.behavior.drag()
   .on("dragstart", function(d) {
     dragging[d] = this.__origin__ = xScale(d);
-    background.attr("visibility", "hidden");
   })
   .on("drag", function(d) {
     dragging[d] = Math.min(width, Math.max(0, this.__origin__ += d3.event.dx));
@@ -70,9 +69,6 @@ function initGiiVis(id, data) {
     delete dragging[d];
     transition(d3.select(this)).attr("transform", "translate(" + xScale(d) + ")");
     transition(foreground).attr("d", path);
-    background.attr("d", path).transition()
-    .delay(500).duration(0)
-    .attr("visibility", null);
   });
 
   // Extract dimensions and create a scale for each
@@ -122,14 +118,37 @@ function initGiiVis(id, data) {
   .call(onDrag);
 
   // Add axis labels
-  g.append("g")
-  .attr("class", "axis")
-  .each(function(d) {
+  var axislabel = g.append("g")
+  .attr("class", "axis");
+
+  axislabel.each(function(d) {
+    d3.select(this).call(axis.scale(yScale[d]));
+  })
+  .append("svg:image")
+  .attr("xlink:href",  function(d) { return getImgAndHelpText(d)[0];})
+  .attr("x", -8)
+  .attr("y", -(margin.top/2))
+  .attr("height", 16)
+  .attr("width", 16)
+  .on("mouseover", function(d){
+    var txt = getImgAndHelpText(d)[1];
+    toolTip
+    .style("top", 2*margin.top + "px")
+    .style("left", (d3.event.pageX - 100) + "px");
+    toolTip.text(txt);
+    toolTip.style("opacity", 1);
+  })
+  .on("mouseout", function(d){
+    toolTip.style("opacity", 0);
+  });
+
+  axislabel.each(function(d) {
     d3.select(this).call(axis.scale(yScale[d]));
   })
   .append("text")
+  .attr("class", "gii-axis-title")
   .attr("text-anchor", "middle")
-  .attr("y", -9)
+  .attr("y", -2*(margin.top/3))
   .text(String);
 
   // Create brush elements to allow dynamic filtering of each dimension
