@@ -27,9 +27,16 @@ function getId(d){
 
 function getMessage(d){
   var value = _.get(d.properties, [selectedDataset, selectedFilter, getCurrentYear()], "No Data");
-  if (value != "No Data") value = value + "%";
+  if (value != "No Data") value = Math.abs(value) + "%";
   var name = d.properties.admin;
-  return name + "</br>" + value;
+  return name + "</br>" + getMapHoverLabel(value);
+}
+
+function getMapHoverLabel(value) {
+  if(selectedDataset == "comparison" || selectedFilter == "diff") {
+    return "Difference: " + value;
+  }
+  return "Value: " + value;
 }
 
 function getValidYear(newYear){
@@ -53,18 +60,18 @@ function updateYearViews(){
 }
 
 function setUpColours(){
-  percentDomain = [10, 30, 40, 50, 60, 70, 80, 85, 101];
-  eduDiffDomain = [-15, -2, 2, 15, 100];
-  employDiffDomain = [-10, -2, 5, 50, 100];
-  compDomain = [-50, -10, 10, 25, 100];
+  percentDomain = [15, 30, 45, 55, 70, 85, 101];
+  eduDiffDomain = [-10, -2, 2, 10, 100];
+  employDiffDomain = [-30, -8, 8, 30, 100];
+  compDomain = [-30, -10, 10, 30, 100];
 
   eduColScale = d3.scale.threshold()
   .domain(percentDomain)
-  .range(colorbrewer.PuBu[9]);
+  .range(colorbrewer.BuPu[8].slice(-7));
 
   employColScale = d3.scale.threshold()
   .domain(percentDomain)
-  .range(colorbrewer.YlGn[9]);
+  .range(colorbrewer.YlGn[8].slice(-7));
 
   compColScale = d3.scale.threshold()
   .domain(compDomain)
@@ -118,7 +125,7 @@ function getMapLegendLabels(){
   if(selectedFilter == "diff") {
     return ["Extremely Female Favoured", "Female Favoured", "Equal", "Male Favoured", "Extremely Male Favoured"]
   }
-  return ["< 10%", "10 - 30", "30 - 40", "40 - 50", "50 - 60", "60 - 70", "70 - 80", "80 - 85", "> 85%"];
+  return ["< 15%", "15 - 30", "30 - 45", "45 - 55", "55 - 70", "70 - 85", "> 85%"];
 }
 
 function getMapDomain(){
