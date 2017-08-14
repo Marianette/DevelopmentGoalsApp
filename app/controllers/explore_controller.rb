@@ -3,8 +3,8 @@ class ExploreController < ApplicationController
     # Outline available data sets
     @datasets = [['Secondary Education','education'],
                   ['Labour Force Rates', 'employment'],
-                  ['Education vs. Employment', 'comparison']]
-    @title = 'Education and Employment'
+                  ['Education vs. Labour Force', 'comparison']]
+    @title = 'Education and Labour Force'
   end
 
   def income
