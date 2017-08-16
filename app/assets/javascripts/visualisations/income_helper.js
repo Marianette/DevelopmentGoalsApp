@@ -43,6 +43,7 @@ function showDataInformation(d){
   .html(d.country)
   .style("left", left + "px")
   .style("top", ($(".income-vis-container").height() + 10) + "px");
+
   label.transition()
   .duration(100)
   .style("opacity", 1);
@@ -54,6 +55,11 @@ function showDataInformation(d){
 function hideDataInformation(d){
   // Un-highlight grid line
   d3.select("#" + getIncomeId(d.code)).classed("hover", false);
+
+  // Fade out country label after 3 seconds of inactivity
+  d3.select(".country-label").transition()
+  .duration(3000)
+  .style("opacity", 0);
 }
 
 function selectCountry(code, selected){
