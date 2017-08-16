@@ -27,6 +27,22 @@ function checkValidIncomeYear(newYear){
 }
 
 function showDataInformation(d){
+  updateBubbleInformation(d);
+  // Highlight grid line
+  d3.select("#" + getIncomeId(d.code)).classed("hover", true);
+}
+
+function hideDataInformation(d){
+  // Un-highlight grid line
+  d3.select("#" + getIncomeId(d.code)).classed("hover", false);
+
+  // Fade out country label after 3 seconds of inactivity
+  d3.select(".country-label").transition()
+  .duration(3000)
+  .style("opacity", 0);
+}
+
+function updateBubbleInformation(d) {
   // Show country name
   var textBox = d3.select("#country-text").html("<b>Country</b><br/>" + d.country);
   var margin = (d.country.length > 25)? "0px": null; // reduce margin size for long names
@@ -47,23 +63,14 @@ function showDataInformation(d){
   label.transition()
   .duration(100)
   .style("opacity", 1);
-
-  // Highlight grid line
-  d3.select("#" + getIncomeId(d.code)).classed("hover", true);
-}
-
-function hideDataInformation(d){
-  // Un-highlight grid line
-  d3.select("#" + getIncomeId(d.code)).classed("hover", false);
-
-  // Fade out country label after 3 seconds of inactivity
-  d3.select(".country-label").transition()
-  .duration(3000)
-  .style("opacity", 0);
 }
 
 function selectCountry(code, selected){
-  d3.select("#" + getIncomeId(code)).classed("highlighted-country", selected);
+  var id = "#" + getIncomeId(code);
+  d3.select(id).classed("highlighted-country", selected);
+
+  data = d3.select(id)[0][0].__data__;
+  updateBubbleInformation(data);
 }
 
 function changeDataSet(change){
