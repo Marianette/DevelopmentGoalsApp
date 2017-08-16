@@ -25,25 +25,25 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   var xmin = findMin(data, "x", 1), xmax = findMax(data, "x", 1);
   var ymin = findMin(data, "y", 1), ymax = findMax(data, "y", 1);
   var zmin = findMin(data, "z", 1), zmax = findMax(data, "z", 1);
-
   var maxRadius = (zmax - zmin <= 100)? 25 : 40;
 
   // Redefine dimension scales and axis values
   var xScale = d3.scale.linear().domain([xmin, xmax]).range([0, graphWidth]);
   var yScale = d3.scale.linear().domain([ymin, ymax]).range([graphHeight, 0]);
   var radiusScale = d3.scale.sqrt().domain([zmin, zmax]).range([1, maxRadius]);
+  var xAxis = d3.svg.axis().orient("bottom").scale(xScale);
+  var yAxis = d3.svg.axis().orient("left").scale(yScale);
+  var colorScale = d3.scale.category10();
 
   // if any scale is not between 0 and 1000, use log
   if (xmax - xmin > 1000) {
     xScale = d3.scale.log().domain([xmin, xmax]).range([0, graphWidth]);
+    xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(12, d3.format(",d"));
   }
   if (ymax - ymin > 1000) {
     yScale = d3.scale.log().domain([ymin, ymax]).range([graphHeight, 0]);
+    yAxis = d3.svg.axis().orient("left").scale(yScale).ticks(12, d3.format(",d"));
   }
-
-  var colorScale = d3.scale.category10();
-  var xAxis = d3.svg.axis().orient("bottom").scale(xScale);
-  var yAxis = d3.svg.axis().orient("left").scale(yScale);
 
   var bubbleSvg = d3.select("#bubbleSvg");
   // Update axis and add labels
@@ -104,8 +104,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
     .call(position)
     .sort(order);
 
-    // Give each dot the name of the country.
-    dot.append("title").html(function(d) { return d.country + "</br>X = " + x(d) + "</br>Y = " + y(d) + "</br>Z = " + radius(d); });
+    dot.append("title").attr("class", "dot-title-hover").html("");
 
     // Remove old legend and create new one
     d3.selectAll(".legend").transition()
@@ -123,7 +122,19 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   function position(dot) {
     dot.attr("cx", function(d) { return xScale(x(d)); })
     .attr("cy", function(d) { return yScale(y(d)); })
-    .attr("r", function(d) { return radiusScale(radius(d)); });
+    .attr("r", function(d) { return radiusScale(radius(d)); })
+
+    // Update on hover values
+    d3.selectAll(".dot-title-hover").remove();
+    dot.append("title").attr("class", "dot-title-hover").html(function(d) {
+        return d.country + "</br>X = " + _.round(x(d), 3) + "</br>Y = "
+            + _.round(y(d), 3) + "</br>Z = " + _.round(radius(d), 3);
+    });
+  }
+
+  // Make sure that smaller dots are on top so they can be seen.
+  function order(a, b) {
+    return radius(b) - radius(a);
   }
 
   // Change year by interacting with year label.
