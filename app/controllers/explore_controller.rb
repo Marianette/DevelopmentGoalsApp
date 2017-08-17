@@ -24,7 +24,7 @@ class ExploreController < ApplicationController
 
     # Create array to store possible data sets
     @datasets = [['Estimated Gross National Income (GNI)', 'male'],
-                  ['Difference between Male GNI and Female GNI', 'diff']]
+                  ['% Difference between Male GNI and Female GNI', 'diff']]
 
     @title = 'Gross National Income'
   end
