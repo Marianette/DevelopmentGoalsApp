@@ -70,6 +70,8 @@ function initEducationEmploymentVis(id, data, world) {
   // Set up animation
   d3.select('#play-map-btn')
   .on('click', function (d) {
+    // guard against multiple clicks on play button by stopping old animation and starting a new one.
+    stopAnimation(d);
     startAnimation(d);
   });
 
@@ -180,7 +182,14 @@ function applyFilter(){
 function startAnimation(d) {
   var numYears = yearArrays[selectedDataset].length - 1;
   // Reset animation if current year is most recent
-  if (currentYearIndex == numYears) currentYearIndex = 0;
+  currentYearIndex = (currentYearIndex == numYears)? 0: currentYearIndex + 1;
+
+  // Change first year quickly, then pause for following years.
+  d3.selectAll('.country').transition()
+  .duration(750)
+  .style("fill", getColour);
+  updateYearViews();
+
   // Use Javascript setInterval() method to establish pauses between transitions
   mapTimer = setInterval(function(){
     currentYearIndex += 1;
