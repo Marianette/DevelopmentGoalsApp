@@ -30,7 +30,7 @@ $(function(){
     var value = $('input[name=view-select]:checked', '#income-filter-view').val();
     if(value != incomeDataDisplayed){
       incomeDataDisplayed = this.value;
-      $('#dot-plot-title').text(getIncomePlotTitle);
+      $('#dot-plot-title').html(getIncomePlotTitle);
       updateDotPlot();
     }
   });

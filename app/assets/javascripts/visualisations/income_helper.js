@@ -98,7 +98,12 @@ function getIncomeDotHoverMessage(d, dataset){
 }
 
 function getIncomePlotTitle(){
-  if(incomeDataDisplayed == "male") return "Estimated Gross National Income (GNI) Male vs. Female";
+  if(incomeDataDisplayed == "male") return "Estimated Gross National Income (GNI) Male vs. Female" +
+    "<i class=\"material-icons helper-tooltip\" id=\"gni-title-help\">" +
+    "help_outline<span class=\"helpertext helper-right\" id=\"gni-left-help\">" +
+    "Estimated GNI for males and females is derived from: </br>- ratio of female to male wage, " +
+    "</br>- share of males and females in the labour force, </br>- total GNI for the country (in terms of 2011 purchasing power pairty)</span>" +
+    "</i>";
   return "Percentage Difference Between Male GNI and Female GNI";
 }
 
