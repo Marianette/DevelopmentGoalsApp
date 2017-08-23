@@ -161,7 +161,26 @@ function initGiiVis(id, data) {
   })
   .selectAll("rect")
   .attr("x", -8)
-  .attr("width", 16);
+  .attr("width", 16)
+  .on("mouseover", function(){
+    toolTip
+    .style("top", (d3.event.pageY - 10) + "px")
+    .style("left", (d3.event.pageX + 10) + "px");
+    toolTip.text("Click and drag along vertical axis to filter out countries");
+    toolTip.style("opacity", 1)
+
+    toolTip.transition()
+    .duration(5000)
+    .style("opacity", 1)
+    .call(endall, function(){
+      toolTip.transition().duration(1500).style("opacity", 0);
+    });
+  })
+  .on("mouseout", function() {
+    toolTip.transition()
+    .duration(1500)
+    .style("opacity", 0);
+  });
 
   function position(d) {
     var v = dragging[d];
