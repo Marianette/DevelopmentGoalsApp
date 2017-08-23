@@ -27,9 +27,13 @@ function getId(d){
 
 function getMessage(d){
   var value = _.get(d.properties, [selectedDataset, selectedFilter, getCurrentYear()], "No Data");
-  if (value != "No Data") value = Math.abs(value) + "%";
+  if (value != "No Data") value = Math.abs(value) + "%" ;
   var name = d.properties.admin;
-  return name + "</br>" + getMapHoverLabel(value);
+  var end = "";
+  if (value != "No Data" && (selectedDataset == "comparison" || selectedFilter == "diff") {
+    // TODO end += "</br>" + getDiffLabel(d);
+  }
+  return name + "</br>" + getMapHoverLabel(value) + end;
 }
 
 function getMapHoverLabel(value) {
@@ -140,6 +144,15 @@ function getMapDomain(){
   }
   mapDomain.pop();
   return mapDomain;
+}
+
+// TODO fix this so that appropriate colors are chosen.
+function getDiffLabel(d){
+  var colours = getColourScale();
+  var col = colours(d);
+  var idx = colorbrewer.RdYlBu[5].indexOf(col);
+  var label = getMapLegendLabels()[idx];
+  return label;
 }
 
 // Information updates for choropleth map page
