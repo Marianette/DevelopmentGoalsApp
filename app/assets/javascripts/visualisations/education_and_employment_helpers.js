@@ -30,7 +30,7 @@ function getMessage(d){
   if (value != "No Data") value = Math.abs(value) + "%" ;
   var name = d.properties.admin;
   var end = "";
-  if (value != "No Data" && (selectedDataset == "comparison" || selectedFilter == "diff") {
+  if (value != "No Data" && (selectedDataset == "comparison" || selectedFilter == "diff")) {
     // TODO end += "</br>" + getDiffLabel(d);
   }
   return name + "</br>" + getMapHoverLabel(value) + end;
