@@ -37,18 +37,19 @@ html, body {
 }
 
 #select-badge {
-  margin-left: 0px;
-  float: left;
+  margin-right: 0px;
+  float: right;
   background-color: #339030;
 }
 
 #deselect-badge {
-  float: left;
+  float: right;
   background-color: #a90000;
 }
 
 #clear-all-badge {
-  float: right;
+  float: left;
+  margin-left: 0px;
 }
 
 // Select2 - change selector styling to match material design theme more

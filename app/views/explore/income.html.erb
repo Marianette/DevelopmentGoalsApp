@@ -79,16 +79,16 @@
           <label class="income-labels" id="region-filter-label">Filter by Region</label>
         </div>
         <div class="input-field col s3 income-filter-container">
-          <label class="income-labels">Select Country
+          <label class="income-labels">Select Country (Click 'Select' to make selection)
             <i class="material-icons helper-tooltip" id="select-country-help">
-              help_outline<span class="helpertext helper-bottom">Use the search box to find a country. Selecting a country will highlight it green.</span>
+              help_outline<span class="helpertext helper-bottom">Use the search box to find a country. Click 'Select' to select a country. Selecting a country will highlight it green.</span>
             </i>
           </label>
           <%= select_tag "select-country", options_for_select(@countries, ""), style:"width:100%" %>
           <div class="col s12" id="action-buttons">
+            <span class="income-spans new badge" id="clear-all-badge" onClick="highlightData(null);">Clear All</span>
             <span class="income-spans new badge" id="select-badge" onClick="highlightData(true);">Select</span>
             <span class="income-spans new badge" id="deselect-badge" onClick="highlightData(false);">Deselect</span>
-            <span class="income-spans new badge" id="clear-all-badge" onClick="highlightData(null);">Clear All</span>
           </div>
         </div>
       </div>

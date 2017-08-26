@@ -56,15 +56,15 @@ due to inequalities between female and male achievements in political and econom
         <div id="paraCoords-country-select">
           <label>Select Country
             <i class="material-icons helper-tooltip" id="select-country-help">
-              help_outline<span class="helpertext helper-bottom">Use the search box to find a country. Selecting a country will mark it in black.</span>
+              help_outline<span class="helpertext helper-bottom">Use the search box to find a country. Click 'Select' to select the country. Selecting a country will mark it in black.</span>
             </i>
           </label>
           <%= select_tag "paracoords-country", options_for_select(@countries, ""), style:"width:100%" %>
         </div>
         <div class="col s12" id="action-buttons">
+          <span class="gii-spans new badge" id="clear-all-badge" onClick="highlightCountry(null);">Clear All</span>
           <span class="gii-spans new badge" id="select-badge" onClick="highlightCountry(true);">Select</span>
           <span class="gii-spans new badge" id="deselect-badge" onClick="highlightCountry(false);">Deselect</span>
-          <span class="gii-spans new badge" id="clear-all-badge" onClick="highlightCountry(null);">Clear All</span>
         </div>
       <div class="col s12" id="legend-area">
       <div class="line-separator" id="gii-line-sep"></div>
