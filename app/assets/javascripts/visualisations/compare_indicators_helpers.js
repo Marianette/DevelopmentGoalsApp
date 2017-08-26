@@ -132,3 +132,11 @@ function updateYearSliderView(start, end){
   $('#min-year').text(start);
   $('#max-year').text(end);
 }
+
+function getHoverMessage(d){
+  var xname = $("#select-compareX-dataset option:selected").text();
+  var yname = $("#select-compareY-dataset option:selected").text();
+  var zname = $("#select-compareZ-dataset option:selected").text();
+  return d.country + "</br>" + xname + " = " + _.round(x(d), 3) + "</br>" + yname + " = "
+      + _.round(y(d), 3) + "</br>"+ zname + " = " + _.round(radius(d), 3);
+}

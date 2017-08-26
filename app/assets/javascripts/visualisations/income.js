@@ -86,8 +86,6 @@ function drawIncomeVisualisation() {
   // Calculate max data value and adjust y label and height scale
   var dataMax = incomeData[0][incomeDataDisplayed][incomeCurrentYear];
   var offset = 0.05 * dataMax;
-
-  // TODO delete these two lines for adjustable diff scale
   dataMax = (incomeDataDisplayed == "diff")? 100: dataMax;
   offset = (incomeDataDisplayed == "diff")? 0: offset;
 

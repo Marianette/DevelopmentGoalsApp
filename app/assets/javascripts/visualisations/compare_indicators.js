@@ -1,4 +1,5 @@
 var graphWidth, graphHeight, margin;
+var tooltip;
 
 function createEmptyGraph(id){
   // Dimensions of the bubble graph
@@ -15,6 +16,12 @@ function createEmptyGraph(id){
   // Add temporary empty axis, and starter message
   createAxis(bubbleSvg);
   createStarterMessage(bubbleSvg);
+
+  // Create tooltip for bubble information
+  tooltip = d3.select("body").append("div")
+  .attr("id", "ciToolTip")
+  .attr("class", "tooltip")
+  .style("opacity", 0);
 }
 
 function updateBubbleGraph(data, xLabel, yLabel) {
@@ -92,10 +99,21 @@ function updateBubbleGraph(data, xLabel, yLabel) {
     .attr("data-legend",function(d) { return d.country})
     .attr("id", function (d) {return dotId(d);})
     .style("fill", function(d) { return colorScale(color(d)); })
+    .on("mouseover", function(d) {
+      tooltip.transition()
+      .duration(200)
+      .style("opacity", 0.9);
+      tooltip.html(getHoverMessage(d))
+      .style("left", (d3.event.pageX) + "px")
+      .style("top", (d3.event.pageY - 28) + "px");
+    })
+    .on("mouseout", function(d) {
+      tooltip.transition()
+      .duration(200)
+      .style("opacity", 0);
+    })
     .call(position)
     .sort(order);
-
-    dot.append("title").attr("class", "dot-title-hover").html("");
 
     // Remove old legend and create new one
     d3.selectAll(".legend").transition()
@@ -114,13 +132,6 @@ function updateBubbleGraph(data, xLabel, yLabel) {
     dot.attr("cx", function(d) { return xScale(x(d)); })
     .attr("cy", function(d) { return yScale(y(d)); })
     .attr("r", function(d) { return radiusScale(radius(d)); })
-
-    // Update on hover values
-    d3.selectAll(".dot-title-hover").remove();
-    dot.append("title").attr("class", "dot-title-hover").html(function(d) {
-        return d.country + "</br>X = " + _.round(x(d), 3) + "</br>Y = "
-            + _.round(y(d), 3) + "</br>Z = " + _.round(radius(d), 3);
-    });
   }
 
   // Make sure that smaller dots are on top so they can be seen.

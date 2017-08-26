@@ -20,6 +20,12 @@ $(function(){
     if(incomeCurrentYear != this.value){
       incomeCurrentYear = this.value;
       updateDotPlot();
+
+      // Update bubble info
+      d3.select("#country-text").html("Hover over data to view details");
+      d3.select("#data-text").html("Data");
+      d3.select("#year-text")
+      .html("<b>Year</b> <br/>" + incomeCurrentYear);
     }
   });
 
