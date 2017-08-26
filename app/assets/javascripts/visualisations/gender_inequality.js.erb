@@ -170,7 +170,7 @@ function initGiiVis(id, data) {
     toolTip.style("opacity", 1)
 
     toolTip.transition()
-    .duration(5000)
+    .duration(8000)
     .style("opacity", 1)
     .call(endall, function(){
       toolTip.transition().duration(1500).style("opacity", 0);
@@ -178,7 +178,7 @@ function initGiiVis(id, data) {
   })
   .on("mouseout", function() {
     toolTip.transition()
-    .duration(1500)
+    .duration(2000)
     .style("opacity", 0);
   });
 

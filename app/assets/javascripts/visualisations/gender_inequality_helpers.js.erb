@@ -92,6 +92,9 @@ function createGIILegend(colorScale, data){
         d3.selectAll(".year_" + paraCoordsYear).filter(" .region_" + reduceString(label)).style("display", display);
       }
     });
+
+    // Make sure brush selection still matches
+    brush();
   });
 
   legend.append('text')
