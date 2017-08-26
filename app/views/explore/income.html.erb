@@ -62,17 +62,8 @@
           </form>
         </div>
         <div class="input-field col s2 income-filter-container">
-          <form id="income-year-slider">
-            <label class="income-labels">Select Year</label>
-            <div class="year-labels">
-              <p class="year-slider-label" id="min-year"><%= @years.min %></p>
-              <p class="year-slider-label" id="max-year"><%= @years.max %></p>
-            </div>
-            <div style="clear: both;"></div>
-            <p class="range-field">
-              <input type="range" id="income-years-selector" min="<%= @years.min %>" max="<%= @years.max %>" value="<%= @years.max %>" />
-            </p>
-          </form>
+          <label class="income-labels">Select Year</label>
+          <%= select_tag 'income-select-year', options_for_select(@years.collect { |y| [y, y]}, @years.max) %>
         </div>
         <div class="input-field col s2 income-filter-container">
           <%= select_tag "select-regions", options_for_select(@regions, "World") %>

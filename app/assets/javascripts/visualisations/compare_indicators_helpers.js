@@ -45,31 +45,6 @@ function createAxis(bubbleSvg){
   .text("");
 }
 
-function createYearLabel(bubbleSvg) {
-  bubbleSvg.append("text")
-  .attr("id", "year-label")
-  .attr("text-anchor", "start")
-  .attr("x", graphWidth)
-  .attr("y", graphHeight - margin.top)
-  .text("");
-
-  // create overlay for year label
-  bubbleSvg.append("rect")
-  .attr("id", "overlay");
-
-  var helperwidth = 150;
-  bubbleSvg.append("foreignObject")
-  .attr("text-anchor", "start")
-  .attr("x", graphWidth)
-  .attr("y", graphHeight)
-  .attr("width", helperwidth)
-  .attr("height", margin.bottom)
-  .append("xhtml:p")
-  .html("Move mouse over year </br> to move through time")
-  .attr("class", "helper-text")
-  .style("opacity", 0);
-}
-
 function createStarterMessage(bubbleSvg) {
   var radius = 180,
   x      = graphWidth/2.0,
@@ -149,4 +124,11 @@ function findMax(data, value, i){
   return d3.max(data, function(country) {
     return d3.max(country[value], function (d) {return d[i]; });
   });
+}
+
+function updateYearSliderView(start, end){
+  $('#ci-years-selector').attr("min", start);
+  $('#ci-years-selector').attr("max", end);
+  $('#min-year').text(start);
+  $('#max-year').text(end);
 }

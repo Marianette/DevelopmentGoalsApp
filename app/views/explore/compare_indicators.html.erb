@@ -44,7 +44,7 @@
     <!-- Visualisation filters -->
     <div class="col s2 filter-container" id="comparison-vis-filters">
       <h5 id="data-name">Compare Indicators</h5>
-      <p id="data-info">View different indicators in a bubble chart. Choose up to three different datasets by selecting values for X, Y, and Z.</p>
+      <p id="data-info">View different indicators in a bubble chart. Select datasets via the X, Y, and Z dropdowns.</p>
       <div class="input-field col s12 indicator-select">
         <%= select_tag 'select-compareX-dataset', options_for_select(@datasets, @datasets[0][0]) %>
         <label id="data-select-label">Select X</label>
@@ -58,12 +58,20 @@
         <label id="data-select-label">Select Z <i class="material-icons helper-tooltip" id="view-animation-help">
           help_outline<span class="helpertext helper-bottom" id="side-bar-helper">The Z value determines what the size of the circles on the graph will be. Each circle on the graph represents a single country.</span>
         </i></label>
-      </div>
-      <div class="input-field col s12 indicator-select">
-      <a class="waves-effect waves-light btn" id="update-btn" onClick="sendUpdateRequest();">Update Graph</a>
+        <a class="waves-effect waves-light btn" id="update-btn" onClick="sendUpdateRequest();">Update Graph</a>
       </div>
       <div class="input-field col s12 indicator-select" id="animation-box">
         <div class="line-separator"></div>
+        <form id="ci-year-slider">
+          <label id="ci-year-label">Select Year</label>
+          <div class="year-labels">
+            <p class="year-slider-label" id="min-year">1990</p>
+            <p class="year-slider-label" id="max-year">2015</p>
+          </div>
+          <div style="clear: both;"></div>
+          <p class="range-field">
+            <input type="range" id="ci-years-selector" min="1990" max="2015" value="2015" />
+          </p>
         <label id="animation-label">View Animation
           <i class="material-icons helper-tooltip" id="view-animation-help">
             help_outline<span class="helpertext helper-bottom" id="side-bar-helper">Press 'Play' to view an animation that shows the data changing over time. Click 'Pause' to pause/stop the animation.</span>
@@ -73,6 +81,7 @@
             <i class="material-icons md-36 buttons" id="play-bubble-btn">play_circle_outline</i>
             <i class="material-icons md-36 buttons" id="stop-bubble-btn">pause_circle_outline</i>
           </p>
+        </form>
       </div>
     </div>
   </div>

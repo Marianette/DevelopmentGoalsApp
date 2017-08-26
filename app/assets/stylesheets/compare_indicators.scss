@@ -20,13 +20,6 @@ svg {
   fill: #777;
 }
 
-#year-label {
-  font-size: 75px;
-  font-weight: bold;
-  font-family: 'Oswald', sans-serif;
-  fill: #ddd;
-}
-
 .helper-text {
   margin: 0px;
   text-align: center;
@@ -34,16 +27,6 @@ svg {
 
 .dots-selected {
   display: none;
-}
-
-.active #year-label {
-  fill: #aaa;
-}
-
-#overlay {
-  fill: none;
-  pointer-events: all;
-  cursor: ew-resize;
 }
 
 // Legend css
@@ -81,7 +64,8 @@ rect.disabled {
 }
 
 #comparison-vis-filters {
-  padding-left: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
   color: #2569a8;
   border: 1px solid #2569a8;
   border-radius: 5px;
@@ -107,6 +91,35 @@ rect.disabled {
   position: relative;
 }
 
+#ci-year-label {
+  left: 0rem !important;
+  font-size: 0.8rem;
+  position: relative;
+}
+
 #animation-box {
-  margin-top: 20px;
+  margin-top: -5px;
+}
+
+.range-field {
+  margin: 0px;
+}
+
+.year-labels {
+  position: relative;
+  top: 10px;
+}
+
+.year-slider-label {
+  margin: 0px;
+  display: inline;
+  font-size: 10px;
+}
+
+#min-year {
+  float: left;
+}
+
+#max-year {
+  float: right;
 }

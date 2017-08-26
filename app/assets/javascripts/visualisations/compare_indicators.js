@@ -12,9 +12,8 @@ function createEmptyGraph(id){
   .append("g").attr("id", "bubbleSvg")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  // Add temporary empty axis, year labels, and starter message
+  // Add temporary empty axis, and starter message
   createAxis(bubbleSvg);
-  createYearLabel(bubbleSvg);
   createStarterMessage(bubbleSvg);
 }
 
@@ -22,6 +21,8 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   // Calculate max and min values
   var startYear = findMin(data, "x", 0);
   var endYear = findMax(data, "x", 0);
+  updateYearSliderView(startYear, endYear);
+
   var xmin = findMin(data, "x", 1), xmax = findMax(data, "x", 1);
   var ymin = findMin(data, "y", 1), ymax = findMax(data, "y", 1);
   var zmin = findMin(data, "z", 1), zmax = findMax(data, "z", 1);
@@ -65,25 +66,15 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   .remove()
   .call(endall, createDots);
 
-  // Update year label on graph and overlay actions
-  var label = d3.select("#year-label").text(endYear);
-  var overlayBox = label.node().getBBox();
-  var overlay = d3.select("#overlay")
-  .attr("x", overlayBox.x)
-  .attr("y", overlayBox.y)
-  .attr("width", overlayBox.width)
-  .attr("height", overlayBox.height)
-  .on("mouseover", enableInteraction);
-
   // Add controls for animation
   d3.select('#play-bubble-btn')
   .on('click', function (d) {
-    var start = label.text() == endYear? startYear : label.text();
+    var cur = $("#ci-years-selector").val();
+    var start = cur == endYear? startYear : cur;
     bubbleSvg.transition()
     .duration((endYear - start) * 1000)  // 1 second to move 1 year
     .ease("linear")
-    .tween("year", tweenYear)
-    .each("end", enableInteraction);
+    .tween("year", tweenYear);
   });
 
   d3.select('#stop-bubble-btn')
@@ -137,30 +128,10 @@ function updateBubbleGraph(data, xLabel, yLabel) {
     return radius(b) - radius(a);
   }
 
-  // Change year by interacting with year label.
-  function enableInteraction() {
-    var yearScale = d3.scale.linear()
-    .domain([startYear, endYear])
-    .range([overlayBox.x + 5, overlayBox.x + overlayBox.width - 5])
-    .clamp(true);
-    // Stop whatever transition is currently happening
-    bubbleSvg.transition().duration(0);
-
-    overlay.on("mouseover", highlightYearLabel(true))
-    .on("mouseout", highlightYearLabel(false))
-    .on("mousemove", changeVisYear)
-    .on("touchmove", changeVisYear);
-
-    // Change graph to display selected year as mouse moves over it.
-    function changeVisYear() {
-      displayYear(yearScale.invert(d3.mouse(this)[0]));
-    }
-  }
-
   // Tweens the entire chart by first tweening the year, and then the data.
   // For the interpolated data, the dots and label are redrawn.
   function tweenYear() {
-    var curYear = label.text();
+    var curYear = $("#ci-years-selector").val();
     if(curYear == endYear) curYear = startYear;
     var year = d3.interpolateNumber(curYear, endYear);
     return function(t) { displayYear(year(t)); };
@@ -171,7 +142,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
     d3.selectAll(".dot").data(interpolateData(year), key)
     .call(position)
     .sort(order);
-    label.text(Math.round(year));
+    $("#ci-years-selector").val(Math.round(year));
   }
 
   // Interpolates the dataset for the given year.
@@ -199,4 +170,12 @@ function updateBubbleGraph(data, xLabel, yLabel) {
     }
     return a[1];
   }
+
+  // React to year slider change
+  $("#ci-year-slider").on("change", function(){
+    var newYear = $("#ci-years-selector").val();
+    // Stop whatever transition is currently happening
+    d3.select("#bubbleSvg").transition().duration(0);
+    displayYear(newYear);
+  });
 }

@@ -15,7 +15,7 @@ function highlightCountry(action){
 
 // React to change events on parallel coordinates filters
 $(function(){
-  // React to year slider change
+  // React to year change
   $("#select-year").on("change", function(){
     if(paraCoordsYear != this.value){
       paraCoordsYear = this.value;

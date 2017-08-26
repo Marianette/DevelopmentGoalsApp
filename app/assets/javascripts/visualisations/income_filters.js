@@ -15,13 +15,10 @@ function highlightData(action){
 
 // React to change events on income dot plot filters
 $(function(){
-  // React to year slider change
-  $("#income-year-slider").on("change", function(){
-    var newYear = $("#income-years-selector").val();
-    newYear = checkValidIncomeYear(newYear);
-    $('#income-years-selector').val(newYear);
-    if(incomeCurrentYear != newYear){
-      incomeCurrentYear = newYear;
+  // React to year change
+  $("#income-select-year").on("change", function(){
+    if(incomeCurrentYear != this.value){
+      incomeCurrentYear = this.value;
       updateDotPlot();
     }
   });
