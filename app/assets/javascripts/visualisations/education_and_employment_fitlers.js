@@ -17,8 +17,10 @@ $(function(){
         $("#map-gender-parity").attr("disabled", false);
         $("#disabled-label").attr("id", "gender-parity");
       }
-      // if changing data set, choose most recent year for new data setAnimataion
-      currentYearIndex = yearArrays[selectedDataset].length - 1;
+      // if changing data set, choose most recent year for new data set (or current if year exists in data set)
+      var curYear = $("#years-selector").val();
+      var idx = yearArrays[selectedDataset].indexOf(curYear);
+      currentYearIndex = (idx == -1)? yearArrays[selectedDataset].length - 1: idx;
 
       // Need to change slider values
       var years = yearArrays[selectedDataset];

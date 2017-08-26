@@ -79,15 +79,15 @@ function setUpColours(){
 
   compColScale = d3.scale.threshold()
   .domain(compDomain)
-  .range(colorbrewer.RdYlGn[5]);
+  .range(['#a6611a','#dfc27d','#a0a0a0','#80cdc1','#018571']);  // BrBG colorbrewer scale with middle value replaced
 
   eduDiffColScale = d3.scale.threshold()
   .domain(eduDiffDomain)
-  .range(colorbrewer.RdYlBu[5]);
+  .range(['#d7191c','#fdae61','#a0a0a0','#abd9e9','#2c7bb6']); // RdYlBu colorbrewer scale with middle value replaced
 
   employDiffColScale = d3.scale.threshold()
   .domain(employDiffDomain)
-  .range(colorbrewer.RdYlBu[5]);
+  .range(['#d7191c','#fdae61','#a0a0a0','#abd9e9','#2c7bb6']); // RdYlBu colorbrewer scale with middle value replaced
 }
 
 function updateLegend(){

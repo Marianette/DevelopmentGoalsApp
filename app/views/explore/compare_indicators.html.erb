@@ -44,7 +44,7 @@
     <!-- Visualisation filters -->
     <div class="col s2 filter-container" id="comparison-vis-filters">
       <h5 id="data-name">Compare Indicators</h5>
-      <p id="data-info">Select X, Y, and Z to compare different datasets</p>
+      <p id="data-info">View different indicators in a bubble chart. Choose up to three different datasets by selecting values for X, Y, Z.</p>
       <div class="input-field col s12 indicator-select">
         <%= select_tag 'select-compareX-dataset', options_for_select(@datasets, @datasets[0][0]) %>
         <label id="data-select-label">Select X</label>
@@ -55,7 +55,9 @@
       </div>
       <div class="input-field col s12 indicator-select">
         <%= select_tag 'select-compareZ-dataset', options_for_select(@zdata, @zdata[0][0]) %>
-        <label id="data-select-label">Select Z (Radius of Bubbles)</label>
+        <label id="data-select-label">Select Z <i class="material-icons helper-tooltip" id="view-animation-help">
+          help_outline<span class="helpertext helper-bottom" id="side-bar-helper">The Z value determines what the size of the circles on the graph will be. Each circle on the graph will represent a single country.</span>
+        </i></label>
       </div>
       <div class="input-field col s12 indicator-select">
       <a class="waves-effect waves-light btn" id="update-btn" onClick="sendUpdateRequest();">Update Graph</a>
