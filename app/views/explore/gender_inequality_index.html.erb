@@ -33,7 +33,7 @@
   <div class="row vis">
     <div class="col s10 gii-vis-container">
       <!-- Loading spinner to show when data for visualisation is being loaded -->
-      <div class="loading-left"></div>
+      <div class="loading loading-left"></div>
       <!-- The Visualisation -->
       <%= tag('div', id: 'gii-vis', data: {url: explore_gii_data_path } ) %>
       <%= tag('/div') %>
@@ -43,7 +43,7 @@
       <h5 id="data-name">Gender Inequality Index (GII)</h5>
       <p id="data-info">Comparison of the GII with some of the indicators used to
         <a target="_blank" href="http://hdr.undp.org/en/content/gender-inequality-index-gii">calculate</a> it
-        <i class="material-icons helper-tooltip" id="gii-help">
+        <i class="material-icons helper-tooltip small-help">
           help_outline<span class="helpertext helper-bottom">The GII shows the loss in potential human development
 due to inequalities between female and male achievements in political and economic areas.</span>
         </i>
@@ -55,7 +55,7 @@ due to inequalities between female and male achievements in political and econom
         </div>
         <div id="paraCoords-country-select">
           <label>Select Country
-            <i class="material-icons helper-tooltip" id="select-country-help">
+            <i class="material-icons helper-tooltip small-help">
               help_outline<span class="helpertext helper-bottom">Use the search box to find a country. Click 'Select' to select the country. Selecting a country will mark it in black.</span>
             </i>
           </label>

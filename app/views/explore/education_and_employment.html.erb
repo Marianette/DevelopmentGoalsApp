@@ -37,7 +37,7 @@
   <div class="row vis">
     <div class="col s10 map-vis-container">
       <!-- Loading spinner to show when data for visualisation is being loaded -->
-      <div class="loading-left"></div>
+      <div class="loading loading-left"></div>
       <!-- The Visualisation -->
       <%= tag('div', id: 'edu-employ-map-vis', data: {url: explore_education_and_employment_data_path } ) %>
       <%= tag('/div') %>
@@ -64,7 +64,7 @@
         <p class="gender-selector">
           <input class="with-gap" name="gender-select" type="radio" id="map-gender-parity" value="diff"/>
           <label class="gender-label" for="map-gender-parity" id="gender-parity">Gender Parity
-            <i class="material-icons helper-tooltip" id="parity-help">
+            <i class="material-icons helper-tooltip small-help">
               help_outline<span class="helpertext helper-bottom" id="side-bar-helper">View the data as the absolute difference between the male and female percentage values.</span>
             </i></label>
         </p>
@@ -82,7 +82,7 @@
       </form>
       <form>
         <label>View Animation
-          <i class="material-icons helper-tooltip" id="view-animation-help">
+          <i class="material-icons helper-tooltip small-help">
             help_outline<span class="helpertext helper-bottom" id="side-bar-helper">Press 'Play' to view an animation that shows the data changing over time. Click 'Pause' to pause/stop the animation.</span>
           </i>
         </label>

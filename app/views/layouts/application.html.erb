@@ -4,17 +4,18 @@
   <title>
     <%=  "#{@title.present? ? "#{@title} -" : ""} Gender Equality Visualisations" %>
   </title>
-
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application' %>
 </head>
 <body>
-<%= render 'navbar' %>
-<%= yield %>
+  <%= render 'navbar' %>
+  <%= yield %>
 </body>
+
 <script>
+// Need to set material design javascript interactions on every page load.
 $(function() {
   $(".dropdown-button").dropdown();
   $('select').material_select();
@@ -22,4 +23,5 @@ $(function() {
   $('.collapsible').collapsible();
 });
 </script>
+
 </html>

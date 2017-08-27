@@ -47,6 +47,7 @@ include ApplicationHelper
   end
 
   def get_values(type, loc)
+    # Get value from the database
     if type == male_population_type
       return loc.male_population
     elsif type == female_population_type
@@ -61,16 +62,4 @@ include ApplicationHelper
     end
     return nil
   end
-  #
-  # def get_datavalues(type, loc, entry)
-  #   if type == male_population_type
-  #     return loc.male_population
-  #   elsif type == female_population_type
-  #     return loc.female_population
-  #   elsif type == total_population_type
-  #     return loc.population
-  #   else
-  #     return entry.values
-  #   end
-  # end
 end

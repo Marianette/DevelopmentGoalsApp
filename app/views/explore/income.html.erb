@@ -35,13 +35,13 @@
   <div class="row vis">
     <div class="col s12 income-vis-container">
       <div id="dot-plot-title">Estimated Gross National Income Per Capita (Male vs. Female)
-        <i class="material-icons helper-tooltip" id="gni-title-help">
+        <i class="material-icons helper-tooltip large-help">
           help_outline<span class="helpertext helper-right" id="gni-left-help">Estimated GNI for males and females is derived from: </br>- ratio of female to male wage, </br>- share of males and females in the labour force, </br>- total GNI for the country (in terms of 2011 purchasing power pairty)</span>
         </i>
       </div>
 
       <!-- Loading spinner to show when data for visualisation is being loaded -->
-      <div class="loading-income"></div>
+      <div class="loading loading-income"></div>
       <!-- The Visualisation -->
       <%= tag('div', id: 'income-vis', data: {url: explore_income_data_path} ) %>
       <%= tag('/div') %>
@@ -71,7 +71,7 @@
         </div>
         <div class="input-field col s3 income-filter-container">
           <label class="income-labels">Select Country (Click 'Select' to make selection)
-            <i class="material-icons helper-tooltip" id="select-country-help">
+            <i class="material-icons helper-tooltip small-help">
               help_outline<span class="helpertext helper-bottom">Use the search box to find a country. Click 'Select' to select a country. Selecting a country will highlight it green.</span>
             </i>
           </label>
