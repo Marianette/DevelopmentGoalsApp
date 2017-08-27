@@ -70,10 +70,11 @@
           <label class="income-labels" id="region-filter-label">Filter by Region</label>
         </div>
         <div class="input-field col s3 income-filter-container">
-          <label class="income-labels">Select Country (Click 'Select' to make selection)
+          <label class="income-labels">Select Country
             <i class="material-icons helper-tooltip small-help">
               help_outline<span class="helpertext helper-bottom">Use the search box to find a country. Click 'Select' to select a country. Selecting a country will highlight it green.</span>
             </i>
+            (Click 'Select' to make selection)
           </label>
           <%= select_tag "select-country", options_for_select(@countries, ""), style:"width:100%" %>
           <div class="col s12" id="action-buttons">

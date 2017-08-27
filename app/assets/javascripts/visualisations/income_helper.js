@@ -15,17 +15,6 @@ function removeDotElements(){
   }
 }
 
-function checkValidIncomeYear(newYear){
-  var years = Object.keys(incomeData[0][incomeDataDisplayed]);
-  if (years.indexOf(newYear) != -1) return newYear;
-
-  // Selected year is not in data set, snap to closest year values
-  var closestYear = years.reduce(function (prev, curr) {
-    return (Math.abs(curr - newYear) < Math.abs(prev - newYear) ? curr : prev);
-  });
-  return closestYear;
-}
-
 function showDataInformation(d){
   updateBubbleInformation(d);
   // Highlight grid line

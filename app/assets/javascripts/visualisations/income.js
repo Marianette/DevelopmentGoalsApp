@@ -21,22 +21,20 @@ function createIncomeVis(id) {
 }
 
 function initIncomeVis(id, data) {
+  // Set default values for global variables
   fullDataSet = data;
   incomeData = fullDataSet;
   incomeCurrentYear = 2015;
   incomeDataDisplayed = "male";
 
+  // Set plot height/wisth and scale
   var fullPlotWidth = $('.income-vis-container').width() - 8;
   var fullPlotHeight = 400;
   dotPlotMargins = {top: 20, right: 20, bottom: 20, left: 40};
   plotWidth = fullPlotWidth - dotPlotMargins.left - dotPlotMargins.right,
   plotHeight = fullPlotHeight - dotPlotMargins.top - dotPlotMargins.bottom;
-
-  dotPlotWidthScale = d3.scale.ordinal()
-  .rangeBands([dotPlotMargins.left, plotWidth], 0.2);
-
-  dotPlotHeightScale = d3.scale.linear()
-  .range([0, plotHeight]);
+  dotPlotWidthScale = d3.scale.ordinal().rangeBands([dotPlotMargins.left, plotWidth], 0.2);
+  dotPlotHeightScale = d3.scale.linear().range([0, plotHeight]);
 
   var dotPlotSvg = d3.select(id).append("svg")
   .attr("id", "dotPlotSvg")
@@ -169,20 +167,14 @@ function createDots(id){
     return plotHeight - dotPlotHeightScale(d[id][incomeCurrentYear]);
   })
   .on("mouseover", function(d) {
-    dotToolTip.transition()
-    .duration(200)
-    .style("opacity", 0.9);
+    dotToolTip.transition().duration(200).style("opacity", 0.9);
     dotToolTip.html(getIncomeDotHoverMessage(d, id))
     .style("left", (d3.event.pageX) + "px")
     .style("top", (d3.event.pageY - 28) + "px");
-
     showDataInformation(d);
   })
   .on("mouseout", function(d) {
-    dotToolTip.transition()
-    .duration(200)
-    .style("opacity", 0);
-
+    dotToolTip.transition().duration(200).style("opacity", 0);
     hideDataInformation(d);
   })
   .on("click", function(d) {
@@ -198,6 +190,7 @@ function createDots(id){
 }
 
 function createInformationCircles(){
+  // Set size variables
   var radius = 65,
   x      = plotWidth - radius,
   y      = plotHeight/5.0,
@@ -210,6 +203,7 @@ function createInformationCircles(){
     var infoCircle = d3.select("#dotPlotSvg").append('g')
     .attr('transform', 'translate(' + [ dx, dx ] + ')');
 
+    // Create circle
     infoCircle.append('circle')
     .attr("class", "info-circle")
     .attr("id", ids[i] + "-circle")
@@ -217,6 +211,7 @@ function createInformationCircles(){
     .attr('cy', y)
     .attr('r', radius);
 
+    // Add text in center of circle
     infoCircle.append('foreignObject')
     .attr('x', x - (side/2))
     .attr('y', y - (side/2))
