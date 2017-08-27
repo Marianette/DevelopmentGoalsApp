@@ -3,6 +3,7 @@ $(function() {
   $('#paracoords-country').select2();
 });
 
+// Highlight/Unhighlight selected countries
 function highlightCountry(action){
   // Get value in select country search box
   var value = $("#paracoords-country").val();

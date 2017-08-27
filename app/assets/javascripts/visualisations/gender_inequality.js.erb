@@ -31,7 +31,7 @@ function initGiiVis(id, data) {
 
   var line = d3.svg.line();
   var axis = d3.svg.axis().orient("left");
-  var background, foreground;
+  var foreground;
 
   // Set most recent year
   paraCoordsYear = d3.max(data, function(d) {
@@ -75,9 +75,7 @@ function initGiiVis(id, data) {
   xScale.domain(dimensions = d3.keys(data[0]).filter(function(d) {
     scale = (d == "Gender Inequality Index")? [1, 0]: [0, 100];
     return d != "year" && d != "region" && d != "code" && d != "country" &&
-    (yScale[d] = d3.scale.linear()
-    .domain(scale)
-    .range([height, 0]));
+    (yScale[d] = d3.scale.linear().domain(scale).range([height, 0]));
   }));
 
   // Coloured by region. Lines displayed in the foreground
@@ -96,8 +94,7 @@ function initGiiVis(id, data) {
     d3.select(this)
     .style("stroke-opacity", 1)
     .style("stroke-width", "3px");
-
-    showParaCoordsTooltip(d, toolTip);
+    showParaCoordsTooltip(d.country, toolTip);
   })
   .on("mousemove", function(d){
     moveParaCoordsTooltip(toolTip);
@@ -121,10 +118,10 @@ function initGiiVis(id, data) {
   var axislabel = g.append("g")
   .attr("class", "axis");
 
+  // Add axis helper icon and helper text.
   axislabel.each(function(d) {
     d3.select(this).call(axis.scale(yScale[d]));
-  })
-  .append("svg:image")
+  }).append("svg:image")
   .attr("xlink:href",  function(d) { return getImgAndHelpText(d)[0];})
   .attr("x", -8)
   .attr("y", -(margin.top/2))
@@ -139,17 +136,23 @@ function initGiiVis(id, data) {
     toolTip.style("opacity", 1);
   })
   .on("mouseout", function(d){
-    toolTip.style("opacity", 0);
+    hideParaCoordsTooltip(toolTip);
   });
 
+  // Add axis title labels
   axislabel.each(function(d) {
     d3.select(this).call(axis.scale(yScale[d]));
-  })
-  .append("text")
+  }).append("text")
   .attr("class", "gii-axis-title")
   .attr("text-anchor", "middle")
   .attr("y", -2*(margin.top/3))
-  .text(String);
+  .text(String)
+  .on("mouseover", function(d){
+    showParaCoordsTooltip("Click and drag headings to reorder axis", toolTip);
+  })
+  .on("mouseout", function(d){
+    hideParaCoordsTooltip(toolTip);
+  });
 
   // Create brush elements to allow dynamic filtering of each dimension
   g.append("g")
@@ -163,23 +166,10 @@ function initGiiVis(id, data) {
   .attr("x", -8)
   .attr("width", 16)
   .on("mouseover", function(){
-    toolTip
-    .style("top", (d3.event.pageY - 10) + "px")
-    .style("left", (d3.event.pageX + 10) + "px");
-    toolTip.text("Click and drag along vertical axis to filter out countries");
-    toolTip.style("opacity", 1)
-
-    toolTip.transition()
-    .duration(8000)
-    .style("opacity", 1)
-    .call(endall, function(){
-      toolTip.transition().duration(1500).style("opacity", 0);
-    });
+    showParaCoordsTooltip("Click and drag along vertical axis to filter out countries", toolTip);
   })
   .on("mouseout", function() {
-    toolTip.transition()
-    .duration(2000)
-    .style("opacity", 0);
+    hideParaCoordsTooltip(toolTip);
   });
 
   function position(d) {

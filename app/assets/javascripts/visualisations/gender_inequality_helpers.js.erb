@@ -1,8 +1,11 @@
 function getElemClass(d) { return "dataLines code_" + d.code + " year_" + d.year + " region_" + reduceString(d.region); }
 function reduceString(s) { return s.replace(/[^a-zA-Z0-9]/g, ""); }
 
-function showParaCoordsTooltip(d, toolTip){
-  toolTip.text(d.country);
+function showParaCoordsTooltip(msg, toolTip){
+  toolTip
+  .style("top", (d3.event.pageY - 10) + "px")
+  .style("left", (d3.event.pageX + 10) + "px");
+  toolTip.text(msg);
   toolTip.style("opacity", 1);
 }
 
@@ -117,16 +120,6 @@ function getGIIYears(data){
 
 function unique(x) {
   return x.reverse().filter(function (e, i, x) {return x.indexOf(e, i+1) === -1;}).reverse();
-}
-
-function checkValidGIIYear(newYear){
-  if (paraYears.indexOf(newYear) != -1) return newYear;
-
-  // Selected year is not in data set, snap to closest year values
-  var closestYear = paraYears.reduce(function (prev, curr) {
-    return (Math.abs(curr - newYear) < Math.abs(prev - newYear) ? curr : prev);
-  });
-  return closestYear;
 }
 
 function getImgAndHelpText(label){

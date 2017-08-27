@@ -3,13 +3,6 @@
   font: 10px sans-serif;
 }
 
-.background path {
-  fill: none;
-  stroke: #ccc;
-  stroke-opacity: .4;
-  shape-rendering: crispEdges;
-}
-
 .foreground path {
   fill: none;
 }
@@ -94,17 +87,4 @@ rect.disabled {
   padding:0px;
   position: relative;
   top: -15px;
-}
-
-.vis-material-icons #gii-axis-helper {
-  font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    width: 1em;
-    height: 1em;
-    line-height: 1;
-    text-transform: none;
-    -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  font-feature-settings: 'liga';
 }
