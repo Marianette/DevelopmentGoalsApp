@@ -18,7 +18,7 @@ D3 Javascript library.
 - Ruby Version: `2.2.4`
 - Database: Postgres
 
-**Note: Application has been tested on Google Chrome 52+. (Older versions of the browser may issues with some styling features)**
+**Note: Application has been tested on Google Chrome 52+. (Older versions of the browser may have issues with some styling features)**
 
 #### Running this Application
 
