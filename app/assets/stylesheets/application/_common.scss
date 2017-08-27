@@ -99,3 +99,27 @@ html, body {
 span.select2-container.select2-container--default.select2-container--open {
   width: 200px;
 }
+
+// Year slider
+.range-field {
+  margin: 0px;
+}
+
+.year-labels {
+  position: relative;
+  top: 10px;
+}
+
+.year-slider-label {
+  margin: 0px;
+  display: inline;
+  font-size: 10px;
+}
+
+#min-year {
+  float: left;
+}
+
+#max-year {
+  float: right;
+}

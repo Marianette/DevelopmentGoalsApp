@@ -29,17 +29,14 @@ function initEducationEmploymentVis(id, data, world) {
   selectedDataset = "education";
   selectedFilter = "female";
   centered = null;
-
-  // Reset any animations that may be running
-  clearInterval(mapTimer);
+  clearInterval(mapTimer);   // Reset any animations that may be running
   mapTimer = null;
 
-  // Create map
+  // Define map size and scale variables
   var width = $(".map-vis-container").width();
   var mapHeight = 560;
   var xoffset = 45;
   var yoffset = 45;
-
   var centerX = width/2 - xoffset;
   var centerY = mapHeight/2 + yoffset;
 
@@ -82,38 +79,38 @@ function initEducationEmploymentVis(id, data, world) {
 
   // create map data object
   createMapData(data, world);
+  
+  // Draw choropleth map
+  mapContainer.selectAll(".country")
+  .data(topojson.feature(world, world.objects.countries).features)
+  .enter().append("path")
+  .attr("d", path)
+  .attr("class", "country")
+  .attr("id", getId)
+  .style("stroke", "white")
+  .style("stroke-width", "0.6px")
+  .style("vector-effect", "non-scaling-stroke")
+  .style("fill", getColour)
+  // Add interations with mouse click/hover events
+  .on("mouseover", function(d) {
+    showTooltip(d, toolTip);
+  })
+  .on("mouseout", function(d) {
+    hideTooltip(d, toolTip);
+  })
+  .on("click", function(d){
+    clicked(d, centerX, centerY, path);
+  });
 
-    // Draw choropleth map
-    mapContainer.selectAll(".country")
-    .data(topojson.feature(world, world.objects.countries).features)
-    .enter().append("path")
-    .attr("d", path)
-    .attr("class", "country")
-    .attr("id", getId)
-    .style("stroke", "white")
-    .style("stroke-width", "0.6px")
-    .style("vector-effect", "non-scaling-stroke")
-    .style("fill", getColour)
-    // Add interations with mouse click/hover events
-    .on("mouseover", function(d) {
-      showTooltip(d, toolTip);
-    })
-    .on("mouseout", function(d) {
-      hideTooltip(d, toolTip);
-    })
-    .on("click", function(d){
-      clicked(d, centerX, centerY, path);
-    });
+  mapContainer.append("path")
+  .data(topojson.feature(world, world.objects.countries).features)
+  .enter()
+  .append("path")
+  .attr("class", "mesh")
+  .attr("d", path);
 
-    mapContainer.append("path")
-    .data(topojson.feature(world, world.objects.countries).features)
-    .enter()
-    .append("path")
-    .attr("class", "mesh")
-    .attr("d", path);
-
-    // Add legend
-    updateLegend();
+  // Add legend
+  updateLegend();
 }
 
 function showTooltip(d, toolTip) {

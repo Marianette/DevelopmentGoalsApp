@@ -29,7 +29,9 @@
   font-weight: bold;
 }
 
-.map-filter-container {
+#map-filter-container {
+  padding-left: 5px;
+  padding-right: 16px;
   color: #2569a8;
   border: 1px solid #2569a8;
   border-radius: 5px;
@@ -51,29 +53,6 @@
 
 #disabled-label {
   color: #d4d4d4 !important;
-}
-
-.range-field {
-  margin: 0px;
-}
-
-.year-labels {
-  position: relative;
-  top: 10px;
-}
-
-.year-slider-label {
-  margin: 0px;
-  display: inline;
-  font-size: 10px;
-}
-
-#min-year {
-  float: left;
-}
-
-#max-year {
-  float: right;
 }
 
 .gender-selector {

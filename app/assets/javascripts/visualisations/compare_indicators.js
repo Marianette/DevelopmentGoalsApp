@@ -1,5 +1,4 @@
-var graphWidth, graphHeight, margin;
-var tooltip;
+var graphWidth, graphHeight, margin, tooltip;
 
 function createEmptyGraph(id){
   // Dimensions of the bubble graph
@@ -29,6 +28,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   var startYear = findMin(data, "x", 0);
   var endYear = findMax(data, "x", 0);
   updateYearSliderView(startYear, endYear);
+  $('#ci-years-selector').val(endYear); // set year slider to most recent year
 
   var xmin = findMin(data, "x", 1), xmax = findMax(data, "x", 1);
   var ymin = findMin(data, "y", 1), ymax = findMax(data, "y", 1);
@@ -62,7 +62,7 @@ function updateBubbleGraph(data, xLabel, yLabel) {
   d3.select("#x-axis-label").text(xLabel);
   d3.select("#y-axis-label").text(yLabel);
 
-  // A bisector since data could be sparsely-defined.
+  // A bisector to calculate data for year values in between that aren't given.
   var bisect = d3.bisector(function(d) { return d[0]; });
 
   // Remove old dots and create new ones.
@@ -132,11 +132,6 @@ function updateBubbleGraph(data, xLabel, yLabel) {
     dot.attr("cx", function(d) { return xScale(x(d)); })
     .attr("cy", function(d) { return yScale(y(d)); })
     .attr("r", function(d) { return radiusScale(radius(d)); })
-  }
-
-  // Make sure that smaller dots are on top so they can be seen.
-  function order(a, b) {
-    return radius(b) - radius(a);
   }
 
   // Tweens the entire chart by first tweening the year, and then the data.

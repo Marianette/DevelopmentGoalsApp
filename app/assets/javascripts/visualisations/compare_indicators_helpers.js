@@ -46,6 +46,7 @@ function createAxis(bubbleSvg){
 }
 
 function createStarterMessage(bubbleSvg) {
+  // Set size of starter message
   var radius = 180,
   x      = graphWidth/2.0,
   y      = graphHeight/2.5,
@@ -56,12 +57,14 @@ function createStarterMessage(bubbleSvg) {
   .attr("class", "start-message")
   .attr('transform', 'translate(' + [ dx, dx ] + ')');
 
+  // Create circle
   startCircle.append('circle')
   .attr("class", "start-circle")
   .attr('cx', x)
   .attr('cy', y)
   .attr('r', radius);
 
+  // Add text in center of circle
   startCircle.append('foreignObject')
   .attr('x', x - (side/2))
   .attr('y', y - (side/2))
@@ -108,10 +111,6 @@ function createLegend(bubbleSvg, colorScale, data){
   .attr('x', legendRectSize + legendSpacing)
   .attr('y', legendRectSize - legendSpacing)
   .text(function(d) { return d; });
-}
-
-function highlightYearLabel(state) {
-  d3.select("#year-label").classed("active", state);
 }
 
 function findMin(data, value, i){

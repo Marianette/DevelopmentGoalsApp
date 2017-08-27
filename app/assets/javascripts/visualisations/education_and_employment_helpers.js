@@ -28,12 +28,7 @@ function getId(d){
 function getMessage(d){
   var value = _.get(d.properties, [selectedDataset, selectedFilter, getCurrentYear()], "No Data");
   if (value != "No Data") value = Math.abs(value) + "%" ;
-  var name = d.properties.admin;
-  var end = "";
-  if (value != "No Data" && (selectedDataset == "comparison" || selectedFilter == "diff")) {
-    // TODO end += "</br>" + getDiffLabel(d);
-  }
-  return name + "</br>" + getMapHoverLabel(value) + end;
+  return d.properties.admin + "</br>" + getMapHoverLabel(value);
 }
 
 function getMapHoverLabel(value) {
@@ -46,9 +41,7 @@ function getMapHoverLabel(value) {
 function getValidYear(newYear){
   var years = yearArrays[selectedDataset];
   var newIndex = years.indexOf(newYear)
-  if (newIndex != -1) {
-    return newIndex;
-  }
+  if (newIndex != -1) { return newIndex; }
 
   // Selected year is not in data set, snap to closest year values
   var closestYear = years.reduce(function (prev, curr) {
@@ -58,12 +51,12 @@ function getValidYear(newYear){
 }
 
 function updateYearViews(){
-  var years = yearArrays[selectedDataset];
-  $('#years-selector').val(years[currentYearIndex]);
-  $('#map-year-label').text(years[currentYearIndex]);
+  $('#years-selector').val(getCurrentYear());
+  $('#map-year-label').text(getCurrentYear());
 }
 
 function setUpColours(){
+  // Define boundary values for legend/map scale
   percentDomain = [15, 30, 45, 55, 70, 85, 101];
   eduDiffDomain = [-10, -2, 2, 10, 100];
   employDiffDomain = [-30, -8, 8, 30, 100];
@@ -94,7 +87,6 @@ function updateLegend(){
   var lgWt = 20, lgHt = 20;
   var mapDomain = getMapDomain();
   var mapLegendLabels = getMapLegendLabels();
-
   var mapLegend = d3.selectAll(".map-legend");
 
   // Remove current legend if one exists
@@ -144,15 +136,6 @@ function getMapDomain(){
   }
   mapDomain.pop();
   return mapDomain;
-}
-
-// TODO fix this so that appropriate colors are chosen.
-function getDiffLabel(d){
-  var colours = getColourScale();
-  var col = colours(d);
-  var idx = colorbrewer.RdYlBu[5].indexOf(col);
-  var label = getMapLegendLabels()[idx];
-  return label;
 }
 
 // Information updates for choropleth map page

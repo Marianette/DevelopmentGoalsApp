@@ -16,15 +16,6 @@ svg {
   stroke: #000;
 }
 
-.label {
-  fill: #777;
-}
-
-.helper-text {
-  margin: 0px;
-  text-align: center;
-}
-
 .dots-selected {
   display: none;
 }
@@ -85,13 +76,7 @@ rect.disabled {
   left: 0rem !important;
 }
 
-#animation-label {
-  left: 0rem !important;
-  font-size: 0.8rem;
-  position: relative;
-}
-
-#ci-year-label {
+label.small-label {
   left: 0rem !important;
   font-size: 0.8rem;
   position: relative;
@@ -99,27 +84,4 @@ rect.disabled {
 
 #animation-box {
   margin-top: -5px;
-}
-
-.range-field {
-  margin: 0px;
-}
-
-.year-labels {
-  position: relative;
-  top: 10px;
-}
-
-.year-slider-label {
-  margin: 0px;
-  display: inline;
-  font-size: 10px;
-}
-
-#min-year {
-  float: left;
-}
-
-#max-year {
-  float: right;
 }
